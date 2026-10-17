@@ -52,6 +52,19 @@
           10
         ]
       }
+    },
+    {
+      "order": 3,
+      "date": "2026-10-17",
+      "label": "分野1 第2回",
+      "total": 10,
+      "correct": 6,
+      "byDomain": {
+        "1": [
+          6,
+          10
+        ]
+      }
     }
   ],
   "notes": [
@@ -510,6 +523,206 @@
         {
           "title": "AWS Application Migration Service",
           "url": "https://aws.amazon.com/application-migration-service/"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 16,
+      "domain": 1,
+      "topic": "Well-Architected：運用上の優秀性と信頼性",
+      "question": "「可能な限り安全に自動化する」「小さく元に戻せる変更を頻繁に行う」「すべての運用上のイベントから学ぶ」。これらを設計原則とするのは、Well-Architected フレームワークのどの柱ですか？",
+      "choices": [
+        "A. 運用上の優秀性",
+        "B. 信頼性",
+        "C. パフォーマンス効率",
+        "D. セキュリティ"
+      ],
+      "myAnswer": "B",
+      "correct": "A",
+      "result": "wrong",
+      "confidence": "low",
+      "why": "「運用上のイベントから学ぶ」「小さく元に戻せる変更」は、運用チームの仕事の進め方についての原則だから。",
+      "contrast": "運用上の優秀性 = 人と組織の仕事の進め方（安全に自動化・小さく頻繁に変更・失敗を予測・運用のイベントから学ぶ）\n信頼性 = システムが壊れても動き続けるか（障害から自動復旧・復旧手順をテスト・水平スケール・キャパシティを推測しない）\n主語が「チーム・運用」なら運用上の優秀性、「システム・障害」なら信頼性\n※ No.2 と定義が入れ替わっていた",
+      "example": "デプロイを小さく分けて毎日リリースし、問題が出たらすぐロールバックする。障害のあとは振り返りをして手順を直す。",
+      "explanation": "現在の設計原則は8つです。ビジネス成果を軸にチームを編成する、実用的なインサイトのために可観測性を実装する、可能な限り安全に自動化する、小さく元に戻せる変更を頻繁に行う、運用手順を頻繁に改善する、障害を予測する、すべての運用上のイベントとメトリクスから学ぶ、マネージドサービスを使う。\n古い教材では「運用をコードとして実行する（Perform operations as code）」と書かれていることがあります。現在は「可能な限り安全に自動化する」に含まれています。",
+      "sources": [
+        {
+          "title": "Operational excellence - Design principles",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/operational-excellence.html"
+        },
+        {
+          "title": "Reliability Pillar - Design principles",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 17,
+      "domain": 1,
+      "topic": "移行戦略：リパーチェス（7R 一覧）",
+      "question": "自社のサーバーで運用している顧客管理（CRM）システムをやめて、SaaS の CRM 製品に乗り換えます。この移行戦略はどれですか？",
+      "choices": [
+        "A. リパーチェス",
+        "B. リプラットフォーム",
+        "C. リテイン",
+        "D. リホスト"
+      ],
+      "myAnswer": "B",
+      "correct": "A",
+      "result": "wrong",
+      "confidence": "low",
+      "why": "自社のシステムをやめて別の製品を「買う（purchase）」移行だから。",
+      "contrast": "リタイア（retire = 引退）= 使っていないので廃止\nリテイン（retain = 保持）= 今は移さず残す\nリホスト（host = 置き場所）= そのまま EC2 へ\nリロケート（locate = 配置）= VMware をハイパーバイザーごと移す\nリプラットフォーム（platform = 土台）= 一部をマネージドに置き換える\nリパーチェス（purchase = 購入）= SaaS などの製品に買い替える\nリファクタリング（refactor = 作り直す）= クラウドネイティブに作り直す",
+      "example": "自社運用の CRM をやめて、Salesforce などの SaaS に乗り換える。",
+      "explanation": "7R の問題は、診断（No.3）、第1回（No.11）、第2回（この問題）と3回続けて間違えています。英単語の意味から覚えるのがおすすめです。",
+      "sources": [
+        {
+          "title": "Migration strategies（AWS 規範ガイダンス）",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 18,
+      "domain": 1,
+      "topic": "マネージドサービスの利点と顧客の責任",
+      "question": "EC2 に自分で MySQL をインストールして運用する代わりに、Amazon RDS を使うことにしました。マネージドサービスを使う主な利点はどれですか？",
+      "choices": [
+        "A. パッチ適用やバックアップなどの運用作業を AWS に任せられる",
+        "B. DB サーバーの OS に管理者としてログインし、自由に設定できる",
+        "C. 利用料金が常に無料になる",
+        "D. 暗号化やアクセス制御の設定がすべて不要になる"
+      ],
+      "myAnswer": "D",
+      "correct": "A",
+      "result": "wrong",
+      "confidence": "high",
+      "why": "OS や DB エンジンのパッチ、自動バックアップ、ハードウェアの保守といった運用作業を AWS が引き受けるのが、マネージドサービスの利点だから。",
+      "contrast": "AWS に任せられる = OS と DB エンジンのパッチ、自動バックアップ、ハードウェア保守\nRDS でも顧客に残る = セキュリティグループ、DB ユーザーと IAM の権限、暗号化の設定、公開設定、データそのもの\n「すべて不要」「常に」のような言い切りの選択肢は誤りが多い",
+      "example": "RDS のメンテナンスウィンドウで、DB エンジンのマイナーバージョンアップを AWS に任せる。接続を許可する IP はセキュリティグループで自分で絞る。",
+      "explanation": "マネージドになるほど顧客の担当範囲は狭くなりますが、なくなることはありません（責任共有モデル）。\n通常の RDS では、DB サーバーの OS にはログインできません。",
+      "sources": [
+        {
+          "title": "Security in Amazon RDS",
+          "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.html"
+        },
+        {
+          "title": "Shared Responsibility Model",
+          "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 19,
+      "domain": 1,
+      "topic": "AWS CAF で得られる成果",
+      "question": "（2つ選択）AWS クラウド導入フレームワーク（AWS CAF）を使ってクラウドを導入することで得られる成果はどれですか？",
+      "choices": [
+        "A. ビジネスリスクの低減",
+        "B. 運用効率の向上",
+        "C. オンプレミスのハードウェア資産が増える",
+        "D. すべてのアプリでコードの変更が不要になる"
+      ],
+      "myAnswer": "AB",
+      "correct": "AB",
+      "result": "guess",
+      "confidence": "low",
+      "why": "試験ガイドが CAF の成果として挙げているのは、ビジネスリスクの低減・ESG の向上・収益の増加・運用効率の向上の4つだから。",
+      "contrast": "CAF の成果 = リスク↓・ESG↑・収益↑・効率↑（4つとも良い方向の変化）\nCAF の観点 = ビジネス・人材・ガバナンス・プラットフォーム・セキュリティ・オペレーション（No.10）\n「成果」と「観点」を混同しない",
+      "example": "経営層への説明で「クラウド移行で運用効率が上がり、ビジネスリスクが下がる」と CAF の成果を示す。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "CLF-C02 試験ガイド 分野1",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html"
+        },
+        {
+          "title": "AWS Cloud Adoption Framework",
+          "url": "https://aws.amazon.com/cloud-adoption-framework/"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 20,
+      "domain": 1,
+      "topic": "CloudFormation と Config（IaC）",
+      "question": "インフラの構築をテンプレート（コード）で自動化し、同じ構成の環境を何度でも正確に再現したいです。手作業によるミスも減らしたいと考えています。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS CloudFormation",
+        "B. AWS Config",
+        "C. Amazon CloudWatch",
+        "D. AWS Trusted Advisor"
+      ],
+      "myAnswer": "B",
+      "correct": "A",
+      "result": "wrong",
+      "confidence": "low",
+      "why": "テンプレートに書いた構成の通りに環境を自動で作る（IaC）のが CloudFormation だから。",
+      "contrast": "CloudFormation = テンプレートから環境を作る（form = 形づくる）\nConfig = できたリソースの設定を記録し、ルールに合っているか評価する（作る機能はない）\nCloudWatch = 見張る\nCloudTrail = 足跡（API 操作）を残す\nTrusted Advisor = 自動チェックして推奨事項を出す",
+      "example": "開発・検証・本番の3環境を、同じ CloudFormation テンプレートから作る（Terraform の AWS 純正版のようなもの）。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is AWS CloudFormation?",
+          "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html"
+        },
+        {
+          "title": "What Is AWS Config?",
+          "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 21,
+      "domain": 1,
+      "topic": "移行サービスの使い分け",
+      "question": "AWS への移行を計画するために、オンプレのサーバーの構成、使用状況、サーバー同士の依存関係を自動で集めたいです。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS Application Discovery Service",
+        "B. AWS DMS",
+        "C. AWS Application Migration Service",
+        "D. AWS Storage Gateway"
+      ],
+      "myAnswer": "A",
+      "correct": "A",
+      "result": "guess",
+      "confidence": "low",
+      "why": "移行の前にオンプレの構成・使用状況・依存関係を集めて「発見する（discover）」サービスだから。",
+      "contrast": "使う順番で覚える\n1. 調べる = Application Discovery Service\n2. 費用を見積もる = Migration Evaluator\n3. 移す = Application Migration Service（サーバー丸ごと）/ DMS（データベース）\n4. 進捗を管理する = Migration Hub",
+      "example": "移行対象の300台について、どのサーバーとどのサーバーが通信しているかを調べ、一緒に移すグループを決める。",
+      "explanation": "試験ガイドの対象サービスには Application Discovery Service と Migration Hub が載っているので、試験ではこの答えで覚えてください。\nただし実際のサービスでは、Migration Hub は 2025年11月7日から新規受付を終了しています。Application Discovery Service も新規受付を終了しています。どちらも後継として AWS Transform が案内されています。",
+      "sources": [
+        {
+          "title": "What is AWS Application Discovery Service?",
+          "url": "https://docs.aws.amazon.com/application-discovery/latest/userguide/what-is-appdiscovery.html"
+        },
+        {
+          "title": "AWS Migration Hub availability change",
+          "url": "https://docs.aws.amazon.com/migrationhub/latest/ug/migrationhub-availability-change.html"
         }
       ],
       "status": "active",
