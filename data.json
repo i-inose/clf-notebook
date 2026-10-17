@@ -1,0 +1,101 @@
+{
+  "plan": {
+    "currentDomain": 1,
+    "stages": { "1": "learning", "2": "todo", "3": "todo", "4": "todo" },
+    "rules": [
+      "1回10問のうち6〜7問は今の分野の新しい問題、3〜4問は復習日が来たノートの問題（他の分野も混ざる）",
+      "今の分野で2回続けて8割以上取れたら、その分野は習得として次の分野へ進む",
+      "ノートの問題は、間違えたら2日後、正解したら7日後に出し直す。2回続けて正解で卒業",
+      "4分野すべて習得したら、全分野ランダムの総合演習に切り替える"
+    ]
+  },
+  "sessions": [
+    { "order": 1, "date": "2026-10-17", "label": "初回診断 14問", "total": 14, "correct": 7, "byDomain": { "1": [0, 3], "2": [1, 4], "3": [5, 5], "4": [1, 2] } }
+  ],
+  "notes": [
+    {
+      "no": 1, "domain": 1, "topic": "クラウドの6つの利点",
+      "question": "データセンターへの先行投資をやめて、使った分だけ支払う形にする。これはクラウドの6つの利点のどれに当たりますか？",
+      "choices": ["A. 規模の経済の恩恵を受ける", "B. 固定費を変動費に替える", "C. キャパシティの予測が不要になる", "D. 速度と俊敏性が上がる"],
+      "myAnswer": "C", "correct": "B", "result": "wrong", "confidence": null,
+      "why": "「先行投資をやめる」「使った分だけ払う」は、お金の払い方が固定費から変動費に変わるという話だから。",
+      "contrast": "固定費→変動費 = お金の払い方の話\nキャパシティの予測が不要 = サーバー台数の見積もりを外す心配がない話",
+      "example": "新サービスの立ち上げで、サーバー購入の稟議をせずに月額の利用料だけで始める。",
+      "explanation": "6つの利点は次のとおりです。\n1. 固定費（先行投資）を変動費に替える\n2. 規模の経済の恩恵を受ける\n3. キャパシティの予測が不要になる\n4. 速度と俊敏性が上がる\n5. データセンターの運用と保守にお金をかけなくてよい\n6. 数分で世界に展開できる",
+      "sources": [{ "title": "Six advantages of cloud computing（AWS ホワイトペーパー）", "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html" }],
+      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+    },
+    {
+      "no": 2, "domain": 1, "topic": "Well-Architected の柱",
+      "question": "障害から自動で復旧し、需要に合わせてリソースを確保する。これは Well-Architected フレームワークのどの柱の考え方ですか？",
+      "choices": ["A. 運用上の優秀性", "B. セキュリティ", "C. 信頼性", "D. パフォーマンス効率"],
+      "myAnswer": "A", "correct": "C", "result": "wrong", "confidence": null,
+      "why": "「障害から自動で復旧する」と「キャパシティを推測しない」は、信頼性の柱の設計原則そのものだから。",
+      "contrast": "信頼性 = 障害・復旧・キャパシティを推測しない\n運用上の優秀性 = 運用をコード化・小さく頻繁に変更・失敗から学ぶ",
+      "example": "Auto Scaling グループのヘルスチェックで、落ちた EC2 を自動で入れ替える。",
+      "explanation": "Well-Architected には6本の柱があります。\n運用上の優秀性、セキュリティ、信頼性、パフォーマンス効率、コスト最適化、持続可能性です。\n信頼性の設計原則は「障害から自動で復旧する」「復旧手順をテストする」「水平にスケールする」「キャパシティを推測しない」「変更を自動化する」です。",
+      "sources": [{ "title": "Reliability Pillar - Design principles", "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html" }],
+      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+    },
+    {
+      "no": 3, "domain": 1, "topic": "移行戦略（7R）",
+      "question": "オンプレのアプリを、コードを変えずにそのまま EC2 に移します。この移行戦略は何と呼ばれますか？",
+      "choices": ["A. リホスト", "B. リプラットフォーム", "C. リファクタリング", "D. 再購入（リパーチェス）"],
+      "myAnswer": "B", "correct": "A", "result": "wrong", "confidence": null,
+      "why": "何も変えずにサーバーごと持っていくのがリホスト（リフト&シフト）だから。",
+      "contrast": "リホスト = 何も変えない\nリプラットフォーム = 少し変える（自前の DB → RDS など）\nリファクタリング = 作り直す（サーバーレス化など）",
+      "example": "データセンターの契約切れに合わせて、VM をそのまま EC2 に移す。",
+      "explanation": "7R は、リタイア（廃止）、リテイン（残す）、リホスト、リロケート、リプラットフォーム、リパーチェス（SaaS などに買い替え）、リファクタリングです。\nリロケートは、VMware Cloud on AWS などを使ってハイパーバイザー単位で移す方法です。",
+      "sources": [{ "title": "Migration strategies（AWS 規範ガイダンス）", "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html" }],
+      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+    },
+    {
+      "no": 4, "domain": 2, "topic": "責任共有モデル",
+      "question": "責任共有モデルで、顧客が責任を持つものはどれですか？",
+      "choices": ["A. 物理サーバーのハードウェア保守", "B. ハイパーバイザーの管理", "C. EC2 のゲスト OS へのパッチ適用", "D. データセンターの入退室管理"],
+      "myAnswer": "A", "correct": "C", "result": "wrong", "confidence": null,
+      "why": "EC2 は IaaS なので、OS から上は顧客の担当になるから。",
+      "contrast": "AWS = 建物・ハード・ハイパーバイザー（クラウドのセキュリティ）\n顧客 = EC2 の OS パッチ・アプリ・データ・SG 設定（クラウドにおけるセキュリティ）\nRDS や Lambda の OS パッチ = AWS",
+      "example": "EC2 上の Amazon Linux に、自分で dnf update をかけてセキュリティ修正を当てる。",
+      "explanation": "顧客が担当する範囲は、使うサービスが IaaS（EC2）か、マネージドサービス（RDS、Lambda）かで変わります。\nマネージドになるほど、顧客の範囲は狭くなります。",
+      "sources": [{ "title": "Shared Responsibility Model", "url": "https://aws.amazon.com/compliance/shared-responsibility-model/" }],
+      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+    },
+    {
+      "no": 5, "domain": 2, "topic": "Artifact / Inspector / Config / GuardDuty",
+      "question": "監査のため、AWS の SOC レポートや PCI 準拠レポートを入手したいです。使うサービスはどれですか？",
+      "choices": ["A. AWS Artifact", "B. Amazon Inspector", "C. AWS Config", "D. Amazon GuardDuty"],
+      "myAnswer": "B", "correct": "A", "result": "wrong", "confidence": null,
+      "why": "AWS 自身のコンプライアンスレポートや契約をダウンロードする窓口が Artifact だから。",
+      "contrast": "Artifact = AWS のコンプライアンスレポートを入手\nInspector = 脆弱性スキャン\nConfig = 設定の記録とルール評価\nGuardDuty = ログから脅威を検知",
+      "example": "監査法人から「クラウド事業者の SOC 2 レポートを出して」と言われ、Artifact からダウンロードする。",
+      "explanation": "AWS Artifact では、SOC、PCI、ISO などのレポートと、BAA などの契約をセルフサービスで入手できます。\nInspector は、EC2・コンテナイメージ・Lambda の脆弱性を自動でスキャンします。",
+      "sources": [{ "title": "AWS Artifact", "url": "https://aws.amazon.com/artifact/" }, { "title": "Amazon Inspector", "url": "https://aws.amazon.com/inspector/" }],
+      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+    },
+    {
+      "no": 6, "domain": 2, "topic": "CloudTrail / CloudWatch / Config",
+      "question": "「誰が、いつ、どの API を呼び出したか」の操作履歴を記録したいです。使うサービスはどれですか？",
+      "choices": ["A. Amazon CloudWatch", "B. AWS CloudTrail", "C. AWS Config", "D. AWS Trusted Advisor"],
+      "myAnswer": "A", "correct": "B", "result": "wrong", "confidence": null,
+      "why": "API 操作の履歴（監査ログ）を記録するのは CloudTrail だから。Trail は足跡。",
+      "contrast": "CloudTrail = 誰が何をしたか（API の足跡）\nCloudWatch = 状態の見張り（メトリクス・ログ・アラーム）\nConfig = 設定がどう変わったか",
+      "example": "本番の EC2 が勝手に停止された。誰が StopInstances を呼んだかを CloudTrail で調べる。",
+      "explanation": "CloudTrail は、アカウント内の API 操作を記録する監査ログのサービスです。\n直近90日分のイベントは、何も設定しなくても「イベント履歴」で見られます。",
+      "sources": [{ "title": "What Is AWS CloudTrail?", "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html" }],
+      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+    },
+    {
+      "no": 7, "domain": 4, "topic": "EC2 の購入オプション",
+      "question": "途中で中断されても問題ないバッチ処理を、最も安く動かしたいです。どの購入オプションを選びますか？",
+      "choices": ["A. オンデマンドインスタンス", "B. リザーブドインスタンス", "C. スポットインスタンス", "D. Dedicated Hosts"],
+      "myAnswer": "B", "correct": "C", "result": "wrong", "confidence": null,
+      "why": "「中断されてもよい」は、AWS の余った容量を最大90%引きで使うスポットの条件だから。",
+      "contrast": "スポット = 中断されてもよい・最安\nリザーブド / Savings Plans = 1年か3年ずっと使う\nオンデマンド = 短期・予測できない\nDedicated Hosts = ライセンスや規制で物理サーバーを専有",
+      "example": "夜間の画像変換バッチを、スポットインスタンスで安く回す。",
+      "explanation": "スポットインスタンスは、AWS が容量を必要としたときに2分前の通知のあと中断されます。\nそのため、中断に強いバッチ処理、CI、データ分析などに向いています。",
+      "sources": [{ "title": "Spot Instances（Amazon EC2 ユーザーガイド）", "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html" }],
+      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+    }
+  ]
+}
