@@ -67,6 +67,20 @@
         ]
       },
       "focus": 1
+    },
+    {
+      "order": 4,
+      "date": "2026-10-17",
+      "label": "分野1 第3回",
+      "focus": 1,
+      "total": 10,
+      "correct": 4,
+      "byDomain": {
+        "1": [
+          4,
+          10
+        ]
+      }
     }
   ],
   "notes": [
@@ -727,6 +741,220 @@
           "url": "https://docs.aws.amazon.com/migrationhub/latest/ug/migrationhub-availability-change.html"
         }
       ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "topic": "CAF：オペレーションとビジネスの観点",
+      "question": "クラウドに移行したサービスを、ビジネスに必要な水準で運用し、提供し続けるための取り組み（監視、インシデント管理、可用性の管理など）を扱うのは、AWS CAF のどの観点ですか？",
+      "choices": [
+        "A. ビジネス",
+        "B. プラットフォーム",
+        "C. ガバナンス",
+        "D. オペレーション"
+      ],
+      "myAnswer": "A",
+      "correct": "D",
+      "why": "監視・インシデント管理・可用性の管理といった「サービスを運用し続ける」取り組みは、オペレーションの観点で扱うから。",
+      "contrast": "ビジネス = クラウド投資をビジネスの成果（売上・戦略・製品）につなげる\nオペレーション = 移行したサービスを必要な水準で運用し続ける（監視・インシデント・可用性）\nプラットフォーム = クラウドの基盤やアーキテクチャを設計し、作る\nガバナンス = リスク・予算・プログラムを管理する\n問題文の「ビジネス」という言葉ではなく、動詞（運用する・設計する・管理する）で判断する",
+      "example": "移行後の監視体制とインシデント対応の手順を整えるのは、オペレーションの観点の取り組み。",
+      "explanation": "CAF の観点は No.10（人材をプラットフォームと取り違え）に続いて2回目の間違い。",
+      "sources": [
+        {
+          "title": "Overview of the AWS Cloud Adoption Framework",
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/welcome.html"
+        }
+      ],
+      "no": 22,
+      "domain": 1,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "topic": "Well-Architected：セキュリティと信頼性の設計原則",
+      "question": "（2つ選択）Well-Architected フレームワークの、セキュリティの柱の設計原則はどれですか？",
+      "choices": [
+        "A. すべての層でセキュリティを適用する",
+        "B. 障害から自動で復旧する",
+        "C. トレーサビリティを有効にする",
+        "D. キャパシティを推測しない"
+      ],
+      "myAnswer": "AB",
+      "correct": "AC",
+      "why": "「すべての層でセキュリティを適用する」と「トレーサビリティを有効にする」は、セキュリティの柱の7つの設計原則に含まれるから。",
+      "contrast": "セキュリティ = アクセス・追跡・暗号化・データの保護（強固なアイデンティティ基盤、トレーサビリティ、全層で適用、自動化、転送中と保管中の保護、人をデータから遠ざける、イベントに備える）\n信頼性 = 障害・復旧・キャパシティ（障害から自動復旧、復旧手順をテスト、水平スケール、キャパシティを推測しない、変更を自動化）",
+      "example": "CloudTrail で操作を追跡し、VPC・サブネット・インスタンスの各層にセキュリティグループや NACL をかける。",
+      "explanation": "信頼性の柱は No.2・No.16 でも取り違えている。",
+      "sources": [
+        {
+          "title": "Security Pillar - AWS Well-Architected Framework",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html"
+        },
+        {
+          "title": "Reliability Pillar - Design principles",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html"
+        }
+      ],
+      "no": 23,
+      "domain": 1,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "topic": "移行戦略：リテインとリロケート",
+      "question": "ある基幹システムは、規制への対応が終わるまでの2年間はオンプレに残し、その後あらためて移行を検討することにしました。この移行戦略はどれですか？",
+      "choices": [
+        "A. リタイア",
+        "B. リホスト",
+        "C. リテイン",
+        "D. リロケート"
+      ],
+      "myAnswer": "D",
+      "correct": "C",
+      "why": "今は移行せずオンプレに残し、あとで改めて検討するのがリテイン（retain = 保持する）だから。",
+      "contrast": "リテイン = 今は移さず残す（後回し）\nリロケート = re-locate（場所を移し替える）。VMware 環境をハイパーバイザーごと VMware Cloud on AWS に移す。移行はする\nリタイア = 使っていないので廃止する\nリホスト = 何も変えずに EC2 へ移す",
+      "example": "データの所在に関する規制の確認が終わるまで、人事システムだけオンプレに残す。",
+      "explanation": "7R の間違いは No.3・No.11・No.17 に続いて4回目。一覧表は No.17。",
+      "sources": [
+        {
+          "title": "Migration strategies（AWS 規範ガイダンス）",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+        }
+      ],
+      "no": 24,
+      "domain": 1,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "topic": "6つの利点：DC の運用保守と速度・俊敏性",
+      "question": "サーバーのラックへの搭載、配線、電源、冷却といったインフラの作業ではなく、顧客にとって価値のある開発に人と時間を集中できます。これはクラウドの6つの利点のどれですか？",
+      "choices": [
+        "A. 速度と俊敏性が上がる",
+        "B. データセンターの運用と保守にお金をかけなくてよい",
+        "C. 規模の経済の恩恵を受ける",
+        "D. 固定費を変動費に替える"
+      ],
+      "myAnswer": "A",
+      "correct": "B",
+      "why": "ラック搭載・電源・冷却といったデータセンターの作業から解放され、ビジネスの差別化に集中できるのが「データセンターの運用と保守にお金をかけなくてよい」だから。",
+      "contrast": "DC の運用保守にお金をかけない = データセンターの作業から解放される\n速度と俊敏性 = リソースを数週間ではなく数分で用意できる（時間の言葉が手がかり）\n規模の経済 = 単価が下がる\n固定費→変動費 = 使った分だけ払う\n6つは「払い方・単価・台数の見積もり・時間・DC の作業・世界展開」で区別する",
+      "example": "インフラ担当者がサーバーの調達や保守ではなく、新機能の開発に時間を使えるようになる。",
+      "explanation": "6つの利点は No.1 でも取り違えている。",
+      "sources": [
+        {
+          "title": "Six advantages of cloud computing（AWS ホワイトペーパー）",
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+        }
+      ],
+      "no": 25,
+      "domain": 1,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "topic": "Migration Evaluator と Application Migration Service",
+      "question": "AWS への移行を進めるかどうかを経営層が判断するために、オンプレの利用状況をもとに AWS 移行後のコストを試算し、ビジネスケース（投資判断の根拠）を作りたいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Migration Evaluator",
+        "B. AWS Application Migration Service",
+        "C. AWS DMS",
+        "D. AWS Backup"
+      ],
+      "myAnswer": "B",
+      "correct": "A",
+      "why": "オンプレの利用状況から AWS 移行後のコストを試算し、移行するかどうかの判断材料（ビジネスケース）を作るのが Migration Evaluator（evaluator = 評価する人）だから。",
+      "contrast": "Migration Evaluator = 移す前に費用を見積もり、移行の是非を判断する\nApplication Migration Service = 移すと決めたあとで、サーバーを丸ごと移す\nDMS = データベースを移す\nBackup = バックアップの一元管理（移行用ではない）\n使う順番: 調べる（Application Discovery Service）→ 費用を見積もる（Migration Evaluator）→ 移す → 進捗を管理する（No.21）",
+      "example": "移行の稟議を通すために、Migration Evaluator で3年間の TCO を試算する。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "Migration Evaluator",
+          "url": "https://aws.amazon.com/migration-evaluator/"
+        }
+      ],
+      "no": 26,
+      "domain": 1,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "topic": "CAF：組織寄りと技術寄りの観点",
+      "question": "（2つ選択）AWS CAF の6つの観点のうち、組織よりも技術に重点を置く観点はどれですか？",
+      "choices": [
+        "A. 人材",
+        "B. プラットフォーム",
+        "C. ガバナンス",
+        "D. セキュリティ"
+      ],
+      "myAnswer": "BD",
+      "correct": "BD",
+      "why": "CAF の6つの観点のうち、技術寄りはプラットフォーム・セキュリティ・オペレーションの3つだから。",
+      "contrast": "組織寄り = ビジネス・人材・ガバナンス（人・お金・ルール）\n技術寄り = プラットフォーム・セキュリティ・オペレーション（作り方・守り方・動かし方）",
+      "example": "移行計画で、技術チームはプラットフォーム・セキュリティ・オペレーションの観点を、経営や人事はビジネス・人材・ガバナンスの観点を担当する。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "Overview of the AWS Cloud Adoption Framework",
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/welcome.html"
+        }
+      ],
+      "no": 27,
+      "domain": 1,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "topic": "移行戦略：リファクタリングとリプラットフォーム",
+      "question": "オンプレで動いている大きな1つのアプリ（モノリス）を、AWS Lambda を使ったサーバーレスのマイクロサービスに作り直して、スケーラビリティを高めます。この移行戦略はどれですか？",
+      "choices": [
+        "A. リプラットフォーム",
+        "B. リパーチェス",
+        "C. リファクタリング",
+        "D. リホスト"
+      ],
+      "myAnswer": "A",
+      "correct": "C",
+      "why": "アプリのコードや設計そのものを作り直す（サーバーレス化・マイクロサービス化）のがリファクタリングだから。",
+      "contrast": "リプラットフォーム = コードはほぼそのまま、土台の一部だけ変える（自前 DB → RDS など）\nリファクタリング = コードや設計を作り直す（サーバーレス化・マイクロサービス化）\n「作り直す」「サーバーレスに」「マイクロサービスに」があればリファクタリング",
+      "example": "モノリスの注文処理を、API Gateway と Lambda の小さなサービスに分割して書き直す。",
+      "explanation": "7R の間違いは通算5回目（No.3・No.11・No.17・この回の Q5 と Q10）。",
+      "sources": [
+        {
+          "title": "Migration strategies（AWS 規範ガイダンス）",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+        }
+      ],
+      "no": 28,
+      "domain": 1,
+      "result": "wrong",
+      "confidence": "high",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
