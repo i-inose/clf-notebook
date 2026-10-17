@@ -316,6 +316,7 @@ function renderCard(n) {
     el("div", { class: "meta" },
       el("span", { class: "tag", text: "分野" + n.domain + " " + (DOMAINS[n.domain]?.name || "") }),
       kindPill,
+      n.result === "wrong" && n.confidence === "high" ? el("span", { class: "pill wrong", text: "自信ありで間違い" }) : null,
       due,
       dots),
     el("h3", { class: "topic", text: n.topic || "" }),

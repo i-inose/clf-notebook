@@ -1,7 +1,12 @@
 {
   "plan": {
     "currentDomain": 1,
-    "stages": { "1": "learning", "2": "todo", "3": "todo", "4": "todo" },
+    "stages": {
+      "1": "learning",
+      "2": "todo",
+      "3": "todo",
+      "4": "todo"
+    },
     "rules": [
       "1回10問のうち6〜7問は今の分野の新しい問題、3〜4問は復習日が来たノートの問題（他の分野も混ざる）",
       "今の分野で2回続けて8割以上取れたら、その分野は習得として次の分野へ進む",
@@ -10,92 +15,507 @@
     ]
   },
   "sessions": [
-    { "order": 1, "date": "2026-10-17", "label": "初回診断 14問", "total": 14, "correct": 7, "byDomain": { "1": [0, 3], "2": [1, 4], "3": [5, 5], "4": [1, 2] } }
+    {
+      "order": 1,
+      "date": "2026-10-17",
+      "label": "初回診断 14問",
+      "total": 14,
+      "correct": 7,
+      "byDomain": {
+        "1": [
+          0,
+          3
+        ],
+        "2": [
+          1,
+          4
+        ],
+        "3": [
+          5,
+          5
+        ],
+        "4": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "date": "2026-10-17",
+      "label": "分野1 第1回",
+      "total": 10,
+      "correct": 4,
+      "byDomain": {
+        "1": [
+          4,
+          10
+        ]
+      }
+    }
   ],
   "notes": [
     {
-      "no": 1, "domain": 1, "topic": "クラウドの6つの利点",
+      "no": 1,
+      "domain": 1,
+      "topic": "クラウドの6つの利点",
       "question": "データセンターへの先行投資をやめて、使った分だけ支払う形にする。これはクラウドの6つの利点のどれに当たりますか？",
-      "choices": ["A. 規模の経済の恩恵を受ける", "B. 固定費を変動費に替える", "C. キャパシティの予測が不要になる", "D. 速度と俊敏性が上がる"],
-      "myAnswer": "C", "correct": "B", "result": "wrong", "confidence": null,
+      "choices": [
+        "A. 規模の経済の恩恵を受ける",
+        "B. 固定費を変動費に替える",
+        "C. キャパシティの予測が不要になる",
+        "D. 速度と俊敏性が上がる"
+      ],
+      "myAnswer": "C",
+      "correct": "B",
+      "result": "wrong",
+      "confidence": null,
       "why": "「先行投資をやめる」「使った分だけ払う」は、お金の払い方が固定費から変動費に変わるという話だから。",
       "contrast": "固定費→変動費 = お金の払い方の話\nキャパシティの予測が不要 = サーバー台数の見積もりを外す心配がない話",
       "example": "新サービスの立ち上げで、サーバー購入の稟議をせずに月額の利用料だけで始める。",
       "explanation": "6つの利点は次のとおりです。\n1. 固定費（先行投資）を変動費に替える\n2. 規模の経済の恩恵を受ける\n3. キャパシティの予測が不要になる\n4. 速度と俊敏性が上がる\n5. データセンターの運用と保守にお金をかけなくてよい\n6. 数分で世界に展開できる",
-      "sources": [{ "title": "Six advantages of cloud computing（AWS ホワイトペーパー）", "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html" }],
-      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+      "sources": [
+        {
+          "title": "Six advantages of cloud computing（AWS ホワイトペーパー）",
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
     },
     {
-      "no": 2, "domain": 1, "topic": "Well-Architected の柱",
+      "no": 2,
+      "domain": 1,
+      "topic": "Well-Architected の柱",
       "question": "障害から自動で復旧し、需要に合わせてリソースを確保する。これは Well-Architected フレームワークのどの柱の考え方ですか？",
-      "choices": ["A. 運用上の優秀性", "B. セキュリティ", "C. 信頼性", "D. パフォーマンス効率"],
-      "myAnswer": "A", "correct": "C", "result": "wrong", "confidence": null,
+      "choices": [
+        "A. 運用上の優秀性",
+        "B. セキュリティ",
+        "C. 信頼性",
+        "D. パフォーマンス効率"
+      ],
+      "myAnswer": "A",
+      "correct": "C",
+      "result": "wrong",
+      "confidence": null,
       "why": "「障害から自動で復旧する」と「キャパシティを推測しない」は、信頼性の柱の設計原則そのものだから。",
       "contrast": "信頼性 = 障害・復旧・キャパシティを推測しない\n運用上の優秀性 = 運用をコード化・小さく頻繁に変更・失敗から学ぶ",
       "example": "Auto Scaling グループのヘルスチェックで、落ちた EC2 を自動で入れ替える。",
       "explanation": "Well-Architected には6本の柱があります。\n運用上の優秀性、セキュリティ、信頼性、パフォーマンス効率、コスト最適化、持続可能性です。\n信頼性の設計原則は「障害から自動で復旧する」「復旧手順をテストする」「水平にスケールする」「キャパシティを推測しない」「変更を自動化する」です。",
-      "sources": [{ "title": "Reliability Pillar - Design principles", "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html" }],
-      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+      "sources": [
+        {
+          "title": "Reliability Pillar - Design principles",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
     },
     {
-      "no": 3, "domain": 1, "topic": "移行戦略（7R）",
+      "no": 3,
+      "domain": 1,
+      "topic": "移行戦略（7R）",
       "question": "オンプレのアプリを、コードを変えずにそのまま EC2 に移します。この移行戦略は何と呼ばれますか？",
-      "choices": ["A. リホスト", "B. リプラットフォーム", "C. リファクタリング", "D. 再購入（リパーチェス）"],
-      "myAnswer": "B", "correct": "A", "result": "wrong", "confidence": null,
+      "choices": [
+        "A. リホスト",
+        "B. リプラットフォーム",
+        "C. リファクタリング",
+        "D. 再購入（リパーチェス）"
+      ],
+      "myAnswer": "B",
+      "correct": "A",
+      "result": "wrong",
+      "confidence": null,
       "why": "何も変えずにサーバーごと持っていくのがリホスト（リフト&シフト）だから。",
       "contrast": "リホスト = 何も変えない\nリプラットフォーム = 少し変える（自前の DB → RDS など）\nリファクタリング = 作り直す（サーバーレス化など）",
       "example": "データセンターの契約切れに合わせて、VM をそのまま EC2 に移す。",
       "explanation": "7R は、リタイア（廃止）、リテイン（残す）、リホスト、リロケート、リプラットフォーム、リパーチェス（SaaS などに買い替え）、リファクタリングです。\nリロケートは、VMware Cloud on AWS などを使ってハイパーバイザー単位で移す方法です。",
-      "sources": [{ "title": "Migration strategies（AWS 規範ガイダンス）", "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html" }],
-      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+      "sources": [
+        {
+          "title": "Migration strategies（AWS 規範ガイダンス）",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
     },
     {
-      "no": 4, "domain": 2, "topic": "責任共有モデル",
+      "no": 4,
+      "domain": 2,
+      "topic": "責任共有モデル",
       "question": "責任共有モデルで、顧客が責任を持つものはどれですか？",
-      "choices": ["A. 物理サーバーのハードウェア保守", "B. ハイパーバイザーの管理", "C. EC2 のゲスト OS へのパッチ適用", "D. データセンターの入退室管理"],
-      "myAnswer": "A", "correct": "C", "result": "wrong", "confidence": null,
+      "choices": [
+        "A. 物理サーバーのハードウェア保守",
+        "B. ハイパーバイザーの管理",
+        "C. EC2 のゲスト OS へのパッチ適用",
+        "D. データセンターの入退室管理"
+      ],
+      "myAnswer": "A",
+      "correct": "C",
+      "result": "wrong",
+      "confidence": null,
       "why": "EC2 は IaaS なので、OS から上は顧客の担当になるから。",
       "contrast": "AWS = 建物・ハード・ハイパーバイザー（クラウドのセキュリティ）\n顧客 = EC2 の OS パッチ・アプリ・データ・SG 設定（クラウドにおけるセキュリティ）\nRDS や Lambda の OS パッチ = AWS",
       "example": "EC2 上の Amazon Linux に、自分で dnf update をかけてセキュリティ修正を当てる。",
       "explanation": "顧客が担当する範囲は、使うサービスが IaaS（EC2）か、マネージドサービス（RDS、Lambda）かで変わります。\nマネージドになるほど、顧客の範囲は狭くなります。",
-      "sources": [{ "title": "Shared Responsibility Model", "url": "https://aws.amazon.com/compliance/shared-responsibility-model/" }],
-      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+      "sources": [
+        {
+          "title": "Shared Responsibility Model",
+          "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
     },
     {
-      "no": 5, "domain": 2, "topic": "Artifact / Inspector / Config / GuardDuty",
+      "no": 5,
+      "domain": 2,
+      "topic": "Artifact / Inspector / Config / GuardDuty",
       "question": "監査のため、AWS の SOC レポートや PCI 準拠レポートを入手したいです。使うサービスはどれですか？",
-      "choices": ["A. AWS Artifact", "B. Amazon Inspector", "C. AWS Config", "D. Amazon GuardDuty"],
-      "myAnswer": "B", "correct": "A", "result": "wrong", "confidence": null,
+      "choices": [
+        "A. AWS Artifact",
+        "B. Amazon Inspector",
+        "C. AWS Config",
+        "D. Amazon GuardDuty"
+      ],
+      "myAnswer": "B",
+      "correct": "A",
+      "result": "wrong",
+      "confidence": null,
       "why": "AWS 自身のコンプライアンスレポートや契約をダウンロードする窓口が Artifact だから。",
       "contrast": "Artifact = AWS のコンプライアンスレポートを入手\nInspector = 脆弱性スキャン\nConfig = 設定の記録とルール評価\nGuardDuty = ログから脅威を検知",
       "example": "監査法人から「クラウド事業者の SOC 2 レポートを出して」と言われ、Artifact からダウンロードする。",
       "explanation": "AWS Artifact では、SOC、PCI、ISO などのレポートと、BAA などの契約をセルフサービスで入手できます。\nInspector は、EC2・コンテナイメージ・Lambda の脆弱性を自動でスキャンします。",
-      "sources": [{ "title": "AWS Artifact", "url": "https://aws.amazon.com/artifact/" }, { "title": "Amazon Inspector", "url": "https://aws.amazon.com/inspector/" }],
-      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+      "sources": [
+        {
+          "title": "AWS Artifact",
+          "url": "https://aws.amazon.com/artifact/"
+        },
+        {
+          "title": "Amazon Inspector",
+          "url": "https://aws.amazon.com/inspector/"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
     },
     {
-      "no": 6, "domain": 2, "topic": "CloudTrail / CloudWatch / Config",
+      "no": 6,
+      "domain": 2,
+      "topic": "CloudTrail / CloudWatch / Config",
       "question": "「誰が、いつ、どの API を呼び出したか」の操作履歴を記録したいです。使うサービスはどれですか？",
-      "choices": ["A. Amazon CloudWatch", "B. AWS CloudTrail", "C. AWS Config", "D. AWS Trusted Advisor"],
-      "myAnswer": "A", "correct": "B", "result": "wrong", "confidence": null,
+      "choices": [
+        "A. Amazon CloudWatch",
+        "B. AWS CloudTrail",
+        "C. AWS Config",
+        "D. AWS Trusted Advisor"
+      ],
+      "myAnswer": "A",
+      "correct": "B",
+      "result": "wrong",
+      "confidence": null,
       "why": "API 操作の履歴（監査ログ）を記録するのは CloudTrail だから。Trail は足跡。",
       "contrast": "CloudTrail = 誰が何をしたか（API の足跡）\nCloudWatch = 状態の見張り（メトリクス・ログ・アラーム）\nConfig = 設定がどう変わったか",
       "example": "本番の EC2 が勝手に停止された。誰が StopInstances を呼んだかを CloudTrail で調べる。",
       "explanation": "CloudTrail は、アカウント内の API 操作を記録する監査ログのサービスです。\n直近90日分のイベントは、何も設定しなくても「イベント履歴」で見られます。",
-      "sources": [{ "title": "What Is AWS CloudTrail?", "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html" }],
-      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+      "sources": [
+        {
+          "title": "What Is AWS CloudTrail?",
+          "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
     },
     {
-      "no": 7, "domain": 4, "topic": "EC2 の購入オプション",
+      "no": 7,
+      "domain": 4,
+      "topic": "EC2 の購入オプション",
       "question": "途中で中断されても問題ないバッチ処理を、最も安く動かしたいです。どの購入オプションを選びますか？",
-      "choices": ["A. オンデマンドインスタンス", "B. リザーブドインスタンス", "C. スポットインスタンス", "D. Dedicated Hosts"],
-      "myAnswer": "B", "correct": "C", "result": "wrong", "confidence": null,
+      "choices": [
+        "A. オンデマンドインスタンス",
+        "B. リザーブドインスタンス",
+        "C. スポットインスタンス",
+        "D. Dedicated Hosts"
+      ],
+      "myAnswer": "B",
+      "correct": "C",
+      "result": "wrong",
+      "confidence": null,
       "why": "「中断されてもよい」は、AWS の余った容量を最大90%引きで使うスポットの条件だから。",
       "contrast": "スポット = 中断されてもよい・最安\nリザーブド / Savings Plans = 1年か3年ずっと使う\nオンデマンド = 短期・予測できない\nDedicated Hosts = ライセンスや規制で物理サーバーを専有",
       "example": "夜間の画像変換バッチを、スポットインスタンスで安く回す。",
       "explanation": "スポットインスタンスは、AWS が容量を必要としたときに2分前の通知のあと中断されます。\nそのため、中断に強いバッチ処理、CI、データ分析などに向いています。",
-      "sources": [{ "title": "Spot Instances（Amazon EC2 ユーザーガイド）", "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html" }],
-      "status": "active", "streak": 0, "addedAt": "2026-10-17", "nextReview": "2026-10-19"
+      "sources": [
+        {
+          "title": "Spot Instances（Amazon EC2 ユーザーガイド）",
+          "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 8,
+      "domain": 1,
+      "topic": "弾力性 / 高可用性 / 俊敏性 / 耐久性",
+      "question": "ある EC サイトは、セール期間だけアクセスが急増します。需要の増減に合わせて、リソースを自動で増やしたり減らしたりできる AWS クラウドの特性はどれですか？",
+      "choices": [
+        "A. 高可用性",
+        "B. 弾力性",
+        "C. 俊敏性",
+        "D. 耐久性"
+      ],
+      "myAnswer": "B",
+      "correct": "B",
+      "result": "guess",
+      "confidence": "low",
+      "why": "需要に合わせて自動で増減するのが弾力性（Elasticity）だから。代表例は Auto Scaling。",
+      "contrast": "弾力性 = 需要に合わせて自動で増減する\n高可用性 = 障害が起きても止まらない（複数 AZ）\n俊敏性 = 数分で用意でき、速く試せる\n耐久性 = データが失われない（S3 のイレブンナイン）",
+      "example": "セール開始と同時に Auto Scaling で EC2 を10台に増やし、終わったら2台に戻す。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is Amazon EC2 Auto Scaling?",
+          "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 9,
+      "domain": 1,
+      "topic": "Well-Architected：持続可能性とコスト最適化",
+      "question": "使っていないリソースを減らし、ワークロードが環境に与える影響（エネルギー消費など）を最小限にすることに重点を置くのは、Well-Architected フレームワークのどの柱ですか？",
+      "choices": [
+        "A. コスト最適化",
+        "B. 持続可能性",
+        "C. パフォーマンス効率",
+        "D. 運用上の優秀性"
+      ],
+      "myAnswer": "A",
+      "correct": "B",
+      "result": "wrong",
+      "confidence": "low",
+      "why": "「環境への影響」「エネルギー消費」は、2021年に6本目として加わった持続可能性の柱のキーワードだから。",
+      "contrast": "持続可能性 = 環境への影響を減らす（ゴールは地球）\nコスト最適化 = 無駄なお金を減らす（ゴールは財布）\n「使っていないリソースを減らす」は両方に出るので、ゴールで判断する",
+      "example": "電力効率の高い Graviton インスタンスを選ぶ、使用率の低いリソースを止める。",
+      "explanation": "持続可能性の柱は、ワークロードの環境への影響を、AWS と顧客の責任共有の考え方で減らしていく柱です。\n利用率を上げる、需要に合わせてリソースを縮める、効率の良いハードウェアやマネージドサービスを使う、などが設計原則です。",
+      "sources": [
+        {
+          "title": "Sustainability Pillar - AWS Well-Architected Framework",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/sustainability-pillar/sustainability-pillar.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 10,
+      "domain": 1,
+      "topic": "AWS CAF の6つの観点",
+      "question": "ある企業はクラウド移行に向けて、社員のスキル習得や組織構造の見直し、変化への対応（チェンジマネジメント）を計画しています。AWS クラウド導入フレームワーク（AWS CAF）のどの観点に当たりますか？",
+      "choices": [
+        "A. ビジネス",
+        "B. 人材",
+        "C. ガバナンス",
+        "D. プラットフォーム"
+      ],
+      "myAnswer": "D",
+      "correct": "B",
+      "result": "wrong",
+      "confidence": "low",
+      "why": "スキル・組織・文化・チェンジマネジメントという「人」に関わるテーマは、人材（People）の観点だから。",
+      "contrast": "組織寄り: ビジネス（投資を成果に）/ 人材（スキル・組織・文化）/ ガバナンス（リスク・予算・プログラム管理）\n技術寄り: プラットフォーム（基盤・アーキテクチャ）/ セキュリティ（データとワークロードを守る）/ オペレーション（運用し続ける）",
+      "example": "移行前に、インフラ担当者向けの AWS 研修と、クラウド推進チーム（CCoE）の立ち上げを計画する。",
+      "explanation": "CAF の成果として、試験ガイドはビジネスリスクの低減、ESG 成果の向上、収益の増加、運用効率の向上を挙げています。",
+      "sources": [
+        {
+          "title": "AWS Cloud Adoption Framework",
+          "url": "https://aws.amazon.com/cloud-adoption-framework/"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 11,
+      "domain": 1,
+      "topic": "移行戦略：リプラットフォームとリホスト",
+      "question": "オンプレの業務アプリを AWS に移行します。アプリのコードはほぼ変えず、自社で運用していたデータベースだけを Amazon RDS に置き換えて、運用の手間を減らします。この移行戦略はどれですか？",
+      "choices": [
+        "A. リホスト",
+        "B. リプラットフォーム",
+        "C. リファクタリング",
+        "D. リロケート"
+      ],
+      "myAnswer": "A",
+      "correct": "B",
+      "result": "wrong",
+      "confidence": "low",
+      "why": "アプリはそのままで DB だけマネージドに置き換えるのは、土台（platform）を少し変える移行だから。",
+      "contrast": "リホスト = host（置き場所）だけ変える。中身は一切いじらない\nリプラットフォーム = platform（土台）を少し変える。DB → RDS など\nリファクタリング = コードを書き直す\nリロケート = VMware 環境をハイパーバイザーごと移す\n※ 第1回の診断（No.3）と定義が入れ替わっていた",
+      "example": "EC2 上の自前 MySQL をやめて RDS for MySQL に移し、パッチとバックアップを AWS に任せる。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "Migration strategies（AWS 規範ガイダンス）",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 12,
+      "domain": 1,
+      "topic": "Well-Architected Tool と Trusted Advisor",
+      "question": "自社のワークロードを、Well-Architected フレームワークのベストプラクティスに照らして質問に答える形でレビューし、リスクと改善点を確認したいです。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS Trusted Advisor",
+        "B. AWS Well-Architected Tool",
+        "C. AWS Config",
+        "D. Amazon Inspector"
+      ],
+      "myAnswer": "A",
+      "correct": "B",
+      "result": "wrong",
+      "confidence": "high",
+      "why": "「Well-Architected に照らして」「質問に答えてレビュー」は、Well-Architected Tool の使い方そのものだから。",
+      "contrast": "Well-Architected Tool = 人が質問に答えて、ワークロードの設計をレビューする\nTrusted Advisor = AWS がアカウントを自動でチェックして推奨事項を出す",
+      "example": "リリース前に、WA Tool で6本の柱の質問に答え、リスクの高い項目の改善計画を作る。",
+      "explanation": "Trusted Advisor のチェック分類（コスト最適化、セキュリティ、耐障害性、パフォーマンス、サービスクォータ、運用上の優秀性）は Well-Architected の柱と似ているため、取り違えやすい組み合わせです。",
+      "sources": [
+        {
+          "title": "What is AWS Well-Architected Tool?",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html"
+        },
+        {
+          "title": "AWS Trusted Advisor",
+          "url": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 13,
+      "domain": 1,
+      "topic": "ライトサイジングとスケーリング",
+      "question": "EC2 インスタンスの CPU 使用率が常に 10% 未満です。実際の使用状況に合わせて、より小さいインスタンスタイプに変更してコストを下げます。この取り組みを何と呼びますか？",
+      "choices": [
+        "A. ライトサイジング",
+        "B. 弾力性",
+        "C. BYOL",
+        "D. 水平スケーリング"
+      ],
+      "myAnswer": "D",
+      "correct": "A",
+      "result": "wrong",
+      "confidence": "high",
+      "why": "使用状況に合わせて、1台の「サイズ」を適切に（right）見直してコストを下げるのがライトサイジングだから。",
+      "contrast": "ライトサイジング = 1台の大きさを使用状況に合わせて見直す（コスト目的）\n水平スケーリング = 台数を増やす・減らす（スケールアウト / イン）\n垂直スケーリング = 1台を大きく・小さくする（スケールアップ / ダウン）",
+      "example": "Compute Optimizer の推奨に従い、m5.xlarge を m5.large に変える。",
+      "explanation": "適切なサイズを提案してくれるサービスは AWS Compute Optimizer です。",
+      "sources": [
+        {
+          "title": "AWS Compute Optimizer",
+          "url": "https://aws.amazon.com/compute-optimizer/"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 14,
+      "domain": 1,
+      "topic": "BYOL とライセンス込み",
+      "question": "社内ですでに購入済みの Microsoft SQL Server のライセンスを、AWS 上でもそのまま使ってコストを抑えたいです。このライセンスの使い方を何と呼びますか？",
+      "choices": [
+        "A. BYOL",
+        "B. ライセンス込み",
+        "C. Savings Plans",
+        "D. リザーブドインスタンス"
+      ],
+      "myAnswer": "A",
+      "correct": "A",
+      "result": "guess",
+      "confidence": "low",
+      "why": "Bring Your Own License の略で、手持ちのライセンスを持ち込む方式だから。",
+      "contrast": "BYOL = 自分のライセンスを持ち込む（物理コア単位のソフトは Dedicated Hosts が必要なことがある）\nライセンス込み = 利用料金にライセンス料が含まれる\nSavings Plans / リザーブド = ライセンスではなく、利用を約束して割引を受ける購入方法",
+      "example": "ソフトウェアアシュアランス付きの SQL Server ライセンスを、EC2 で再利用する。",
+      "explanation": "ライセンスの使用状況を管理するサービスとして AWS License Manager があります。",
+      "sources": [
+        {
+          "title": "AWS License Manager",
+          "url": "https://aws.amazon.com/license-manager/"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
+    },
+    {
+      "no": 15,
+      "domain": 1,
+      "topic": "DMS と Application Migration Service",
+      "question": "稼働中のオンプレのデータベースを、停止時間を最小限にしながら AWS に移行したいです。移行中も元の DB は使い続け、変更は継続して複製します。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS DMS",
+        "B. AWS Storage Gateway",
+        "C. AWS Application Migration Service",
+        "D. AWS Backup"
+      ],
+      "myAnswer": "C",
+      "correct": "A",
+      "result": "wrong",
+      "confidence": "low",
+      "why": "データベースを、停止時間を抑えて変更を継続的に複製しながら移すのが DMS（Database Migration Service）だから。",
+      "contrast": "DMS = データベースを移す（異なるエンジンへは SCT でスキーマ変換）\nApplication Migration Service = サーバー丸ごとを EC2 に移す（リホスト用）\nStorage Gateway = オンプレから AWS のストレージを使うハイブリッド用",
+      "example": "オンプレの Oracle を Aurora PostgreSQL に移す。SCT でスキーマを変換し、DMS でデータを継続的に複製する。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "AWS Database Migration Service",
+          "url": "https://aws.amazon.com/dms/"
+        },
+        {
+          "title": "AWS Application Migration Service",
+          "url": "https://aws.amazon.com/application-migration-service/"
+        }
+      ],
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-17",
+      "nextReview": "2026-10-19"
     }
   ]
 }
