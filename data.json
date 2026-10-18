@@ -124,6 +124,20 @@
           10
         ]
       }
+    },
+    {
+      "order": 8,
+      "date": "2026-10-18",
+      "label": "分野2 第2回",
+      "focus": 2,
+      "total": 10,
+      "correct": 4,
+      "byDomain": {
+        "2": [
+          4,
+          10
+        ]
+      }
     }
   ],
   "notes": [
@@ -1503,6 +1517,232 @@
         }
       ],
       "no": 44,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Inspector（点検員）と GuardDuty（警備員）",
+      "question": "EC2 インスタンスとコンテナイメージに、既知の脆弱性やパッチが当たっていないソフトウェアがないかを、継続的に自動でスキャンしたいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon GuardDuty",
+        "B. Amazon Macie",
+        "C. Amazon Detective",
+        "D. Amazon Inspector"
+      ],
+      "myAnswer": "A",
+      "correct": "D",
+      "why": "EC2・コンテナイメージ・Lambda に既知の脆弱性やパッチ漏れがないかを自動でスキャンするのが Inspector だから。",
+      "contrast": "Inspector = 建物の点検員。サーバーやコンテナの弱いところ（脆弱性・パッチ漏れ）を探す\nGuardDuty = 警備員。ログを見張って、いま起きている不審な動きを見つける\nMacie = S3 のデータの中身から機密情報を探す\nDetective = 見つかった問題の原因を調査する\n「脆弱性・パッチ → Inspector」「ログ・不審 → GuardDuty」をセットで覚える",
+      "example": "新しく公開された OpenSSL の脆弱性が、どの EC2 とコンテナイメージに影響するかを Inspector で洗い出す。",
+      "explanation": "No.40（ログの脅威検知で Inspector を選んだ）と逆向きの取り違え。7R や運用上の優秀性・信頼性と同じく、2つの定義が入れ替わる形。",
+      "sources": [
+        {
+          "title": "What is Amazon Inspector?",
+          "url": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
+        },
+        {
+          "title": "What is Amazon GuardDuty?",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+        }
+      ],
+      "no": 45,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "ネットワーク ACL の特徴",
+      "question": "（2つ選択）ネットワーク ACL（ネットワークアクセスコントロールリスト）の特徴はどれですか？",
+      "choices": [
+        "A. サブネット単位で適用する",
+        "B. ステートフルである",
+        "C. 許可と拒否の両方を書ける",
+        "D. インスタンス単位で適用する"
+      ],
+      "myAnswer": "AC",
+      "correct": "AC",
+      "why": "ネットワーク ACL は、サブネット単位で適用し、許可と拒否の両方のルールを書けるから。",
+      "contrast": "ネットワーク ACL = サブネット単位・ステートレス（戻りの通信も明示的に許可が必要）・許可と拒否\nセキュリティグループ = インスタンス単位・ステートフル（戻りの通信は自動で許可）・許可だけ\n特定の IP を「拒否」したいときはネットワーク ACL",
+      "example": "攻撃元と分かった IP アドレス帯からの通信を、サブネットのネットワーク ACL の拒否ルールで止める。",
+      "explanation": "No.43（セキュリティグループ）とセットで覚える。",
+      "sources": [
+        {
+          "title": "Network ACLs",
+          "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+        }
+      ],
+      "no": 46,
+      "domain": 2,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Secrets Manager と IAM Identity Center / KMS",
+      "question": "Amazon RDS のデータベースのパスワードを、アプリのコードに書かずに安全に保管し、定期的に自動でローテーション（変更）したいです。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS Secrets Manager",
+        "B. AWS KMS",
+        "C. AWS CloudHSM",
+        "D. AWS IAM Identity Center"
+      ],
+      "myAnswer": "D",
+      "correct": "A",
+      "why": "DB のパスワードや API キーなどのシークレットを安全に保管し、自動でローテーションするのが Secrets Manager だから。",
+      "contrast": "Secrets Manager = パスワードなどのシークレットを保管し、自動でローテーションする\nIAM Identity Center = 社員が複数アカウントやアプリに1回のサインインで入れるようにする\nKMS = データを暗号化する鍵を管理する（パスワードそのものは保管しない）\nCloudHSM = 専有ハードウェアで鍵を管理する\n「パスワード・ローテーション」なら Secrets Manager、「サインイン・複数アカウント」なら IAM Identity Center",
+      "example": "アプリは起動時に Secrets Manager から DB のパスワードを取り出し、パスワードは30日ごとに自動で変わる。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is AWS Secrets Manager?",
+          "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html"
+        }
+      ],
+      "no": 47,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Firewall Manager と Config / WAF",
+      "question": "AWS Organizations で管理している多数のアカウントに、WAF のルールやセキュリティグループのルールを、一元的にまとめて適用・管理したいです。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS WAF",
+        "B. AWS Shield Advanced",
+        "C. AWS Config",
+        "D. AWS Firewall Manager"
+      ],
+      "myAnswer": "C",
+      "correct": "D",
+      "why": "Organizations の多数のアカウントに、WAF・セキュリティグループ・Shield Advanced などのルールを一元的に適用・管理するのが Firewall Manager だから。",
+      "contrast": "Firewall Manager = ファイアウォール系のルールを多数のアカウントにまとめて配る・管理する（動かす）\nConfig = リソースの設定を記録して、ルールに合っているか評価する（見るだけ。ルールを配る機能はない）\nWAF = 1つ1つの Web アプリの前で攻撃をブロックする本体\nShield Advanced = 有料の、より手厚い DDoS 対策",
+      "example": "新しく作ったアカウントにも、会社共通の WAF ルールを Firewall Manager で自動的に適用する。",
+      "explanation": "Config を「作る・配る」役割と取り違えたのは No.20 に続いて2回目。",
+      "sources": [
+        {
+          "title": "AWS Firewall Manager",
+          "url": "https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html"
+        },
+        {
+          "title": "What Is AWS Config?",
+          "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+        }
+      ],
+      "no": 48,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "IAM Identity Center と Organizations / Cognito",
+      "question": "社員が、複数の AWS アカウントや業務用のクラウドアプリに、1回のサインインで入れるように、アクセスを一元管理したいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon Cognito",
+        "B. IAM ユーザー",
+        "C. AWS IAM Identity Center",
+        "D. AWS Organizations"
+      ],
+      "myAnswer": "D",
+      "correct": "C",
+      "why": "社員が複数の AWS アカウントや業務アプリに1回のサインイン（シングルサインオン）で入れるようにするのが IAM Identity Center だから。",
+      "contrast": "IAM Identity Center = 人（社員）のサインインを一元管理する\nOrganizations = アカウントそのものをまとめて管理する（一括請求・グループ分け・SCP）\nCognito = 自社アプリのエンドユーザー（お客さん）のサインイン\nIAM ユーザー = 1つのアカウントの中のユーザー\n「サインイン・シングルサインオン → Identity Center」「アカウントの束ね・請求 → Organizations」",
+      "example": "社員は Identity Center のポータルに1回サインインするだけで、開発・本番のアカウントや Salesforce に入れる。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is IAM Identity Center?",
+          "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+        }
+      ],
+      "no": 49,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Config（設定の履歴）と CloudTrail（操作の足跡）",
+      "question": "S3 バケットがパブリックに公開されていないかなど、リソースの設定が社内のルールに準拠しているかを継続的に評価し、設定の変更履歴も残したいです。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS CloudTrail",
+        "B. AWS Config",
+        "C. Amazon Inspector",
+        "D. Amazon CloudWatch"
+      ],
+      "myAnswer": "A",
+      "correct": "B",
+      "why": "リソースの設定がルールに合っているかを継続的に評価し、設定の変更履歴を残すのが Config だから。",
+      "contrast": "Config = リソースの設定が今どうなっていて、どう変わったか（設定の履歴とルール評価）\nCloudTrail = 誰が、いつ、どの API を呼んだか（操作の足跡）\nCloudWatch = メトリクスやログを見張る\nInspector = 脆弱性を点検する\n例: バケットが公開された → Config は「設定が非公開から公開に変わった（違反）」、CloudTrail は「Aさんが 14:03 に PutBucketPolicy を呼んだ」と記録する",
+      "example": "Config ルールで「公開されている S3 バケット」を自動で検出し、違反として一覧に出す。",
+      "explanation": "No.6（CloudTrail / CloudWatch / Config）と同じテーマ。",
+      "sources": [
+        {
+          "title": "What Is AWS Config?",
+          "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+        },
+        {
+          "title": "What Is AWS CloudTrail?",
+          "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html"
+        }
+      ],
+      "no": 50,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Marketplace と Artifact",
+      "question": "次世代ファイアウォールやウイルス対策など、サードパーティーのセキュリティ製品を探して、AWS 上で購入して使いたいです。どこで探しますか？",
+      "choices": [
+        "A. AWS Artifact",
+        "B. AWS Security Hub",
+        "C. AWS Marketplace",
+        "D. AWS Trusted Advisor"
+      ],
+      "myAnswer": "A",
+      "correct": "C",
+      "why": "サードパーティーのソフトウェアやセキュリティ製品を探して購入し、AWS 上ですぐ使えるようにするカタログが Marketplace だから。",
+      "contrast": "Marketplace = サードパーティーの製品を買うお店\nArtifact = AWS 自身のコンプライアンスレポート（SOC・PCI など）や契約をダウンロードする場所\nSecurity Hub = セキュリティの検出結果を集めてチェックする\nTrusted Advisor = アカウントを自動でチェックして推奨事項を出す\nArtifact は「AWS が発行する書類の置き場」、Marketplace は「他社製品の売り場」",
+      "example": "Marketplace で他社の次世代ファイアウォールのイメージを購入し、VPC に配置する。",
+      "explanation": "Artifact は No.5 で出題（Inspector と取り違え）。",
+      "sources": [
+        {
+          "title": "AWS Marketplace",
+          "url": "https://aws.amazon.com/marketplace/"
+        },
+        {
+          "title": "What is AWS Artifact?",
+          "url": "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html"
+        }
+      ],
+      "no": 51,
       "domain": 2,
       "result": "wrong",
       "confidence": "high",
