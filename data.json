@@ -138,6 +138,20 @@
           10
         ]
       }
+    },
+    {
+      "order": 9,
+      "date": "2026-10-18",
+      "label": "分野2 第3回",
+      "focus": 2,
+      "total": 10,
+      "correct": 6,
+      "byDomain": {
+        "2": [
+          6,
+          10
+        ]
+      }
     }
   ],
   "notes": [
@@ -1743,6 +1757,220 @@
         }
       ],
       "no": 51,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "責任共有モデル：共有のコントロール",
+      "question": "責任共有モデルには、AWS と顧客がそれぞれの範囲で責任を持つ「共有のコントロール」があります。その例に当たるものはどれですか？",
+      "choices": [
+        "A. 物理的・環境的な管理",
+        "B. パッチ管理",
+        "C. データセンターの入退室の管理",
+        "D. ハイパーバイザーの保守"
+      ],
+      "myAnswer": "B",
+      "correct": "B",
+      "why": "パッチ管理は、AWS がインフラのパッチを当て、顧客が自分のゲスト OS やアプリのパッチを当てる、という形で両方が責任を持つ共有のコントロールだから。",
+      "contrast": "共有のコントロール = パッチ管理・構成管理・意識向上とトレーニング（それぞれが自分の範囲で行う）\nAWS から引き継ぐコントロール = 物理的・環境的な管理、入退室管理、ハイパーバイザーの保守（AWS だけが行う）\n顧客だけのコントロール = 自社のデータの扱い、ゾーン（ネットワーク）のセキュリティなど\n「両方がそれぞれ行う」と言えるかで判断する",
+      "example": "AWS がホストのパッチを当て、顧客は自分の EC2 のゲスト OS に月次パッチを当てる。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "Shared Responsibility Model",
+          "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+        }
+      ],
+      "no": 52,
+      "domain": 2,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "ルートユーザーでしかできない作業",
+      "question": "（2つ選択）AWS Organizations を使っていない単独の AWS アカウントで、ルートユーザーでしかできない作業はどれですか？",
+      "choices": [
+        "A. ルートユーザーのメールアドレスを変更する",
+        "B. EC2 インスタンスを起動する",
+        "C. 請求とコスト管理のコンソールへの IAM アクセスを有効にする",
+        "D. CloudWatch アラームを作成する"
+      ],
+      "myAnswer": "AC",
+      "correct": "AC",
+      "why": "ルートユーザーのメールアドレスなどのアカウント設定の変更と、請求コンソールへの IAM アクセスの有効化は、どちらもルートユーザーでしかできない作業だから。",
+      "contrast": "ルートだけ = アカウント設定の変更（名前・メールアドレス・ルートのパスワード）、請求への IAM アクセスの有効化、アカウントの閉鎖、IAM ユーザーの権限の復元など\nIAM ユーザーでもできる = EC2 の起動、CloudWatch アラームの作成、IAM ユーザーの作成など日常の作業\n「アカウントそのものに関わる作業（設定・請求の入口・解約）はルートだけ」",
+      "example": "経理担当の IAM ユーザーに請求画面を見せるため、最初にルートユーザーで IAM アクセスを有効にする。",
+      "explanation": "アカウントの閉鎖は分野2 第1回で自信ありで正解している。",
+      "sources": [
+        {
+          "title": "Tasks that require root user credentials",
+          "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-tasks.html"
+        }
+      ],
+      "no": 53,
+      "domain": 2,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Directory Service と Cognito / Identity Center",
+      "question": "AWS 上で、マネージドな Microsoft Active Directory を動かしたいです。オンプレミスの Active Directory と信頼関係を結ぶことも考えています。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS Directory Service",
+        "B. Amazon Cognito",
+        "C. AWS Organizations",
+        "D. AWS Secrets Manager"
+      ],
+      "myAnswer": "A",
+      "correct": "A",
+      "why": "AWS 上でマネージドな Microsoft Active Directory を動かしたり、オンプレの Active Directory とつないだりするのが Directory Service（AWS Managed Microsoft AD など）だから。",
+      "contrast": "Directory Service = Active Directory を AWS で使う\nCognito = 自社アプリのお客さんのサインイン\nIAM Identity Center = 社員が複数アカウントやアプリに1回のサインインで入る（AD を ID の元にもできる）\nOrganizations = アカウントをまとめて管理する\n「Active Directory」が出たらまず Directory Service",
+      "example": "Windows サーバーを EC2 に移すとき、AWS Managed Microsoft AD に参加させて、オンプレの AD と信頼関係を結ぶ。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is AWS Directory Service?",
+          "url": "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html"
+        }
+      ],
+      "no": 54,
+      "domain": 2,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "クライアント側の暗号化・サーバー側の暗号化・TLS",
+      "question": "機密データを AWS に送る前に、自分のアプリの中で暗号化してから保存します。この暗号化の方式を何と呼びますか？",
+      "choices": [
+        "A. サーバー側の暗号化",
+        "B. TLS による暗号化",
+        "C. クライアント側の暗号化",
+        "D. S3 のバージョニング"
+      ],
+      "myAnswer": "B",
+      "correct": "C",
+      "why": "データを AWS に送る前に、自分の手元（アプリ）で暗号化するのがクライアント側の暗号化だから。鍵も暗号化の処理も顧客が管理する。",
+      "contrast": "クライアント側の暗号化 = 送る前に自分で暗号化する（鍵の管理も自分）\nサーバー側の暗号化 = AWS が受け取ってから保存するときに暗号化する（S3 の SSE など）\nTLS = 通信の途中（転送中）を暗号化する。届いた先では復号される\nS3 のバージョニング = 古い版を残す機能（暗号化ではない）\n「いつ・どこで暗号化するか」で区別する",
+      "example": "アプリで AWS Encryption SDK を使ってファイルを暗号化してから S3 にアップロードする。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "Protecting data by using client-side encryption（Amazon S3）",
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html"
+        }
+      ],
+      "no": 55,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "RAM と Organizations / Control Tower / Service Catalog",
+      "question": "AWS Organizations 内の別のアカウントと、VPC のサブネットや Transit Gateway などのリソースを共有して、それぞれのアカウントで同じものを作らずに済ませたいです。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS Organizations",
+        "B. AWS Control Tower",
+        "C. AWS Service Catalog",
+        "D. AWS Resource Access Manager"
+      ],
+      "myAnswer": "A",
+      "correct": "D",
+      "why": "サブネットや Transit Gateway などのリソースを、ほかのアカウントと共有するのが RAM（Resource Access Manager）だから。",
+      "contrast": "RAM = リソースをアカウントをまたいで共有する\nOrganizations = アカウントをまとめて管理する（一括請求・グループ分け・SCP）。RAM と組み合わせると組織内の共有が簡単になる\nControl Tower = マルチアカウント環境を自動で作って統制する\nService Catalog = 社内で使ってよい構成をカタログにして配る",
+      "example": "ネットワーク用のアカウントで作った VPC のサブネットを、RAM で各開発アカウントに共有する。",
+      "explanation": "Organizations の取り違えは No.51（Identity Center の問題）に続いて2回目。Organizations は「アカウントの束ね」だけを担当する。",
+      "sources": [
+        {
+          "title": "What is AWS Resource Access Manager?",
+          "url": "https://docs.aws.amazon.com/ram/latest/userguide/what-is.html"
+        }
+      ],
+      "no": 56,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "MFA に使えるもの（アクセスキーは MFA ではない）",
+      "question": "（2つ選択）AWS の IAM ユーザーやルートユーザーの多要素認証（MFA）に使えるものはどれですか？",
+      "choices": [
+        "A. アクセスキー",
+        "B. 認証アプリ（仮想 MFA）",
+        "C. SSH キーペア",
+        "D. FIDO セキュリティキー"
+      ],
+      "myAnswer": "AB",
+      "correct": "BD",
+      "why": "AWS の MFA に使えるのは、認証アプリ（仮想 MFA デバイス）、FIDO のセキュリティキーやパスキー、ハードウェアの TOTP トークンだから。",
+      "contrast": "アクセスキー = CLI や SDK からプログラムで操作するための認証情報。MFA の2つ目の要素ではない\nSSH キーペア = EC2 にログインするための鍵\nMFA のデバイス = サインイン時にパスワードに加えて提示するもの（認証アプリのコード、セキュリティキーのタッチ）",
+      "example": "ルートユーザーに FIDO セキュリティキーと認証アプリの2つを MFA として登録しておく。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "AWS Multi-factor authentication in IAM",
+          "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html"
+        }
+      ],
+      "no": 57,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Control Tower と Service Catalog / Organizations",
+      "question": "ベストプラクティスに沿ったマルチアカウント環境（ランディングゾーン）を自動で作り、ガードレール（統制のルール）で各アカウントを統制したいです。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS Control Tower",
+        "B. AWS Organizations",
+        "C. AWS Config",
+        "D. AWS Service Catalog"
+      ],
+      "myAnswer": "D",
+      "correct": "A",
+      "why": "ベストプラクティスに沿ったマルチアカウント環境（ランディングゾーン）を自動で作り、ガードレールで統制するのが Control Tower だから。",
+      "contrast": "Control Tower = マルチアカウント環境を丸ごと自動で作って統制する（中で Organizations や Config を使う）\nService Catalog = 社内で使ってよい構成をカタログにして、利用者が選んで使えるようにする\nOrganizations = アカウントを束ねる土台\nConfig = 設定を記録して評価する\n「ランディングゾーン」「ガードレール」は Control Tower の決まり文句",
+      "example": "新しい事業部のアカウントを、Control Tower のアカウントファクトリーで統制ルール付きで作る。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is AWS Control Tower?",
+          "url": "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html"
+        },
+        {
+          "title": "What is AWS Service Catalog?",
+          "url": "https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html"
+        }
+      ],
+      "no": 58,
       "domain": 2,
       "result": "wrong",
       "confidence": "high",
