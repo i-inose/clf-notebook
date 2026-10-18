@@ -110,6 +110,20 @@
           10
         ]
       }
+    },
+    {
+      "order": 7,
+      "date": "2026-10-18",
+      "label": "分野2 第1回",
+      "focus": 2,
+      "total": 10,
+      "correct": 7,
+      "byDomain": {
+        "2": [
+          7,
+          10
+        ]
+      }
     }
   ],
   "notes": [
@@ -1324,6 +1338,172 @@
       ],
       "no": 39,
       "domain": 1,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "GuardDuty と Inspector / Macie / Config",
+      "question": "CloudTrail のイベント、VPC フローログ、DNS ログなどを継続的に分析して、不審な通信や不正アクセスの兆候を検知したいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon Inspector",
+        "B. Amazon Macie",
+        "C. Amazon GuardDuty",
+        "D. AWS Config"
+      ],
+      "myAnswer": "A",
+      "correct": "C",
+      "why": "CloudTrail・VPC フローログ・DNS ログといったログを分析して、不審な動き（脅威）を検知するのが GuardDuty だから。",
+      "contrast": "GuardDuty = ログを見て、不正アクセスや不審な通信を検知する（いま起きている脅威）\nInspector = EC2・コンテナイメージ・Lambda の脆弱性をスキャンする（弱点の点検）\nMacie = S3 の機密データを見つける\nConfig = 設定の変化を記録し、ルールに合っているか評価する\n「ログ・不審・脅威」なら GuardDuty、「脆弱性・パッチ」なら Inspector",
+      "example": "普段使わない国から API が呼ばれたり、EC2 が暗号資産のマイニング先と通信したりしたら GuardDuty が検知する。",
+      "explanation": "No.5（Artifact の問題で Inspector を選んだ）でも同じ4つが並んでいた。",
+      "sources": [
+        {
+          "title": "What is Amazon GuardDuty?",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+        },
+        {
+          "title": "Amazon Inspector",
+          "url": "https://aws.amazon.com/inspector/"
+        }
+      ],
+      "no": 40,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "KMS と CloudHSM（暗号鍵の管理）",
+      "question": "（2つ選択）AWS でデータを暗号化するための暗号鍵を作成・管理できるサービスはどれですか？",
+      "choices": [
+        "A. AWS KMS",
+        "B. Amazon Inspector",
+        "C. AWS CloudHSM",
+        "D. AWS Trusted Advisor"
+      ],
+      "myAnswer": "AC",
+      "correct": "AC",
+      "why": "KMS と CloudHSM は、どちらも暗号鍵を作成・管理するサービスだから。",
+      "contrast": "KMS = AWS が管理するマネージドな鍵管理。S3・EBS・RDS などと連携して簡単に暗号化できる\nCloudHSM = 自分専用の HSM（ハードウェアセキュリティモジュール）。鍵を専有ハードウェアで管理したい、厳しい規制要件があるときに使う\n「簡単に・AWS サービスと連携」なら KMS、「専有のハードウェア・HSM」なら CloudHSM",
+      "example": "S3 のデフォルト暗号化に KMS の鍵を指定する。規制で専有 HSM が求められる場合は CloudHSM を使う。",
+      "explanation": "C の CloudHSM は消去法で選んだ。",
+      "sources": [
+        {
+          "title": "AWS Key Management Service",
+          "url": "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html"
+        },
+        {
+          "title": "What is AWS CloudHSM?",
+          "url": "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html"
+        }
+      ],
+      "no": 41,
+      "domain": 2,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "セキュリティグループとネットワーク ACL",
+      "question": "EC2 インスタンス単位で適用する仮想ファイアウォールです。ステートフルで、許可するルールだけを書けます。これはどれですか？",
+      "choices": [
+        "A. ネットワーク ACL",
+        "B. セキュリティグループ",
+        "C. AWS WAF",
+        "D. AWS Shield"
+      ],
+      "myAnswer": "B",
+      "correct": "B",
+      "why": "インスタンス単位で適用し、ステートフルで、許可ルールだけを書けるのがセキュリティグループだから。",
+      "contrast": "セキュリティグループ = インスタンス単位・ステートフル（戻りの通信は自動で許可）・許可ルールだけ\nネットワーク ACL = サブネット単位・ステートレス（戻りの通信も明示的に許可）・許可と拒否\nWAF = Web アプリへの攻撃をルールでブロック\nShield = DDoS から守る\nセキュリティグループはインスタンスの玄関の鍵、ネットワーク ACL はサブネットの門番",
+      "example": "Web サーバーのセキュリティグループで、443 番ポートへの受信だけを許可する。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "Security groups for your VPC",
+          "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html"
+        },
+        {
+          "title": "Network ACLs",
+          "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html"
+        }
+      ],
+      "no": 42,
+      "domain": 2,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "WAF と Shield / Firewall Manager",
+      "question": "公開している Web アプリへの、SQL インジェクションやクロスサイトスクリプティング（XSS）の攻撃を、ルールでブロックしたいです。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS Shield",
+        "B. Amazon GuardDuty",
+        "C. AWS Firewall Manager",
+        "D. AWS WAF"
+      ],
+      "myAnswer": "A",
+      "correct": "D",
+      "why": "SQL インジェクションや XSS のような Web アプリを狙った攻撃を、ルールに合うリクエストをブロックして防ぐのが WAF（Web Application Firewall）だから。",
+      "contrast": "WAF = Web アプリへの攻撃をルールでブロック（SQL インジェクション・XSS・特定の IP や国）\nShield = DDoS 攻撃（大量のアクセスでサービスを止める攻撃）から守る\nFirewall Manager = 複数アカウントの WAF・Shield・セキュリティグループのルールをまとめて管理する\nGuardDuty = ログから脅威を検知する（ブロックはしない）\n「SQL インジェクション・XSS・ルール」なら WAF、「DDoS」なら Shield",
+      "example": "CloudFront や ALB に WAF を付けて、SQL インジェクションのパターンを含むリクエストを止める。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "AWS WAF",
+          "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html"
+        },
+        {
+          "title": "AWS Shield",
+          "url": "https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html"
+        }
+      ],
+      "no": 43,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Macie と Inspector / GuardDuty / Detective",
+      "question": "Amazon S3 に保存されている大量のファイルの中から、個人情報などの機密データを自動で見つけて、報告してほしいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon Macie",
+        "B. Amazon Inspector",
+        "C. Amazon GuardDuty",
+        "D. Amazon Detective"
+      ],
+      "myAnswer": "B",
+      "correct": "A",
+      "why": "S3 に保存されたデータの中から、個人情報などの機密データを機械学習とパターンマッチングで自動的に見つけるのが Macie だから。",
+      "contrast": "Macie = S3 のデータの中身を調べて、機密データを見つける\nInspector = EC2・コンテナイメージ・Lambda の脆弱性を調べる（データの中身は見ない）\nGuardDuty = ログから不審な動きを検知する\nDetective = 見つかった問題の原因を調査する\nInspector が点検するのはサーバーやコンテナの脆弱性だけ、と狭く覚える",
+      "example": "S3 に置かれた CSV にクレジットカード番号やマイナンバーが含まれていないか、Macie で定期的に調べる。",
+      "explanation": "Inspector を選んだのは No.5、同じ回の Q2（No.40）に続いて3回目。",
+      "sources": [
+        {
+          "title": "What is Amazon Macie?",
+          "url": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html"
+        }
+      ],
+      "no": 44,
+      "domain": 2,
       "result": "wrong",
       "confidence": "high",
       "status": "active",
