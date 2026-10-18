@@ -1,17 +1,18 @@
 {
   "plan": {
-    "currentDomain": 1,
+    "currentDomain": 2,
     "stages": {
       "1": "learning",
-      "2": "todo",
+      "2": "learning",
       "3": "todo",
       "4": "todo"
     },
     "rules": [
       "1回10問。復習日が来たノートの出し直しを最大4問、残りを今の分野の新しい問題にする",
       "今の分野で2回続けて8割以上取れたら、その分野は習得として次の分野へ進む",
+      "習得前でも、分野の出題範囲を一通り出し終えたら次の分野へ進み、前の分野はノートの出し直しで続ける（2026-10-18 に分野1で適用）",
       "ノートの問題は、不正解か勘で正解なら2日後、自信ありで正解なら7日後に出し直す。自信ありで2回続けて正解したら卒業",
-      "4分野すべて習得したら、全分野ランダムの総合演習に切り替える"
+      "4分野をすべて終えたら、全分野ランダムの総合演習に切り替える"
     ]
   },
   "sessions": [
@@ -92,6 +93,20 @@
       "byDomain": {
         "1": [
           6,
+          10
+        ]
+      }
+    },
+    {
+      "order": 6,
+      "date": "2026-10-18",
+      "label": "分野1 第5回",
+      "focus": 1,
+      "total": 10,
+      "correct": 7,
+      "byDomain": {
+        "1": [
+          7,
           10
         ]
       }
@@ -1153,6 +1168,164 @@
       "domain": 1,
       "result": "guess",
       "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Well-Architected の6本の柱に含まれないもの",
+      "question": "AWS Well-Architected フレームワークの6本の柱に含まれないものはどれですか？",
+      "choices": [
+        "A. 持続可能性",
+        "B. 信頼性",
+        "C. 拡張性",
+        "D. コスト最適化"
+      ],
+      "myAnswer": "C",
+      "correct": "C",
+      "why": "6本の柱は運用上の優秀性・セキュリティ・信頼性・パフォーマンス効率・コスト最適化・持続可能性で、拡張性（スケーラビリティ）は柱の名前ではないから。",
+      "contrast": "柱の名前 = 運用上の優秀性・セキュリティ・信頼性・パフォーマンス効率・コスト最適化・持続可能性（運・セ・信・パ・コ・持）\n柱ではない = 拡張性・可用性・弾力性・俊敏性（設計原則やクラウドの特性として出てくる言葉）",
+      "example": "設計レビューの観点を6本の柱で整理するとき、拡張性は信頼性やパフォーマンス効率の中で扱う。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "The pillars of the framework - AWS Well-Architected Framework",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html"
+        }
+      ],
+      "no": 35,
+      "domain": 1,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "CAF：ガバナンスとビジネスの観点",
+      "question": "クラウド移行プログラム全体の予算と支出の管理、リスクの管理、プログラムやプロジェクトの管理を扱うのは、AWS CAF のどの観点ですか？",
+      "choices": [
+        "A. ガバナンス",
+        "B. ビジネス",
+        "C. 人材",
+        "D. オペレーション"
+      ],
+      "myAnswer": "B",
+      "correct": "A",
+      "why": "予算と支出（クラウドの財務管理）、リスク管理、プログラムやプロジェクトの管理は、ガバナンスの観点の仕事だから。",
+      "contrast": "ビジネス = クラウド投資を売上・戦略・新しい製品といった成果につなげる（攻め）\nガバナンス = 予算・リスク・プログラムを管理する（守りと管理）\n「戦略・売上・イノベーション」ならビジネス、「予算・リスク・管理」ならガバナンス\nビジネスは「売上と戦略」だけと狭く覚える",
+      "example": "移行プログラムの月次の予算と実績、リスク一覧、マイルストーンを管理する PMO の仕事はガバナンスの観点。",
+      "explanation": "No.22（オペレーションの問題でビジネスを選んだ）に続き、ビジネスを広くとらえる取り違えは2回目。",
+      "sources": [
+        {
+          "title": "Overview of the AWS Cloud Adoption Framework",
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/welcome.html"
+        }
+      ],
+      "no": 36,
+      "domain": 1,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Migration Hub と移行サービスの4段階",
+      "question": "複数の移行ツールを使って進めている移行の進み具合を、アプリごとに1か所でまとめて追跡したいです。試験ガイドの対象サービスのうち、どれを使いますか？",
+      "choices": [
+        "A. AWS Migration Hub",
+        "B. AWS Application Discovery Service",
+        "C. Migration Evaluator",
+        "D. AWS DMS"
+      ],
+      "myAnswer": "A",
+      "correct": "A",
+      "why": "移行の進み具合をアプリごとに1か所で追跡するのが Migration Hub（hub = 中心、集まる場所）だから。",
+      "contrast": "調べる = Application Discovery Service\n費用を見積もる = Migration Evaluator\n移す = Application Migration Service（サーバー）/ DMS（DB）\n進み具合を管理する = Migration Hub",
+      "example": "数十のアプリの移行状況を、Migration Hub のダッシュボードでまとめて確認する。",
+      "explanation": "実際のサービスとしては、Migration Hub は 2025年11月7日に新規受付を終了し、後継は AWS Transform。試験ガイドにはまだ載っているので、試験ではこの答えで覚える。",
+      "sources": [
+        {
+          "title": "AWS Migration Hub",
+          "url": "https://aws.amazon.com/migration-hub/"
+        },
+        {
+          "title": "AWS Migration Hub availability change",
+          "url": "https://docs.aws.amazon.com/migrationhub/latest/ug/migrationhub-availability-change.html"
+        }
+      ],
+      "no": 37,
+      "domain": 1,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "Well-Architected：運用上の優秀性とパフォーマンス効率",
+      "question": "チームをビジネスの成果を軸に編成し、ワークロードの状態をつかむための可観測性を実装して、KPI をもとに素早く判断して行動します。これは Well-Architected フレームワークのどの柱の設計原則ですか？",
+      "choices": [
+        "A. 信頼性",
+        "B. 運用上の優秀性",
+        "C. パフォーマンス効率",
+        "D. セキュリティ"
+      ],
+      "myAnswer": "C",
+      "correct": "B",
+      "why": "「ビジネスの成果を軸にチームを編成する」と「実用的なインサイトのために可観測性を実装する」は、どちらも運用上の優秀性の設計原則だから。",
+      "contrast": "運用上の優秀性 = チームと運用のやり方（チーム編成・可観測性・安全な自動化・小さく頻繁な変更・運用から学ぶ）\nパフォーマンス効率 = リソースや技術の選び方（高度な技術をサービスとして使う・サーバーレス・数分で世界展開・頻繁に実験）\n「素早く」などの形容詞ではなく、何を良くするか（チームか、リソースか）で判断する",
+      "example": "サービスごとのチームが CloudWatch のダッシュボードで KPI を見て、リリースの判断をする。",
+      "explanation": "運用上の優秀性の取り違えは No.2・No.16・No.29 に続いて4回目。",
+      "sources": [
+        {
+          "title": "Operational excellence - Design principles",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/operational-excellence.html"
+        }
+      ],
+      "no": 38,
+      "domain": 1,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-18",
+      "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "CAF の成果（収益の増加・規制の自動化は誤り）",
+      "question": "（2つ選択）AWS CAF を使ってクラウドを導入することで得られる成果はどれですか？",
+      "choices": [
+        "A. 自社で所有する物理サーバーの台数が増える",
+        "B. 環境・社会・ガバナンス（ESG）の成果が向上する",
+        "C. すべての規制要件が自動的に満たされる",
+        "D. 収益が増える"
+      ],
+      "myAnswer": "BC",
+      "correct": "BD",
+      "why": "試験ガイドが挙げる CAF の成果は、ビジネスリスクの低減・ESG の向上・収益の増加・運用効率の向上の4つだから。",
+      "contrast": "CAF の成果 = リスク↓・ESG↑・収益↑・効率↑\n「すべての規制要件が自動で満たされる」は誤り。ワークロードを規制に合わせるのは顧客の担当（責任共有モデル）\n「すべて」「自動で」の言い切りは誤答の典型\n所有するサーバーはクラウドで減る",
+      "example": "経営層への説明で、クラウド移行による収益の増加と ESG の向上を CAF の成果として示す。",
+      "explanation": "CAF の成果は No.19 でも出題（勘で正解）。",
+      "sources": [
+        {
+          "title": "CLF-C02 試験ガイド 分野1",
+          "url": "https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain1.html"
+        },
+        {
+          "title": "AWS Cloud Adoption Framework",
+          "url": "https://aws.amazon.com/cloud-adoption-framework/"
+        }
+      ],
+      "no": 39,
+      "domain": 1,
+      "result": "wrong",
+      "confidence": "high",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-18",
