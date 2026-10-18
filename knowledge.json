@@ -774,6 +774,614 @@
       ]
     },
     {
+      "domain": 3,
+      "title": "分野3 クラウドテクノロジーとサービス",
+      "groups": [
+        {
+          "title": "デプロイと操作の方法",
+          "items": [
+            {
+              "name": "AWS Management Console",
+              "role": "ブラウザの画面で操作する",
+              "cue": "画面で確認、一度きりの作業、プログラミング不要"
+            },
+            {
+              "name": "AWS CLI",
+              "role": "ターミナルからコマンドで操作する",
+              "cue": "コマンド、シェルスクリプト、繰り返しの作業を自動化"
+            },
+            {
+              "name": "AWS SDK",
+              "role": "プログラミング言語から API を呼ぶためのライブラリ",
+              "cue": "アプリのコードから、Python・Java などで操作"
+            },
+            {
+              "name": "AWS の API",
+              "role": "すべての操作の土台。コンソール・CLI・SDK も裏で API を呼ぶ",
+              "cue": "プログラムによるアクセス、リクエストを直接送る"
+            },
+            {
+              "name": "AWS CloudFormation",
+              "role": "インフラをテンプレート（コード）で作る IaC",
+              "cue": "テンプレート、同じ構成を再現、繰り返し、変更の履歴"
+            },
+            {
+              "name": "クラウド（デプロイモデル）",
+              "role": "アプリのすべてをクラウドで動かす",
+              "cue": "すべてクラウド、クラウドネイティブ"
+            },
+            {
+              "name": "ハイブリッド（デプロイモデル）",
+              "role": "オンプレとクラウドを接続して一緒に使う",
+              "cue": "既存のデータセンター＋AWS、VPN・Direct Connect でつなぐ"
+            },
+            {
+              "name": "オンプレミス（デプロイモデル）",
+              "role": "自社のデータセンターだけで動かす",
+              "cue": "自社の設備、仮想化、プライベートクラウド"
+            }
+          ],
+          "tip": "一度きりならコンソール、繰り返すなら CLI・SDK・IaC。アプリのコードの中からなら SDK"
+        },
+        {
+          "title": "グローバルインフラ",
+          "items": [
+            {
+              "name": "リージョン",
+              "role": "世界各地にある地理的なエリア。複数の AZ を持ち、互いに独立",
+              "cue": "データ主権、災害対策、利用者へのレイテンシ、サービスの提供状況、料金の違い"
+            },
+            {
+              "name": "アベイラビリティーゾーン（AZ）",
+              "role": "リージョンの中の、独立した 1 つ以上のデータセンターの集まり",
+              "cue": "単一障害点を共有しない、複数の AZ で高可用性"
+            },
+            {
+              "name": "エッジロケーション",
+              "role": "利用者に近い都市にある、キャッシュや DNS の拠点",
+              "cue": "CloudFront、Route 53、Global Accelerator、リージョンより数が多い"
+            },
+            {
+              "name": "AWS Local Zones",
+              "role": "大都市の近くに置かれた、リージョンを延長する AWS の拠点",
+              "cue": "特定の都市の利用者に低レイテンシで EC2 などを提供"
+            },
+            {
+              "name": "AWS Outposts",
+              "role": "AWS の機器を自社のデータセンターに置き、AWS と同じように使う",
+              "cue": "オンプレで AWS と同じ API・ツール、データをオンプレに残す"
+            }
+          ],
+          "tip": "リージョンの中に AZ がある。エッジロケーションは AZ とは別の配信拠点。自社の建物の中なら Outposts、AWS の施設で都市の近くなら Local Zones"
+        },
+        {
+          "title": "コンピュート",
+          "items": [
+            {
+              "name": "Amazon EC2",
+              "role": "仮想サーバー。OS から上を自分で管理する",
+              "cue": "インスタンス、OS を自由に選ぶ、細かく設定する"
+            },
+            {
+              "name": "AWS Lambda",
+              "role": "サーバーの管理なしで、イベントをきっかけにコードを実行",
+              "cue": "イベント駆動、サーバーレス、実行した分だけの料金、短い処理"
+            },
+            {
+              "name": "AWS Elastic Beanstalk",
+              "role": "コードを渡すと、実行環境の構築とデプロイを自動で行う",
+              "cue": "コードをアップロードするだけ、インフラの知識が少ない、本体は無料"
+            },
+            {
+              "name": "Amazon Lightsail",
+              "role": "サーバーなどがセットになった月額プランで手軽に使える",
+              "cue": "簡単、低く予測しやすい月額料金、小さな Web サイト"
+            },
+            {
+              "name": "AWS Batch",
+              "role": "大量のバッチジョブを、必要な計算資源をそろえて実行",
+              "cue": "バッチジョブ、ジョブのキュー、計算資源を自動で用意"
+            },
+            {
+              "name": "Amazon EC2 Auto Scaling",
+              "role": "需要に合わせて EC2 の台数を増減する",
+              "cue": "弾力性、台数を増減、異常なインスタンスを置き換え"
+            },
+            {
+              "name": "Elastic Load Balancing",
+              "role": "受けたリクエストを複数のターゲットに振り分ける",
+              "cue": "負荷分散、入口を 1 つに、ヘルスチェック、ALB・NLB"
+            }
+          ],
+          "tip": "台数を変えるのが Auto Scaling、振り分けるのが ELB。手軽さなら Lightsail、コードを渡すだけなら Elastic Beanstalk"
+        },
+        {
+          "title": "EC2 のインスタンスタイプ",
+          "items": [
+            {
+              "name": "汎用",
+              "role": "CPU・メモリ・ネットワークのバランス型",
+              "cue": "Web サーバー、開発環境、M 系・T 系"
+            },
+            {
+              "name": "コンピューティング最適化",
+              "role": "高性能な CPU が必要な処理向け",
+              "cue": "バッチ処理、HPC、ゲームサーバー、科学モデリング、C 系"
+            },
+            {
+              "name": "メモリ最適化",
+              "role": "大きなデータをメモリで処理する向け",
+              "cue": "インメモリ DB、リアルタイムの大規模データ処理、R 系・X 系"
+            },
+            {
+              "name": "ストレージ最適化",
+              "role": "ローカルストレージへの大量の読み書き向け",
+              "cue": "高い IOPS、データウェアハウス、分散ファイルシステム、I 系"
+            },
+            {
+              "name": "高速コンピューティング",
+              "role": "GPU などのアクセラレーターを使う",
+              "cue": "機械学習、グラフィックス処理、P 系・G 系"
+            }
+          ],
+          "tip": "問題文の「CPU」「メモリ」「ローカルディスク」「GPU」という言葉で選ぶ"
+        },
+        {
+          "title": "コンテナ",
+          "items": [
+            {
+              "name": "Amazon ECS",
+              "role": "AWS 独自のコンテナ管理サービス",
+              "cue": "コンテナを動かす、AWS のサービスとシンプルに連携"
+            },
+            {
+              "name": "Amazon EKS",
+              "role": "マネージドの Kubernetes",
+              "cue": "Kubernetes、オープンソース、オンプレの Kubernetes の資産を生かす"
+            },
+            {
+              "name": "AWS Fargate",
+              "role": "ECS・EKS で使う、サーバーレスのコンテナ実行環境",
+              "cue": "EC2 の管理なしでコンテナ、CPU とメモリを指定するだけ"
+            },
+            {
+              "name": "Amazon ECR",
+              "role": "コンテナイメージを保存するレジストリ",
+              "cue": "イメージの保存・共有、Docker イメージ"
+            }
+          ],
+          "tip": "管理する仕組み（ECS か EKS）と、動かす場所（EC2 か Fargate）は別の軸。ECR はイメージを保存するだけ"
+        },
+        {
+          "title": "データベース",
+          "items": [
+            {
+              "name": "Amazon RDS",
+              "role": "マネージドのリレーショナル DB（MySQL・PostgreSQL・Oracle・SQL Server など）",
+              "cue": "SQL、パッチ・バックアップを AWS が管理、マルチ AZ"
+            },
+            {
+              "name": "Amazon Aurora",
+              "role": "AWS がクラウド向けに作った MySQL・PostgreSQL 互換のリレーショナル DB",
+              "cue": "高性能、ストレージを複数 AZ に自動で複製、RDS の一つ"
+            },
+            {
+              "name": "Amazon DynamoDB",
+              "role": "サーバーレスのキーバリュー・ドキュメント DB",
+              "cue": "NoSQL、どんな規模でも 1 桁ミリ秒、サーバー管理なし"
+            },
+            {
+              "name": "Amazon ElastiCache",
+              "role": "インメモリのキャッシュ（Valkey・Memcached・Redis OSS）",
+              "cue": "メモリ、キャッシュ、DB の負荷を下げる、セッション情報"
+            },
+            {
+              "name": "Amazon DocumentDB",
+              "role": "MongoDB 互換のドキュメント DB",
+              "cue": "MongoDB、JSON ドキュメント"
+            },
+            {
+              "name": "Amazon Neptune",
+              "role": "グラフ DB",
+              "cue": "つながり・関係をたどる、ソーシャルネットワーク、不正検知、レコメンド"
+            },
+            {
+              "name": "EC2 上の自前 DB",
+              "role": "EC2 に DB ソフトを入れて自分で運用する",
+              "cue": "OS へのアクセス、RDS にない DB ソフト、自由度が高い、運用は自分で"
+            },
+            {
+              "name": "AWS DMS",
+              "role": "停止時間を短くして DB を移行し、変更を継続して複製する",
+              "cue": "DB の移行、移行中も元の DB を使い続ける"
+            },
+            {
+              "name": "AWS SCT",
+              "role": "異なるエンジンへ移るときに、スキーマやコードを変換する",
+              "cue": "Oracle から Aurora PostgreSQL など、エンジンが違う移行"
+            }
+          ],
+          "tip": "SQL と表なら RDS・Aurora、キーで速くなら DynamoDB、メモリなら ElastiCache、MongoDB なら DocumentDB、つながりなら Neptune。分析用の Redshift は「分析」のグループ"
+        },
+        {
+          "title": "ネットワーク：VPC の部品",
+          "items": [
+            {
+              "name": "Amazon VPC",
+              "role": "AWS の中の、自分専用の仮想ネットワーク",
+              "cue": "IP アドレスの範囲、論理的に分離されたネットワーク"
+            },
+            {
+              "name": "サブネット",
+              "role": "VPC を区切った IP アドレスの範囲。1 つの AZ に属する",
+              "cue": "パブリックサブネット、プライベートサブネット"
+            },
+            {
+              "name": "インターネットゲートウェイ",
+              "role": "VPC とインターネットの双方向の出入口",
+              "cue": "パブリックサブネット、ルートテーブルにルートを追加"
+            },
+            {
+              "name": "NAT ゲートウェイ",
+              "role": "プライベートサブネットから外へ出るだけの出口",
+              "cue": "外からは入れない、OS の更新、パブリックサブネットに置く"
+            },
+            {
+              "name": "セキュリティグループ",
+              "role": "インスタンス単位のファイアウォール（ステートフル）",
+              "cue": "許可ルールだけ、戻りの通信は自動で許可"
+            },
+            {
+              "name": "ネットワーク ACL",
+              "role": "サブネット単位のファイアウォール（ステートレス）",
+              "cue": "許可と拒否の両方、番号の順に評価"
+            },
+            {
+              "name": "VPC ピアリング",
+              "role": "2 つの VPC を 1 対 1 でつなぐ",
+              "cue": "VPC 同士、1 対 1、プライベートな通信"
+            },
+            {
+              "name": "AWS PrivateLink",
+              "role": "インターネットを通らずに、サービスへプライベートに接続する",
+              "cue": "VPC エンドポイント、インターネットに出さない"
+            },
+            {
+              "name": "AWS Transit Gateway",
+              "role": "多数の VPC とオンプレをハブでまとめてつなぐ",
+              "cue": "ハブ、多数の VPC、接続をまとめてシンプルに"
+            }
+          ],
+          "tip": "外と双方向ならインターネットゲートウェイ、中から外だけなら NAT ゲートウェイ。2 つの VPC ならピアリング、たくさんなら Transit Gateway"
+        },
+        {
+          "title": "ネットワーク：接続と配信",
+          "items": [
+            {
+              "name": "AWS Site-to-Site VPN",
+              "role": "拠点のネットワークと VPC を、インターネット経由の暗号化トンネルでつなぐ",
+              "cue": "すぐ始められる、暗号化、インターネット経由"
+            },
+            {
+              "name": "AWS Client VPN",
+              "role": "1 台ずつの端末から AWS に VPN で接続する",
+              "cue": "在宅勤務、社員の PC から"
+            },
+            {
+              "name": "AWS Direct Connect",
+              "role": "オンプレと AWS を、インターネットを通らない専用の接続でつなぐ",
+              "cue": "専用線、帯域が安定、使い始めるまでに時間がかかる"
+            },
+            {
+              "name": "Amazon Route 53",
+              "role": "DNS とドメインの登録",
+              "cue": "名前解決、ドメイン、ヘルスチェック、フェイルオーバー"
+            },
+            {
+              "name": "Amazon CloudFront",
+              "role": "エッジでキャッシュして配信する CDN",
+              "cue": "動画・画像の配信、キャッシュ、エッジロケーション"
+            },
+            {
+              "name": "AWS Global Accelerator",
+              "role": "固定の IP アドレスで受け、AWS のネットワークを通して届ける",
+              "cue": "固定のエニーキャスト IP、TCP・UDP、ゲーム、キャッシュしない"
+            },
+            {
+              "name": "Amazon API Gateway",
+              "role": "API を作成・公開・管理する",
+              "cue": "REST API、Lambda の前に置く、流量の制限"
+            }
+          ],
+          "tip": "すぐ・安くなら VPN、安定・大容量なら Direct Connect（Direct Connect はそのままでは暗号化されない）。キャッシュするなら CloudFront、固定 IP なら Global Accelerator"
+        },
+        {
+          "title": "ストレージ",
+          "items": [
+            {
+              "name": "Amazon S3",
+              "role": "オブジェクトストレージ",
+              "cue": "バケット、オブジェクト、静的ファイル、高い耐久性、データレイク"
+            },
+            {
+              "name": "Amazon EBS",
+              "role": "EC2 に付けるブロックストレージ",
+              "cue": "ディスク、停止してもデータが残る、スナップショット、1 つの AZ"
+            },
+            {
+              "name": "Amazon EC2 インスタンスストア",
+              "role": "ホストに直結した一時的なブロックストレージ",
+              "cue": "一時データ、キャッシュ、停止・終了でデータが消える"
+            },
+            {
+              "name": "Amazon EFS",
+              "role": "Linux 向けの共有ファイルストレージ（NFS）",
+              "cue": "複数の EC2 から同時にマウント、容量が自動で増減"
+            },
+            {
+              "name": "Amazon FSx",
+              "role": "Windows File Server などのファイルシステムをフルマネージドで提供",
+              "cue": "SMB、Active Directory（FSx for Windows File Server）"
+            },
+            {
+              "name": "AWS Storage Gateway",
+              "role": "オンプレから AWS のストレージを使うハイブリッドの仕組み",
+              "cue": "オンプレ、ローカルにキャッシュ、S3 File Gateway・Volume Gateway・Tape Gateway"
+            },
+            {
+              "name": "AWS Backup",
+              "role": "複数のサービスのバックアップを一元管理する",
+              "cue": "バックアッププラン、保存期間、EBS・RDS・DynamoDB・EFS"
+            },
+            {
+              "name": "AWS Elastic Disaster Recovery",
+              "role": "サーバーを継続的に複製し、障害時に AWS 上で復旧する",
+              "cue": "災害対策、継続的なレプリケーション、すばやい復旧"
+            }
+          ],
+          "tip": "1 台に付けるなら EBS、共有するなら EFS（Linux）か FSx（Windows）、API で出し入れするなら S3。オンプレとつなぐなら Storage Gateway。FSx for Lustre は対象外"
+        },
+        {
+          "title": "S3 のストレージクラス",
+          "items": [
+            {
+              "name": "S3 Standard",
+              "role": "よく使うデータ向けの標準のクラス",
+              "cue": "頻繁なアクセス、取り出しの料金なし"
+            },
+            {
+              "name": "S3 Intelligent-Tiering",
+              "role": "アクセス状況を見て、自動で階層を移す",
+              "cue": "アクセスパターンが分からない・変わる、取り出しの料金なし、少額の監視料金"
+            },
+            {
+              "name": "S3 Standard-IA",
+              "role": "あまり使わないが、すぐ取り出したいデータ向け",
+              "cue": "低頻度アクセス、複数の AZ に保存、取り出しに料金"
+            },
+            {
+              "name": "S3 One Zone-IA",
+              "role": "1 つの AZ だけに保存する低頻度アクセス向け",
+              "cue": "作り直せるデータ、さらに安い、AZ の障害で失うおそれ"
+            },
+            {
+              "name": "S3 Glacier Instant Retrieval",
+              "role": "めったに使わないが、すぐ取り出せるアーカイブ",
+              "cue": "まれなアクセス、ミリ秒で取り出せる"
+            },
+            {
+              "name": "S3 Glacier Flexible Retrieval",
+              "role": "取り出しに数分〜数時間かかってよいアーカイブ",
+              "cue": "バックアップ、アーカイブ、取り出しを待てる"
+            },
+            {
+              "name": "S3 Glacier Deep Archive",
+              "role": "最も安い長期保管",
+              "cue": "ほぼ取り出さない、規制による長期保存、取り出しに時間がかかる"
+            },
+            {
+              "name": "S3 ライフサイクル設定",
+              "role": "日数のルールで、クラスの移行と削除を自動化する",
+              "cue": "○日後に移す、○年後に削除"
+            }
+          ],
+          "tip": "パターンが分からないなら Intelligent-Tiering、日数で決まっているならライフサイクル設定。すぐ取り出せるほど高く、取り出さないほど安い"
+        },
+        {
+          "title": "分析",
+          "items": [
+            {
+              "name": "Amazon Athena",
+              "role": "S3 のデータに、サーバーレスで SQL を実行する",
+              "cue": "S3 に直接、標準 SQL、スキャンしたデータ量の料金、ログ分析"
+            },
+            {
+              "name": "Amazon Redshift",
+              "role": "データウェアハウス",
+              "cue": "大量の構造化データ、BI、複雑な分析クエリ、列指向"
+            },
+            {
+              "name": "Amazon EMR",
+              "role": "Spark や Hadoop などのビッグデータ処理を動かす",
+              "cue": "Hadoop、Spark、大規模な分散処理"
+            },
+            {
+              "name": "AWS Glue",
+              "role": "サーバーレスの ETL とデータカタログ",
+              "cue": "抽出・変換・ロード、データカタログ、クローラー"
+            },
+            {
+              "name": "Amazon Kinesis",
+              "role": "ストリーミングデータをリアルタイムに集めて処理する",
+              "cue": "リアルタイム、クリックストリーム、IoT センサー、動画のストリーム"
+            },
+            {
+              "name": "Amazon Quick Sight",
+              "role": "BI のダッシュボードと可視化",
+              "cue": "ダッシュボード、グラフ、レポート、BI"
+            },
+            {
+              "name": "Amazon OpenSearch Service",
+              "role": "検索とログ分析",
+              "cue": "全文検索、ログの分析と可視化、OpenSearch"
+            }
+          ],
+          "tip": "その場で SQL なら Athena、貯めて分析なら Redshift、変換なら Glue、リアルタイムなら Kinesis、見せるなら Quick Sight。Kinesis Data Firehose は今は Amazon Data Firehose という名前"
+        },
+        {
+          "title": "AI/ML",
+          "items": [
+            {
+              "name": "Amazon SageMaker AI",
+              "role": "独自の ML モデルを構築・学習・デプロイする",
+              "cue": "データサイエンティスト、独自のモデル、学習、推論"
+            },
+            {
+              "name": "Amazon Lex",
+              "role": "会話型のチャットボットを作る",
+              "cue": "チャットボット、音声やテキストでの対話"
+            },
+            {
+              "name": "Amazon Polly",
+              "role": "テキストを音声に変換する",
+              "cue": "読み上げ、音声合成"
+            },
+            {
+              "name": "Amazon Transcribe",
+              "role": "音声をテキストに変換する",
+              "cue": "文字起こし、議事録、字幕、通話の録音"
+            },
+            {
+              "name": "Amazon Translate",
+              "role": "テキストを翻訳する",
+              "cue": "多言語、翻訳"
+            },
+            {
+              "name": "Amazon Comprehend",
+              "role": "テキストの意味を分析する自然言語処理",
+              "cue": "感情分析、キーフレーズ、エンティティ、言語の判定"
+            },
+            {
+              "name": "Amazon Rekognition",
+              "role": "画像や動画を分析する",
+              "cue": "顔の検出・比較、物体、不適切なコンテンツの検出"
+            },
+            {
+              "name": "Amazon Textract",
+              "role": "書類から文字・表・フォームの値を取り出す",
+              "cue": "スキャンした書類、OCR、請求書、表の抽出"
+            },
+            {
+              "name": "Amazon Q",
+              "role": "生成 AI のアシスタント",
+              "cue": "生成 AI、業務の質問に答える、開発の支援"
+            }
+          ],
+          "tip": "音声→文字は Transcribe、文字→音声は Polly。書類なら Textract、画像なら Rekognition、文章の意味なら Comprehend。自分でモデルを作るなら SageMaker AI（2024-12-03 に SageMaker から改名）"
+        },
+        {
+          "title": "アプリ統合",
+          "items": [
+            {
+              "name": "Amazon SQS",
+              "role": "メッセージを貯めておくキュー",
+              "cue": "疎結合、受け手が取りに行く、急な増加を吸収"
+            },
+            {
+              "name": "Amazon SNS",
+              "role": "1 対多のプッシュ通知（Pub/Sub）",
+              "cue": "トピック、購読、メール・SMS で一斉に通知、ファンアウト"
+            },
+            {
+              "name": "Amazon EventBridge",
+              "role": "イベントをルールで判定して振り分けるイベントバス",
+              "cue": "イベント駆動、ルール、SaaS のイベント、スケジュール"
+            },
+            {
+              "name": "AWS Step Functions",
+              "role": "複数の処理をワークフローとしてつなぐ",
+              "cue": "ステートマシン、順番・分岐・再試行、流れを可視化"
+            }
+          ],
+          "tip": "貯めるなら SQS、配るなら SNS、イベントをルールで振り分けるなら EventBridge、手順を組むなら Step Functions"
+        },
+        {
+          "title": "その他：開発者ツール",
+          "items": [
+            {
+              "name": "AWS CodeBuild",
+              "role": "ソースコードのビルドとテストを実行する",
+              "cue": "コンパイル、テスト、ビルドサーバーが要らない"
+            },
+            {
+              "name": "AWS CodePipeline",
+              "role": "リリースの流れを自動化する CI/CD",
+              "cue": "パイプライン、ソース→ビルド→デプロイ"
+            },
+            {
+              "name": "AWS X-Ray",
+              "role": "リクエストを追跡して、遅い箇所やエラーを見つける",
+              "cue": "トレース、マイクロサービス、ボトルネック"
+            }
+          ],
+          "tip": "CodeBuild はパイプラインの 1 つの段階、CodePipeline は流れ全体。X-Ray はリクエストの追跡、CloudTrail は API の操作履歴。CodeDeploy は対象外"
+        },
+        {
+          "title": "その他：ビジネスアプリ",
+          "items": [
+            {
+              "name": "Amazon Connect",
+              "role": "クラウドのコンタクトセンター",
+              "cue": "コールセンター、問い合わせ窓口、電話・チャット"
+            },
+            {
+              "name": "Amazon SES",
+              "role": "アプリからメールを送受信する",
+              "cue": "大量のメール、確認メール、お知らせメール"
+            }
+          ],
+          "tip": "メールだけを大量に送るなら SES、メールや SMS で一斉に通知するなら SNS"
+        },
+        {
+          "title": "その他：エンドユーザーコンピューティング",
+          "items": [
+            {
+              "name": "Amazon WorkSpaces",
+              "role": "クラウドの仮想デスクトップ",
+              "cue": "社員ごとのデスクトップ、Windows・Linux、在宅勤務"
+            },
+            {
+              "name": "Amazon AppStream 2.0",
+              "role": "デスクトップアプリを、アプリ単位でストリーミング配信する",
+              "cue": "アプリだけを配信、ブラウザで使う、インストール不要"
+            },
+            {
+              "name": "Amazon WorkSpaces Secure Browser",
+              "role": "社内の Web サイトや SaaS に、安全なブラウザで接続する",
+              "cue": "ブラウザだけ、端末にデータを残さない"
+            }
+          ],
+          "tip": "デスクトップ全体なら WorkSpaces、アプリだけなら AppStream 2.0、ブラウザだけなら Secure Browser。AppStream 2.0 はドキュメントでは Amazon WorkSpaces Applications という名前（試験ガイドは AppStream 2.0 のまま）。Secure Browser は 2026-10-29 から新規の顧客を受け付けない"
+        },
+        {
+          "title": "その他：Amplify と IoT Core",
+          "items": [
+            {
+              "name": "AWS Amplify",
+              "role": "Web やモバイルアプリのフロントエンドを作って公開する",
+              "cue": "フロントエンド、モバイルアプリ、ホスティング、フルスタック"
+            },
+            {
+              "name": "AWS IoT Core",
+              "role": "IoT デバイスを AWS に接続し、メッセージをやり取りする",
+              "cue": "IoT デバイス、センサー、MQTT、大量のデバイス"
+            }
+          ],
+          "tip": "フロントエンドとモバイルなら Amplify、デバイスをつなぐなら IoT Core。IoT Greengrass は対象外"
+        }
+      ]
+    },
+    {
       "domain": 4,
       "title": "分野4 請求、料金、サポート",
       "groups": [

@@ -423,6 +423,288 @@
       "createdAt": "2026-10-18"
     },
     {
+      "id": "d3-a",
+      "label": "分野3 セットA",
+      "focus": 3,
+      "questions": [
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "EC2 インスタンスタイプ：ストレージ最適化とメモリ最適化",
+          "question": "ローカルストレージ上の非常に大きなデータセットに対して、高速な読み書きを大量に行うワークロードを EC2 で動かします。最も適したインスタンスタイプのファミリーはどれですか？",
+          "choices": [
+            "A. 汎用",
+            "B. メモリ最適化",
+            "C. ストレージ最適化",
+            "D. コンピューティング最適化"
+          ],
+          "correct": "C",
+          "why": "ストレージ最適化インスタンスは、ローカルストレージ上の大きなデータセットへの、高速で大量の読み書き（高い IOPS）に向けて設計されています。",
+          "contrast": "ストレージ最適化 = ローカルディスクへの大量の読み書き（I 系など）\nメモリ最適化 = 大きなデータをメモリで処理する（インメモリ DB など。R 系・X 系）\nコンピューティング最適化 = CPU をたくさん使う処理（バッチ、HPC、ゲームサーバー。C 系）\n汎用 = CPU・メモリ・ネットワークのバランス型（Web サーバーなど。M 系・T 系）",
+          "example": "データウェアハウスや分散ファイルシステムを、EC2 のローカルディスクで高速に動かすとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Amazon EC2 instance types",
+              "url": "https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-types.html"
+            },
+            {
+              "title": "Storage optimized instances",
+              "url": "https://docs.aws.amazon.com/ec2/latest/instancetypes/so.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "NAT ゲートウェイとインターネットゲートウェイ",
+          "question": "プライベートサブネットの EC2 インスタンスから、ソフトウェアの更新のためにインターネットへ接続したいです。ただし、インターネット側からは接続を始められないようにします。何を使いますか？",
+          "choices": [
+            "A. NAT ゲートウェイ",
+            "B. インターネットゲートウェイ",
+            "C. AWS Direct Connect",
+            "D. AWS Site-to-Site VPN"
+          ],
+          "correct": "A",
+          "why": "NAT ゲートウェイを使うと、プライベートサブネットのインスタンスは外へ接続できますが、外からそのインスタンスへの接続は始められません。NAT ゲートウェイ自体はパブリックサブネットに置き、インターネットゲートウェイを通って外に出ます。",
+          "contrast": "NAT ゲートウェイ = 中から外への一方通行（プライベートサブネット用）\nインターネットゲートウェイ = VPC とインターネットの双方向の出入口（パブリックサブネット用）\nDirect Connect = オンプレと AWS をつなぐ専用線\nSite-to-Site VPN = オンプレと VPC をインターネット経由の暗号化トンネルでつなぐ",
+          "example": "外から見せたくない業務サーバーや DB サーバーに、OS のパッチをダウンロードさせるとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "NAT gateways",
+              "url": "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html"
+            },
+            {
+              "title": "Enable internet access for a VPC using an internet gateway",
+              "url": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "SDK / CLI / マネジメントコンソール / CloudFormation",
+          "question": "自社で開発している Python のアプリの中から、処理の結果を Amazon S3 に保存する機能を組み込みたいです。AWS へのアクセス方法として最も適したものはどれですか？",
+          "choices": [
+            "A. AWS Management Console",
+            "B. AWS CLI",
+            "C. AWS CloudFormation",
+            "D. AWS SDK"
+          ],
+          "correct": "D",
+          "why": "AWS SDK は、Python や Java などのプログラミング言語から AWS の API を呼び出すためのライブラリです。アプリのコードの中から AWS を操作するときに使います。",
+          "contrast": "SDK = アプリのコードの中から呼ぶ（ライブラリ）\nCLI = ターミナルからコマンドで操作する（シェルスクリプトで自動化もできる）\nマネジメントコンソール = ブラウザの画面で操作する（一度きりの作業や確認向き）\nCloudFormation = インフラの構成をテンプレートで作る（IaC）",
+          "example": "Web アプリで、ユーザーがアップロードした画像を、アプリから S3 に保存するとき。",
+          "explanation": "SDK も CLI もコンソールも、裏では同じ AWS の API を呼んでいます。",
+          "sources": [
+            {
+              "title": "AWS SDKs and Tools Reference Guide",
+              "url": "https://docs.aws.amazon.com/sdkref/latest/guide/overview.html"
+            },
+            {
+              "title": "What is the AWS Command Line Interface?",
+              "url": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "DynamoDB / RDS / Aurora / ElastiCache",
+          "question": "モバイルゲームのプレイヤー情報を、キーを指定して読み書きします。利用者が急に増えても 1 桁ミリ秒の応答を保ち、サーバーの管理はしたくありません。どのデータベースが適していますか？",
+          "choices": [
+            "A. Amazon RDS",
+            "B. Amazon DynamoDB",
+            "C. Amazon ElastiCache",
+            "D. Amazon Aurora"
+          ],
+          "correct": "B",
+          "why": "DynamoDB は、サーバーレスでフルマネージドの NoSQL（キーバリュー・ドキュメント）データベースで、どんな規模でも 1 桁ミリ秒の性能を出せます。サーバーやパッチの管理は要りません。",
+          "contrast": "DynamoDB = サーバーレスの NoSQL（キーで読み書き。規模が大きくても速い）\nRDS = マネージドのリレーショナル DB（SQL で表を結合して使う）\nAurora = AWS がクラウド向けに作った、MySQL・PostgreSQL 互換のリレーショナル DB\nElastiCache = メモリ上のキャッシュ（DB の手前に置いて読み込みを速くする）",
+          "example": "ゲームのスコアやセッション情報など、キーで素早く読み書きするデータを大量に扱うとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon DynamoDB?",
+              "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+            },
+            {
+              "title": "Overview of Amazon Web Services: Database",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/database.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "エッジロケーションを使うサービスとリージョン・AZ のサービス",
+          "question": "世界中の多くの都市に置かれたエッジロケーションを使って提供される AWS のサービスはどれですか？",
+          "choices": [
+            "A. Amazon EC2",
+            "B. Amazon CloudFront",
+            "C. Amazon EBS",
+            "D. Amazon Route 53"
+          ],
+          "correct": "BD",
+          "why": "CloudFront はエッジロケーションでコンテンツをキャッシュして配信し、Route 53 はエッジロケーションで DNS の問い合わせに答えます。エッジロケーションはリージョンや AZ より多くの場所にあり、利用者の近くで応答します。",
+          "contrast": "エッジロケーション = CloudFront・Route 53・Global Accelerator などが使う、利用者に近い拠点\nEC2 = リージョンの AZ（または Local Zones・Outposts）で起動する\nEBS = 1 つの AZ の中にある、EC2 用のディスク\nリージョン・AZ = EC2 や EBS などのリソースを作って動かす場所",
+          "example": "海外の利用者からの DNS の問い合わせやコンテンツの取得を、近くの拠点で処理して速くしたいとき。",
+          "explanation": "AWS WAF や AWS Shield も、CloudFront と組み合わせてエッジロケーションで動きます。",
+          "sources": [
+            {
+              "title": "Overview of Amazon Web Services: Global infrastructure",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html"
+            },
+            {
+              "title": "What is Amazon CloudFront?",
+              "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+            },
+            {
+              "title": "What is Amazon Route 53?",
+              "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "FSx for Windows File Server / EFS / EBS / Storage Gateway",
+          "question": "社内の Windows ファイルサーバーを AWS に移します。SMB プロトコルで共有し、Active Directory のユーザーでアクセスを管理したいです。どのサービスが適していますか？",
+          "choices": [
+            "A. Amazon EFS",
+            "B. Amazon EBS",
+            "C. AWS Storage Gateway",
+            "D. Amazon FSx for Windows File Server"
+          ],
+          "correct": "D",
+          "why": "FSx for Windows File Server は、Windows Server 上に作られたフルマネージドの共有ファイルストレージで、SMB プロトコルと Active Directory との連携に対応しています。",
+          "contrast": "FSx for Windows File Server = Windows 向けの共有ファイル（SMB・Active Directory）\nEFS = Linux 向けの共有ファイル（NFS）。複数の EC2 から同時にマウントする\nEBS = 1 台の EC2 に付けるブロックストレージ（ディスク）\nStorage Gateway = オンプレから AWS のストレージを使うためのハイブリッドの仕組み",
+          "example": "部署の共有フォルダを、Windows のファイルサーバーの使い勝手のまま、運用の手間を減らして AWS に移すとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is FSx for Windows File Server?",
+              "url": "https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html"
+            },
+            {
+              "title": "What is Amazon Elastic File System?",
+              "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "EC2 Auto Scaling と Elastic Load Balancing",
+          "question": "Amazon EC2 Auto Scaling でできることはどれですか？",
+          "choices": [
+            "A. 需要に合わせてインスタンスの数を増減する",
+            "B. リクエストを複数のインスタンスに振り分ける",
+            "C. 異常なインスタンスを新しいものに置き換える",
+            "D. 負荷に応じてインスタンスタイプを自動で大きくする"
+          ],
+          "correct": "AC",
+          "why": "EC2 Auto Scaling は、需要に合わせてインスタンスの台数を増減し（弾力性）、ヘルスチェックで異常と判断したインスタンスを置き換えて、決めた台数を保ちます。",
+          "contrast": "EC2 Auto Scaling = 台数を増減する（水平スケーリング）・異常なものを置き換える\nElastic Load Balancing = リクエストを複数のインスタンスに振り分ける\nインスタンスタイプを大きくする = 垂直スケーリング。Auto Scaling が負荷に応じて自動で行うものではない",
+          "example": "セールの時間帯だけ Web サーバーの台数を増やし、ELB と組み合わせて、増えたサーバーにもリクエストを振り分けるとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon EC2 Auto Scaling?",
+              "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
+            },
+            {
+              "title": "What is Elastic Load Balancing?",
+              "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Athena / Redshift / EMR / Glue",
+          "question": "S3 に保存されているアクセスログを、サーバーやデータベースを用意せずに、標準 SQL で直接分析したいです。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon Athena",
+            "B. Amazon Redshift",
+            "C. Amazon EMR",
+            "D. AWS Glue"
+          ],
+          "correct": "A",
+          "why": "Athena はサーバーレスの対話型クエリサービスで、S3 にあるデータに標準 SQL でそのままクエリできます。基本の料金は、クエリでスキャンしたデータ量に応じて払います。",
+          "contrast": "Athena = S3 のデータに、その場で SQL でクエリする（サーバーレス）\nRedshift = データを取り込んで分析するデータウェアハウス\nEMR = Spark や Hadoop などのビッグデータのフレームワークを動かす\nGlue = データの抽出・変換・ロード（ETL）とデータカタログ",
+          "example": "CloudTrail やロードバランサーのログを S3 に貯めておき、必要なときだけ SQL で調べるとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon Athena?",
+              "url": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Transit Gateway / VPC ピアリング / PrivateLink / Direct Connect",
+          "question": "数十個の VPC とオンプレのネットワークを、1 対 1 で個別につなぐのではなく、中央のハブを通してまとめて接続したいです。どのサービスを使いますか？",
+          "choices": [
+            "A. AWS PrivateLink",
+            "B. AWS Direct Connect",
+            "C. AWS Transit Gateway",
+            "D. VPC ピアリング"
+          ],
+          "correct": "C",
+          "why": "Transit Gateway は、VPC とオンプレのネットワークを中央のハブでつなぐサービスです。接続をハブに集めるので、つなぐ先が増えても管理がシンプルになります。",
+          "contrast": "Transit Gateway = 多数の VPC とオンプレをハブでまとめてつなぐ\nVPC ピアリング = 2 つの VPC を 1 対 1 でつなぐ（数が増えると接続が網の目になる）\nPrivateLink = 特定のサービスに、インターネットを通らずプライベートに接続する\nDirect Connect = オンプレと AWS をつなぐ専用線（Transit Gateway と組み合わせることもある）",
+          "example": "部署ごとに分かれた多数の AWS アカウントの VPC を、1 つのネットワークにまとめるとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is AWS Transit Gateway?",
+              "url": "https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html"
+            },
+            {
+              "title": "What is VPC peering?",
+              "url": "https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html"
+            },
+            {
+              "title": "What is AWS PrivateLink?",
+              "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "SNS / SES / SQS / EventBridge",
+          "question": "システムで障害が起きたときに、運用担当者の複数のメールアドレスとスマホの SMS に、同じ通知を一斉に送りたいです。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon SES",
+            "B. Amazon SNS",
+            "C. Amazon SQS",
+            "D. Amazon EventBridge"
+          ],
+          "correct": "B",
+          "why": "SNS は、1 つのメッセージを、トピックを購読している複数の宛先（メール、SMS、Lambda、SQS など）に一斉にプッシュで届ける通知サービスです（Pub/Sub）。",
+          "contrast": "SNS = 1 対多のプッシュ通知（メール・SMS など、購読者に一斉に配る）\nSES = アプリからメールを大量に送る・受け取る（確認メールやお知らせメール）\nSQS = メッセージをキューに貯め、受け手が取りに行く（疎結合）\nEventBridge = イベントをルールで判定して、ターゲットに振り分ける（イベントバス）",
+          "example": "CloudWatch のアラームが鳴ったら、SNS のトピックを通して担当者全員にメールと SMS を送るとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon SNS?",
+              "url": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html"
+            },
+            {
+              "title": "What is Amazon SES?",
+              "url": "https://docs.aws.amazon.com/ses/latest/dg/Welcome.html"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-18"
+    },
+    {
       "id": "d4-a",
       "label": "分野4 セットA",
       "focus": 4,
@@ -1127,6 +1409,272 @@
       "createdAt": "2026-10-18"
     },
     {
+      "id": "d3-b",
+      "label": "分野3 セットB",
+      "focus": 3,
+      "questions": [
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "リージョン / AZ / エッジロケーションの関係",
+          "question": "AWS のアベイラビリティーゾーン（AZ）の説明として正しいものはどれですか？",
+          "choices": [
+            "A. 主要な都市にある、コンテンツ配信用の拠点",
+            "B. 複数のリージョンをまとめた地理的な単位",
+            "C. 1 つの AZ が止まると、同じリージョンの全 AZ が止まる",
+            "D. 電源やネットワークが独立した、1 つ以上のデータセンター"
+          ],
+          "correct": "D",
+          "why": "AZ は、リージョンの中にある、1 つ以上の独立したデータセンターの集まりです。AZ ごとに電源やネットワークが冗長化されて分かれていて、互いに単一障害点を共有しないよう、離れた場所に置かれています。",
+          "contrast": "リージョン = 世界各地にある地理的なエリア。中に複数の AZ を持つ\nAZ = リージョンの中の、独立したデータセンターの集まり。互いに単一障害点を共有しない\nエッジロケーション = 利用者に近い都市にある、キャッシュや DNS の拠点（CloudFront・Route 53）",
+          "example": "リージョンを選んだあと、どの AZ にサブネットやインスタンスを置くかを決めるとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Overview of Amazon Web Services: Global infrastructure",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html"
+            },
+            {
+              "title": "Regions and Zones (Amazon EC2)",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "ElastiCache / DynamoDB / CloudFront / Redshift",
+          "question": "Web アプリが同じ商品データを何度も DB から読み込むため、DB の負荷が高くなっています。よく読まれるデータをメモリ上に置いて、読み込みを速くしたいです。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon CloudFront",
+            "B. Amazon ElastiCache",
+            "C. Amazon DynamoDB",
+            "D. Amazon Redshift"
+          ],
+          "correct": "B",
+          "why": "ElastiCache は、Valkey・Memcached・Redis OSS に対応した、フルマネージドのインメモリのデータストア（キャッシュ）です。DB の手前に置き、よく読まれるデータをメモリから返すことで、応答を速くし、DB の負荷を下げます。",
+          "contrast": "ElastiCache = メモリ上のキャッシュ（DB の手前で読み込みを速くする）\nDynamoDB = サーバーレスの NoSQL データベース（データの保存先そのもの）\nCloudFront = 画像や動画などのコンテンツを、エッジで利用者の近くにキャッシュする\nRedshift = 大量のデータを分析するデータウェアハウス",
+          "example": "ランキングやセッション情報など、頻繁に読まれるデータを速く返したいとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon ElastiCache?",
+              "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "ブロック・ファイル・オブジェクトストレージ（EBS / インスタンスストア / EFS / S3）",
+          "question": "EC2 インスタンスにディスクとして付けて使う「ブロックストレージ」に当たるものはどれですか？",
+          "choices": [
+            "A. Amazon EFS",
+            "B. Amazon EBS",
+            "C. Amazon EC2 インスタンスストア",
+            "D. Amazon S3"
+          ],
+          "correct": "BC",
+          "why": "EBS とインスタンスストアは、EC2 にディスクとして付けて使うブロックストレージです。EBS はインスタンスを停止してもデータが残り、インスタンスストアはホストに物理的に付いた一時的なディスクで、停止や終了でデータが消えます。",
+          "contrast": "EBS = ネットワーク経由で付けるディスク。停止してもデータが残り、スナップショットを取れる\nインスタンスストア = ホストに直結した一時ディスク。速いが、停止・終了でデータが消える\nEFS = 複数の EC2 から共有するファイルストレージ（NFS）\nS3 = API でアクセスするオブジェクトストレージ（ディスクとしては付けない）",
+          "example": "OS や DB のデータは EBS に、消えてもよいキャッシュや一時ファイルはインスタンスストアに置くとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon Elastic Block Store?",
+              "url": "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html"
+            },
+            {
+              "title": "Instance store temporary block storage for EC2 instances",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "EKS / ECS / ECR / Fargate",
+          "question": "オンプレで Kubernetes を使ってコンテナを運用しています。今のツールや設定ファイルを生かして、AWS でも Kubernetes を動かしたいです。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon EKS",
+            "B. Amazon ECS",
+            "C. Amazon ECR",
+            "D. AWS Fargate"
+          ],
+          "correct": "A",
+          "why": "EKS は、Kubernetes のコントロールプレーンを AWS が管理するマネージドサービスです。オープンソースの Kubernetes と互換性があるので、今のツールやマニフェストをそのまま使えます。",
+          "contrast": "EKS = マネージドの Kubernetes（Kubernetes の資産や知識を生かす）\nECS = AWS 独自のコンテナ管理サービス（AWS のサービスとシンプルに連携する）\nECR = コンテナイメージを保存するレジストリ\nFargate = ECS や EKS で使う、サーバー管理が要らないコンテナの実行環境",
+          "example": "オンプレとクラウドで、同じ Kubernetes の運用手順を使いたいとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon EKS?",
+              "url": "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html"
+            },
+            {
+              "title": "What is Amazon Elastic Container Service?",
+              "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "デプロイモデル：クラウド・ハイブリッド・オンプレミス",
+          "question": "ある会社は、顧客データを扱う基幹システムを自社のデータセンターに残し、新しい Web サービスを AWS で動かして、両者を接続して使っています。このデプロイモデルはどれですか？",
+          "choices": [
+            "A. クラウド",
+            "B. オンプレミス",
+            "C. ハイブリッド",
+            "D. マルチリージョン"
+          ],
+          "correct": "C",
+          "why": "オンプレミスにある既存のリソースと、クラウドのリソースを接続して組み合わせる形を、ハイブリッドのデプロイモデルと呼びます。",
+          "contrast": "クラウド = アプリのすべてをクラウドで動かす\nハイブリッド = オンプレとクラウドを接続して一緒に使う\nオンプレミス = 自社のデータセンターだけで動かす（プライベートクラウドとも呼ぶ）\nマルチリージョン = AWS の複数のリージョンを使う構成で、デプロイモデルの種類ではない",
+          "example": "規制でオンプレに残すシステムと AWS 上の新しいシステムを、VPN や Direct Connect でつないで使うとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Overview of Amazon Web Services: Types of cloud computing",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Direct Connect / Site-to-Site VPN / Client VPN",
+          "question": "オンプレのデータセンターと AWS を、インターネットを経由しない専用のネットワーク接続でつなぎ、帯域が安定した通信をしたいです。どのサービスを使いますか？",
+          "choices": [
+            "A. AWS Site-to-Site VPN",
+            "B. AWS Client VPN",
+            "C. AWS Direct Connect",
+            "D. AWS Transit Gateway"
+          ],
+          "correct": "C",
+          "why": "Direct Connect は、オンプレと AWS を、インターネットを通らない専用のネットワーク接続でつなぐサービスです。インターネット経由より帯域が安定し、ネットワークのコストを下げられる場合もあります。",
+          "contrast": "Direct Connect = インターネットを通らない専用の接続。安定するが、使い始めるまでに時間がかかる\nSite-to-Site VPN = 拠点のネットワークと VPC を、インターネット経由の暗号化トンネルでつなぐ。すぐ始められる\nClient VPN = 社員の PC など、1 台ずつの端末から AWS に VPN で接続する\nTransit Gateway = 多数の VPC やオンプレの接続をまとめるハブ",
+          "example": "毎日大量のデータをオンプレから AWS に送るため、安定した帯域が必要なとき。",
+          "explanation": "Direct Connect の通信は、そのままでは暗号化されません。暗号化が必要なら、Direct Connect の上で Site-to-Site VPN を使う構成もあります。",
+          "sources": [
+            {
+              "title": "What is AWS Direct Connect?",
+              "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html"
+            },
+            {
+              "title": "What is AWS Site-to-Site VPN?",
+              "url": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "S3 Intelligent-Tiering / Standard-IA / One Zone-IA / Glacier Deep Archive",
+          "question": "S3 に保存するデータのアクセス頻度が予測できず、時期によって変わります。取り出しの料金をかけずに、アクセス状況に合わせて自動で安い階層に移したいです。どのストレージクラスが適していますか？",
+          "choices": [
+            "A. S3 Intelligent-Tiering",
+            "B. S3 Standard-IA",
+            "C. S3 One Zone-IA",
+            "D. S3 Glacier Deep Archive"
+          ],
+          "correct": "A",
+          "why": "S3 Intelligent-Tiering は、オブジェクトごとのアクセス状況を見て、しばらくアクセスされないものを自動で安い階層へ移し、アクセスされたら高頻度の階層に戻します。取り出しの料金はかからず、代わりに少額の監視・自動化の料金がかかります。",
+          "contrast": "Intelligent-Tiering = アクセスのパターンが分からない・変わるデータ向け。自動で階層を移す\nStandard-IA = あまり使わないが、すぐ取り出したいデータ向け（取り出しに料金がかかる）\nOne Zone-IA = 1 つの AZ だけに保存する。作り直せるデータ向けで、さらに安い\nGlacier Deep Archive = ほぼ取り出さない長期保管向け。最も安いが、取り出しに時間がかかる",
+          "example": "始めたばかりのサービスのデータで、どれくらい読まれるか分からないとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Understanding and managing Amazon S3 storage classes",
+              "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+            },
+            {
+              "title": "How S3 Intelligent-Tiering works",
+              "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Aurora / DynamoDB / Neptune / DocumentDB",
+          "question": "MySQL や PostgreSQL と互換性があり、AWS がクラウド向けに設計したリレーショナルデータベースのエンジンです。データは複数の AZ にまたがるストレージに自動で複製されます。これはどれですか？",
+          "choices": [
+            "A. Amazon DynamoDB",
+            "B. Amazon Neptune",
+            "C. Amazon DocumentDB",
+            "D. Amazon Aurora"
+          ],
+          "correct": "D",
+          "why": "Aurora は、MySQL・PostgreSQL 互換のリレーショナル DB エンジンで、Amazon RDS の一つとして提供されます。クラウド向けに作られたストレージが、データを複数の AZ に自動で複製します。",
+          "contrast": "Aurora = AWS がクラウド向けに作った、MySQL・PostgreSQL 互換のリレーショナル DB（RDS の一つ）\nDynamoDB = サーバーレスの NoSQL（キーバリュー・ドキュメント）\nNeptune = つながりをたどるグラフ DB\nDocumentDB = MongoDB 互換のドキュメント DB",
+          "example": "商用 DB 並みの性能と可用性がほしいが、オープンソース互換のエンジンでコストを抑えたいとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon Aurora?",
+              "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Transcribe / Comprehend / Polly / Translate",
+          "question": "コールセンターの通話の録音を文字に起こし、その文章から顧客の感情（肯定的か否定的か）を分析したいです。組み合わせるサービスはどれですか？",
+          "choices": [
+            "A. Amazon Transcribe",
+            "B. Amazon Polly",
+            "C. Amazon Translate",
+            "D. Amazon Comprehend"
+          ],
+          "correct": "AD",
+          "why": "Transcribe は音声をテキストに変換し（音声認識）、Comprehend はテキストから感情・キーフレーズ・エンティティなどを取り出す自然言語処理のサービスです。",
+          "contrast": "Transcribe = 音声 → 文字（文字起こし）\nPolly = 文字 → 音声（読み上げ）\nComprehend = 文章の意味を分析する（感情、キーフレーズ、言語の判定）\nTranslate = 文章を別の言語に翻訳する",
+          "example": "通話の記録から不満の多い問い合わせを見つけて、サービスの改善に生かすとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon Transcribe?",
+              "url": "https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html"
+            },
+            {
+              "title": "What is Amazon Comprehend?",
+              "url": "https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Outposts / Local Zones / Dedicated Hosts / Storage Gateway",
+          "question": "規制により、データを自社のデータセンターに置く必要があります。そのデータセンターの中で、AWS と同じインフラ・API・ツールを使って EC2 などを動かしたいです。どのサービスを使いますか？",
+          "choices": [
+            "A. AWS Local Zones",
+            "B. AWS Outposts",
+            "C. AWS Storage Gateway",
+            "D. Amazon EC2 Dedicated Hosts"
+          ],
+          "correct": "B",
+          "why": "Outposts は、AWS が設計した機器を顧客のデータセンターなどに設置し、AWS のインフラ・サービス・API・ツールをオンプレで使えるようにするフルマネージドのサービスです。",
+          "contrast": "Outposts = AWS の機器を自社のデータセンターに置く（データをオンプレに残せる）\nLocal Zones = AWS が大都市の近くに置いた、リージョンを延長する拠点（AWS の施設）\nDedicated Hosts = AWS のデータセンターにある、自社専用の物理サーバー\nStorage Gateway = オンプレから AWS のストレージを使う（EC2 などのコンピュートは提供しない）",
+          "example": "工場のシステムのように、オンプレで低いレイテンシの処理が必要なものを、AWS と同じ方法で運用したいとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is AWS Outposts?",
+              "url": "https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html"
+            },
+            {
+              "title": "What is AWS Local Zones?",
+              "url": "https://docs.aws.amazon.com/local-zones/latest/ug/what-is-aws-local-zones.html"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-18"
+    },
+    {
       "id": "d4-b",
       "label": "分野4 セットB",
       "focus": 4,
@@ -1380,6 +1928,542 @@
             {
               "title": "Amazon S3 Glacier storage classes",
               "url": "https://aws.amazon.com/s3/storage-classes/glacier/"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-18"
+    },
+    {
+      "id": "d3-c",
+      "label": "分野3 セットC",
+      "focus": 3,
+      "questions": [
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Global Accelerator / CloudFront / Route 53",
+          "question": "世界中のプレイヤーが UDP で接続するオンラインゲームの性能と可用性を上げたいです。固定の IP アドレスで接続を受け、AWS のグローバルネットワークを通してアプリに届けます。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon CloudFront",
+            "B. AWS Global Accelerator",
+            "C. Amazon Route 53",
+            "D. AWS Direct Connect"
+          ],
+          "correct": "B",
+          "why": "Global Accelerator は、固定のエニーキャスト IP アドレスで利用者の接続をエッジロケーションで受け、AWS のグローバルネットワークを通して、最適なリージョンのアプリに届けます。TCP と UDP に対応しています。",
+          "contrast": "Global Accelerator = 固定 IP で受け、AWS のネットワークを通して届ける（TCP・UDP。キャッシュはしない）\nCloudFront = コンテンツをエッジでキャッシュして配信する（HTTP・HTTPS が中心）\nRoute 53 = DNS で行き先の IP アドレスを答える\nDirect Connect = オンプレと AWS をつなぐ専用線（一般の利用者向けではない）",
+          "example": "ゲームや音声通話など、HTTP 以外の通信を世界中から低いレイテンシで受けたいとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is AWS Global Accelerator?",
+              "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Fargate / ECR / EKS / Lambda",
+          "question": "Amazon ECS でコンテナを動かします。EC2 インスタンスの起動、パッチの適用、台数の管理をせずに済ませたいです。何を組み合わせますか？",
+          "choices": [
+            "A. Amazon ECR",
+            "B. Amazon EKS",
+            "C. AWS Fargate",
+            "D. AWS Lambda"
+          ],
+          "correct": "C",
+          "why": "Fargate は、ECS や EKS と組み合わせて使う、サーバーレスのコンテナ実行環境です。EC2 インスタンスを用意・管理せずに、コンテナに必要な CPU とメモリを指定するだけで動かせます。",
+          "contrast": "Fargate = コンテナをサーバーの管理なしで動かす実行環境（ECS・EKS と組み合わせる）\nECR = コンテナイメージを保存するレジストリ（実行はしない）\nEKS = マネージドの Kubernetes（ECS とは別のコンテナ管理サービス）\nLambda = 関数をイベントで実行するサーバーレスのコンピュート",
+          "example": "小さなチームで、サーバーの運用をせずにコンテナのアプリを動かしたいとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "AWS Fargate for Amazon ECS",
+              "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html"
+            },
+            {
+              "title": "What is Amazon Elastic Container Service?",
+              "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Neptune / DocumentDB / DynamoDB / Redshift",
+          "question": "ソーシャルメディアの「友だちの友だち」のように、データどうしの複雑なつながりを高速にたどる機能を作りたいです。どのデータベースが適していますか？",
+          "choices": [
+            "A. Amazon Neptune",
+            "B. Amazon DocumentDB",
+            "C. Amazon DynamoDB",
+            "D. Amazon Redshift"
+          ],
+          "correct": "A",
+          "why": "Neptune はフルマネージドのグラフデータベースで、互いに強くつながったデータの関係を保存し、高速にたどるのに向いています。",
+          "contrast": "Neptune = グラフ DB（つながりをたどる。ソーシャルネットワーク、不正検知、レコメンド）\nDocumentDB = MongoDB 互換のドキュメント DB（JSON を保存する）\nDynamoDB = サーバーレスのキーバリュー・ドキュメント DB（キーで速く読み書きする）\nRedshift = 分析用のデータウェアハウス",
+          "example": "不正なアカウントどうしのつながりを見つける不正検知や、ナレッジグラフを作るとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon Neptune?",
+              "url": "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html"
+            },
+            {
+              "title": "What is Amazon DocumentDB?",
+              "url": "https://docs.aws.amazon.com/documentdb/latest/devguide/what-is.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "複数のリージョンを使う理由と複数の AZ",
+          "question": "システムを複数の AWS リージョンに配置する理由として適切なものはどれですか？",
+          "choices": [
+            "A. リージョン全体に及ぶ大規模な災害に備える",
+            "B. 同じリージョンの中で AZ を分けて冗長化する",
+            "C. 海外の利用者へのレイテンシを小さくする",
+            "D. リージョン間のデータ転送料金をなくす"
+          ],
+          "correct": "AC",
+          "why": "リージョンは互いに独立しているので、複数のリージョンに置くと、リージョン全体に影響する災害への対策（事業継続）になります。また、利用者の近くのリージョンに置くと、レイテンシを小さくできます。",
+          "contrast": "複数のリージョン = 災害対策・事業継続、海外の利用者への低レイテンシ、データ主権（国内保管）の要件\n複数の AZ = 1 つのリージョンの中で、データセンターの障害に備える（高可用性）\nリージョン間のデータ転送 = 料金がかかる（なくなるわけではない）",
+          "example": "東京リージョンが使えなくなっても、大阪リージョンでサービスを続けられるようにするとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Overview of Amazon Web Services: Global infrastructure",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html"
+            },
+            {
+              "title": "AWS Fault Isolation Boundaries: Regions",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/regions.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Storage Gateway / EFS / Direct Connect / AWS Backup",
+          "question": "オンプレのファイルサーバーの容量が足りません。オンプレのアプリからは今までどおり NFS や SMB でファイルを使い、データ本体は S3 に保存して、よく使うデータはオンプレにキャッシュしたいです。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon EFS",
+            "B. AWS Direct Connect",
+            "C. AWS Backup",
+            "D. AWS Storage Gateway"
+          ],
+          "correct": "D",
+          "why": "Storage Gateway は、オンプレと AWS のストレージをつなぐハイブリッドのサービスです。S3 File Gateway を使うと、オンプレのアプリは NFS や SMB でファイルを扱い、データは S3 に保存され、よく使うデータはローカルにキャッシュされます。",
+          "contrast": "Storage Gateway = オンプレからクラウドのストレージを使う（ローカルにキャッシュ）\nEFS = AWS 上の Linux 向け共有ファイルストレージ（主に EC2 から使う）\nDirect Connect = オンプレと AWS をつなぐ専用線（ストレージではない）\nAWS Backup = AWS のリソースのバックアップを一元管理する",
+          "example": "オンプレのファイル共有の容量不足を、アプリを変えずにクラウドの容量で解消したいとき。",
+          "explanation": "Storage Gateway には、ファイル（S3 File Gateway）、ボリューム（Volume Gateway）、テープ（Tape Gateway）の種類があります。",
+          "sources": [
+            {
+              "title": "What is Amazon S3 File Gateway",
+              "url": "https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html"
+            },
+            {
+              "title": "What is Volume Gateway? (AWS Storage Gateway)",
+              "url": "https://docs.aws.amazon.com/storagegateway/latest/vgw/WhatIsStorageGateway.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Elastic Beanstalk / CloudFormation / Lightsail / Amplify",
+          "question": "Java の Web アプリのコードをアップロードするだけで、EC2・ロードバランサー・Auto Scaling の準備やデプロイ、ヘルスモニタリングを自動で行ってほしいです。どのサービスを使いますか？",
+          "choices": [
+            "A. AWS CloudFormation",
+            "B. AWS Elastic Beanstalk",
+            "C. Amazon Lightsail",
+            "D. AWS Amplify"
+          ],
+          "correct": "B",
+          "why": "Elastic Beanstalk は、アプリのコードをアップロードするだけで、容量の準備、ロードバランシング、Auto Scaling、ヘルスモニタリングを自動で行うサービスです。作られた EC2 などのリソースは、自分で見たり設定を変えたりもできます。",
+          "contrast": "Elastic Beanstalk = コードを渡すと、実行環境の構築とデプロイを自動で行う\nCloudFormation = テンプレートに書いたインフラを作る（アプリのデプロイ専用ではない）\nLightsail = セットになった月額プランで、サーバーなどを手軽に使う（小規模向け）\nAmplify = Web やモバイルアプリのフロントエンドを作って公開する",
+          "example": "インフラに詳しい人がいない開発チームが、Web アプリを素早く公開したいとき。",
+          "explanation": "Elastic Beanstalk 自体には追加の料金がかからず、作られた EC2 などのリソースの料金だけを払います。",
+          "sources": [
+            {
+              "title": "What is AWS Elastic Beanstalk?",
+              "url": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "SQS / SNS / EventBridge / Step Functions",
+          "question": "注文を受け付けるアプリと、注文を処理するアプリを切り離したいです。注文のメッセージをいったん貯めておき、処理する側が自分のペースで取り出して処理します。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon SQS",
+            "B. Amazon SNS",
+            "C. Amazon EventBridge",
+            "D. AWS Step Functions"
+          ],
+          "correct": "A",
+          "why": "SQS は、メッセージをキューに貯めておくフルマネージドのメッセージキューです。受け取る側がキューからメッセージを取り出して処理するので、送る側と受ける側を疎結合にでき、急な注文の増加も吸収できます。",
+          "contrast": "SQS = キューに貯めて、受け手が取りに行く（1 つのメッセージは 1 つの処理側が扱う）\nSNS = 購読者全員に、すぐにプッシュで配る（1 対多）\nEventBridge = イベントをルールで判定して、さまざまなターゲットに振り分ける\nStep Functions = 複数の処理の順番や分岐を、ワークフローとして組み立てる",
+          "example": "セールで注文が急に増えても、処理側のサーバーが自分のペースで順番に処理できるようにするとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon Simple Queue Service?",
+              "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
+            },
+            {
+              "title": "What is Amazon SNS?",
+              "url": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "パブリックサブネットの条件（インターネットゲートウェイとルートテーブル）",
+          "question": "VPC のサブネットを、インターネットと直接通信できるパブリックサブネットにするために必要なものはどれですか？",
+          "choices": [
+            "A. NAT ゲートウェイへのルートを追加する",
+            "B. VPC にインターネットゲートウェイをアタッチする",
+            "C. オンプレと AWS Direct Connect でつなぐ",
+            "D. インターネットゲートウェイへのルートを追加する"
+          ],
+          "correct": "BD",
+          "why": "インターネットゲートウェイを VPC にアタッチし、サブネットのルートテーブルにインターネットゲートウェイへのルートを追加すると、そのサブネットはパブリックサブネットになります。インスタンスがインターネットと通信するには、パブリック IP アドレスも必要です。",
+          "contrast": "インターネットゲートウェイ + そこへのルート = パブリックサブネット（双方向で通信できる）\nNAT ゲートウェイへのルート = プライベートサブネットから外へ出るだけ（外からは入れない）\nDirect Connect = オンプレとの専用線で、インターネットとの通信には関係しない\nセキュリティグループ・ネットワーク ACL = 通信の許可・拒否を決める（つなぐ仕組みではない）",
+          "example": "公開する Web サーバーはパブリックサブネットに、DB はプライベートサブネットに分けて置くとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Subnets for your VPC",
+              "url": "https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html"
+            },
+            {
+              "title": "Enable internet access for a VPC using an internet gateway",
+              "url": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html"
+            },
+            {
+              "title": "Configure route tables",
+              "url": "https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Elastic Load Balancing / EC2 Auto Scaling / Route 53 / CloudFront",
+          "question": "アプリの入口を 1 つにまとめ、受けたリクエストを複数の EC2 インスタンスに振り分けたいです。異常なインスタンスにはリクエストを送らないようにします。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon EC2 Auto Scaling",
+            "B. Amazon Route 53",
+            "C. Amazon CloudFront",
+            "D. Elastic Load Balancing"
+          ],
+          "correct": "D",
+          "why": "Elastic Load Balancing は、受け取ったトラフィックを、1 つ以上の AZ にある複数のターゲット（EC2 インスタンスなど）に自動で振り分けます。ヘルスチェックで正常と判断したターゲットにだけ送ります。",
+          "contrast": "ELB = 受けたリクエストを複数のターゲットに振り分ける（負荷分散）\nEC2 Auto Scaling = インスタンスの台数を増減する（振り分けはしない）\nRoute 53 = DNS で行き先の IP アドレスを答える（リクエストそのものは受けない）\nCloudFront = コンテンツをエッジでキャッシュして配信する",
+          "example": "Auto Scaling で台数が増減する Web サーバーの前に置き、利用者には 1 つの入口だけを見せるとき。",
+          "explanation": "ELB には、HTTP・HTTPS 向けの Application Load Balancer や、TCP・UDP 向けの Network Load Balancer などの種類があります。",
+          "sources": [
+            {
+              "title": "What is Elastic Load Balancing?",
+              "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Kinesis / Athena / Glue / Redshift",
+          "question": "Web サイトのクリック履歴や IoT センサーのデータを、発生したそばからリアルタイムに集めて処理したいです。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon Athena",
+            "B. AWS Glue",
+            "C. Amazon Kinesis",
+            "D. Amazon Redshift"
+          ],
+          "correct": "C",
+          "why": "Kinesis は、大量のストリーミングデータをリアルタイムに集めて処理するためのサービスです。Kinesis Data Streams でデータを受け取り、アプリで処理したり、ほかのサービスに送ったりできます。",
+          "contrast": "Kinesis = 流れてくるデータをリアルタイムに集めて処理する（ストリーミング）\nAthena = S3 に貯めたデータに、あとから SQL でクエリする\nGlue = データの抽出・変換・ロード（ETL）とデータカタログ\nRedshift = 大量のデータを貯めて分析するデータウェアハウス",
+          "example": "不正利用の検知やゲームのイベントなど、数秒のうちに反応したいデータを扱うとき。",
+          "explanation": "以前の Kinesis Data Firehose は、現在は Amazon Data Firehose という名前です。",
+          "sources": [
+            {
+              "title": "What is Amazon Kinesis Data Streams?",
+              "url": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-18"
+    },
+    {
+      "id": "d3-d",
+      "label": "分野3 セットD",
+      "focus": 3,
+      "questions": [
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "EC2 上の自前 DB とマネージド DB（RDS・Aurora）",
+          "question": "使いたいデータベースソフトが Amazon RDS では提供されていません。さらに、OS の設定も自分で細かく変える必要があります。どの方法が適していますか？",
+          "choices": [
+            "A. Amazon RDS を使う",
+            "B. Amazon Aurora を使う",
+            "C. EC2 に DB をインストールして運用する",
+            "D. Amazon ElastiCache を使う"
+          ],
+          "correct": "C",
+          "why": "RDS が対応していない DB ソフトを使う場合や、OS に直接ログインして設定を変える必要がある場合は、EC2 に自分で DB をインストールして運用します。その代わり、パッチの適用やバックアップ、冗長化は自分で行います。",
+          "contrast": "EC2 上の自前 DB = 自由度が高い（どの DB ソフトも、OS の設定も変えられる）。運用は自分で行う\nRDS = パッチ・バックアップ・フェイルオーバーを AWS が管理する。OS には触れない\nAurora = RDS の一つ。AWS が作った MySQL・PostgreSQL 互換のエンジン\nElastiCache = メモリ上のキャッシュ。DB ソフトの代わりにはならない",
+          "example": "RDS にない DB ソフトを使う業務システムを、そのまま AWS に移すとき。",
+          "explanation": "RDS には、Oracle と SQL Server で OS にアクセスできる RDS Custom もあります。まずは「自由度なら EC2、運用の手間を減らすなら RDS」と押さえます。",
+          "sources": [
+            {
+              "title": "What is Amazon Relational Database Service (Amazon RDS)?",
+              "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "S3 ライフサイクル設定と Intelligent-Tiering",
+          "question": "S3 に保存した請求書の PDF を、作成から 1 年たったら S3 Glacier Deep Archive に移し、7 年たったら削除したいです。経過した日数に応じて自動で行うには、何を使いますか？",
+          "choices": [
+            "A. S3 Intelligent-Tiering",
+            "B. S3 ライフサイクル設定",
+            "C. S3 バージョニング",
+            "D. S3 レプリケーション"
+          ],
+          "correct": "B",
+          "why": "S3 ライフサイクル設定では、オブジェクトを作ってからの日数をもとに、別のストレージクラスへ移すこと（移行）と、削除すること（有効期限）を、ルールで自動化できます。",
+          "contrast": "ライフサイクル設定 = 日数のルールで、ストレージクラスの移行と削除を自動化する\nIntelligent-Tiering = アクセス状況を見て、自動で階層を移す（日数のルールや削除はしない）\nバージョニング = 上書きや削除の前のバージョンを残す\nレプリケーション = オブジェクトを別のバケット（別のリージョンも可）に複製する",
+          "example": "ログをしばらく S3 Standard に置き、その後は安いクラスに移し、保存期間が過ぎたら消すとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Managing the lifecycle of objects",
+              "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html"
+            },
+            {
+              "title": "Understanding and managing Amazon S3 storage classes",
+              "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "IaC（CloudFormation）とマネジメントコンソールの使い分け",
+          "question": "コンソールで手作業で作るより、CloudFormation のテンプレート（IaC）で作るほうが適している場面はどれですか？",
+          "choices": [
+            "A. 同じ構成の環境を複数のリージョンに何度も作る",
+            "B. インフラの変更をコードでレビューし、履歴を残す",
+            "C. 新しいサービスの画面を一度だけ試しに触る",
+            "D. 今月の請求額を画面で確認する"
+          ],
+          "correct": "AB",
+          "why": "IaC は、同じ構成を何度でも正確に作りたいときや、インフラの変更をコードとしてレビュー・バージョン管理したいときに向いています。一度きりの作業や確認なら、コンソールのほうが手軽です。",
+          "contrast": "IaC（CloudFormation）= 繰り返す作業、同じ構成の再現、変更の履歴の管理\nマネジメントコンソール = 一度きりの作業、画面での確認、操作に慣れること\nCLI・SDK = コマンドやコードで API を呼ぶ（スクリプトで自動化もできる）",
+          "example": "開発・検証・本番の 3 つの環境を、同じテンプレートから作るとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is AWS CloudFormation?",
+              "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html"
+            },
+            {
+              "title": "What is the AWS Management Console?",
+              "url": "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Lightsail / Elastic Beanstalk / EC2 / Amplify",
+          "question": "小さな Web サイトを、サーバー・ストレージ・固定 IP などがセットになった、分かりやすい月額料金のプランで手軽に始めたいです。どのサービスが適していますか？",
+          "choices": [
+            "A. Amazon Lightsail",
+            "B. AWS Elastic Beanstalk",
+            "C. Amazon EC2",
+            "D. AWS Amplify"
+          ],
+          "correct": "A",
+          "why": "Lightsail は、仮想サーバー、ストレージ、固定 IP、DNS などをまとめて、低く予測しやすい月額料金で使えるサービスです。AWS に慣れていない人でも、Web サイトや小さなアプリを簡単に始められます。",
+          "contrast": "Lightsail = セットになった月額プランで、手軽にサーバーを使う（小規模向け）\nEC2 = インスタンスタイプや構成を細かく選べる（自由度が高い）\nElastic Beanstalk = アプリのコードを渡すと、実行環境を自動で作る\nAmplify = Web やモバイルアプリのフロントエンドを作って公開する",
+          "example": "個人のブログや、WordPress で作る小さな会社のサイトを始めるとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon Lightsail?",
+              "url": "https://docs.aws.amazon.com/lightsail/latest/userguide/what-is-amazon-lightsail.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "Route 53 / CloudFront / Global Accelerator / ELB",
+          "question": "独自ドメインを登録し、そのドメイン名を Web サーバーの IP アドレスに変換（名前解決）したいです。ヘルスチェックで、正常なサーバーにだけ振り向けることもしたいです。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon CloudFront",
+            "B. AWS Global Accelerator",
+            "C. Elastic Load Balancing",
+            "D. Amazon Route 53"
+          ],
+          "correct": "D",
+          "why": "Route 53 は、ドメインの登録、DNS による名前解決、ヘルスチェックの 3 つの機能を持つ DNS サービスです。ヘルスチェックの結果を使って、正常なリソースにだけ問い合わせを振り向けられます。",
+          "contrast": "Route 53 = DNS（ドメイン名から行き先を答える）とドメインの登録\nCloudFront = コンテンツをエッジでキャッシュして配信する CDN\nGlobal Accelerator = 固定の IP アドレスで受け、AWS のネットワークを通してアプリに届ける\nELB = リージョンの中で、複数のターゲットにリクエストを振り分ける",
+          "example": "独自ドメインを取得して、メインのサイトが止まったら予備のサイトに切り替える（フェイルオーバー）とき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon Route 53?",
+              "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "データ主権とリージョンの選択（AZ・エッジロケーションとの違い）",
+          "question": "法律により、顧客の個人データを国内に保存することが求められています。AWS でこの要件を満たすために、まず何を決めますか？",
+          "choices": [
+            "A. データを保存するリージョン",
+            "B. 利用するエッジロケーション",
+            "C. 利用する AZ の数",
+            "D. AWS アカウントの請求先の国"
+          ],
+          "correct": "A",
+          "why": "AWS では、データを保存するリージョンを顧客が選びます。国内にあるリージョンを選んでデータを置くことで、データ主権（データの所在地）の要件に対応できます。",
+          "contrast": "リージョン = データを置く国・地域を決める単位（データ主権の要件はリージョンの選択で満たす）\nAZ = リージョンの中の区分。AZ の数を増やしても国は変わらない\nエッジロケーション = キャッシュや DNS の拠点で、データの保存先として選ぶ単位ではない\n請求先の国 = データを保存する場所とは関係しない",
+          "example": "日本の顧客データを、東京リージョンや大阪リージョンにだけ保存するとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Overview of Amazon Web Services: Global infrastructure",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html"
+            },
+            {
+              "title": "AWS Fault Isolation Boundaries: Regions",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/regions.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "SageMaker AI / Rekognition / Lex / Textract",
+          "question": "データサイエンティストが、自社のデータを使って独自の機械学習モデルを作り、学習させ、本番環境にデプロイしたいです。どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon Rekognition",
+            "B. Amazon Lex",
+            "C. Amazon SageMaker AI",
+            "D. Amazon Textract"
+          ],
+          "correct": "C",
+          "why": "SageMaker AI は、機械学習モデルの構築、学習、デプロイまでを行えるフルマネージドのサービスです。データサイエンティストや開発者が、独自のモデルを作るときに使います。",
+          "contrast": "SageMaker AI = 独自の ML モデルを作る・学習させる・デプロイする\nRekognition = 学習済みの AI で、画像や動画を分析する（顔、物体、文字）\nLex = 音声やテキストで会話するチャットボットを作る\nTextract = スキャンした書類から、文字・表・フォームの値を取り出す",
+          "example": "自社の販売データから、需要を予測するモデルを作るとき。",
+          "explanation": "Amazon SageMaker は 2024-12-03 に Amazon SageMaker AI という名前に変わりました。今の「Amazon SageMaker」は、データ・分析・AI をまとめた新しいプラットフォームの名前です。",
+          "sources": [
+            {
+              "title": "What is Amazon SageMaker AI?",
+              "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "NoSQL とリレーショナル（DynamoDB・DocumentDB と Aurora・Redshift）",
+          "question": "表の形（スキーマ）を前もって固定せずにデータを保存できる、NoSQL データベースのサービスはどれですか？",
+          "choices": [
+            "A. Amazon Aurora",
+            "B. Amazon Redshift",
+            "C. Amazon DynamoDB",
+            "D. Amazon DocumentDB"
+          ],
+          "correct": "CD",
+          "why": "DynamoDB はキーバリュー型とドキュメント型の NoSQL、DocumentDB は MongoDB 互換のドキュメント型の NoSQL です。どちらも、決まった表の形を前もって決めずにデータを保存できます。",
+          "contrast": "DynamoDB = キーバリュー・ドキュメントの NoSQL（サーバーレス）\nDocumentDB = MongoDB 互換のドキュメント DB（JSON）\nAurora = MySQL・PostgreSQL 互換のリレーショナル DB\nRedshift = SQL で分析するデータウェアハウス（NoSQL ではない）\nNeptune = グラフ DB（これも NoSQL の一種）",
+          "example": "商品ごとに項目の数が違うカタログデータや、アプリの JSON データを保存するとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Overview of Amazon Web Services: Database",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/database.html"
+            },
+            {
+              "title": "What is Amazon DynamoDB?",
+              "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+            },
+            {
+              "title": "What is Amazon DocumentDB?",
+              "url": "https://docs.aws.amazon.com/documentdb/latest/devguide/what-is.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "AWS Backup / Elastic Disaster Recovery / Storage Gateway / S3 Glacier",
+          "question": "EBS ボリューム、RDS、DynamoDB、EFS のバックアップを、1 か所でポリシーを決めて自動で取り、保存期間もまとめて管理したいです。どのサービスを使いますか？",
+          "choices": [
+            "A. AWS Elastic Disaster Recovery",
+            "B. AWS Backup",
+            "C. AWS Storage Gateway",
+            "D. S3 Glacier Deep Archive"
+          ],
+          "correct": "B",
+          "why": "AWS Backup は、EBS、RDS、DynamoDB、EFS、FSx、S3 などのバックアップを、バックアッププランで一元的に自動化・管理するサービスです。取る頻度や保存期間をまとめて決められます。",
+          "contrast": "AWS Backup = 複数のサービスのバックアップを、ポリシーで一元管理する\nElastic Disaster Recovery = サーバーを継続的に複製し、障害時に AWS 上ですばやく復旧する（災害対策）\nStorage Gateway = オンプレから AWS のストレージを使う\nS3 Glacier Deep Archive = 長期保管用の安いストレージクラス（バックアップを管理する機能ではない）",
+          "example": "社内のルールで決めた保存期間どおりに、すべての DB とディスクのバックアップを取るとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is AWS Backup?",
+              "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html"
+            },
+            {
+              "title": "What is Elastic Disaster Recovery?",
+              "url": "https://docs.aws.amazon.com/drs/latest/userguide/what-is-drs.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 3,
+          "topic": "X-Ray / CloudTrail / CodeBuild / CodePipeline",
+          "question": "マイクロサービスで作ったアプリの応答が遅いです。リクエストがどのサービスを通り、どこで時間がかかり、どこでエラーが出ているかを追跡して調べたいです。どのサービスを使いますか？",
+          "choices": [
+            "A. AWS CloudTrail",
+            "B. AWS CodeBuild",
+            "C. AWS CodePipeline",
+            "D. AWS X-Ray"
+          ],
+          "correct": "D",
+          "why": "X-Ray は、アプリが処理するリクエストを追跡（トレース）して、サービス間の呼び出し、それぞれにかかった時間、エラーを可視化するサービスです。性能の問題や障害の原因を探すのに使います。",
+          "contrast": "X-Ray = リクエストの流れを追跡して、遅い箇所やエラーを見つける（トラブルシューティング）\nCloudTrail = 誰がどの API を呼んだかの操作履歴（監査）\nCodeBuild = ソースコードのビルドとテストを実行する\nCodePipeline = ビルド・テスト・デプロイの流れを自動化する（CI/CD）",
+          "example": "API Gateway から Lambda、DynamoDB へと続く処理の、どこが遅いかを調べるとき。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is AWS X-Ray?",
+              "url": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html"
+            },
+            {
+              "title": "What is AWS CodeBuild?",
+              "url": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html"
+            },
+            {
+              "title": "What is AWS CodePipeline?",
+              "url": "https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html"
             }
           ]
         }
