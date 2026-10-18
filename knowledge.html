@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CLF 見分け方ノート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* レイアウト: 分野のタブと検索を上に固定し、その下に「似たもの同士」のグループを縦に並べる */
+:root {
+  --paper: #f6f7f9;
+  --sheet: #ffffff;
+  --grid: #e3e8ef;
+  --ink: #1d2a3a;
+  --ink-soft: #5a6778;
+  --line: #d5dce6;
+  --accent: #2456a6;
+  --accent-soft: #e6eefb;
+  --red: #c8322b;
+  --red-soft: #fbe9e7;
+  --font-display: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #12161c; --sheet: #1a2029; --grid: #1f2630; --ink: #e4e9f0; --ink-soft: #9aa6b5;
+    --line: #2e3744; --accent: #8db4f5; --accent-soft: #1d2a40; --red: #ff8a80; --red-soft: #3a1f1e; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: max(16px, env(safe-area-inset-top, 0px));
+  padding-bottom: max(40px, env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  gap: 16px;
+}
+header { display: grid; gap: 4px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; color: var(--accent); }
+h1 { font-family: var(--font-display); font-weight: 900; font-size: 24px; line-height: 1.3; margin: 0; }
+.lead { margin: 0; color: var(--ink-soft); font-size: 14px; }
+nav { display: flex; flex-wrap: wrap; gap: 12px; font-size: 14px; }
+nav a { color: var(--accent); }
+
+.controls {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--paper); padding-block: 8px; display: grid; gap: 8px;
+}
+.tabs { display: flex; gap: 6px; overflow-x: auto; }
+.tabs button {
+  all: unset; cursor: pointer; white-space: nowrap; padding: 6px 14px; border-radius: 999px; font-size: 14px;
+  border: 1px solid var(--line); background: var(--sheet); color: var(--ink-soft);
+}
+.tabs button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#search {
+  width: 100%; font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--sheet); color: var(--ink);
+}
+#search:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.groups { display: grid; gap: 14px; }
+.group { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 10px; min-width: 0; }
+.group h2 { font-family: var(--font-display); font-size: 17px; margin: 0; }
+.tip { margin: 0; padding: 8px 10px; border-left: 3px solid var(--red); background: var(--red-soft); border-radius: 0 8px 8px 0; font-size: 14px; }
+.items { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.items li { display: grid; gap: 2px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.items li:last-child { border-bottom: 0; padding-bottom: 0; }
+.name { font-weight: 700; }
+.role { margin: 0; }
+.cue { margin: 0; font-size: 13px; color: var(--accent); }
+.cue::before { content: "キーワード："; color: var(--ink-soft); }
+.dom-label { font-size: 12px; color: var(--ink-soft); font-family: var(--font-mono); }
+.empty { text-align: center; color: var(--ink-soft); padding: 24px 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">AWS CERTIFIED CLOUD PRACTITIONER · CLF-C02</span>
+    <h1>CLF 見分け方ノート</h1>
+    <p class="lead">名前や役割が似たサービス・概念を、グループごとに並べています。問題で迷ったときや、間違えた直後の確認に使ってください。</p>
+    <nav>
+      <a href="quiz.html">クイズ</a>
+      <a href="./">間違いノート</a>
+    </nav>
+  </header>
+  <div class="controls">
+    <div class="tabs" id="tabs" role="group" aria-label="分野"></div>
+    <input id="search" type="search" placeholder="サービス名やキーワードで探す（例: Config、ログ）" aria-label="検索">
+  </div>
+  <div class="groups" id="groups"><p class="empty">読み込んでいます</p></div>
+</div>
+
+<script>
+let data = { domains: [] };
+let domain = "all";
+let query = "";
+
+function el(tag, attrs = {}, ...children) {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") node.className = v;
+    else if (k === "text") node.textContent = v;
+    else node.setAttribute(k, v);
+  }
+  for (const c of children) if (c != null) node.append(c);
+  return node;
+}
+
+function matches(text) {
+  return !query || String(text || "").toLowerCase().includes(query);
+}
+
+function render() {
+  const tabs = document.getElementById("tabs");
+  const opts = [["all", "すべて"], ...data.domains.map(d => [String(d.domain), "分野" + d.domain])];
+  tabs.replaceChildren(...opts.map(([v, t]) => {
+    const b = el("button", { type: "button", "aria-pressed": String(domain === v), text: t });
+    b.addEventListener("click", () => { domain = v; render(); });
+    return b;
+  }));
+
+  const out = [];
+  for (const d of data.domains) {
+    if (domain !== "all" && String(d.domain) !== domain) continue;
+    for (const g of d.groups || []) {
+      const hitGroup = matches(g.title) || matches(g.tip);
+      const items = (g.items || []).filter(it => hitGroup || matches(it.name) || matches(it.role) || matches(it.cue));
+      if (!items.length) continue;
+      out.push(el("section", { class: "group" },
+        el("span", { class: "dom-label", text: d.title || "分野" + d.domain }),
+        el("h2", { text: g.title }),
+        g.tip ? el("p", { class: "tip", text: g.tip }) : null,
+        el("ul", { class: "items" }, ...items.map(it => el("li", {},
+          el("span", { class: "name", text: it.name }),
+          el("p", { class: "role", text: it.role }),
+          it.cue ? el("p", { class: "cue", text: it.cue }) : null)))));
+    }
+  }
+  document.getElementById("groups").replaceChildren(...(out.length ? out : [el("p", { class: "empty", text: "見つかりませんでした。別の言葉で探してみてください。" })]));
+}
+
+document.getElementById("search").addEventListener("input", e => { query = e.target.value.trim().toLowerCase(); render(); });
+
+fetch("knowledge.json", { cache: "no-store" })
+  .then(r => r.ok ? r.json() : { domains: [] })
+  .then(d => { data = d && Array.isArray(d.domains) ? d : { domains: [] }; data.domains.sort((a, b) => a.domain - b.domain); render(); })
+  .catch(() => render());
+</script>
+</body>
+</html>

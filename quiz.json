@@ -1,0 +1,1390 @@
+{
+  "sets": [
+    {
+      "id": "rev-a",
+      "label": "出し直し セットA",
+      "focus": 0,
+      "questions": [
+        {
+          "kind": "review",
+          "no": 12,
+          "question": "アーキテクトが、自社ワークロードの設計についての質問集に一つずつ回答し、柱ごとの高リスクの課題と改善計画を記録したいです。使うサービスはどれですか？",
+          "choices": [
+            "A. AWS Trusted Advisor",
+            "B. AWS Security Hub",
+            "C. AWS Config",
+            "D. AWS Well-Architected Tool"
+          ],
+          "correct": "D",
+          "why": "人が質問に回答して設計を自己評価し、柱ごとのリスクと改善計画を記録するのは、Well-Architected Tool の使い方だから。",
+          "contrast": "Well-Architected Tool = 人が質問に答えて、ワークロードの設計をレビューする\nTrusted Advisor = AWS がアカウントを自動でチェックし、推奨事項を出す\nSecurity Hub = セキュリティの検出結果を集約し、基準に照らして自動でチェックする\nConfig = リソースの設定の変化を記録し、ルールで評価する",
+          "example": "リリース前に WA Tool で6本の柱の質問に答え、高リスクの項目の改善計画を作る。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 13,
+          "question": "Amazon RDS の DB インスタンスを、余裕を見て大きめのクラスで作りました。数か月分の CPU とメモリの使用状況を見て、ワークロードに見合ったクラスに変え、コストを下げます。この取り組みはどれですか？",
+          "choices": [
+            "A. 弾力性",
+            "B. 水平スケーリング",
+            "C. ライトサイジング",
+            "D. Savings Plans"
+          ],
+          "correct": "C",
+          "why": "実際の使用状況に合わせて、リソースの種類と大きさを適切（right）に見直してコストを下げるのがライトサイジングだから。",
+          "contrast": "ライトサイジング = 1台の種類・大きさを使用状況に合わせて見直す（コスト目的）\n水平スケーリング = 台数を増やす・減らす（スケールアウト / イン）\n弾力性 = 需要の増減に合わせて自動で伸び縮みする\nSavings Plans = 利用量を約束して割引を受ける。サイズは変えない",
+          "example": "月次の見直しで、CPU 使用率が低い DB インスタンスを1つ小さいクラスに変える。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 18,
+          "question": "EC2 上で自分で運用していた PostgreSQL を、Amazon RDS for PostgreSQL に移しました。移行後に AWS に任せられるようになった作業はどれですか？",
+          "choices": [
+            "A. セキュリティグループで接続元を絞る",
+            "B. DB エンジンのパッチ適用",
+            "C. DB ユーザーの権限の管理",
+            "D. 自動バックアップの取得"
+          ],
+          "correct": "BD",
+          "why": "RDS では、DB エンジンのパッチ適用や自動バックアップといった運用作業を AWS が引き受けるから。",
+          "contrast": "AWS に任せられる = OS と DB エンジンのパッチ、自動バックアップ、ハードウェアの保守\nRDS でも顧客に残る = セキュリティグループ、DB ユーザーと権限、暗号化の設定、データそのもの\nマネージドになっても顧客の担当はなくならない。「すべて不要」は誤り",
+          "example": "バックアップの保持期間だけ自分で決め、取得そのものは RDS の自動バックアップに任せる。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 22,
+          "question": "移行したシステムについて、障害が起きたときの対応手順、変更とリリースの管理、性能と容量の管理を整え、合意したサービスレベルで提供し続けたいです。AWS CAF のどの観点ですか？",
+          "choices": [
+            "A. オペレーション",
+            "B. ビジネス",
+            "C. プラットフォーム",
+            "D. ガバナンス"
+          ],
+          "correct": "A",
+          "why": "障害対応、変更とリリースの管理、性能と容量の管理など、サービスを合意した水準で運用し続ける取り組みは、オペレーションの観点で扱うから。",
+          "contrast": "オペレーション = 移したサービスを必要な水準で運用し続ける（監視・インシデント・変更管理・容量）\nガバナンス = 予算・リスク・移行プログラムを管理する\nビジネス = クラウド投資を売上や戦略などの成果につなげる\nプラットフォーム = クラウドの基盤やアーキテクチャを設計し、作る\n「管理」という言葉ではなく、何を管理するか（運用か、予算・リスクか）で判断する",
+          "example": "移行後の障害対応の手順とリリースの承認の流れを整えるのは、オペレーションの観点の取り組み。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 24,
+          "question": "工場の生産管理システムは、オンプレのサーバーを更新したばかりで、今移しても効果が小さいと判断しました。今回は移行の対象から外し、数年後にあらためて検討します。この移行戦略はどれですか？",
+          "choices": [
+            "A. リロケート",
+            "B. リテイン",
+            "C. リタイア",
+            "D. リパーチェス"
+          ],
+          "correct": "B",
+          "why": "システムは使い続けるが今は移行せず、オンプレに残してあとで検討するのがリテイン（retain = 保持する）だから。",
+          "contrast": "リテイン = 使い続けるが、今は移さず残す（後回し）\nリタイア = 使っていないので廃止する\nリロケート = VMware 環境をハイパーバイザーごと VMware Cloud on AWS に移す。移行はする\nリパーチェス = SaaS などの製品に買い替える",
+          "example": "規制の確認や機器の更新時期の都合で、一部のシステムだけオンプレに残す。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 25,
+          "question": "インフラ担当者は、ハードウェアの故障交換や空調・電源の管理に追われていました。クラウドに移ったことで、その時間を自社サービスの改善に使えるようになりました。これはクラウドの6つの利点のどれですか？",
+          "choices": [
+            "A. 速度と俊敏性が上がる",
+            "B. 規模の経済の恩恵を受ける",
+            "C. キャパシティの予測が不要になる",
+            "D. データセンターの運用と保守にお金をかけない"
+          ],
+          "correct": "D",
+          "why": "ハードウェアの交換や空調・電源といったデータセンターの作業から解放され、ビジネスの差別化に集中できるのがこの利点だから。",
+          "contrast": "DC の運用保守にお金をかけない = DC の作業（ラック・電源・冷却・故障交換）から解放される\n速度と俊敏性 = リソースを数週間ではなく数分で用意できる（時間の言葉が手がかり）\n規模の経済 = 多くの利用者で分け合い、単価が下がる\nキャパシティの予測が不要 = 台数の見積もりを外す心配がない",
+          "example": "サーバーの保守を担当していた人が、新機能の開発チームに移る。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 28,
+          "question": "新機能を素早く追加できるよう、オンプレの予約システムのコードと設計を見直し、AWS Lambda と Amazon DynamoDB を使うクラウドネイティブな形に作り直して移します。この移行戦略はどれですか？",
+          "choices": [
+            "A. リファクタリング",
+            "B. リプラットフォーム",
+            "C. リパーチェス",
+            "D. リホスト"
+          ],
+          "correct": "A",
+          "why": "クラウドの機能を活かすために、アプリのコードや設計そのものを作り直すのがリファクタリングだから。",
+          "contrast": "リファクタリング = コードや設計を作り直す（サーバーレス化・クラウドネイティブ化）\nリプラットフォーム = コードはほぼそのまま、土台の一部だけ変える（自前 DB → RDS など）\nリパーチェス = SaaS などの製品に買い替える\nリホスト = 何も変えずに EC2 へ移す\n「作り直す」「サーバーレスに」「マイクロサービスに」があればリファクタリング",
+          "example": "モノリスの予約処理を、Lambda の関数と DynamoDB のテーブルに分けて書き直す。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 1,
+          "question": "期間限定のキャンペーンサイトを、サーバーを購入せずに始めました。費用は毎月の利用量に応じて支払い、キャンペーンが終われば支払いも止まります。これはクラウドの6つの利点のどれですか？",
+          "choices": [
+            "A. 速度と俊敏性が上がる",
+            "B. キャパシティの予測が不要になる",
+            "C. 固定費を変動費に替える",
+            "D. 規模の経済の恩恵を受ける"
+          ],
+          "correct": "C",
+          "why": "サーバーを買う先行投資をせず、使った分だけ払う形に変わるのは、お金の払い方が固定費から変動費になるという利点だから。",
+          "contrast": "固定費→変動費 = お金の払い方の話（先行投資なし、使った分だけ）\nキャパシティの予測が不要 = サーバー台数の見積もりを外す心配がない話\n規模の経済 = 単価が下がる話\n速度と俊敏性 = 数分で用意できるという時間の話",
+          "example": "期間限定のサイトを、サーバー購入の稟議なしに月額の利用料だけで運用する。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 2,
+          "question": "ワークロードの重要な指標を監視し、しきい値を超えたら自動で復旧の処理が動くようにします。障害が起きても、人の対応を待たずに元に戻すことが目的です。Well-Architected フレームワークのどの柱の設計原則ですか？",
+          "choices": [
+            "A. パフォーマンス効率",
+            "B. 信頼性",
+            "C. 運用上の優秀性",
+            "D. セキュリティ"
+          ],
+          "correct": "B",
+          "why": "障害を監視して自動で元に戻すのは、信頼性の柱の設計原則「障害から自動で復旧する」だから。",
+          "contrast": "信頼性 = システムが壊れても動き続ける（障害から自動復旧・復旧手順をテスト・水平スケール・キャパシティを推測しない）\n運用上の優秀性 = チームの仕事の進め方（安全に自動化・小さく頻繁に変更・運用のイベントから学ぶ）\nパフォーマンス効率 = 要件に合ったリソースや技術を選んで効率よく動かす\n「自動」はどちらにも出る。目的が「障害からの復旧」なら信頼性",
+          "example": "ロードバランサーのヘルスチェックで異常を検知した EC2 を、Auto Scaling が自動で入れ替える。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 3,
+          "question": "社内のサーバー群を短期間で AWS に移すため、OS・アプリ・設定を一切変えずに Amazon EC2 へ移します。最適化は移行が終わってから行います。この移行戦略はどれですか？",
+          "choices": [
+            "A. リプラットフォーム",
+            "B. リロケート",
+            "C. リホスト",
+            "D. リファクタリング"
+          ],
+          "correct": "C",
+          "why": "中身を何も変えずに、サーバーをそのまま EC2 に移すのがリホスト（リフト&シフト）だから。",
+          "contrast": "リホスト = 何も変えずに EC2 へ移す（Application Migration Service）\nリプラットフォーム = 土台の一部を変える（自前 DB → RDS など）\nリロケート = VMware のまま VMware Cloud on AWS に移す\nリファクタリング = コードや設計を作り直す",
+          "example": "Application Migration Service で、オンプレのサーバーを変更なしに EC2 へ移す。",
+          "domain": 1
+        }
+      ],
+      "createdAt": "2026-10-18"
+    },
+    {
+      "id": "d2-a",
+      "label": "分野2 セットA",
+      "focus": 2,
+      "questions": [
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "責任共有モデル（RDS で顧客に残るもの）",
+          "question": "Amazon RDS でデータベースを運用します。責任共有モデルで、顧客の責任になるものはどれですか？",
+          "choices": [
+            "A. データベースエンジンへのパッチ適用",
+            "B. 基盤となるホストの OS へのパッチ適用",
+            "C. データベースのユーザーとアクセス権限の管理",
+            "D. データセンターの物理的なセキュリティ"
+          ],
+          "correct": "C",
+          "why": "RDS はマネージドサービスなので、OS と DB エンジンのパッチ適用は AWS が行う。顧客に残るのは、DB のユーザーと権限、セキュリティグループ、暗号化の設定、データそのものの管理。",
+          "contrast": "RDS = OS と DB エンジンのパッチは AWS（パッチを当てる時間帯はメンテナンスウィンドウで顧客が選べる）\nEC2 に自分で DB を入れた場合 = OS も DB エンジンのパッチも顧客\nどのサービスでも顧客に残る = データ、アクセス権限、セキュリティグループの設定\nデータセンターの物理的な保護 = いつでも AWS",
+          "example": "RDS のパッチは AWS に任せ、顧客は DB ユーザーの権限とセキュリティグループで「誰が接続できるか」を管理する。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Security in Amazon RDS",
+              "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.html"
+            },
+            {
+              "title": "Shared responsibility model (AWS Risk and Compliance)",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/shared-responsibility-model.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "Detective（調査）と GuardDuty（検知）/ Security Hub",
+          "question": "GuardDuty が不審なアクティビティを検出しました。関連するログをまとめて可視化し、何が起きたのか根本原因を調べたいです。使うサービスはどれですか？",
+          "choices": [
+            "A. Amazon GuardDuty",
+            "B. Amazon Detective",
+            "C. AWS Security Hub",
+            "D. Amazon Inspector"
+          ],
+          "correct": "B",
+          "why": "Detective は、CloudTrail や VPC フローログ、GuardDuty の検出結果などを自動で集めて関係を可視化し、原因の調査を助けるサービスだから。",
+          "contrast": "Detective = 見つかった後に「なぜ・どこから」を調べる（探偵）\nGuardDuty = 不審な動きを見つける（警備員）。調査の道具ではない\nSecurity Hub = 各サービスの検出結果を1か所に集めて、優先度をつけて見せる\nInspector = EC2・コンテナイメージ・Lambda の脆弱性を探す\n「検知 → GuardDuty」「調査・根本原因 → Detective」",
+          "example": "GuardDuty のアラートが出た IAM ロールについて、Detective でいつ・どの IP アドレスから・どの API を呼んだかを時系列でたどる。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "What is Amazon Detective?",
+              "url": "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "Cognito（アプリの利用者）と IAM Identity Center（社員）",
+          "question": "自社で開発したモバイルアプリに、利用者の会員登録とサインインの機能を付け、Google アカウントでもログインできるようにしたいです。使うサービスはどれですか？",
+          "choices": [
+            "A. AWS IAM Identity Center",
+            "B. AWS Identity and Access Management",
+            "C. AWS Organizations",
+            "D. Amazon Cognito"
+          ],
+          "correct": "D",
+          "why": "Cognito は、Web アプリやモバイルアプリの利用者（お客さん）向けに、会員登録・サインインや、Google などのソーシャル ID でのログインを提供するサービスだから。",
+          "contrast": "Cognito = 自社アプリのお客さん（エンドユーザー）のサインイン\nIAM Identity Center = 社員が複数の AWS アカウントや業務アプリに入るシングルサインオン\nIAM = AWS のリソースを操作する人やアプリの権限の管理\nOrganizations = 複数の AWS アカウントをまとめて管理する\n「アプリの利用者 → Cognito」「社員 → Identity Center」",
+          "example": "EC サイトのアプリで、会員登録とログイン、Google や Apple でのログインを Cognito のユーザープールで作る。",
+          "explanation": "ノート No.49（社員のシングルサインオン → Identity Center）と対になる問題。",
+          "sources": [
+            {
+              "title": "What is Amazon Cognito?",
+              "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "IAM ポリシーの評価（明示的な拒否が優先）",
+          "question": "ある IAM ユーザーに、グループのポリシーで S3 の読み取りが許可され、ユーザーに付けた別のポリシーで同じ操作が明示的に拒否されています。この操作はどうなりますか？",
+          "choices": [
+            "A. 拒否される",
+            "B. 許可される",
+            "C. 後から付けたポリシーが優先される",
+            "D. グループのポリシーが優先される"
+          ],
+          "correct": "A",
+          "why": "IAM のポリシーの評価では、明示的な拒否（Deny）が1つでもあれば、ほかのポリシーの許可より優先されるから。",
+          "contrast": "明示的な拒否（Deny）= 最優先。許可がいくつあっても覆らない\n明示的な許可（Allow）= 拒否がなければ有効になる\n何も書かれていない = 暗黙の拒否（デフォルトは拒否）\nポリシーを付けた順番や、ユーザーとグループのどちらに付けたかは関係ない",
+          "example": "本番の S3 バケットの削除を Deny するポリシーを付けておけば、管理者権限のグループに入っている人でも削除できない。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Policy evaluation logic",
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "アクセスキーの扱い（削除・共有しない・ルートのキー）",
+          "question": "IAM のアクセスキーの扱いとして、適切なものはどれですか？",
+          "choices": [
+            "A. アプリのソースコードにアクセスキーを書く",
+            "B. 使っていないアクセスキーは無効化・削除する",
+            "C. チームの全員で1つのアクセスキーを共有する",
+            "D. ルートユーザーのアクセスキーは作らない"
+          ],
+          "correct": "BD",
+          "why": "アクセスキーは長期的な認証情報で、漏れると悪用される。不要なキーは消し、すべての権限を持つルートユーザーのキーは作らないのがベストプラクティスだから。",
+          "contrast": "ソースコードに書く → 漏えいの原因。EC2 上のアプリなら IAM ロール、秘密情報は Secrets Manager を使う\n共有する → CloudTrail で誰が操作したか区別できない。1人に1つの認証情報にする\nルートユーザーのキー → すべての権限を持つので、あれば削除する\nできれば長期のアクセスキーより、ロールの一時的な認証情報を使う",
+          "example": "IAM の認証情報レポートでアクセスキーの最終使用日を確かめ、長く使われていないキーを無効化してから削除する。",
+          "explanation": "IAM の認証情報レポート（credential report）で、全 IAM ユーザーのパスワード・アクセスキー・MFA の状態を一覧で確かめられる。",
+          "sources": [
+            {
+              "title": "Security best practices in IAM",
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html"
+            },
+            {
+              "title": "Manage access keys for IAM users",
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "ACM（証明書）と KMS / Secrets Manager / CloudHSM",
+          "question": "Web サイトを HTTPS で公開するため、SSL/TLS 証明書を発行し、期限が来る前に自動で更新されるようにしたいです。使うサービスはどれですか？",
+          "choices": [
+            "A. AWS Key Management Service (AWS KMS)",
+            "B. AWS Secrets Manager",
+            "C. AWS Certificate Manager (ACM)",
+            "D. AWS CloudHSM"
+          ],
+          "correct": "C",
+          "why": "ACM は、SSL/TLS 証明書の発行・管理・更新を行い、ELB や CloudFront に組み込んで通信（転送中のデータ）を暗号化できるサービスだから。",
+          "contrast": "ACM = SSL/TLS 証明書（転送中の暗号化、HTTPS）\nKMS = データを暗号化する鍵（主に保管中の暗号化）\nSecrets Manager = パスワードや API キーなどの秘密情報の保管とローテーション\nCloudHSM = 専有のハードウェアで鍵を管理する\n「証明書・HTTPS → ACM」「暗号鍵 → KMS」",
+          "example": "ACM で発行した証明書を ALB や CloudFront に設定して、サイトを HTTPS で公開する。",
+          "explanation": "ACM が発行した証明書は、ACM のマネージド更新で自動的に更新される。",
+          "sources": [
+            {
+              "title": "What is AWS Certificate Manager?",
+              "url": "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html"
+            },
+            {
+              "title": "Managed certificate renewal in AWS Certificate Manager",
+              "url": "https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "Organizations の SCP と IAM ポリシー / Config",
+          "question": "AWS Organizations で管理しているすべてのメンバーアカウントで、東京リージョン以外の利用を禁止したいです。各アカウントの管理者でも外せないようにするには、何を使いますか？",
+          "choices": [
+            "A. サービスコントロールポリシー（SCP）",
+            "B. 各アカウントの IAM ポリシー",
+            "C. AWS Config ルール",
+            "D. AWS IAM Identity Center"
+          ],
+          "correct": "A",
+          "why": "SCP は、Organizations のメンバーアカウントで使える権限の上限を決めるポリシーで、アカウントの中の IAM ユーザーやロール（ルートユーザーも含む）でも、SCP が許さない操作はできないから。",
+          "contrast": "SCP = アカウント単位で「できることの上限」を決める。権限を与えるのではなく、制限するだけ\nIAM ポリシー = アカウントの中のユーザーやロールに権限を与える。アカウントの管理者なら書き換えられる\nConfig ルール = 設定がルールに合っているかを評価して知らせる。操作を止めはしない\nIdentity Center = 社員のサインインと、アカウントへのアクセスの割り当て\n「禁止・ガードレール → SCP」「評価・検出 → Config」",
+          "example": "全メンバーアカウントに「CloudTrail の停止を禁止する」SCP を付けて、ログを止められないようにする。",
+          "explanation": "SCP は管理アカウントには効かない。",
+          "sources": [
+            {
+              "title": "Service control policies (SCPs)",
+              "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "Parameter Store（設定値）と Secrets Manager / Config",
+          "question": "アプリの設定値（接続先の URL や機能のオン・オフなど）を、名前で階層的にまとめて保存し、コードから読み出したいです。最も適したものはどれですか？",
+          "choices": [
+            "A. AWS Secrets Manager",
+            "B. AWS Config",
+            "C. AWS Key Management Service (AWS KMS)",
+            "D. AWS Systems Manager Parameter Store"
+          ],
+          "correct": "D",
+          "why": "Parameter Store は Systems Manager の機能で、設定値やパスワードなどを階層的に保存し、アプリから読み出せるから（KMS で暗号化して保存することもできる）。",
+          "contrast": "Parameter Store = 設定値をまとめて保存する（秘密情報も暗号化して置ける）\nSecrets Manager = DB のパスワードなどの秘密情報を保管し、自動でローテーションする\nAWS Config = 「AWS リソースの設定」の記録と評価。アプリの設定値を置く場所ではない\nKMS = 暗号化の鍵を管理する。値そのものを保存する場所ではない\n「自動ローテーション → Secrets Manager」「設定値 → Parameter Store」",
+          "example": "/myapp/prod/api-url のような名前で値を置き、アプリの起動時に読み出す。",
+          "explanation": "名前の「Config」につられやすいが、AWS Config はアプリの設定値の保存場所ではない。",
+          "sources": [
+            {
+              "title": "AWS Systems Manager Parameter Store",
+              "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "Trusted Advisor のセキュリティチェックと GuardDuty / Macie",
+          "question": "AWS Trusted Advisor のセキュリティのチェックで確認できるものはどれですか？",
+          "choices": [
+            "A. ルートユーザーで MFA が有効になっているか",
+            "B. EC2 への不審な通信がないか",
+            "C. セキュリティグループで特定のポートが全開放されていないか",
+            "D. S3 のファイルに個人情報が含まれていないか"
+          ],
+          "correct": "AC",
+          "why": "Trusted Advisor は、アカウントの設定をベストプラクティスと照らし合わせて推奨を出すサービスで、ルートユーザーの MFA や、セキュリティグループのポートの開けすぎを確認できるから。",
+          "contrast": "Trusted Advisor = アカウントの「設定」をベストプラクティスと比べて助言する（コスト・セキュリティ・耐障害性など）\nGuardDuty = ログを分析して不審な通信や脅威を検知する（B）\nMacie = S3 のデータの中身から個人情報を見つける（D）\nTrusted Advisor は設定を見る。通信の中身やデータの中身は見ない",
+          "example": "Trusted Advisor のセキュリティの項目で、ルートユーザーの MFA と、SSH が全世界に開いたセキュリティグループがないかを定期的に確かめる。",
+          "explanation": "Basic サポートでも、ルートユーザーの MFA やセキュリティグループのポートなど一部のセキュリティチェックは使える。全部のチェックは Business Support+ 以上のプラン。",
+          "sources": [
+            {
+              "title": "AWS Trusted Advisor check reference: Security",
+              "url": "https://docs.aws.amazon.com/awssupport/latest/user/security-checks.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "CloudWatch（見張って通知）と CloudTrail（記録）/ Config",
+          "question": "CloudTrail のログを CloudWatch Logs に送っています。ルートユーザーでのサインインが記録されたら、アラームで管理者に通知したいです。アラームを設定するサービスはどれですか？",
+          "choices": [
+            "A. AWS CloudTrail",
+            "B. Amazon CloudWatch",
+            "C. AWS Config",
+            "D. Amazon Inspector"
+          ],
+          "correct": "B",
+          "why": "CloudWatch では、ログの中の特定のイベントをメトリクスフィルターで数え、しきい値を超えたらアラームで SNS などに通知できるから。",
+          "contrast": "CloudWatch = メトリクスとログを見張り、アラームで知らせる（監視）\nCloudTrail = 誰がいつどの API を呼んだかを記録する（記録はするが、アラームは鳴らさない）\nConfig = リソースの設定の変化を記録し、ルールに合うかを評価する\nInspector = 脆弱性を探す\n「記録 → CloudTrail」「見張って通知 → CloudWatch」",
+          "example": "CloudTrail のログにルートユーザーのコンソールサインインが出たら、CloudWatch アラームから SNS でメールを送る。",
+          "explanation": "EventBridge のルールで通知する方法もある。",
+          "sources": [
+            {
+              "title": "Monitoring CloudTrail Log Files with Amazon CloudWatch Logs",
+              "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/monitor-cloudtrail-log-files-with-cloudwatch-logs.html"
+            },
+            {
+              "title": "Using Amazon CloudWatch alarms",
+              "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-18"
+    },
+    {
+      "id": "d4-a",
+      "label": "分野4 セットA",
+      "focus": 4,
+      "questions": [
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Compute Savings Plans と EC2 Instance Savings Plans / リザーブドインスタンス",
+          "question": "EC2 に加えて、AWS Fargate と AWS Lambda の利用料も、1年か3年の利用を約束して割引したいです。どれを選びますか？",
+          "choices": [
+            "A. EC2 Instance Savings Plans",
+            "B. スタンダードリザーブドインスタンス",
+            "C. Compute Savings Plans",
+            "D. スポットインスタンス"
+          ],
+          "correct": "C",
+          "why": "Compute Savings Plans は、1時間あたりの利用額を1年か3年約束すると、EC2・Fargate・Lambda の料金がまとめて割引されるから。",
+          "contrast": "Compute Savings Plans = EC2・Fargate・Lambda に効く。インスタンスファミリーやリージョンを変えても割引が続く\nEC2 Instance Savings Plans = EC2 だけ。リージョンとインスタンスファミリーを固定する代わりに、割引が大きい\nリザーブドインスタンス = EC2 や RDS などのインスタンスの条件を決めて予約する。Fargate や Lambda には効かない\nスポットインスタンス = 約束なしで最も安いが、中断されることがある",
+          "example": "コンテナ（Fargate）やサーバーレス（Lambda）へ移行中の会社が、Compute Savings Plans で全体の利用料を下げる。",
+          "explanation": "Savings Plans は「インスタンス」ではなく「1時間あたりの利用額」を約束します。\nリザーブドインスタンスより柔軟なので、AWS は新しく買うなら Savings Plans を勧めています。",
+          "sources": [
+            {
+              "title": "What are Savings Plans?",
+              "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
+            },
+            {
+              "title": "Savings Plans types",
+              "url": "https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html"
+            },
+            {
+              "title": "Reserved Instances for Amazon EC2 overview",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Pricing Calculator と Cost Explorer / Budgets / CUR",
+          "question": "まだ AWS を使っていない会社が、移行後の構成で月額がいくらになるかを見積もり、社内で共有したいです。何を使いますか？",
+          "choices": [
+            "A. AWS Cost Explorer",
+            "B. AWS Pricing Calculator",
+            "C. AWS Budgets",
+            "D. AWS Cost and Usage Reports"
+          ],
+          "correct": "B",
+          "why": "Pricing Calculator は、使う予定のサービスと量を入れて、まだ使っていない構成の料金を見積もるツールだから。見積もりはリンクやファイルで共有できる。",
+          "contrast": "Pricing Calculator = これから使う分の見積もり。AWS アカウントがなくても使える\nCost Explorer = すでに使った分をグラフで分析し、予測も見る\nBudgets = 予算を決めて見張り、超えそうなら通知や操作をする\nCost and Usage Reports = 最も細かい利用データをファイルで受け取る",
+          "example": "クラウド移行の稟議書に、Pricing Calculator で作った見積もりのリンクを貼る。",
+          "sources": [
+            {
+              "title": "What is AWS Pricing Calculator?",
+              "url": "https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Business Support+ と Enterprise Support（付くもの）",
+          "question": "本番環境のために、AWS Business Support+ を契約しました。Basic から上げたことで使えるようになるものはどれですか？",
+          "choices": [
+            "A. 専任のテクニカルアカウントマネージャー",
+            "B. Trusted Advisor のすべてのチェック",
+            "C. AWS Health API",
+            "D. Trusted Advisor Priority"
+          ],
+          "correct": "BC",
+          "why": "Business Support+ では、Trusted Advisor のすべてのチェックと、AWS Health API が使えるようになるから。",
+          "contrast": "Basic = 無料。Trusted Advisor のコアチェックと Health Dashboard。技術サポートのケースは開けない\nBusiness Support+ = Trusted Advisor の全チェックと Health API。本番環境の最低推奨\nEnterprise Support = 上に加えて、専任の TAM と Trusted Advisor Priority\nUnified Operations = ミッションクリティカル向けの最上位",
+          "example": "本番サービスを始める会社が、Business Support+ にして、Health API のイベントを運用ツールに取り込む。",
+          "explanation": "サポートプランは 2025-12 に再編され、今は Basic・Business Support+・Enterprise Support・Unified Operations の4つです。\n古い教材の Developer・Business・Enterprise On-Ramp は、試験ガイドに載っていません。",
+          "sources": [
+            {
+              "title": "AWS Support plan comparison",
+              "url": "https://aws.amazon.com/premiumsupport/plans/"
+            },
+            {
+              "title": "AWS Support Plans（AWS Support User Guide）",
+              "url": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html"
+            },
+            {
+              "title": "Integrating AWS Health with other systems using the AWS Health API",
+              "url": "https://docs.aws.amazon.com/health/latest/ug/health-api.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Dedicated Hosts と Dedicated Instances / キャパシティ予約",
+          "question": "ソケット数やコア数で課金されるソフトウェアのライセンスを、AWS に持ち込みたいです。物理サーバーのソケットとコアが見える購入オプションはどれですか？",
+          "choices": [
+            "A. Dedicated Instances",
+            "B. オンデマンドキャパシティ予約",
+            "C. リザーブドインスタンス",
+            "D. Dedicated Hosts"
+          ],
+          "correct": "D",
+          "why": "Dedicated Hosts は物理サーバー1台を専有し、ソケットやコアの数が見えるので、ソケット単位・コア単位のライセンスを持ち込める（BYOL）から。",
+          "contrast": "Dedicated Hosts = 物理サーバー（ホスト）単位で借りる。ソケット・コアが見え、BYOL に向く\nDedicated Instances = 他の顧客とハードウェアを共有しないが、ホストの中身は見えない。インスタンス単位で使う\nオンデマンドキャパシティ予約 = 特定の AZ に容量を確保するだけで、専有ではない\nリザーブドインスタンス = 割引の仕組みで、専有とは関係ない",
+          "example": "Windows Server や SQL Server のコア単位のライセンスを、Dedicated Hosts に持ち込んで使い続ける。",
+          "sources": [
+            {
+              "title": "Amazon EC2 Dedicated Hosts",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html"
+            },
+            {
+              "title": "Amazon EC2 Dedicated Instances",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Cost and Usage Reports と Cost Explorer / Budgets",
+          "question": "時間ごと・リソースごとの最も細かいコストと使用量のデータを S3 に出力し、Amazon Athena で分析したいです。何を使いますか？",
+          "choices": [
+            "A. AWS Cost and Usage Reports",
+            "B. AWS Cost Explorer",
+            "C. AWS Budgets",
+            "D. AWS Pricing Calculator"
+          ],
+          "correct": "A",
+          "why": "Cost and Usage Reports（CUR）は、最も詳しいコストと使用量のデータを S3 バケットにファイルで出力するから。Athena や Quick Sight で分析できる。",
+          "contrast": "Cost and Usage Reports = 最も細かいデータをファイル（S3）で受け取り、自分で分析する\nCost Explorer = コンソールのグラフで、すぐに傾向や予測を見る\nBudgets = 予算を決めて見張る\nPricing Calculator = これから使う分の見積もり",
+          "example": "経理チームが、CUR を Athena で集計して、プロジェクトごとの月次レポートを作る。",
+          "explanation": "今は AWS Data Exports から「CUR 2.0」として出力する方法が勧められ、従来の CUR は Legacy と書かれています。\n試験ガイドには「AWS Cost and Usage Reports」の名前で載っているので、試験ではこの名前で覚えます。",
+          "sources": [
+            {
+              "title": "What are AWS Cost and Usage Reports?",
+              "url": "https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html"
+            },
+            {
+              "title": "Migrating from CUR to Data Exports CUR 2.0",
+              "url": "https://docs.aws.amazon.com/cur/latest/userguide/dataexports-migrate.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Professional Services と AWS Partner Network / Marketplace",
+          "question": "大規模なシステム移行を、AWS 社員の専門家チームに有償で直接支援してもらいたいです。何を利用しますか？",
+          "choices": [
+            "A. AWS Partner Network",
+            "B. AWS re:Post",
+            "C. AWS Marketplace",
+            "D. AWS Professional Services"
+          ],
+          "correct": "D",
+          "why": "AWS Professional Services は、AWS 社員の専門家チームが、移行や導入をお客様と一緒に進める有償のサービスだから。",
+          "contrast": "Professional Services = AWS 社員の専門家チームが直接支援する\nAWS Partner Network（APN）= AWS と協力する外部のパートナー企業の集まり。外部の会社に頼むならこちら\nMarketplace = サードパーティーのソフトウェアなどを探して買うカタログ\nre:Post = 無料で質問できるコミュニティの Q&A",
+          "example": "基幹システムをクラウドへ移す会社が、AWS Professional Services とともに移行計画を立てる。",
+          "sources": [
+            {
+              "title": "AWS Professional Services",
+              "url": "https://aws.amazon.com/professional-services/"
+            },
+            {
+              "title": "AWS Partner Network",
+              "url": "https://aws.amazon.com/partners/"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "データ転送料金（受信と送信）",
+          "question": "量にかかわらず、データ転送の料金がかからないものはどれですか？",
+          "choices": [
+            "A. インターネットから AWS へのデータ受信",
+            "B. EC2 からインターネットへのデータ送信",
+            "C. 別のリージョンへのデータ転送",
+            "D. 同じリージョンの S3 から EC2 への転送"
+          ],
+          "correct": "AD",
+          "why": "インターネットから AWS への受信は無料で、S3 から同じリージョンの EC2 への転送も無料だから。",
+          "contrast": "受信（インターネット → AWS）= 無料\n送信（AWS → インターネット）= 毎月の一定量を超えると有料\nリージョン間の転送 = 有料\n同じリージョンの S3 → EC2 などのサービス = 無料\n別の AZ の EC2 同士 = 有料（同じ AZ でプライベート IP なら無料）",
+          "example": "アップロードを受け付けるだけのサービスは受信なので転送料金がかからないが、ダウンロードの多いサービスは送信の料金を見積もりに入れる。",
+          "explanation": "「入るのは無料、出るのは有料」と覚えます。\nただし NAT ゲートウェイを通ると、転送とは別に、その処理の料金がかかります。",
+          "sources": [
+            {
+              "title": "Understanding data transfer charges",
+              "url": "https://docs.aws.amazon.com/cur/latest/userguide/cur-data-transfers-charges.html"
+            },
+            {
+              "title": "Amazon S3 pricing",
+              "url": "https://aws.amazon.com/s3/pricing/"
+            },
+            {
+              "title": "Amazon EC2 On-Demand Pricing（Data Transfer）",
+              "url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Budgets のアクションと Cost Explorer / Trusted Advisor",
+          "question": "コストが予算のしきい値に達したら、新しいリソースを作れないよう、IAM ポリシーを自動で適用したいです。何を使いますか？",
+          "choices": [
+            "A. AWS Cost Explorer",
+            "B. AWS Budgets",
+            "C. AWS Trusted Advisor",
+            "D. AWS Cost and Usage Reports"
+          ],
+          "correct": "B",
+          "why": "Budgets は、しきい値に達したときに、IAM ポリシーや SCP の適用、EC2・RDS インスタンスの停止といった「予算アクション」を実行できるから。",
+          "contrast": "Budgets = 予算を見張り、通知に加えて自動の操作（予算アクション）もできる\nCost Explorer = 使った分のグラフと予測を見る。操作はしない\nTrusted Advisor = アカウントを点検して、コスト削減などの推奨を出す\nCost and Usage Reports = 細かい利用データを出力するだけ",
+          "example": "検証用アカウントで予算の 100% に達したら、Budgets のアクションで EC2 の新規作成を止める。",
+          "explanation": "予算アクションは、自動で実行するか、承認してから実行するかを選べます。",
+          "sources": [
+            {
+              "title": "Configuring budget actions",
+              "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-controls.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "S3 Intelligent-Tiering と Standard-IA / Glacier（ストレージ階層の料金）",
+          "question": "アクセスの頻度が読めず、時期によって大きく変わるデータを S3 に置きます。手間をかけずに保存料金を抑えたいとき、どのストレージクラスを選びますか？",
+          "choices": [
+            "A. S3 Intelligent-Tiering",
+            "B. S3 Standard-IA",
+            "C. S3 Glacier Deep Archive",
+            "D. S3 Standard"
+          ],
+          "correct": "A",
+          "why": "S3 Intelligent-Tiering は、アクセスのパターンを見て、使われていないオブジェクトを自動で安い階層へ移すから。取り出しの料金もかからない。",
+          "contrast": "S3 Intelligent-Tiering = アクセスが読めないデータ。自動で階層を移す。少額の監視料金がかかる\nS3 Standard = よく使うデータ。保存料金は高めで、取り出しの料金はない\nS3 Standard-IA = たまにしか使わないが、すぐ取り出したいデータ。保存は安いが、取り出しに料金がかかる\nS3 Glacier Deep Archive = 何年も保管するだけのデータ。最も安いが、取り出しに時間がかかる",
+          "example": "利用状況が読めない新サービスの、ユーザーがアップロードした画像を Intelligent-Tiering に置く。",
+          "sources": [
+            {
+              "title": "Managing storage costs with Amazon S3 Intelligent-Tiering",
+              "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering.html"
+            },
+            {
+              "title": "Understanding and managing Amazon S3 storage classes",
+              "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "サポートプランの選び方（TAM が付くのは Enterprise Support から）",
+          "question": "専任のテクニカルアカウントマネージャー（TAM）から、能動的な助言や Well-Architected レビューを受けたいです。この条件を満たす、最も安いサポートプランはどれですか？",
+          "choices": [
+            "A. AWS Basic Support",
+            "B. AWS Business Support+",
+            "C. AWS Enterprise Support",
+            "D. AWS Unified Operations"
+          ],
+          "correct": "C",
+          "why": "専任の TAM が付き、Well-Architected レビューなどの能動的な支援を受けられるのは、Enterprise Support からだから。",
+          "contrast": "Enterprise Support = 専任の TAM、Trusted Advisor Priority、Well-Architected レビュー。ビジネスクリティカル向け\nUnified Operations = 専任の TAM も付くが、ミッションクリティカル向けの最上位で、最も安くはない\nBusiness Support+ = Trusted Advisor の全チェックと Health API まで。専任の TAM は付かない\nBasic = 無料。カスタマーサービス、ドキュメント、re:Post まで",
+          "example": "大規模なシステムを運用する会社が、Enterprise Support の TAM と定期的に構成やコストを見直す。",
+          "explanation": "Unified Operations にも専任の TAM が付きますが、「最も安い」という条件があるので Enterprise Support になります。\nサポートプランは 2025-12 に再編され、古い教材の Enterprise On-Ramp などは今の試験ガイドに載っていません。",
+          "sources": [
+            {
+              "title": "AWS Enterprise Support",
+              "url": "https://aws.amazon.com/premiumsupport/plans/enterprise/"
+            },
+            {
+              "title": "AWS Support Plans（AWS Support User Guide）",
+              "url": "https://docs.aws.amazon.com/awssupport/latest/user/aws-support-plans.html"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-18"
+    },
+    {
+      "id": "rev-b",
+      "label": "出し直し セットB",
+      "focus": 0,
+      "questions": [
+        {
+          "kind": "review",
+          "no": 4,
+          "question": "Amazon EC2 で社内向けの Web アプリを運用しています。責任共有モデルで、自社の担当になる作業はどれですか？",
+          "choices": [
+            "A. ゲスト OS のパッチ適用",
+            "B. ハイパーバイザーの更新",
+            "C. 物理サーバーの故障交換",
+            "D. セキュリティグループの設定"
+          ],
+          "correct": "AD",
+          "why": "EC2 は IaaS なので、ゲスト OS から上と、セキュリティグループなどのアクセスの設定は顧客の担当だから。",
+          "contrast": "AWS = 建物・物理サーバー・ハイパーバイザー（クラウドのセキュリティ）\n顧客 = EC2 のゲスト OS のパッチ・アプリ・データ・セキュリティグループ（クラウドにおけるセキュリティ）\nRDS や Lambda では、OS のパッチも AWS の担当になる",
+          "example": "EC2 の Amazon Linux に自分で更新を当て、セキュリティグループで接続元を社内の IP に絞る。",
+          "domain": 2
+        },
+        {
+          "kind": "review",
+          "no": 5,
+          "question": "取引先のセキュリティ審査で、利用しているクラウド事業者の ISO 認証や第三者の監査レポートの提出を求められました。AWS のこうした文書を入手するには、どのサービスを使いますか？",
+          "choices": [
+            "A. Amazon Inspector",
+            "B. AWS Artifact",
+            "C. AWS Config",
+            "D. AWS Security Hub"
+          ],
+          "correct": "B",
+          "why": "ISO 認証や SOC レポートなど、AWS 自身のコンプライアンス文書をセルフサービスで入手する窓口が Artifact だから。",
+          "contrast": "Artifact = AWS のコンプライアンスレポートや契約を入手する\nSecurity Hub = 自分のアカウントの状態を基準に照らして自動でチェックし、検出結果を集約する\nInspector = EC2・コンテナイメージ・Lambda の脆弱性をスキャンする\nConfig = 自分のリソースの設定を記録し、ルールで評価する\n「AWS 自身の」文書なら Artifact、「自分のアカウントの」チェックならそれ以外",
+          "example": "取引先の審査に、Artifact からダウンロードした AWS の ISO 27001 の証明書を添付する。",
+          "domain": 2
+        },
+        {
+          "kind": "review",
+          "no": 6,
+          "question": "本番環境の S3 バケットのポリシーが、いつの間にか書き換えられていました。どの IAM ユーザーが、いつ変更の操作をしたかを調べるには、どのサービスを使いますか？",
+          "choices": [
+            "A. AWS Config",
+            "B. Amazon CloudWatch",
+            "C. Amazon GuardDuty",
+            "D. AWS CloudTrail"
+          ],
+          "correct": "D",
+          "why": "誰が・いつ・どの API 操作をしたかを記録するのは CloudTrail だから。Trail は足跡。",
+          "contrast": "CloudTrail = 誰が何をしたか（API 操作の足跡）\nConfig = 設定がどう変わったか（変更の前後の設定）\nCloudWatch = 状態の見張り（メトリクス・ログ・アラーム）\nGuardDuty = ログから不審な動きを検知する",
+          "example": "CloudTrail のイベント履歴で PutBucketPolicy の操作を探し、実行したユーザーを特定する。",
+          "domain": 2
+        },
+        {
+          "kind": "review",
+          "no": 7,
+          "question": "大量の動画の変換処理を、急ぎではないので費用を最も抑えて動かしたいです。処理は途中で止まっても、やり直せる設計になっています。どの購入オプションを選びますか？",
+          "choices": [
+            "A. スポットインスタンス",
+            "B. オンデマンドインスタンス",
+            "C. Savings Plans",
+            "D. Dedicated Instances"
+          ],
+          "correct": "A",
+          "why": "中断されてもやり直せる処理なら、AWS の余った容量を大きな割引で使えるスポットインスタンスが最も安いから。",
+          "contrast": "スポット = 中断されてもよい処理を最安で\nSavings Plans / リザーブド = 1年か3年、継続して使うと約束して割引を受ける\nオンデマンド = 短期・予測できない・中断できない処理\nDedicated Instances = ほかの顧客とハードウェアを共有しない",
+          "example": "夜間の動画変換のバッチを、スポットインスタンスで安く回す。",
+          "domain": 4
+        },
+        {
+          "kind": "review",
+          "no": 8,
+          "question": "社内の経費精算システムは、月末の締め日だけ利用者が集中します。その日だけ自動でサーバーを増やし、締め日が終わったら減らして、余分な費用を払わないようにします。これは AWS クラウドのどの特性ですか？",
+          "choices": [
+            "A. 耐久性",
+            "B. 俊敏性",
+            "C. 弾力性",
+            "D. 高可用性"
+          ],
+          "correct": "C",
+          "why": "需要の増減に合わせて、リソースを自動で増やしたり減らしたりできるのが弾力性（Elasticity）だから。",
+          "contrast": "弾力性 = 需要に合わせて自動で増減する（Auto Scaling）\n高可用性 = 障害が起きても止まらない（複数 AZ）\n俊敏性 = 数分で用意でき、速く試せる\n耐久性 = データが失われない（S3 のイレブンナイン）",
+          "example": "月末だけ Auto Scaling で EC2 を増やし、締め日が過ぎたら元の台数に戻す。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 9,
+          "question": "同じ処理をより少ない電力でこなせるインスタンスを選び、データの保存期間も必要な分だけに絞って、ワークロードの炭素排出量を減らします。Well-Architected フレームワークのどの柱に重点を置いた取り組みですか？",
+          "choices": [
+            "A. パフォーマンス効率",
+            "B. コスト最適化",
+            "C. 運用上の優秀性",
+            "D. 持続可能性"
+          ],
+          "correct": "D",
+          "why": "目的が、炭素排出量やエネルギー消費といった環境への影響を減らすことなので、持続可能性の柱だから。",
+          "contrast": "持続可能性 = 環境への影響を減らす（ゴールは地球）\nコスト最適化 = 無駄なお金を減らす（ゴールは財布）\nパフォーマンス効率 = 要件に合ったリソースで速く効率よく動かす\n効率の良いインスタンスや不要なデータの削除は複数の柱に出るので、目的で判断する",
+          "example": "電力効率の高い Graviton インスタンスに切り替え、古いログはライフサイクルで削除する。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 10,
+          "question": "クラウド移行に合わせて、新しい職務と役割を定義し、社員の育成計画を立て、クラウドを前提とした組織の文化づくりを進めます。AWS CAF のどの観点に当たりますか？",
+          "choices": [
+            "A. 人材",
+            "B. プラットフォーム",
+            "C. ガバナンス",
+            "D. ビジネス"
+          ],
+          "correct": "A",
+          "why": "職務と役割、社員の育成、組織の文化といった「人」に関わる取り組みは、人材（People）の観点だから。",
+          "contrast": "人材 = スキル・役割・組織・文化・チェンジマネジメント\nガバナンス = 予算・リスク・移行プログラムを管理する\nビジネス = クラウド投資を売上や戦略などの成果につなげる\nプラットフォーム = クラウドの基盤やアーキテクチャを設計し、作る",
+          "example": "移行前に、インフラ担当者向けの研修計画と、クラウド推進チーム（CCoE）の役割を決める。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 11,
+          "question": "オンプレの EC サイトを移行します。アプリのコードはほぼ変えず、自前で運用していた DB とキャッシュを、それぞれ Amazon RDS と Amazon ElastiCache に置き換えます。この移行戦略はどれですか？",
+          "choices": [
+            "A. リホスト",
+            "B. リファクタリング",
+            "C. リプラットフォーム",
+            "D. リロケート"
+          ],
+          "correct": "C",
+          "why": "コードはほぼそのままで、DB やキャッシュといった土台（platform）の一部だけをマネージドサービスに置き換えるのがリプラットフォームだから。",
+          "contrast": "リプラットフォーム = 土台の一部をマネージドに置き換える（DB → RDS、キャッシュ → ElastiCache）\nリホスト = 何も変えずに EC2 へ移す\nリファクタリング = コードや設計を作り直す\nリロケート = VMware 環境をハイパーバイザーごと移す",
+          "example": "EC2 上の自前 MySQL をやめて RDS for MySQL に移し、パッチとバックアップを AWS に任せる。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 14,
+          "question": "自社で購入済みの Oracle Database のライセンスを、AWS 上のデータベースでも使い、ライセンス費用の二重払いを避けたいです。このライセンスの使い方を何と呼びますか？",
+          "choices": [
+            "A. ライセンス込み",
+            "B. BYOL",
+            "C. Savings Plans",
+            "D. Dedicated Hosts"
+          ],
+          "correct": "B",
+          "why": "手持ちのライセンスを AWS に持ち込んで使う方式が BYOL（Bring Your Own License）だから。",
+          "contrast": "BYOL = 手持ちのライセンスを持ち込む\nライセンス込み = 利用料金にライセンス料が含まれる。手持ちのライセンスは不要\nDedicated Hosts = 物理サーバーを専有する。物理コア単位のライセンスを BYOL で使うときに必要なことがある\nSavings Plans = ライセンスではなく、利用を約束して割引を受ける購入方法",
+          "example": "購入済みの Oracle Database のライセンスを、EC2 上の DB サーバーに適用する。",
+          "domain": 1
+        },
+        {
+          "kind": "review",
+          "no": 15,
+          "question": "オンプレの MySQL を Amazon RDS for MySQL に移します。切り替えの直前まで本番の更新を受け付けたまま、変更分を AWS 側へ複製し続けたいです。使うサービスはどれですか？",
+          "choices": [
+            "A. AWS Application Migration Service",
+            "B. AWS SCT",
+            "C. AWS DMS",
+            "D. AWS Storage Gateway"
+          ],
+          "correct": "C",
+          "why": "元の DB を動かしたまま、変更を継続的に複製してデータベースを移すのが DMS（Database Migration Service）だから。",
+          "contrast": "DMS = データベースのデータを移す（変更を継続的に複製する）\nSCT = エンジンが異なるときに、スキーマやコードを変換する（同じエンジンなら不要）\nApplication Migration Service = サーバーを丸ごと EC2 に移す\nStorage Gateway = オンプレから AWS のストレージを使うハイブリッド用",
+          "example": "DMS で全件をロードしたあと変更分を複製し続け、短い停止で接続先を RDS に切り替える。",
+          "domain": 1
+        }
+      ],
+      "createdAt": "2026-10-18"
+    },
+    {
+      "id": "d2-b",
+      "label": "分野2 セットB",
+      "focus": 2,
+      "questions": [
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "責任共有モデル（DynamoDB で顧客に残るもの）",
+          "question": "Amazon DynamoDB を使うとき、責任共有モデルで顧客の責任になるものはどれですか？",
+          "choices": [
+            "A. テーブルへのアクセス権限（IAM ポリシー）の設定",
+            "B. サーバーの OS へのパッチ適用",
+            "C. ストレージのハードウェアの交換",
+            "D. テーブルに保存するデータの管理"
+          ],
+          "correct": "AD",
+          "why": "DynamoDB はフルマネージドのサービスで、サーバー・OS・ハードウェアは AWS が管理する。顧客に残るのは、データそのものと、誰がテーブルを使えるかのアクセス権限。",
+          "contrast": "DynamoDB・Lambda・S3 など = 顧客の担当はデータとアクセス権限が中心\nRDS = OS と DB エンジンのパッチは AWS。DB のユーザーやセキュリティグループは顧客\nEC2 = ゲスト OS のパッチから上は顧客\nハードウェア・データセンター = どのサービスでも AWS",
+          "example": "アプリ用の IAM ロールに、必要なテーブルだけを読み書きできる権限を付け、保存するデータの扱いは自社で決める。",
+          "explanation": "DynamoDB は保管中のデータをデフォルトで暗号化する。どの鍵（AWS 所有のキー、AWS マネージドキー、カスタマーマネージドキー）を使うかは顧客が選べる。",
+          "sources": [
+            {
+              "title": "Security and compliance in Amazon DynamoDB",
+              "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/security.html"
+            },
+            {
+              "title": "What is Amazon DynamoDB?",
+              "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "Shield Advanced と Shield Standard / WAF / Firewall Manager",
+          "question": "大規模な DDoS 攻撃に備えて、高度な保護と、攻撃中の専門チームの支援、攻撃で増えた利用料への補償を受けたいです。使うものはどれですか？",
+          "choices": [
+            "A. AWS Shield Standard",
+            "B. AWS Shield Advanced",
+            "C. AWS WAF",
+            "D. AWS Firewall Manager"
+          ],
+          "correct": "B",
+          "why": "Shield Advanced は有料のプランで、レイヤー3・4・7 の DDoS 保護、Shield Response Team（SRT）の24時間の支援、攻撃による利用料の急増に対するコスト保護が付くから。",
+          "contrast": "Shield Advanced = 有料。高度な DDoS 保護、SRT の支援、コスト保護\nShield Standard = 追加料金なしで全員に自動で適用。一般的な L3・L4 の DDoS 攻撃から守る\nWAF = SQL インジェクションや XSS など、Web リクエストをルールで止める\nFirewall Manager = 複数アカウントに WAF や Shield Advanced などの設定をまとめて配る\n「専門チーム・コスト保護 → Shield Advanced」",
+          "example": "大規模なキャンペーンサイトを公開する前に、CloudFront と ALB を Shield Advanced で保護する。",
+          "explanation": "Shield Advanced は、L7（アプリケーション層）の DDoS 対策に WAF を組み合わせて使う。",
+          "sources": [
+            {
+              "title": "AWS Shield Advanced overview",
+              "url": "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "ID フェデレーションと MFA / クロスアカウントアクセス",
+          "question": "社内の Active Directory などで認証された社員を、AWS 側に IAM ユーザーを作らずに AWS へアクセスさせる仕組みを何と呼びますか？",
+          "choices": [
+            "A. 多要素認証（MFA）",
+            "B. 最小権限の原則",
+            "C. ID フェデレーション",
+            "D. クロスアカウントアクセス"
+          ],
+          "correct": "C",
+          "why": "外部の ID プロバイダー（IdP）で認証されたユーザーを信頼し、IAM ロールなどの一時的な権限で AWS を使わせる仕組みを ID フェデレーションと呼ぶから。",
+          "contrast": "ID フェデレーション = 外部の ID（社内ディレクトリ、SAML 2.0、OIDC）を信頼して AWS に入れる\nMFA = パスワードに加えて、もう1つの要素で本人確認を強める\nクロスアカウントアクセス = 別の AWS アカウントの IAM ロールを引き受けて使う\n最小権限 = 必要な権限だけを与える考え方\nフェデレーションをまとめて設定する入口が IAM Identity Center",
+          "example": "社員は社内の ID でサインインし、IAM Identity Center 経由で AWS アカウントに入る。社員ごとの IAM ユーザーは作らない。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Identity providers and federation into AWS",
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "クロスアカウントロールとキーの受け渡し / SCP",
+          "question": "監査用の AWS アカウントの担当者に、本番アカウントの S3 を読み取らせたいです。アクセスキーを渡さず、一時的な認証情報で入れるようにするには、どうしますか？",
+          "choices": [
+            "A. 本番アカウントに IAM ユーザーを作り、キーを渡す",
+            "B. 本番アカウントのルートユーザーを共有する",
+            "C. Organizations の SCP で読み取りを許可する",
+            "D. 本番アカウントに IAM ロールを作り、引き受けさせる"
+          ],
+          "correct": "D",
+          "why": "本番アカウントに、監査アカウントを信頼する IAM ロール（クロスアカウントロール）を作れば、担当者はそのロールを引き受けて、期限付きの一時的な認証情報でアクセスできるから。",
+          "contrast": "クロスアカウントロール = 相手のアカウントを信頼するロールを作り、引き受けさせる。長期のキーは要らない\nIAM ユーザーを作ってキーを渡す = 長期の認証情報が外に出るので避ける\nルートユーザーの共有 = 絶対に避ける\nSCP = 権限の上限を決めるだけで、権限を与えない",
+          "example": "監査アカウントの担当者が、本番アカウントの読み取り専用ロールにスイッチロールして、S3 のデータとログを確かめる。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "IAM tutorial: Delegate access across AWS accounts using IAM roles",
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "コンプライアンスの責任共有（AWS の認証と自社のシステム）",
+          "question": "AWS のインフラは PCI DSS などの認証を受けています。この上でクレジットカード情報を扱うシステムを作るとき、正しい考え方はどれですか？",
+          "choices": [
+            "A. 自社のシステム部分の準拠は、自社で確認・対応する",
+            "B. AWS 上に作れば、自社のシステムも自動で準拠になる",
+            "C. AWS Artifact に申請すれば、自社のシステムも準拠になる",
+            "D. 準拠の確認は、すべて AWS が代わりに行う"
+          ],
+          "correct": "A",
+          "why": "AWS の認証が対象にしているのはクラウドのインフラ（クラウドのセキュリティ）で、その上に顧客が作るシステムやデータの扱い（クラウドの中のセキュリティ）の準拠は顧客の責任だから。",
+          "contrast": "AWS の認証 = インフラ部分の統制。顧客はこれを引き継いで（継承して）使える\n顧客の責任 = 自社のアプリ、設定、データの扱いを規格に合わせ、監査を受ける\nAWS Artifact = AWS の監査レポート（SOC、PCI など）を入手する場所。申請すれば準拠になるわけではない\n「自動で」「すべて AWS が」という言い切りは誤り",
+          "example": "AWS Artifact で AWS の PCI DSS の準拠レポートを入手して監査人に渡し、自社のアプリ部分は自社で審査を受ける。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "Shared responsibility model (AWS Risk and Compliance)",
+              "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-risk-and-compliance/shared-responsibility-model.html"
+            },
+            {
+              "title": "What is AWS Artifact?",
+              "url": "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "IAM のパスワードポリシーと Config / Secrets Manager",
+          "question": "アカウント内の IAM ユーザー全員に、パスワードの最低文字数や記号の使用を義務づけたいです。何を設定しますか？",
+          "choices": [
+            "A. AWS Config ルール",
+            "B. IAM のパスワードポリシー",
+            "C. AWS Secrets Manager",
+            "D. サービスコントロールポリシー（SCP）"
+          ],
+          "correct": "B",
+          "why": "IAM のパスワードポリシーで、アカウント内の IAM ユーザーのパスワードの最低文字数、文字の種類、有効期限、再利用の禁止などを決められるから。",
+          "contrast": "IAM のパスワードポリシー = IAM ユーザーのパスワードの決まりを強制する\nConfig ルール = パスワードポリシーが基準を満たしているかを評価する（強制はしない）\nSecrets Manager = アプリが使う DB のパスワードなどを保管・ローテーションする\nSCP = アカウントで使える操作の上限を決める",
+          "example": "「14文字以上、大文字・小文字・数字・記号を含む、過去のパスワードの再利用禁止」をパスワードポリシーで設定する。",
+          "explanation": "IAM のパスワードポリシーは、ルートユーザーのパスワードには適用されない。",
+          "sources": [
+            {
+              "title": "Set an account password policy for IAM users",
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "保管中の暗号化と転送中の暗号化",
+          "question": "次のうち、保管中（at rest）のデータの暗号化に当たるものはどれですか？",
+          "choices": [
+            "A. Web サイトを HTTPS（TLS）で公開する",
+            "B. EBS ボリュームを KMS の鍵で暗号化する",
+            "C. S3 のサーバー側暗号化でオブジェクトを暗号化する",
+            "D. オンプレミスと VPC を Site-to-Site VPN でつなぐ"
+          ],
+          "correct": "BC",
+          "why": "EBS の暗号化と S3 のサーバー側暗号化は、ディスクやストレージに保存されたデータを暗号化するので、保管中の暗号化だから。",
+          "contrast": "保管中の暗号化 = 保存されたデータを暗号化する（EBS・S3・RDS・DynamoDB。鍵は KMS）\n転送中の暗号化 = ネットワークを流れるデータを暗号化する（HTTPS/TLS、VPN）\nHTTPS の証明書 → ACM、保管中の暗号化の鍵 → KMS",
+          "example": "S3 は新しいオブジェクトをデフォルトで暗号化（SSE-S3）し、鍵を細かく管理したいときは KMS の鍵を使う SSE-KMS を選ぶ。",
+          "explanation": "2023年1月から、S3 は新しくアップロードされるオブジェクトを自動で SSE-S3 で暗号化している。",
+          "sources": [
+            {
+              "title": "Protecting data with server-side encryption (Amazon S3)",
+              "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html"
+            },
+            {
+              "title": "Amazon EBS encryption",
+              "url": "https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "Session Manager（安全な接続）と Inspector / Identity Center",
+          "question": "EC2 インスタンスに、SSH のポートを開けず、踏み台サーバーも使わずにログインしてコマンドを実行したいです。操作の記録も残したいです。使うものはどれですか？",
+          "choices": [
+            "A. AWS Systems Manager Session Manager",
+            "B. Amazon Inspector",
+            "C. AWS IAM Identity Center",
+            "D. AWS Secrets Manager"
+          ],
+          "correct": "A",
+          "why": "Session Manager は、インバウンドのポートを開けず、踏み台や SSH キーなしで、IAM の権限に基づいてインスタンスに接続でき、セッションのログも残せるから。",
+          "contrast": "Session Manager = インスタンスへの安全な接続（ポートを開けない、SSH キー不要、ログを残せる）\nInspector = インスタンスの脆弱性を探す。接続はしない\nIAM Identity Center = 社員の AWS アカウントや業務アプリへのサインインを一元管理する\nSecrets Manager = パスワードなどの秘密情報を保管する\nSystems Manager には Parameter Store（設定値）や Patch Manager（パッチ適用）もある",
+          "example": "セキュリティグループの SSH（22番）を閉じたまま、コンソールから Session Manager でインスタンスに入り、操作ログを S3 に残す。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "AWS Systems Manager Session Manager",
+              "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "データの保管場所（リージョンの選択）と Artifact",
+          "question": "法規制により、顧客のデータを日本国内に保管する必要があります。AWS ではどう対応しますか？",
+          "choices": [
+            "A. AWS Artifact で国内保管を申請する",
+            "B. AWS が自動で利用者に近い国に保管する",
+            "C. 国内のリージョンを選んでデータを保存する",
+            "D. データをエッジロケーションに保存する"
+          ],
+          "correct": "C",
+          "why": "データを保存するリージョンは顧客が選び、AWS は顧客が選んだリージョンの外へ、顧客の同意なくデータを移さないから（法令に従う場合などを除く）。",
+          "contrast": "リージョンの選択 = データの保管場所を決めるのは顧客\nAWS Artifact = AWS の監査レポートや契約を入手する場所。保管場所の申請窓口ではない\nエッジロケーション = CloudFront などがコンテンツを配信する拠点。データの保管先として選ぶものではない\nバックアップや複製を別のリージョンに置くかどうかも、顧客が決める",
+          "example": "個人データは東京リージョンと大阪リージョンだけに置き、バックアップの複製先も国内のリージョンにする。",
+          "explanation": "",
+          "sources": [
+            {
+              "title": "AWS Regions",
+              "url": "https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html"
+            },
+            {
+              "title": "Data Privacy FAQ",
+              "url": "https://aws.amazon.com/compliance/data-privacy-faq/"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 2,
+          "topic": "Knowledge Center（よくある質問）と Artifact / Trusted Advisor",
+          "question": "「S3 でアクセス拒否のエラーが出る」など、よくある質問とその解決手順を AWS がまとめた記事を探したいです。どこを見ますか？",
+          "choices": [
+            "A. AWS Artifact",
+            "B. AWS Trusted Advisor",
+            "C. AWS Marketplace",
+            "D. AWS Knowledge Center"
+          ],
+          "correct": "D",
+          "why": "Knowledge Center は、AWS のサポートによく寄せられる質問と、その解決方法を AWS がまとめた記事集だから。",
+          "contrast": "Knowledge Center = よくある質問と解決手順の記事\nAWS Security Blog = セキュリティの新機能やベストプラクティスの解説記事\nArtifact = AWS の監査レポート（SOC、PCI など）を入手する\nTrusted Advisor = 自分のアカウントの設定を点検して助言する\nMarketplace = サードパーティーの製品を探して買う",
+          "example": "IAM のアクセス拒否エラーで困ったら、Knowledge Center で同じ症状の記事を探し、書かれた手順で原因を確かめる。",
+          "explanation": "Knowledge Center の記事は、現在は AWS re:Post の中（re:Post Knowledge Center）で公開されている。",
+          "sources": [
+            {
+              "title": "AWS Certified Cloud Practitioner (CLF-C02) Domain 2",
+              "url": "https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain2.html"
+            },
+            {
+              "title": "AWS Security Blog",
+              "url": "https://aws.amazon.com/blogs/security/"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-18"
+    },
+    {
+      "id": "d4-b",
+      "label": "分野4 セットB",
+      "focus": 4,
+      "questions": [
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "オンデマンドとスポット / リザーブドインスタンス / Savings Plans",
+          "question": "新しいアプリを数週間だけ試験運用します。使う量が読めず、長期の約束はしたくありません。処理が中断されるのも困ります。どの購入オプションを選びますか？",
+          "choices": [
+            "A. スポットインスタンス",
+            "B. オンデマンドインスタンス",
+            "C. リザーブドインスタンス",
+            "D. Compute Savings Plans"
+          ],
+          "correct": "B",
+          "why": "オンデマンドは、長期の約束なしで使った分だけ払い、AWS の都合で中断されないから。短期で、使う量が読めないときに向く。",
+          "contrast": "オンデマンド = 約束なし・中断なし。短期や予測できない用途\nスポット = 最も安いが、AWS が容量を必要とすると中断される\nリザーブドインスタンス / Savings Plans = 1年か3年の約束で割引。長く安定して使う用途",
+          "example": "キャンペーン用の検証環境を、終わったらすぐ消せるようにオンデマンドで立てる。",
+          "sources": [
+            {
+              "title": "Purchasing On-Demand Instances for Amazon EC2",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html"
+            },
+            {
+              "title": "Amazon EC2 billing and purchasing options",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-purchasing-options.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Cost Explorer と Budgets / Pricing Calculator / CUR",
+          "question": "この1年の AWS の利用料が、どのサービスでどう増えてきたかをグラフで確かめ、今後の見込みも見たいです。何を使いますか？",
+          "choices": [
+            "A. AWS Budgets",
+            "B. AWS Pricing Calculator",
+            "C. AWS Cost Explorer",
+            "D. AWS Cost and Usage Reports"
+          ],
+          "correct": "C",
+          "why": "Cost Explorer は、過去のコストと使用量をサービス別などに分けてグラフで見られ、今後の予測も出せるから。",
+          "contrast": "Cost Explorer = 使った分をグラフで分析し、予測も見る\nBudgets = 予算を決めて見張り、超えそうなら知らせる\nPricing Calculator = まだ使っていない構成の見積もり\nCost and Usage Reports = 最も細かい生データをファイルで受け取り、自分で分析する",
+          "example": "月初の定例で、Cost Explorer のグラフを見ながら、先月に増えたサービスを確かめる。",
+          "sources": [
+            {
+              "title": "Analyzing your costs and usage with AWS Cost Explorer",
+              "url": "https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Trust & Safety と Shield Response Team / GuardDuty",
+          "question": "AWS 上の IP アドレスから、スパムメールや不正アクセスの試みを受けていることに気づきました。この不正利用を報告する先はどこですか？",
+          "choices": [
+            "A. AWS Trust & Safety",
+            "B. AWS Shield Response Team",
+            "C. Amazon GuardDuty",
+            "D. AWS re:Post"
+          ],
+          "correct": "A",
+          "why": "AWS のリソースがスパムや攻撃などの不正利用に使われていると疑われるときは、AWS Trust & Safety に報告するから。AWS のお客様でなくても報告できる。",
+          "contrast": "Trust & Safety = AWS のリソースが不正利用されているときの報告先（報告フォームやメール）\nShield Response Team = Shield Advanced の契約者が、自分のリソースへの DDoS 攻撃で支援を受ける\nGuardDuty = 自分のアカウントの中の脅威を検出する\nre:Post = 技術的な質問をするコミュニティ",
+          "example": "自社サーバーへのポートスキャンの送信元が AWS の IP アドレスだったので、Trust & Safety の報告フォームから知らせる。",
+          "explanation": "不正利用とは、AWS の利用規約（Acceptable Use Policy）に反する使い方のことで、スパム、侵入の試み、DDoS、フィッシング、著作権の侵害などが含まれます。",
+          "sources": [
+            {
+              "title": "AWS Acceptable Use Policy（Reporting of Violations）",
+              "url": "https://aws.amazon.com/aup/"
+            },
+            {
+              "title": "Content Domain 4: Billing, Pricing, and Support（試験ガイド）",
+              "url": "https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02-domain4.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "オンデマンドキャパシティ予約とリザーブドインスタンス / Savings Plans",
+          "question": "決まった日の大型イベントに備えて、特定のアベイラビリティーゾーンで必要な数の EC2 を確実に起動できるようにしたいです。1年や3年の約束はしたくありません。何を使いますか？",
+          "choices": [
+            "A. Compute Savings Plans",
+            "B. スポットインスタンス",
+            "C. リザーブドインスタンス",
+            "D. オンデマンドキャパシティ予約"
+          ],
+          "correct": "D",
+          "why": "オンデマンドキャパシティ予約は、1年や3年の約束なしで、特定の AZ に EC2 の容量を確保できるから。",
+          "contrast": "オンデマンドキャパシティ予約 = 特定の AZ の容量を確保する。長期の約束は不要。使わなくても料金がかかる\nリザーブドインスタンス = 1年か3年の約束で割引。AZ を指定したものは容量も確保できる\nSavings Plans = 割引だけで、容量は確保しない\nスポットインスタンス = 余った容量を安く使う。確保とは逆で、中断されることがある",
+          "example": "年末セールの数日間だけ、オンデマンドキャパシティ予約で必要な台数を確保しておく。",
+          "explanation": "割引ではなく「確保」の仕組みなので、予約した容量は使っていなくてもオンデマンドの料金がかかります。\nSavings Plans やリージョン単位のリザーブドインスタンスと組み合わせると、その割引が適用されます。",
+          "sources": [
+            {
+              "title": "Reserve compute capacity with EC2 On-Demand Capacity Reservations",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "コスト配分タグ（タグを付けて有効化する）",
+          "question": "Cost Explorer で、AWS のコストを部門ごとに分けて見たいです。そのために必要な作業はどれですか？",
+          "choices": [
+            "A. リソースに部門名のタグを付ける",
+            "B. 部門ごとに Pricing Calculator で見積もる",
+            "C. タグをコスト配分タグとして有効にする",
+            "D. Budgets で部門ごとの予算を作る"
+          ],
+          "correct": "AC",
+          "why": "リソースに付けたタグは、Billing and Cost Management コンソールでコスト配分タグとして有効にすると、Cost Explorer やコストのレポートで使えるようになるから。",
+          "contrast": "コスト配分タグ = 付けたタグを請求で使うには、有効化が必要\nBudgets = 予算を見張る。コストを部門ごとに分ける仕組みではない\nPricing Calculator = これからの見積もり。実際のコストは分けられない",
+          "example": "「Department」タグを有効にして、Cost Explorer で営業部と開発部のコストを比べる。",
+          "explanation": "コスト配分タグには、自分で付けるユーザー定義のタグと、AWS が付ける「aws:」で始まるタグがあり、どちらも有効にしてから使います。",
+          "sources": [
+            {
+              "title": "Organizing and tracking costs using AWS cost allocation tags",
+              "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html"
+            },
+            {
+              "title": "Activating user-defined cost allocation tags",
+              "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Health API と Health Dashboard / Trusted Advisor",
+          "question": "自分のアカウントに影響する AWS 側の障害やメンテナンスの予定を、自社の運用ツールからプログラムで取得したいです。何を使いますか？",
+          "choices": [
+            "A. AWS Health Dashboard",
+            "B. AWS Trusted Advisor",
+            "C. Amazon CloudWatch",
+            "D. AWS Health API"
+          ],
+          "correct": "D",
+          "why": "AWS Health API を使うと、アカウントに影響する AWS のイベントをプログラムから取得できるから。Business Support+ 以上のプランで使える。",
+          "contrast": "AWS Health API = Health のイベントをプログラムで取得する。Business Support+ 以上が必要\nAWS Health Dashboard = 同じ情報をコンソールで見る。すべてのお客様が使える\nTrusted Advisor = アカウントの設定を点検して推奨を出す。AWS 側の障害は知らせない\nCloudWatch = 自分のリソースのメトリクスやログを見張る",
+          "example": "メンテナンスの予定を Health API で取得し、社内のチケットシステムに自動で起票する。",
+          "sources": [
+            {
+              "title": "Integrating AWS Health with other systems using the AWS Health API",
+              "url": "https://docs.aws.amazon.com/health/latest/ug/health-api.html"
+            },
+            {
+              "title": "What is AWS Health?",
+              "url": "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Dedicated Instances と Dedicated Hosts",
+          "question": "規制のため、EC2 を他の顧客とハードウェアを共有しない形で動かしたいです。物理サーバー単位で借りる必要はなく、インスタンス単位で使えれば十分です。どれを選びますか？",
+          "choices": [
+            "A. Dedicated Instances",
+            "B. Dedicated Hosts",
+            "C. オンデマンドキャパシティ予約",
+            "D. スポットインスタンス"
+          ],
+          "correct": "A",
+          "why": "Dedicated Instances は、1つの AWS アカウント専用のハードウェアで動くインスタンスで、インスタンス単位で使えるから。",
+          "contrast": "Dedicated Instances = 他の顧客とハードウェアを共有しない。インスタンス単位で使い、ホストの中身は見えない\nDedicated Hosts = 物理サーバー1台を丸ごと借りる。ソケット・コアが見え、ライセンスの持ち込み（BYOL）に向く\nオンデマンドキャパシティ予約 = 容量の確保。専有ではない\nスポットインスタンス = 余った容量を安く使う。専有ではない",
+          "example": "規制でハードウェアの分離を求められたシステムを、Dedicated Instances で動かす。",
+          "sources": [
+            {
+              "title": "Amazon EC2 Dedicated Instances",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html"
+            },
+            {
+              "title": "Amazon EC2 Dedicated Hosts",
+              "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "Organizations の一括請求とコスト配分タグ / Budgets",
+          "question": "AWS Organizations の一括請求（コンソリデーティッドビリング）を使う利点はどれですか？",
+          "choices": [
+            "A. 各アカウントのリソースに自動でタグが付く",
+            "B. 全アカウントの支払いを1つにまとめられる",
+            "C. 予算を超えたアカウントを自動で止める",
+            "D. 使用量の合算で、割引を受けやすくなる"
+          ],
+          "correct": "BD",
+          "why": "一括請求では、管理アカウントが組織の全アカウントの料金をまとめて支払い、使用量が合算されるので、ボリューム割引の段階に届きやすくなるから。",
+          "contrast": "一括請求 = 支払いを1つにまとめ、使用量を合算する。リザーブドインスタンスや Savings Plans の割引もアカウント間で共有できる\nコスト配分タグ = 1つの請求の中で、コストを部門などに分けて見る。タグは自分で付ける\nBudgets = 予算を見張り、通知や操作をする。一括請求の機能ではない",
+          "example": "グループ会社ごとのアカウントを Organizations にまとめ、S3 の使用量を合算して単価を下げる。",
+          "sources": [
+            {
+              "title": "Consolidating billing for AWS Organizations",
+              "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "AWS Partner Network と Professional Services / Marketplace",
+          "question": "AWS と協力関係にあり、AWS の認定を持つ外部のコンサルティング会社に、移行を手伝ってもらいたいです。こうした企業が参加している AWS のプログラムはどれですか？",
+          "choices": [
+            "A. AWS Professional Services",
+            "B. AWS Partner Network",
+            "C. AWS Marketplace",
+            "D. AWS re:Post"
+          ],
+          "correct": "B",
+          "why": "AWS Partner Network（APN）は、AWS と協力するコンサルティング会社やソフトウェア会社が参加するプログラムで、認定を持つパートナーに移行や構築を頼めるから。",
+          "contrast": "AWS Partner Network = 外部のパートナー企業の集まり。コンサルやソフトウェアの会社が参加する\nProfessional Services = AWS 社員の専門家チームが直接支援する\nMarketplace = パートナーなどのソフトウェアを探して買うカタログ\nre:Post = 無料で質問できるコミュニティの Q&A",
+          "example": "地元の AWS パートナー企業に、オンプレミスのシステムの移行を依頼する。",
+          "sources": [
+            {
+              "title": "AWS Partner Network",
+              "url": "https://aws.amazon.com/partners/"
+            },
+            {
+              "title": "AWS Professional Services",
+              "url": "https://aws.amazon.com/professional-services/"
+            }
+          ]
+        },
+        {
+          "kind": "new",
+          "domain": 4,
+          "topic": "S3 Glacier Deep Archive と Flexible Retrieval / Instant Retrieval",
+          "question": "法律で長期間の保管が必要な記録を S3 に置きます。読み出すのは年に1回もなく、取り出しに半日ほどかかってもかまいません。保存料金が最も安いストレージクラスはどれですか？",
+          "choices": [
+            "A. S3 Glacier Flexible Retrieval",
+            "B. S3 Standard-IA",
+            "C. S3 Glacier Deep Archive",
+            "D. S3 Glacier Instant Retrieval"
+          ],
+          "correct": "C",
+          "why": "S3 Glacier Deep Archive は、S3 で保存料金が最も安いクラスで、何年も保管してほとんど読まないデータに向くから。",
+          "contrast": "Glacier Deep Archive = 保存料金が最も安い。取り出しに最も時間がかかる\nGlacier Flexible Retrieval = 数分〜数時間で取り出せる。Deep Archive より少し高い\nGlacier Instant Retrieval = ほとんど読まないが、読むときはミリ秒で取り出したいデータ\nStandard-IA = たまに読み、すぐ取り出したいデータ",
+          "example": "監査用のログを、ライフサイクルルールで一定期間後に Glacier Deep Archive へ移す。",
+          "explanation": "アクセスが少ないクラスほど保存料金は安くなりますが、取り出しの料金や、取り出すまでの時間が増えます。",
+          "sources": [
+            {
+              "title": "Understanding and managing Amazon S3 storage classes",
+              "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+            },
+            {
+              "title": "Amazon S3 Glacier storage classes",
+              "url": "https://aws.amazon.com/s3/storage-classes/glacier/"
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-18"
+    }
+  ]
+}
