@@ -152,6 +152,20 @@
           10
         ]
       }
+    },
+    {
+      "order": 10,
+      "date": "2026-10-18",
+      "label": "出し直し セットA（スマホ）",
+      "focus": 0,
+      "total": 10,
+      "correct": 5,
+      "byDomain": {
+        "1": [
+          5,
+          10
+        ]
+      }
     }
   ],
   "notes": [
@@ -169,7 +183,7 @@
       "myAnswer": "C",
       "correct": "B",
       "result": "wrong",
-      "confidence": null,
+      "confidence": "high",
       "why": "「先行投資をやめる」「使った分だけ払う」は、お金の払い方が固定費から変動費に変わるという話だから。",
       "contrast": "固定費→変動費 = お金の払い方の話\nキャパシティの予測が不要 = サーバー台数の見積もりを外す心配がない話",
       "example": "新サービスの立ち上げで、サーバー購入の稟議をせずに月額の利用料だけで始める。",
@@ -183,7 +197,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-20",
+      "lastReviewed": "2026-10-18"
     },
     {
       "no": 2,
@@ -199,7 +214,7 @@
       "myAnswer": "A",
       "correct": "C",
       "result": "wrong",
-      "confidence": null,
+      "confidence": "high",
       "why": "「障害から自動で復旧する」と「キャパシティを推測しない」は、信頼性の柱の設計原則そのものだから。",
       "contrast": "信頼性 = 障害・復旧・キャパシティを推測しない\n運用上の優秀性 = 運用をコード化・小さく頻繁に変更・失敗から学ぶ",
       "example": "Auto Scaling グループのヘルスチェックで、落ちた EC2 を自動で入れ替える。",
@@ -213,7 +228,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-20",
+      "lastReviewed": "2026-10-18"
     },
     {
       "no": 3,
@@ -241,9 +257,10 @@
         }
       ],
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-25",
+      "lastReviewed": "2026-10-18"
     },
     {
       "no": 4,
@@ -519,9 +536,10 @@
         }
       ],
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-25",
+      "lastReviewed": "2026-10-18"
     },
     {
       "no": 13,
@@ -536,8 +554,8 @@
       ],
       "myAnswer": "D",
       "correct": "A",
-      "result": "wrong",
-      "confidence": "high",
+      "result": "guess",
+      "confidence": "low",
       "why": "使用状況に合わせて、1台の「サイズ」を適切に（right）見直してコストを下げるのがライトサイジングだから。",
       "contrast": "ライトサイジング = 1台の大きさを使用状況に合わせて見直す（コスト目的）\n水平スケーリング = 台数を増やす・減らす（スケールアウト / イン）\n垂直スケーリング = 1台を大きく・小さくする（スケールアップ / ダウン）",
       "example": "Compute Optimizer の推奨に従い、m5.xlarge を m5.large に変える。",
@@ -551,7 +569,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-20",
+      "lastReviewed": "2026-10-18"
     },
     {
       "no": 14,
@@ -711,9 +730,10 @@
         }
       ],
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-25",
+      "lastReviewed": "2026-10-18"
     },
     {
       "no": 19,
@@ -843,9 +863,10 @@
       "result": "wrong",
       "confidence": "high",
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-25",
+      "lastReviewed": "2026-10-18"
     },
     {
       "topic": "Well-Architected：セキュリティと信頼性の設計原則",
@@ -905,11 +926,12 @@
       "no": 24,
       "domain": 1,
       "result": "wrong",
-      "confidence": "high",
+      "confidence": "low",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-20",
+      "lastReviewed": "2026-10-18"
     },
     {
       "topic": "6つの利点：DC の運用保守と速度・俊敏性",
@@ -939,7 +961,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-20",
+      "lastReviewed": "2026-10-18"
     },
     {
       "topic": "Migration Evaluator と Application Migration Service",
@@ -1025,11 +1048,12 @@
       "no": 28,
       "domain": 1,
       "result": "wrong",
-      "confidence": "high",
+      "confidence": "low",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-20",
+      "lastReviewed": "2026-10-18"
     },
     {
       "topic": "Well-Architected：信頼性の水平スケールと運用上の優秀性",
