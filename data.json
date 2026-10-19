@@ -166,6 +166,24 @@
           10
         ]
       }
+    },
+    {
+      "order": 11,
+      "date": "2026-10-19",
+      "label": "出し直し中心 第1回",
+      "focus": 0,
+      "total": 10,
+      "correct": 8,
+      "byDomain": {
+        "1": [
+          6,
+          8
+        ],
+        "2": [
+          2,
+          2
+        ]
+      }
     }
   ],
   "notes": [
@@ -666,9 +684,10 @@
         }
       ],
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-26",
+      "lastReviewed": "2026-10-19"
     },
     {
       "no": 17,
@@ -684,7 +703,7 @@
       "myAnswer": "B",
       "correct": "A",
       "result": "wrong",
-      "confidence": "low",
+      "confidence": "high",
       "why": "自社のシステムをやめて別の製品を「買う（purchase）」移行だから。",
       "contrast": "リタイア（retire = 引退）= 使っていないので廃止\nリテイン（retain = 保持）= 今は移さず残す\nリホスト（host = 置き場所）= そのまま EC2 へ\nリロケート（locate = 配置）= VMware をハイパーバイザーごと移す\nリプラットフォーム（platform = 土台）= 一部をマネージドに置き換える\nリパーチェス（purchase = 購入）= SaaS などの製品に買い替える\nリファクタリング（refactor = 作り直す）= クラウドネイティブに作り直す",
       "example": "自社運用の CRM をやめて、Salesforce などの SaaS に乗り換える。",
@@ -698,7 +717,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-21",
+      "lastReviewed": "2026-10-19"
     },
     {
       "no": 18,
@@ -765,9 +785,10 @@
         }
       ],
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-26",
+      "lastReviewed": "2026-10-19"
     },
     {
       "no": 20,
@@ -782,7 +803,7 @@
       ],
       "myAnswer": "B",
       "correct": "A",
-      "result": "wrong",
+      "result": "guess",
       "confidence": "low",
       "why": "テンプレートに書いた構成の通りに環境を自動で作る（IaC）のが CloudFormation だから。",
       "contrast": "CloudFormation = テンプレートから環境を作る（form = 形づくる）\nConfig = できたリソースの設定を記録し、ルールに合っているか評価する（作る機能はない）\nCloudWatch = 見張る\nCloudTrail = 足跡（API 操作）を残す\nTrusted Advisor = 自動チェックして推奨事項を出す",
@@ -801,7 +822,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-21",
+      "lastReviewed": "2026-10-19"
     },
     {
       "no": 21,
@@ -833,9 +855,10 @@
         }
       ],
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-26",
+      "lastReviewed": "2026-10-19"
     },
     {
       "topic": "CAF：オペレーションとビジネスの観点",
@@ -895,12 +918,13 @@
       ],
       "no": 23,
       "domain": 1,
-      "result": "wrong",
+      "result": "guess",
       "confidence": "low",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-21",
+      "lastReviewed": "2026-10-19"
     },
     {
       "topic": "移行戦略：リテインとリロケート",
@@ -992,7 +1016,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-21",
+      "lastReviewed": "2026-10-19"
     },
     {
       "topic": "CAF：組織寄りと技術寄りの観点",
@@ -1020,9 +1045,10 @@
       "result": "guess",
       "confidence": "low",
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-26",
+      "lastReviewed": "2026-10-19"
     },
     {
       "topic": "移行戦略：リファクタリングとリプラットフォーム",
@@ -2002,6 +2028,66 @@
       "streak": 0,
       "addedAt": "2026-10-18",
       "nextReview": "2026-10-20"
+    },
+    {
+      "topic": "WAF の地理的一致ルールとネットワーク ACL / セキュリティグループ",
+      "question": "公開している Web サイトで、特定の国からのアクセスだけを拒否したいです。使うものはどれですか？",
+      "choices": [
+        "A. セキュリティグループ",
+        "B. ネットワーク ACL",
+        "C. AWS Shield Standard",
+        "D. AWS WAF"
+      ],
+      "myAnswer": "D",
+      "correct": "D",
+      "why": "WAF には、リクエストの送信元の国で判定するルール（地理的一致）があり、特定の国からのアクセスだけをブロックできるから。",
+      "contrast": "WAF = Web のリクエストの中身や送信元（国・IP・SQL インジェクションのパターンなど）を見て、ルールで許可・拒否する\nネットワーク ACL = サブネット単位で IP アドレスとポートで許可・拒否する（国単位の指定はできない）\nセキュリティグループ = インスタンス単位で許可だけを書く\nShield Standard = DDoS から自動で守る\n「国・SQL インジェクション・XSS」なら WAF",
+      "example": "サービスを提供していない国からの不正なログイン試行を、CloudFront に付けた WAF の地理的一致ルールで止める。",
+      "explanation": "WAF は No.44（Shield と取り違え）でも出題している。",
+      "sources": [
+        {
+          "title": "Geographic match rule statement（AWS WAF）",
+          "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-geo-match.html"
+        }
+      ],
+      "no": 59,
+      "domain": 2,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-19",
+      "nextReview": "2026-10-21"
+    },
+    {
+      "topic": "KMS のキーローテーションと Secrets Manager / ACM",
+      "question": "AWS KMS で作った暗号鍵（カスタマー管理キー）を、定期的に自動で新しい鍵素材に切り替えたいです。使う機能はどれですか？",
+      "choices": [
+        "A. KMS の自動キーローテーション",
+        "B. Secrets Manager のローテーション",
+        "C. ACM の証明書の自動更新",
+        "D. AWS CloudHSM"
+      ],
+      "myAnswer": "A",
+      "correct": "A",
+      "why": "KMS のカスタマー管理キーは、自動キーローテーションを有効にすると定期的に（標準では1年ごとに）新しい鍵素材に切り替わるから。古い鍵素材も残るので、以前のデータも復号できる。",
+      "contrast": "KMS の自動キーローテーション = 暗号鍵を定期的に新しくする\nSecrets Manager のローテーション = パスワードなどのシークレットを定期的に変える（No.48）\nACM の自動更新 = SSL/TLS 証明書を期限前に更新する\nCloudHSM = 専有ハードウェアで鍵を管理するサービス\n何を新しくするのか（鍵・パスワード・証明書）で区別する",
+      "example": "社内規程で「暗号鍵は年1回更新」と決まっているので、KMS の自動キーローテーションを有効にする。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "Rotate AWS KMS keys",
+          "url": "https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html"
+        }
+      ],
+      "no": 60,
+      "domain": 2,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-19",
+      "nextReview": "2026-10-21"
     }
   ]
 }
