@@ -226,6 +226,24 @@
           10
         ]
       }
+    },
+    {
+      "order": 15,
+      "date": "2026-10-27",
+      "label": "分野2 第5回",
+      "focus": 2,
+      "total": 10,
+      "correct": 5,
+      "byDomain": {
+        "2": [
+          5,
+          9
+        ],
+        "4": [
+          0,
+          1
+        ]
+      }
     }
   ],
   "notes": [
@@ -336,7 +354,7 @@
       "myAnswer": "A",
       "correct": "C",
       "result": "wrong",
-      "confidence": null,
+      "confidence": "high",
       "why": "EC2 は IaaS なので、OS から上は顧客の担当になるから。",
       "contrast": "AWS = 建物・ハード・ハイパーバイザー（クラウドのセキュリティ）\n顧客 = EC2 の OS パッチ・アプリ・データ・SG 設定（クラウドにおけるセキュリティ）\nRDS や Lambda の OS パッチ = AWS",
       "example": "EC2 上の Amazon Linux に、自分で dnf update をかけてセキュリティ修正を当てる。",
@@ -350,7 +368,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-29",
+      "lastReviewed": "2026-10-27"
     },
     {
       "no": 5,
@@ -366,7 +385,7 @@
       "myAnswer": "B",
       "correct": "A",
       "result": "wrong",
-      "confidence": null,
+      "confidence": "high",
       "why": "AWS 自身のコンプライアンスレポートや契約をダウンロードする窓口が Artifact だから。",
       "contrast": "Artifact = AWS のコンプライアンスレポートを入手\nInspector = 脆弱性スキャン\nConfig = 設定の記録とルール評価\nGuardDuty = ログから脅威を検知",
       "example": "監査法人から「クラウド事業者の SOC 2 レポートを出して」と言われ、Artifact からダウンロードする。",
@@ -384,7 +403,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-29",
+      "lastReviewed": "2026-10-27"
     },
     {
       "no": 6,
@@ -400,7 +420,7 @@
       "myAnswer": "A",
       "correct": "B",
       "result": "wrong",
-      "confidence": null,
+      "confidence": "high",
       "why": "API 操作の履歴（監査ログ）を記録するのは CloudTrail だから。Trail は足跡。",
       "contrast": "CloudTrail = 誰が何をしたか（API の足跡）\nCloudWatch = 状態の見張り（メトリクス・ログ・アラーム）\nConfig = 設定がどう変わったか",
       "example": "本番の EC2 が勝手に停止された。誰が StopInstances を呼んだかを CloudTrail で調べる。",
@@ -414,7 +434,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-29",
+      "lastReviewed": "2026-10-27"
     },
     {
       "no": 7,
@@ -430,7 +451,7 @@
       "myAnswer": "B",
       "correct": "C",
       "result": "wrong",
-      "confidence": null,
+      "confidence": "low",
       "why": "「中断されてもよい」は、AWS の余った容量を最大90%引きで使うスポットの条件だから。",
       "contrast": "スポット = 中断されてもよい・最安\nリザーブド / Savings Plans = 1年か3年ずっと使う\nオンデマンド = 短期・予測できない\nDedicated Hosts = ライセンスや規制で物理サーバーを専有",
       "example": "夜間の画像変換バッチを、スポットインスタンスで安く回す。",
@@ -444,7 +465,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-19"
+      "nextReview": "2026-10-29",
+      "lastReviewed": "2026-10-27"
     },
     {
       "no": 8,
@@ -2908,6 +2930,36 @@
       "streak": 0,
       "addedAt": "2026-10-20",
       "nextReview": "2026-10-22"
+    },
+    {
+      "topic": "Systems Manager Session Manager と Direct Connect / IAM Identity Center",
+      "question": "セキュリティグループで SSH（22番）ポートを開けず、踏み台サーバーも使わずに、EC2 にシェルでログインして作業したいです。操作の記録も残せます。どれを使いますか？",
+      "choices": [
+        "A. AWS IAM Identity Center",
+        "B. AWS Direct Connect",
+        "C. Amazon Inspector",
+        "D. AWS Systems Manager Session Manager"
+      ],
+      "myAnswer": "B",
+      "correct": "D",
+      "why": "Session Manager は SSM エージェント経由で接続するので、インバウンドのポート・踏み台・SSH 鍵が要らず、操作ログも残せるから。",
+      "contrast": "Session Manager = ポートを開けずに EC2 へシェル接続\nDirect Connect = オンプレと AWS をつなぐ専用線\nIAM Identity Center = 複数アカウントへのシングルサインオン\nInspector = 脆弱性スキャン",
+      "example": "本番 EC2 の SG はインバウンドを全部閉じたまま、Session Manager で入って調査する。",
+      "explanation": "Session Manager は Systems Manager の機能の1つです。\nセッションのログは CloudWatch Logs や S3 に保存でき、接続は IAM で制御します。",
+      "sources": [
+        {
+          "title": "AWS Systems Manager Session Manager",
+          "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html"
+        }
+      ],
+      "no": 84,
+      "domain": 2,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-27",
+      "nextReview": "2026-10-29"
     }
   ]
 }
