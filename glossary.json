@@ -1,0 +1,4755 @@
+{
+  "updatedAt": "2026-10-29",
+  "entries": [
+    {
+      "name": "リージョン",
+      "category": "グローバルインフラ",
+      "summary": "世界各地にある AWS の地理的な拠点",
+      "description": "AWS のデータセンターが集まる、世界各地の地理的な地域です。各リージョンは複数のアベイラビリティーゾーンで構成され、他のリージョンからは独立しています。",
+      "features": [
+        "各リージョンは複数（原則3つ以上）のアベイラビリティーゾーンで構成",
+        "リージョン同士は独立していて、データは自分で操作しない限り他のリージョンへ移らない",
+        "リージョンによって使えるサービスや料金が異なる"
+      ],
+      "useCases": [
+        "利用者に近いリージョンを選んで遅延を小さくする",
+        "法律でデータを国内に置く必要があるので国内のリージョンを選ぶ"
+      ],
+      "keywords": [
+        "地理的な場所",
+        "リージョンの選び方",
+        "データの保管場所（データレジデンシー）",
+        "コンプライアンス",
+        "レイテンシー"
+      ],
+      "confusedWith": [
+        {
+          "name": "アベイラビリティーゾーン",
+          "diff": "リージョンは地理的な地域で、アベイラビリティーゾーンはその中にある独立したデータセンターの集まりです。"
+        },
+        {
+          "name": "エッジロケーション",
+          "diff": "リージョンはサービス全体を動かす拠点で、エッジロケーションはコンテンツを利用者の近くから届けるための拠点です。"
+        }
+      ],
+      "note": "リージョンを選ぶときの4つの観点（コンプライアンス、利用者への近さ、使えるサービス、料金）がよく問われます。",
+      "url": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+    },
+    {
+      "name": "アベイラビリティーゾーン",
+      "category": "グローバルインフラ",
+      "summary": "リージョン内の独立したデータセンターの集まり",
+      "description": "リージョンの中にある、1つ以上の独立したデータセンターの集まりです。電源やネットワークが独立していて、互いに離れた場所にあり、高速なネットワークでつながっています。略称は AZ です。",
+      "features": [
+        "電源・冷却・ネットワークが独立している",
+        "同じリージョン内の AZ 同士は低遅延のネットワークで接続",
+        "複数の AZ に分けて配置すると、1つの AZ の障害に耐えられる"
+      ],
+      "useCases": [
+        "EC2 や RDS を複数の AZ に配置して、高可用性を確保する"
+      ],
+      "keywords": [
+        "高可用性",
+        "複数の AZ（マルチ AZ）",
+        "障害の分離",
+        "独立したデータセンター"
+      ],
+      "confusedWith": [
+        {
+          "name": "リージョン",
+          "diff": "AZ はリージョンの中の区画で、リージョンは複数の AZ を含む地理的な地域です。"
+        },
+        {
+          "name": "AWS Local Zones",
+          "diff": "AZ はリージョンの中にあり、Local Zones はリージョンから離れた大都市などに置かれる拡張拠点です。"
+        }
+      ],
+      "note": "試験では「高可用性のために複数の AZ に配置する」「災害対策のために複数のリージョンを使う」の区別がよく問われます。",
+      "url": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/"
+    },
+    {
+      "name": "エッジロケーション",
+      "category": "グローバルインフラ",
+      "summary": "コンテンツを利用者の近くから届ける拠点",
+      "description": "Amazon CloudFront などが、コンテンツを利用者の近くから低遅延で届けるために使う世界各地の拠点です。リージョンよりもずっと多くの場所にあります。",
+      "features": [
+        "CloudFront のキャッシュを置き、利用者の近くから配信",
+        "Amazon Route 53 などのサービスでも使われる",
+        "リージョンより多くの都市にある"
+      ],
+      "useCases": [
+        "世界中の利用者に、画像や動画を速く届ける"
+      ],
+      "keywords": [
+        "CloudFront",
+        "キャッシュ",
+        "低レイテンシー",
+        "コンテンツ配信",
+        "世界中の利用者"
+      ],
+      "confusedWith": [
+        {
+          "name": "リージョン",
+          "diff": "エッジロケーションは配信やキャッシュのための拠点で、リージョンはサービス全体を動かす拠点です。"
+        },
+        {
+          "name": "AWS Local Zones",
+          "diff": "エッジロケーションは主にキャッシュや配信に使い、Local Zones は EC2 などを動かして計算処理を利用者の近くで行います。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/about-aws/global-infrastructure/"
+    },
+    {
+      "name": "AWS Local Zones",
+      "category": "グローバルインフラ",
+      "summary": "大都市の近くで EC2 などを低遅延で動かす拡張拠点",
+      "description": "リージョンを拡張して、コンピューティングやストレージなどのサービスを大都市や産業の中心地の近くに置いたものです。利用者の近くで処理することで、とても低い遅延が求められるアプリケーションに使います。",
+      "features": [
+        "親となるリージョンに結び付いている",
+        "EC2 などを利用者の近くで動かせる",
+        "とても低い遅延（レイテンシー）が求められる処理に向く"
+      ],
+      "useCases": [
+        "動画編集やオンラインゲームなど、遅延に厳しい処理を都市の近くで行う"
+      ],
+      "keywords": [
+        "リージョンの拡張",
+        "大都市の近く",
+        "非常に低いレイテンシー",
+        "利用者の近くで処理"
+      ],
+      "confusedWith": [
+        {
+          "name": "エッジロケーション",
+          "diff": "Local Zones は EC2 などで計算処理を行い、エッジロケーションは主にコンテンツのキャッシュと配信を行います。"
+        },
+        {
+          "name": "AWS Outposts",
+          "diff": "Local Zones は AWS が用意する拠点で、Outposts は AWS の機器を自社のデータセンターに置くサービスです。"
+        },
+        {
+          "name": "AWS Wavelength",
+          "diff": "Local Zones は都市の近くに置かれ、Wavelength は通信会社の 5G ネットワークの中に置かれます。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/about-aws/global-infrastructure/localzones/"
+    },
+    {
+      "name": "AWS Batch",
+      "category": "コンピューティング",
+      "summary": "大量のバッチ処理ジョブを自動で実行・管理",
+      "description": "大量の計算ジョブ（バッチ処理）を、必要なコンピューティング資源を自動で用意して実行するマネージドサービスです。ジョブをキューに入れると、AWS Batch が実行環境の台数を調整しながら順に処理します。",
+      "features": [
+        "ジョブキューとスケジューリングを自動で管理",
+        "実行環境として EC2（スポットインスタンスを含む）や Fargate を使える",
+        "需要に応じて計算資源を自動で増減",
+        "サービス自体の追加料金はなく、使った資源の分だけ払う"
+      ],
+      "useCases": [
+        "夜間の大量データ処理や科学計算・シミュレーション",
+        "動画の変換などをまとめて実行する"
+      ],
+      "keywords": [
+        "バッチ処理",
+        "ジョブキュー",
+        "大量のジョブ",
+        "スポットインスタンスでコスト削減"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Lambda",
+          "diff": "Lambda はイベントで動く短い処理（最大15分）向け、Batch は長時間・大量のジョブをまとめて流す向け。"
+        },
+        {
+          "name": "AWS Step Functions",
+          "diff": "Step Functions は複数の処理の順番や分岐をつなぐワークフローで、Batch は計算ジョブそのものを大量に実行する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html"
+    },
+    {
+      "name": "Amazon EC2",
+      "category": "コンピューティング",
+      "summary": "クラウド上の仮想サーバー（OSから自分で管理）",
+      "description": "サイズを自由に変えられる仮想サーバー（インスタンス）を、必要なときに必要な数だけ起動できるサービスです。OS やミドルウェアの管理は利用者が行う IaaS で、責任共有モデルではゲスト OS のパッチ適用も利用者の責任です。",
+      "features": [
+        "インスタンスタイプのファミリー: 汎用（M・T）、コンピューティング最適化（C）、メモリ最適化（R・X）、高速コンピューティング（GPU の P・G など）、ストレージ最適化（I・D）",
+        "購入オプション: オンデマンド、Savings Plans、リザーブドインスタンス、スポットインスタンス、Dedicated Hosts、Dedicated Instances、オンデマンドキャパシティ予約",
+        "AMI（マシンイメージ）から起動し、ストレージは EBS やインスタンスストアを使う",
+        "Auto Scaling や Elastic Load Balancing と組み合わせて台数を増減"
+      ],
+      "useCases": [
+        "Web サーバーや業務アプリを OS から自由に構成して動かす",
+        "短期・中断してよい処理をスポットインスタンスで安く動かす"
+      ],
+      "keywords": [
+        "仮想サーバー",
+        "インスタンスタイプ",
+        "オンデマンド",
+        "リザーブドインスタンス",
+        "スポットインスタンス"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Lightsail",
+          "diff": "Lightsail はサーバー・ストレージ・IP などを月額固定のセットで使う簡易版、EC2 は細かく自由に構成できる本格版。"
+        },
+        {
+          "name": "AWS Lambda",
+          "diff": "Lambda はサーバーを管理せずコードだけ動かすサーバーレス、EC2 はサーバー（OS）を自分で管理する。"
+        },
+        {
+          "name": "AWS Elastic Beanstalk",
+          "diff": "Beanstalk はコードを上げると EC2 などの環境を自動で作ってくれる PaaS、EC2 は自分で一から構成する。"
+        }
+      ],
+      "note": "購入オプションの使い分けがよく出る。長期で安定した利用はリザーブドインスタンスや Savings Plans、中断してもよい処理はスポット（最大の割引）、ライセンスの都合で物理サーバーを専有したいなら Dedicated Hosts。",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html"
+    },
+    {
+      "name": "AWS Elastic Beanstalk",
+      "category": "コンピューティング",
+      "summary": "コードを上げるだけで実行環境を自動構築するPaaS",
+      "description": "アプリケーションのコードをアップロードするだけで、EC2、ロードバランサー、Auto Scaling などの実行環境を自動で作り、デプロイや監視までまとめて面倒を見るサービスです。裏で作られたリソースは利用者が見て調整することもできます。",
+      "features": [
+        "Java、.NET、PHP、Node.js、Python、Ruby、Go、Docker などに対応",
+        "容量の確保・負荷分散・スケーリング・ヘルス監視を自動で設定",
+        "サービス自体の追加料金はなく、作られたリソースの分だけ払う"
+      ],
+      "useCases": [
+        "インフラを気にせず Web アプリを素早くデプロイしたい",
+        "開発者がコードに集中したい"
+      ],
+      "keywords": [
+        "PaaS",
+        "コードをアップロードするだけ",
+        "インフラの管理を任せる",
+        "デプロイの自動化"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS CloudFormation",
+          "diff": "CloudFormation はテンプレートであらゆるリソースを作る IaC、Beanstalk はアプリを動かす環境を自動で用意する PaaS。"
+        },
+        {
+          "name": "Amazon Lightsail",
+          "diff": "Lightsail は月額固定の簡単な仮想サーバー、Beanstalk はコードを渡すと EC2 などで環境を組んでくれる。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html"
+    },
+    {
+      "name": "Amazon Lightsail",
+      "category": "コンピューティング",
+      "summary": "月額固定で使える簡単な仮想サーバー",
+      "description": "仮想サーバー、ストレージ、固定 IP、DNS 管理などをひとまとめにして、分かりやすい月額料金で使えるサービスです。クラウドに不慣れな人や小規模なサイトでもすぐに始められます。",
+      "features": [
+        "予測しやすい月額固定の料金プラン",
+        "WordPress などのアプリをあらかじめ入れたイメージから起動",
+        "マネージドデータベース、ロードバランサー、コンテナも用意"
+      ],
+      "useCases": [
+        "小規模な Web サイトやブログを手軽に立てる",
+        "開発・テスト用の簡単な環境"
+      ],
+      "keywords": [
+        "シンプル",
+        "月額固定",
+        "小規模な Web サイト",
+        "WordPress",
+        "予測しやすい料金"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EC2",
+          "diff": "EC2 はインスタンスタイプやネットワークを細かく選べる本格版、Lightsail は必要なものをセットにした簡易版。"
+        },
+        {
+          "name": "AWS Elastic Beanstalk",
+          "diff": "Beanstalk はコードを上げると実行環境を自動で組む PaaS、Lightsail は月額で借りる仮想サーバー。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/lightsail/latest/userguide/what-is-amazon-lightsail.html"
+    },
+    {
+      "name": "AWS Outposts",
+      "category": "コンピューティング",
+      "summary": "AWSのハードウェアを自社データセンターに置く",
+      "description": "AWS が設計したハードウェア（ラックやサーバー）を自社のデータセンターなどに設置し、AWS と同じサービス・API・ツールをオンプレミスで使えるようにするサービスです。AWS がハードウェアの設置・保守を行います。",
+      "features": [
+        "オンプレミスで EC2、EBS、ECS、EKS、RDS などを動かせる",
+        "AWS リージョンと同じ API・管理コンソールで操作",
+        "ラック型とサーバー型がある"
+      ],
+      "useCases": [
+        "低いレイテンシーが必要で、オンプレミスのシステムの近くで処理したい",
+        "データを社内に置く必要がある（データ所在地の要件）"
+      ],
+      "keywords": [
+        "オンプレミスで AWS",
+        "ハイブリッドクラウド",
+        "低レイテンシー",
+        "データ所在地",
+        "AWS のハードウェアを設置"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Local Zones",
+          "diff": "Local Zones は AWS が大都市の近くに置いたインフラ、Outposts は自社の施設に AWS のハードウェアを置く。"
+        },
+        {
+          "name": "AWS Wavelength",
+          "diff": "Wavelength は通信事業者の 5G ネットワーク内に置かれた AWS、Outposts は自社データセンターに置く。"
+        },
+        {
+          "name": "AWS Storage Gateway",
+          "diff": "Storage Gateway はオンプレミスと AWS のストレージをつなぐ仕組みで、Outposts は AWS のサーバーそのものを社内に置く。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html"
+    },
+    {
+      "name": "AWS Lambda",
+      "category": "サーバーレス",
+      "summary": "サーバー管理なしでコードをイベント駆動で実行",
+      "description": "サーバーを用意・管理せずに、コード（関数）をアップロードするだけで実行できるサーバーレスのコンピューティングサービスです。S3 へのアップロードや API の呼び出しなどのイベントをきっかけに動き、実行回数と実行時間の分だけ料金がかかります。",
+      "features": [
+        "イベント駆動で自動実行（S3、DynamoDB、API Gateway、EventBridge など）",
+        "リクエスト数に応じて自動でスケール",
+        "実行回数と実行時間による従量課金（動いていない間は料金なし）",
+        "1回の実行は最大15分"
+      ],
+      "useCases": [
+        "S3 に画像が置かれたらサムネイルを作るなどのイベント処理",
+        "API Gateway と組み合わせたサーバーレス API"
+      ],
+      "keywords": [
+        "サーバーレス",
+        "イベント駆動",
+        "関数",
+        "サーバーの管理不要",
+        "実行時間で課金"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Fargate",
+          "diff": "Fargate はサーバーレスでコンテナを動かす、Lambda はコンテナを意識せずコード（関数）を短時間動かす。"
+        },
+        {
+          "name": "Amazon EC2",
+          "diff": "EC2 はサーバー（OS）を自分で管理し常時動かせる、Lambda はサーバー管理なしでイベントのときだけ動く。"
+        },
+        {
+          "name": "AWS Batch",
+          "diff": "Batch は長時間・大量のジョブ向け、Lambda は最大15分の短い処理向け。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html"
+    },
+    {
+      "name": "AWS Fargate",
+      "category": "サーバーレス",
+      "summary": "サーバー管理なしでコンテナを動かす実行環境",
+      "description": "コンテナを動かすためのサーバー（EC2 インスタンス）を用意・管理せずに、コンテナを実行できるサーバーレスのコンピューティングエンジンです。Amazon ECS や Amazon EKS と組み合わせて使います。",
+      "features": [
+        "ECS と EKS の両方で使える",
+        "サーバーのプロビジョニング・パッチ適用・スケーリングが不要",
+        "コンテナが使った vCPU とメモリの分だけ払う"
+      ],
+      "useCases": [
+        "サーバーを管理せずにコンテナ化したアプリを動かしたい",
+        "ECS の起動タイプとしてインフラ運用を減らしたい"
+      ],
+      "keywords": [
+        "サーバーレス",
+        "コンテナ",
+        "サーバーの管理不要",
+        "ECS / EKS の起動タイプ"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon ECS",
+          "diff": "ECS はコンテナを管理・配置する仕組み（オーケストレーション）、Fargate はそのコンテナを動かすサーバーレスの実行場所。"
+        },
+        {
+          "name": "AWS Lambda",
+          "diff": "Lambda はコード（関数）を短時間動かす、Fargate はコンテナを長時間でも動かせる。"
+        },
+        {
+          "name": "Amazon EC2",
+          "diff": "ECS / EKS の実行場所として EC2 を選ぶとサーバーを自分で管理する、Fargate を選ぶと管理不要。"
+        }
+      ],
+      "note": "Fargate は単独のサービスではなく、ECS / EKS の「コンテナを動かす場所」の選択肢。",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html"
+    },
+    {
+      "name": "Amazon ECR",
+      "category": "コンテナ",
+      "summary": "コンテナイメージを保存するレジストリ",
+      "description": "Docker などのコンテナイメージを保存・管理・配布するための、フルマネージドのコンテナレジストリです。ECS、EKS、Lambda などからイメージを取り出して使います。",
+      "features": [
+        "プライベートとパブリックのリポジトリ",
+        "IAM によるアクセス制御と保存時の暗号化",
+        "イメージの脆弱性スキャン",
+        "ライフサイクルポリシーで古いイメージを自動削除"
+      ],
+      "useCases": [
+        "自社で作ったコンテナイメージを安全に保管し、ECS や EKS で使う",
+        "CI/CD でビルドしたイメージの置き場所"
+      ],
+      "keywords": [
+        "コンテナイメージ",
+        "レジストリ",
+        "Docker イメージの保存",
+        "イメージスキャン"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon ECS",
+          "diff": "ECS はコンテナを動かして管理するサービス、ECR はコンテナイメージを保存する倉庫。"
+        },
+        {
+          "name": "Amazon EKS",
+          "diff": "EKS は Kubernetes でコンテナを動かす、ECR はそのイメージを保管する。"
+        }
+      ],
+      "note": "「イメージを保存」なら ECR、「コンテナを動かす・管理する」なら ECS / EKS、「サーバーなしで動かす場所」なら Fargate と覚える。",
+      "url": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html"
+    },
+    {
+      "name": "Amazon ECS",
+      "category": "コンテナ",
+      "summary": "AWS独自のコンテナ管理（オーケストレーション）",
+      "description": "コンテナの起動・停止・配置・スケーリングを管理する、AWS 独自のフルマネージドなコンテナオーケストレーションサービスです。コンテナを動かす場所として EC2 か Fargate を選べます。",
+      "features": [
+        "AWS のサービス（IAM、ELB、CloudWatch など）と深く統合",
+        "実行場所に EC2（自分で管理）か Fargate（サーバーレス）を選べる",
+        "タスク定義でコンテナの構成を記述"
+      ],
+      "useCases": [
+        "マイクロサービスをコンテナで動かす",
+        "Kubernetes の知識なしでシンプルにコンテナを運用したい"
+      ],
+      "keywords": [
+        "コンテナオーケストレーション",
+        "Docker コンテナ",
+        "タスク定義",
+        "AWS ネイティブ"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EKS",
+          "diff": "EKS はオープンソースの Kubernetes を使う、ECS は AWS 独自の仕組みで Kubernetes を使わない。"
+        },
+        {
+          "name": "Amazon ECR",
+          "diff": "ECR はコンテナイメージの保存場所、ECS はそのイメージからコンテナを動かす。"
+        },
+        {
+          "name": "AWS Fargate",
+          "diff": "Fargate は ECS が使う実行場所（サーバーレス）の一つで、ECS 自体は管理する仕組み。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html"
+    },
+    {
+      "name": "Amazon EKS",
+      "category": "コンテナ",
+      "summary": "マネージドなKubernetesでコンテナを管理",
+      "description": "オープンソースのコンテナ管理基盤 Kubernetes を、AWS 上で運用できるマネージドサービスです。Kubernetes のコントロールプレーンは AWS が管理し、既存の Kubernetes のツールや知識をそのまま使えます。",
+      "features": [
+        "Kubernetes のコントロールプレーンを AWS が管理",
+        "実行場所に EC2 や Fargate を選べる",
+        "オンプレミスなど他の環境の Kubernetes と同じ使い方ができる"
+      ],
+      "useCases": [
+        "すでに Kubernetes を使っているシステムを AWS に移す",
+        "複数の環境で同じ Kubernetes の仕組みを使いたい"
+      ],
+      "keywords": [
+        "Kubernetes",
+        "マネージド Kubernetes",
+        "オープンソース",
+        "コンテナオーケストレーション"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon ECS",
+          "diff": "ECS は AWS 独自のコンテナ管理、EKS は Kubernetes を使う。問題文に「Kubernetes」があれば EKS。"
+        },
+        {
+          "name": "Amazon ECR",
+          "diff": "ECR はコンテナイメージの保存場所、EKS はコンテナを動かして管理する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html"
+    },
+    {
+      "name": "AWS Backup",
+      "category": "ストレージ",
+      "summary": "AWS全体のバックアップを一か所で自動管理",
+      "description": "EC2、EBS、EFS、RDS、DynamoDB、S3 など複数の AWS サービスのバックアップを、一か所で計画・自動化・管理するサービスです。バックアッププランで取得の頻度や保持期間を決めます。",
+      "features": [
+        "複数サービスのバックアップを一元管理",
+        "バックアッププランでスケジュールと保持期間を自動化",
+        "別リージョン・別アカウントへのコピー",
+        "AWS Organizations と連携した組織全体の管理"
+      ],
+      "useCases": [
+        "会社全体のバックアップ方針を一か所で守らせたい",
+        "監査に備えてバックアップの取得状況を記録する"
+      ],
+      "keywords": [
+        "一元管理",
+        "バックアッププラン",
+        "自動バックアップ",
+        "コンプライアンス"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Elastic Disaster Recovery",
+          "diff": "Elastic Disaster Recovery はサーバーを常に複製して障害時に素早く復旧させる、Backup は定期的にバックアップを取って保管する。"
+        },
+        {
+          "name": "Amazon EBS スナップショット",
+          "diff": "EBS スナップショットは EBS ボリューム単体のバックアップ、AWS Backup は複数のサービスのバックアップをまとめて管理する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html"
+    },
+    {
+      "name": "Amazon EBS",
+      "category": "ストレージ",
+      "summary": "EC2にアタッチするブロックストレージ（同じAZ内）",
+      "description": "EC2 インスタンスに取り付けて使うブロックストレージ（仮想的なディスク）です。インスタンスを停止してもデータは残り、作成したアベイラビリティーゾーン（AZ）の中で使います。",
+      "features": [
+        "インスタンスを停止・終了してもデータが残る永続ストレージ（終了時に削除する設定も可能）",
+        "ボリュームは1つの AZ に作られ、同じ AZ の EC2 に取り付ける",
+        "スナップショットでバックアップ（スナップショットは S3 に保存される）",
+        "用途に応じたボリュームタイプ（SSD 系・HDD 系）"
+      ],
+      "useCases": [
+        "EC2 の OS やデータベースのディスク",
+        "高い性能が必要な業務アプリのデータ領域"
+      ],
+      "keywords": [
+        "ブロックストレージ",
+        "EC2 に接続",
+        "スナップショット",
+        "単一の AZ",
+        "永続的"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EFS",
+          "diff": "EFS は複数の EC2 から同時に使える共有ファイルシステム（複数 AZ）、EBS は基本的に1台の EC2 に付けるディスク（1つの AZ）。"
+        },
+        {
+          "name": "EC2 インスタンスストア",
+          "diff": "インスタンスストアは停止・終了でデータが消える一時ディスク、EBS は停止してもデータが残る。"
+        },
+        {
+          "name": "Amazon S3",
+          "diff": "S3 はインターネット経由で使うオブジェクトストレージ、EBS は EC2 に付けるブロックストレージ。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html"
+    },
+    {
+      "name": "Amazon EFS",
+      "category": "ストレージ",
+      "summary": "複数のEC2で共有できるLinux向けファイルシステム",
+      "description": "複数の EC2 インスタンスやコンテナから同時にマウントして使える、フルマネージドの共有ファイルシステム（NFS）です。保存量に合わせて容量が自動で増減し、事前に容量を決める必要がありません。",
+      "features": [
+        "NFS で複数のインスタンスから同時にアクセス",
+        "容量が自動で伸び縮みし、使った分だけ払う",
+        "標準では複数の AZ にデータを保存（1つの AZ に保存する One Zone もある）",
+        "アクセス頻度の低いデータ向けのストレージクラスとライフサイクル管理"
+      ],
+      "useCases": [
+        "複数の Web サーバーで同じファイルを共有する",
+        "コンテナや Lambda から共通のファイルを使う"
+      ],
+      "keywords": [
+        "共有ファイルシステム",
+        "NFS",
+        "Linux",
+        "複数のインスタンスから同時アクセス",
+        "自動で容量が増減"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EBS",
+          "diff": "EBS は基本的に1台の EC2 に付けるブロックストレージ、EFS は多数の EC2 で共有するファイルストレージ。"
+        },
+        {
+          "name": "Amazon FSx",
+          "diff": "FSx for Windows File Server は Windows（SMB）向け、EFS は Linux（NFS）向け。"
+        },
+        {
+          "name": "Amazon S3",
+          "diff": "S3 はオブジェクトストレージで API で読み書きする、EFS はファイルシステムとしてマウントして使う。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+    },
+    {
+      "name": "AWS Elastic Disaster Recovery",
+      "category": "ストレージ",
+      "summary": "サーバーを常時複製し障害時に素早く復旧（DR）",
+      "description": "オンプレミスやクラウドのサーバーを AWS へ継続的に複製しておき、災害や障害のときに AWS 上で素早く起動して復旧できるようにするサービスです。待機用のサーバーを常に動かしておく必要がないため、DR のコストを抑えられます。",
+      "features": [
+        "ブロックレベルでの継続的なレプリケーション",
+        "障害時に数分単位で AWS 上に復旧（RPO・RTO を短くできる）",
+        "普段は軽量なステージング領域だけを使い、コストを抑える",
+        "復旧の訓練（ドリル）を本番に影響を与えずに実施できる"
+      ],
+      "useCases": [
+        "オンプレミスのサーバーの災害対策先として AWS を使う",
+        "別の AWS リージョンへの災害対策"
+      ],
+      "keywords": [
+        "災害対策（DR）",
+        "継続的なレプリケーション",
+        "RPO / RTO",
+        "フェイルオーバー"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Backup",
+          "diff": "Backup は定期的にバックアップを取って保管する、Elastic Disaster Recovery はサーバーを常に複製して素早く切り替える。"
+        },
+        {
+          "name": "AWS Application Migration Service",
+          "diff": "Application Migration Service はサーバーを AWS へ移行するため、Elastic Disaster Recovery は障害に備えて復旧するため。"
+        }
+      ],
+      "note": "CloudEndure Disaster Recovery の後継として推奨されているサービス。",
+      "url": "https://docs.aws.amazon.com/drs/latest/userguide/what-is-drs.html"
+    },
+    {
+      "name": "Amazon FSx",
+      "category": "ストレージ",
+      "summary": "Windows・Lustreなど市販のファイルシステムを提供",
+      "description": "よく使われる市販・オープンソースのファイルシステムを、フルマネージドで使えるサービス群です。Windows のファイル共有や、高性能計算（HPC）向けのファイルシステムなどから用途に合わせて選びます。",
+      "features": [
+        "FSx for Windows File Server（SMB、Active Directory と統合）",
+        "FSx for Lustre（HPC・機械学習向けの高速なファイルシステム、S3 と連携）",
+        "FSx for NetApp ONTAP と FSx for OpenZFS"
+      ],
+      "useCases": [
+        "Windows のファイルサーバーをそのまま AWS に移す",
+        "HPC や機械学習で大量のデータを高速に処理する"
+      ],
+      "keywords": [
+        "Windows ファイルサーバー",
+        "SMB",
+        "Lustre",
+        "HPC",
+        "Active Directory"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EFS",
+          "diff": "EFS は Linux 向け（NFS）、FSx for Windows File Server は Windows 向け（SMB）。"
+        },
+        {
+          "name": "AWS Storage Gateway",
+          "diff": "Storage Gateway はオンプレミスから AWS のストレージを使うための橋渡し、FSx は AWS 上のファイルシステムそのもの。"
+        }
+      ],
+      "note": "問題文に「Windows」「SMB」があれば FSx for Windows File Server、「HPC」「Lustre」なら FSx for Lustre、「Linux」「NFS」の共有なら EFS。",
+      "url": "https://docs.aws.amazon.com/fsx/"
+    },
+    {
+      "name": "Amazon S3",
+      "category": "ストレージ",
+      "summary": "容量無制限に近いオブジェクトストレージ",
+      "description": "ファイルを「オブジェクト」としてバケットに保存する、耐久性の高いオブジェクトストレージです。99.999999999%（イレブンナイン）の耐久性を持つように設計され、静的 Web サイトの配信、バックアップ、データレイクなど幅広く使われます。",
+      "features": [
+        "ストレージクラス: S3 Standard、S3 Intelligent-Tiering（アクセス頻度に応じて自動で移動）、S3 Standard-IA（低頻度アクセス）、S3 One Zone-IA（1つの AZ のみ・低頻度）、Glacier 系（Instant Retrieval・Flexible Retrieval・Deep Archive）",
+        "ライフサイクルルールで、一定期間後に安いストレージクラスへ移す・削除する",
+        "バージョニング、レプリケーション（別リージョンへの複製）、静的 Web サイトホスティング",
+        "バケットポリシーや IAM でのアクセス制御、新しいオブジェクトはデフォルトで暗号化される"
+      ],
+      "useCases": [
+        "バックアップやログの長期保存、データレイク",
+        "画像や動画などの静的コンテンツの保存と配信（CloudFront と組み合わせる）"
+      ],
+      "keywords": [
+        "オブジェクトストレージ",
+        "バケット",
+        "ストレージクラス",
+        "ライフサイクルポリシー",
+        "イレブンナインの耐久性"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EBS",
+          "diff": "EBS は EC2 に付けるブロックストレージ（1つの AZ）、S3 は API や URL で読み書きするオブジェクトストレージ。"
+        },
+        {
+          "name": "Amazon EFS",
+          "diff": "EFS は EC2 にマウントする共有ファイルシステム、S3 はマウントせず API で使うオブジェクトストレージ。"
+        },
+        {
+          "name": "Amazon S3 Glacier",
+          "diff": "Glacier 系は取り出しに時間やコストがかかる代わりに安いアーカイブ向けのストレージクラスで、S3 の一部。"
+        }
+      ],
+      "note": "ストレージクラスの選び方がよく出る。アクセスパターンが分からない・変わるなら Intelligent-Tiering、再作成できる低頻度データなら One Zone-IA、長期アーカイブなら Glacier 系。",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
+    },
+    {
+      "name": "Amazon S3 Glacier",
+      "category": "ストレージ",
+      "summary": "長期保存向けの安いアーカイブ用ストレージクラス",
+      "description": "めったに取り出さないデータを長期間、低コストで保存するための S3 のストレージクラス群です。取り出しの速さとコストに応じて3つのクラスから選びます。",
+      "features": [
+        "S3 Glacier Instant Retrieval: めったに使わないがすぐ取り出したいデータ（ミリ秒で取り出し）",
+        "S3 Glacier Flexible Retrieval: 取り出しに数分〜数時間かかってもよいデータ",
+        "S3 Glacier Deep Archive: 最も安く、取り出しに数時間かかる長期保管向け",
+        "S3 のライフサイクルルールで自動的に移せる"
+      ],
+      "useCases": [
+        "法令で何年も保管が必要な記録の保存",
+        "テープ保管の置き換え"
+      ],
+      "keywords": [
+        "アーカイブ",
+        "長期保存",
+        "低コスト",
+        "取り出しに時間がかかる",
+        "コンプライアンス"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon S3 Standard-IA",
+          "diff": "Standard-IA はアクセス頻度は低いがすぐ取り出す必要のあるデータ向け、Glacier 系はさらに安いアーカイブ向け。"
+        },
+        {
+          "name": "AWS Backup",
+          "diff": "Backup はバックアップの取得と管理をするサービス、Glacier はデータを安く置いておく保存先。"
+        }
+      ],
+      "note": "Glacier のストレージクラスは S3 の一部として使い続けられる。一方、S3 とは別の古いボールト型のサービス（Amazon Glacier）は 2025年11月7日から新規の顧客が使えない「メンテナンス」扱いになった。",
+      "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html"
+    },
+    {
+      "name": "AWS Storage Gateway",
+      "category": "ストレージ",
+      "summary": "オンプレミスとAWSのストレージをつなぐ橋渡し",
+      "description": "オンプレミスのサーバーやアプリケーションから、AWS のクラウドストレージを使えるようにするハイブリッドクラウドストレージのサービスです。社内に置いたゲートウェイがキャッシュを持ち、データを S3 などに保存します。",
+      "features": [
+        "S3 File Gateway: NFS / SMB のファイルとして S3 に保存",
+        "Volume Gateway: iSCSI のブロックストレージとしてクラウドに保存",
+        "Tape Gateway: 仮想テープライブラリとして、バックアップソフトのテープを置き換える",
+        "よく使うデータはローカルにキャッシュして低レイテンシーで使える"
+      ],
+      "useCases": [
+        "オンプレミスのファイルサーバーの容量をクラウドで拡張する",
+        "物理テープのバックアップをクラウドに置き換える"
+      ],
+      "keywords": [
+        "ハイブリッドクラウド",
+        "オンプレミスから AWS のストレージ",
+        "ファイルゲートウェイ",
+        "テープゲートウェイ",
+        "ボリュームゲートウェイ"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS DataSync",
+          "diff": "DataSync はデータを AWS へ移す・同期する転送サービス、Storage Gateway はオンプレミスから AWS のストレージを継続的に使うための仕組み。"
+        },
+        {
+          "name": "AWS Outposts",
+          "diff": "Outposts は AWS のサーバーそのものを社内に置く、Storage Gateway は社内からクラウドのストレージを使う。"
+        },
+        {
+          "name": "AWS Direct Connect",
+          "diff": "Direct Connect はオンプレミスと AWS をつなぐ専用回線、Storage Gateway はストレージをつなぐサービス。"
+        }
+      ],
+      "note": "FSx File Gateway は 2024年10月28日から新規の顧客は使えない。",
+      "url": "https://docs.aws.amazon.com/storagegateway/latest/userguide/WhatIsStorageGateway.html"
+    },
+    {
+      "name": "EC2 インスタンスストア",
+      "category": "ストレージ",
+      "summary": "EC2に付いた一時的なディスク（停止で消える）",
+      "description": "EC2 インスタンスが動いている物理サーバーに直接付いているディスクで、一時的なデータの置き場所として使います。高速ですが、インスタンスを停止・終了するとデータが消えます。",
+      "features": [
+        "ホストの物理ディスクを使うため高速",
+        "インスタンスの停止・休止・終了でデータが消える（再起動では残る）",
+        "追加料金なし（インスタンスの料金に含まれる）",
+        "使えるかどうか・容量はインスタンスタイプで決まる"
+      ],
+      "useCases": [
+        "キャッシュやバッファなど、消えても困らない一時データ",
+        "複数のインスタンスで複製している一時データ"
+      ],
+      "keywords": [
+        "一時ストレージ",
+        "エフェメラル",
+        "停止でデータが消える",
+        "高速"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EBS",
+          "diff": "EBS は停止してもデータが残る永続ストレージ、インスタンスストアは停止・終了で消える一時ストレージ。"
+        },
+        {
+          "name": "Amazon EFS",
+          "diff": "EFS は複数の EC2 で共有する永続的なファイルシステム、インスタンスストアはそのインスタンスだけの一時ディスク。"
+        }
+      ],
+      "note": "「一時的」「エフェメラル」「消えてもよい」「追加料金なし」ならインスタンスストア、「永続的」なら EBS。",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html"
+    },
+    {
+      "name": "Amazon Aurora",
+      "category": "データベース",
+      "summary": "MySQL・PostgreSQL互換の高性能なリレーショナルDB",
+      "description": "MySQL と PostgreSQL と互換性のある、AWS が作ったクラウド向けのリレーショナルデータベースです。Amazon RDS の一部として管理され、データを3つの AZ に6つのコピーで保存して高い可用性を持ちます。",
+      "features": [
+        "MySQL・PostgreSQL と互換",
+        "データを3つの AZ にまたがって6つ複製して保存",
+        "最大15個のリードレプリカ",
+        "Aurora Serverless で負荷に応じて容量を自動調整、Aurora Global Database で複数リージョンに展開"
+      ],
+      "useCases": [
+        "高い性能と可用性が必要な業務システムのデータベース",
+        "商用データベースからの移行先"
+      ],
+      "keywords": [
+        "MySQL 互換",
+        "PostgreSQL 互換",
+        "高可用性",
+        "高性能",
+        "リレーショナル"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon RDS",
+          "diff": "RDS は複数のエンジン（MySQL、Oracle、SQL Server など）を選べるマネージド DB、Aurora はその中の AWS 独自エンジンで MySQL / PostgreSQL 互換のみ。"
+        },
+        {
+          "name": "Amazon DynamoDB",
+          "diff": "DynamoDB は NoSQL（キーと値）、Aurora はリレーショナル（SQL）。"
+        },
+        {
+          "name": "Amazon Redshift",
+          "diff": "Redshift は分析用のデータウェアハウス、Aurora は日々の取引処理（OLTP）用のデータベース。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html"
+    },
+    {
+      "name": "Amazon DocumentDB",
+      "category": "データベース",
+      "summary": "MongoDB互換のドキュメントデータベース",
+      "description": "JSON のようなドキュメント形式でデータを保存・検索する、MongoDB 互換のフルマネージドなドキュメントデータベースです。MongoDB 用のアプリケーションやツールをそのまま使えます。",
+      "features": [
+        "MongoDB の API と互換",
+        "JSON 形式のドキュメントをそのまま保存・検索",
+        "ストレージは自動で増え、データは複数の AZ に複製"
+      ],
+      "useCases": [
+        "MongoDB で動いているアプリケーションを AWS のマネージドサービスに移す",
+        "コンテンツ管理やユーザープロファイルなど構造が変わりやすいデータ"
+      ],
+      "keywords": [
+        "MongoDB 互換",
+        "ドキュメントデータベース",
+        "JSON",
+        "NoSQL"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon DynamoDB",
+          "diff": "DynamoDB は AWS 独自のキーバリュー型 NoSQL、DocumentDB は MongoDB 互換のドキュメント型。「MongoDB」とあれば DocumentDB。"
+        },
+        {
+          "name": "Amazon Neptune",
+          "diff": "Neptune はデータ同士のつながりを扱うグラフ DB、DocumentDB は JSON ドキュメントを扱う。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html"
+    },
+    {
+      "name": "Amazon DynamoDB",
+      "category": "データベース",
+      "summary": "サーバーレスで高速なキーバリュー型NoSQL",
+      "description": "キーと値でデータを保存する、サーバーレスでフルマネージドな NoSQL データベースです。規模が大きくなっても 1 桁ミリ秒の応答を保ち、サーバーの管理は不要です。",
+      "features": [
+        "キーバリュー型とドキュメント型のデータに対応",
+        "サーバーレスで、オンデマンドかプロビジョンドの容量モードを選べる",
+        "グローバルテーブルで複数リージョンに複製",
+        "DAX（DynamoDB Accelerator）でインメモリキャッシュによる高速化"
+      ],
+      "useCases": [
+        "ゲーム、モバイル、IoT など大量のアクセスを低レイテンシーで処理する",
+        "セッション情報やショッピングカートの保存"
+      ],
+      "keywords": [
+        "NoSQL",
+        "キーバリュー",
+        "サーバーレス",
+        "ミリ秒の応答",
+        "スキーマレス"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon RDS",
+          "diff": "RDS は SQL で扱うリレーショナル DB、DynamoDB は SQL を使わない NoSQL。"
+        },
+        {
+          "name": "Amazon DocumentDB",
+          "diff": "DocumentDB は MongoDB 互換、DynamoDB は AWS 独自のキーバリュー型。"
+        },
+        {
+          "name": "Amazon ElastiCache",
+          "diff": "ElastiCache はメモリ上のキャッシュ、DynamoDB はデータを永続的に保存するデータベース（キャッシュが必要なら DAX）。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html"
+    },
+    {
+      "name": "Amazon ElastiCache",
+      "category": "データベース",
+      "summary": "メモリ上のキャッシュでDBの読み取りを高速化",
+      "description": "データをメモリ上に置いて、マイクロ秒単位で読み書きできるフルマネージドなインメモリキャッシュのサービスです。データベースの前に置いて、よく読むデータをキャッシュし、応答を速くしてデータベースの負荷を減らします。",
+      "features": [
+        "Valkey、Redis OSS、Memcached に対応",
+        "メモリ上で動くため非常に低いレイテンシー",
+        "サーバーレスでも使える"
+      ],
+      "useCases": [
+        "データベースへの読み取りが多いアプリのキャッシュ",
+        "セッション情報やランキングの保存"
+      ],
+      "keywords": [
+        "インメモリ",
+        "キャッシュ",
+        "Redis",
+        "Memcached",
+        "低レイテンシー"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon CloudFront",
+          "diff": "CloudFront はエッジロケーションでコンテンツを利用者の近くにキャッシュする CDN、ElastiCache はアプリとデータベースの間に置くメモリのキャッシュ。"
+        },
+        {
+          "name": "Amazon DynamoDB",
+          "diff": "DynamoDB はデータを永続的に保存するデータベース、ElastiCache は高速化のためのキャッシュ。"
+        }
+      ],
+      "note": "「データベースの読み取りを速くしたい」「インメモリ」なら ElastiCache。",
+      "url": "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.html"
+    },
+    {
+      "name": "Amazon Neptune",
+      "category": "データベース",
+      "summary": "データのつながりを扱うグラフデータベース",
+      "description": "人と人、商品と購入者のように、データ同士の関係（つながり）を保存して高速にたどれる、フルマネージドなグラフデータベースです。",
+      "features": [
+        "グラフ形式のデータ（ノードと関係）を保存",
+        "Gremlin、openCypher、SPARQL などのグラフ用の問い合わせ言語に対応",
+        "データは複数の AZ に複製され、リードレプリカも使える"
+      ],
+      "useCases": [
+        "SNS の友達関係やおすすめ（レコメンデーション）",
+        "不正検知、ナレッジグラフ"
+      ],
+      "keywords": [
+        "グラフデータベース",
+        "ソーシャルネットワーク",
+        "レコメンデーション",
+        "不正検知",
+        "関係性"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon DocumentDB",
+          "diff": "DocumentDB は JSON ドキュメントを保存する、Neptune はデータ同士の関係をたどる。"
+        },
+        {
+          "name": "Amazon RDS",
+          "diff": "RDS は表形式のリレーショナル DB、Neptune は複雑なつながりをたどるのが得意なグラフ DB。"
+        }
+      ],
+      "note": "問題文に「関係」「つながり」「ソーシャルネットワーク」「グラフ」があれば Neptune。",
+      "url": "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html"
+    },
+    {
+      "name": "Amazon RDS",
+      "category": "データベース",
+      "summary": "よく使われるリレーショナルDBのマネージド版",
+      "description": "MySQL、PostgreSQL、MariaDB、Oracle、SQL Server、Db2 などのリレーショナルデータベースを、フルマネージドで使えるサービスです。パッチ適用、バックアップ、障害時の切り替えなどの運用作業を AWS が行います。",
+      "features": [
+        "複数のデータベースエンジンから選べる（Aurora も RDS の一部）",
+        "マルチ AZ 配置で、障害時に別の AZ の待機系へ自動で切り替え（高可用性）",
+        "リードレプリカで読み取りの負荷を分散（性能向上）",
+        "自動バックアップとポイントインタイムリカバリ"
+      ],
+      "useCases": [
+        "業務システムや Web アプリのリレーショナルデータベース",
+        "オンプレミスのデータベースを運用負荷の少ない形で移す"
+      ],
+      "keywords": [
+        "リレーショナルデータベース",
+        "マネージド",
+        "マルチ AZ",
+        "リードレプリカ",
+        "SQL"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Aurora",
+          "diff": "Aurora は RDS の中の AWS 独自エンジン（MySQL / PostgreSQL 互換・高性能）、RDS は Oracle や SQL Server など多くのエンジンを選べる。"
+        },
+        {
+          "name": "Amazon DynamoDB",
+          "diff": "DynamoDB は NoSQL、RDS は SQL で扱うリレーショナル DB。"
+        },
+        {
+          "name": "EC2 にデータベースを自分で入れる",
+          "diff": "EC2 に入れると OS やパッチ、バックアップを自分で管理する、RDS はそれらを AWS が管理する（OS にはログインできない）。"
+        }
+      ],
+      "note": "マルチ AZ は「可用性（障害対策）」、リードレプリカは「読み取り性能」と目的を区別する。",
+      "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html"
+    },
+    {
+      "name": "Amazon API Gateway",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "APIの作成・公開・管理をまとめて行う窓口",
+      "description": "REST、HTTP、WebSocket の API を作成・公開・保護・監視するためのフルマネージドなサービスです。API の入り口として、後ろにある Lambda や EC2 などのバックエンドへリクエストを渡します。",
+      "features": [
+        "REST API、HTTP API、WebSocket API に対応",
+        "認証・認可、スロットリング（流量制限）、キャッシュ",
+        "Lambda と組み合わせたサーバーレス API",
+        "API のバージョンやステージの管理"
+      ],
+      "useCases": [
+        "Lambda と組み合わせてサーバーレスな Web API を作る",
+        "モバイルアプリのバックエンドの入り口"
+      ],
+      "keywords": [
+        "API",
+        "REST API",
+        "サーバーレス",
+        "スロットリング",
+        "Lambda と統合"
+      ],
+      "confusedWith": [
+        {
+          "name": "Elastic Load Balancing",
+          "diff": "ELB はトラフィックを複数のサーバーに分散する、API Gateway は API の公開と認証・流量制限などの管理を行う。"
+        },
+        {
+          "name": "Amazon CloudFront",
+          "diff": "CloudFront はコンテンツを利用者の近くでキャッシュして配信する CDN、API Gateway は API を作って管理する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html"
+    },
+    {
+      "name": "Amazon CloudFront",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "エッジでキャッシュして配信するCDN",
+      "description": "世界中のエッジロケーションにコンテンツをキャッシュして、利用者の近くから低レイテンシーで配信するコンテンツ配信ネットワーク（CDN）です。S3、EC2、ELB などをオリジン（元のデータの置き場所）にします。",
+      "features": [
+        "エッジロケーションでのキャッシュ",
+        "静的コンテンツと動的コンテンツの両方を配信",
+        "HTTPS 化、AWS WAF との連携、AWS Shield Standard による DDoS 対策",
+        "オリジンへのアクセスを CloudFront からだけに制限できる"
+      ],
+      "useCases": [
+        "世界中の利用者に Web サイトや動画を速く配信する",
+        "S3 に置いた静的サイトを高速・安全に公開する"
+      ],
+      "keywords": [
+        "CDN",
+        "エッジロケーション",
+        "キャッシュ",
+        "低レイテンシー",
+        "コンテンツ配信"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Global Accelerator",
+          "diff": "Global Accelerator はキャッシュせず固定 IP で通信を AWS のネットワークに乗せる（TCP / UDP）、CloudFront はコンテンツをエッジにキャッシュして配信する（HTTP / HTTPS）。"
+        },
+        {
+          "name": "Amazon Route 53",
+          "diff": "Route 53 はドメイン名を IP アドレスに変換する DNS、CloudFront はコンテンツを配信する。"
+        },
+        {
+          "name": "Amazon ElastiCache",
+          "diff": "ElastiCache はアプリとデータベースの間のキャッシュ、CloudFront は利用者の近くでコンテンツをキャッシュする。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html"
+    },
+    {
+      "name": "AWS Direct Connect",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "オンプレミスとAWSを結ぶ専用回線",
+      "description": "自社のデータセンターやオフィスと AWS を、インターネットを通らない専用のネットワーク回線で接続するサービスです。帯域が安定し、レイテンシーが一定になりやすいのが特長です。",
+      "features": [
+        "インターネットを経由しないプライベートな接続",
+        "安定した帯域とレイテンシー",
+        "大量のデータ転送でデータ転送料金を抑えられる場合がある",
+        "回線の開通には時間がかかる"
+      ],
+      "useCases": [
+        "オンプレミスと AWS の間で大量のデータを安定して転送する",
+        "ハイブリッドクラウドで一定の性能が必要な通信"
+      ],
+      "keywords": [
+        "専用線",
+        "インターネットを経由しない",
+        "安定した帯域",
+        "一貫したネットワーク性能",
+        "ハイブリッドクラウド"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS VPN",
+          "diff": "Site-to-Site VPN はインターネット上を暗号化して通る接続で、すぐに用意できて安い。Direct Connect は専用線で安定しているが開通に時間がかかる。"
+        },
+        {
+          "name": "AWS Transit Gateway",
+          "diff": "Transit Gateway は多くの VPC やオンプレミスをつなぐハブ、Direct Connect はオンプレミスと AWS を結ぶ回線そのもの。"
+        }
+      ],
+      "note": "Direct Connect の通信はそのままでは暗号化されない。暗号化が必要なら Direct Connect の上に VPN を通すなどを組み合わせる。",
+      "url": "https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html"
+    },
+    {
+      "name": "AWS Global Accelerator",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "固定IPでAWSのネットワークに乗せて通信を高速化",
+      "description": "固定の IP アドレス（エニーキャスト）を入り口にして、利用者の通信を最寄りのエッジロケーションから AWS のグローバルネットワークに乗せ、アプリケーションまで速く安定して届けるサービスです。",
+      "features": [
+        "2つの固定 IP アドレス（エニーキャスト）",
+        "AWS のグローバルネットワークを通るため、レイテンシーが安定",
+        "エンドポイントのヘルスチェックと、正常なリージョンへの素早い切り替え",
+        "TCP と UDP に対応（コンテンツはキャッシュしない）"
+      ],
+      "useCases": [
+        "ゲームや IoT など、HTTP 以外（UDP など）の通信を世界中から速くする",
+        "複数リージョンのアプリを固定 IP で公開し、障害時に素早く切り替える"
+      ],
+      "keywords": [
+        "固定 IP アドレス",
+        "エニーキャスト",
+        "AWS グローバルネットワーク",
+        "TCP / UDP",
+        "パフォーマンス向上"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon CloudFront",
+          "diff": "CloudFront はコンテンツをエッジにキャッシュして配信する CDN、Global Accelerator はキャッシュせず通信の経路を速くする。"
+        },
+        {
+          "name": "Amazon Route 53",
+          "diff": "Route 53 は DNS で接続先を振り分ける、Global Accelerator は固定 IP で受けて AWS のネットワーク経由で届ける。"
+        }
+      ],
+      "note": "「固定 IP」「UDP」「キャッシュできない通信の高速化」なら Global Accelerator、「キャッシュ」「静的コンテンツ」なら CloudFront。",
+      "url": "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+    },
+    {
+      "name": "AWS PrivateLink",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "インターネットを通らずVPCからサービスへ接続",
+      "description": "VPC から AWS のサービスや、ほかの VPC で公開されたサービスに、インターネットを通らずプライベートに接続するための技術です。VPC の中にインターフェイス VPC エンドポイントを作って使います。",
+      "features": [
+        "インターフェイス VPC エンドポイント（VPC 内のプライベート IP で接続）",
+        "インターネットゲートウェイや NAT ゲートウェイが不要",
+        "自社のサービスをほかの VPC やアカウントに限定して公開できる"
+      ],
+      "useCases": [
+        "プライベートサブネットからインターネットを通らずに AWS のサービスを使う",
+        "SaaS 事業者が顧客の VPC へサービスをプライベートに提供する"
+      ],
+      "keywords": [
+        "VPC エンドポイント",
+        "プライベート接続",
+        "インターネットを経由しない",
+        "インターフェイスエンドポイント"
+      ],
+      "confusedWith": [
+        {
+          "name": "VPC ピアリング",
+          "diff": "VPC ピアリングは2つの VPC 全体をつなぐ、PrivateLink は特定のサービスだけを公開してつなぐ。"
+        },
+        {
+          "name": "AWS Direct Connect",
+          "diff": "Direct Connect はオンプレミスと AWS を結ぶ専用線、PrivateLink は VPC からサービスへのプライベート接続。"
+        },
+        {
+          "name": "AWS Transit Gateway",
+          "diff": "Transit Gateway は多くの VPC とオンプレミスをつなぐハブ、PrivateLink はサービス単位でつなぐ。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html"
+    },
+    {
+      "name": "Amazon Route 53",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "ドメイン登録とDNS（名前解決）のサービス",
+      "description": "ドメイン名を IP アドレスに変換する、可用性の高い DNS のサービスです。ドメイン名の登録や、ヘルスチェックによる正常なサーバーへの振り分けもできます。",
+      "features": [
+        "DNS による名前解決",
+        "ドメイン名の登録",
+        "ルーティングポリシー（シンプル、加重、レイテンシー、フェイルオーバー、位置情報など）",
+        "ヘルスチェックで障害のあるリソースを避けて振り分ける"
+      ],
+      "useCases": [
+        "独自ドメインで Web サイトを公開する",
+        "障害時に別のリージョンのサイトへ切り替える（フェイルオーバー）"
+      ],
+      "keywords": [
+        "DNS",
+        "ドメイン名の登録",
+        "ルーティングポリシー",
+        "ヘルスチェック",
+        "フェイルオーバー"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon CloudFront",
+          "diff": "CloudFront はコンテンツをキャッシュして配信する CDN、Route 53 はドメイン名で接続先を決める DNS。"
+        },
+        {
+          "name": "AWS Global Accelerator",
+          "diff": "Global Accelerator は固定 IP で通信を AWS のネットワークに乗せて速くする、Route 53 は DNS で接続先を答える。"
+        },
+        {
+          "name": "Elastic Load Balancing",
+          "diff": "ELB は届いた通信を複数のサーバーに分散する、Route 53 は DNS の段階で接続先を決める。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html"
+    },
+    {
+      "name": "AWS Transit Gateway",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "多数のVPCとオンプレミスをつなぐ中央のハブ",
+      "description": "複数の VPC とオンプレミスのネットワークを、中央のハブ（ゲートウェイ）を通して接続するサービスです。VPC 同士を1対1でつなぐ必要がなくなり、ネットワークの構成を簡単にできます。",
+      "features": [
+        "ハブアンドスポーク型の接続",
+        "VPC、Site-to-Site VPN、Direct Connect をまとめてつなげる",
+        "別リージョンの Transit Gateway とも接続できる"
+      ],
+      "useCases": [
+        "数十〜数百の VPC をまとめて接続する",
+        "複数の VPC とオンプレミスを一か所で接続管理する"
+      ],
+      "keywords": [
+        "ハブ",
+        "多数の VPC を接続",
+        "ハブアンドスポーク",
+        "ネットワークの簡素化"
+      ],
+      "confusedWith": [
+        {
+          "name": "VPC ピアリング",
+          "diff": "VPC ピアリングは2つの VPC を1対1でつなぐ、Transit Gateway は多数の VPC をハブでまとめてつなぐ。"
+        },
+        {
+          "name": "AWS Direct Connect",
+          "diff": "Direct Connect はオンプレミスと AWS を結ぶ専用線、Transit Gateway はその接続や VPC をまとめるハブ。"
+        },
+        {
+          "name": "AWS PrivateLink",
+          "diff": "PrivateLink は特定のサービスへのプライベート接続、Transit Gateway はネットワーク同士をつなぐ。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html"
+    },
+    {
+      "name": "Amazon VPC",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "AWS上に作る自分専用の仮想ネットワーク",
+      "description": "AWS の中に、論理的に分けられた自分専用の仮想ネットワークを作るサービスです。IP アドレスの範囲、サブネット、ルートテーブル、ゲートウェイなどを自分で決めて、EC2 などのリソースを配置します。",
+      "features": [
+        "サブネット: VPC を分けた範囲で、1つの AZ に属する。インターネットに出られるパブリックサブネットと、出られないプライベートサブネットがある",
+        "インターネットゲートウェイ: VPC とインターネットをつなぐ入り口。NAT ゲートウェイ: プライベートサブネットからインターネットへの外向きの通信だけを許す",
+        "セキュリティグループ: インスタンス単位のファイアウォール。許可ルールのみで、ステートフル（戻りの通信は自動で許可）",
+        "ネットワーク ACL: サブネット単位のファイアウォール。許可と拒否の両方を書け、ステートレス（戻りの通信も明示的に許可が必要）"
+      ],
+      "useCases": [
+        "Web サーバーはパブリックサブネット、データベースはプライベートサブネットに分けて配置する",
+        "オンプレミスと VPN や Direct Connect でつないだハイブリッド構成"
+      ],
+      "keywords": [
+        "仮想ネットワーク",
+        "サブネット",
+        "インターネットゲートウェイ",
+        "NAT ゲートウェイ",
+        "セキュリティグループとネットワーク ACL"
+      ],
+      "confusedWith": [
+        {
+          "name": "セキュリティグループとネットワーク ACL",
+          "diff": "セキュリティグループはインスタンス単位・許可のみ・ステートフル、ネットワーク ACL はサブネット単位・許可と拒否・ステートレス。"
+        },
+        {
+          "name": "インターネットゲートウェイと NAT ゲートウェイ",
+          "diff": "インターネットゲートウェイはインターネットとの双方向の入り口、NAT ゲートウェイはプライベートサブネットから外へ出る通信だけを通す。"
+        },
+        {
+          "name": "AWS Transit Gateway",
+          "diff": "Transit Gateway は複数の VPC をつなぐハブ、VPC はネットワークそのもの。"
+        }
+      ],
+      "note": "特定の IP アドレスからの通信を「拒否」したいときはネットワーク ACL（セキュリティグループには拒否ルールがない）。",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html"
+    },
+    {
+      "name": "AWS VPN",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "インターネット上の暗号化トンネルでAWSへ接続",
+      "description": "インターネット上に暗号化された通信路（トンネル）を作って、AWS のネットワークへ安全に接続するサービスです。拠点のネットワーク同士をつなぐ Site-to-Site VPN と、利用者の PC からつなぐ Client VPN の2種類があります。",
+      "features": [
+        "AWS Site-to-Site VPN: オンプレミスのネットワークと VPC を IPsec でつなぐ（仮想プライベートゲートウェイや Transit Gateway を使う）",
+        "AWS Client VPN: 社員などが自分の端末から AWS や社内ネットワークへ接続するマネージドなリモートアクセス VPN",
+        "インターネットを使うため短期間で安く用意できる",
+        "Direct Connect のバックアップ回線としても使える"
+      ],
+      "useCases": [
+        "オンプレミスと VPC を素早く安全につなぐ",
+        "在宅勤務の社員が VPC 内のリソースへ安全にアクセスする"
+      ],
+      "keywords": [
+        "暗号化",
+        "IPsec",
+        "インターネット経由",
+        "Site-to-Site VPN",
+        "Client VPN"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Direct Connect",
+          "diff": "Direct Connect はインターネットを通らない専用線（安定・開通に時間）、VPN はインターネット上を暗号化して通る（すぐ用意できて安い）。"
+        },
+        {
+          "name": "AWS PrivateLink",
+          "diff": "PrivateLink は VPC から特定のサービスへのプライベート接続、VPN は拠点や端末から VPC へ暗号化してつなぐ。"
+        }
+      ],
+      "note": "「すぐに」「安く」「暗号化」なら VPN、「一貫した性能」「専用」なら Direct Connect。",
+      "url": "https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html"
+    },
+    {
+      "name": "Elastic Load Balancing",
+      "category": "ネットワークとコンテンツ配信",
+      "summary": "通信を複数のターゲットに自動で分散",
+      "description": "届いた通信を、複数の EC2 インスタンスやコンテナ、IP アドレス、Lambda などに自動で振り分けるロードバランサーのサービスです。ヘルスチェックで正常なターゲットだけに送り、複数の AZ にまたがって可用性を高めます。",
+      "features": [
+        "Application Load Balancer: HTTP / HTTPS（レイヤー7）、URL のパスなどで振り分け",
+        "Network Load Balancer: TCP / UDP（レイヤー4）、高い性能と低レイテンシー",
+        "Gateway Load Balancer: ファイアウォールなどの仮想アプライアンス向け",
+        "ヘルスチェックと Auto Scaling との連携"
+      ],
+      "useCases": [
+        "Web アプリへの通信を複数の EC2 に分散し、障害に強くする",
+        "Auto Scaling と組み合わせて負荷に合わせて台数を増減する"
+      ],
+      "keywords": [
+        "負荷分散",
+        "ロードバランサー",
+        "ヘルスチェック",
+        "高可用性",
+        "複数の AZ"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EC2 Auto Scaling",
+          "diff": "Auto Scaling はインスタンスの台数を増減する、ELB はその台数に通信を振り分ける。"
+        },
+        {
+          "name": "Amazon Route 53",
+          "diff": "Route 53 は DNS の段階で接続先を決める、ELB は届いた通信をターゲットに分散する。"
+        },
+        {
+          "name": "Amazon API Gateway",
+          "diff": "API Gateway は API の公開・認証・流量制限を行う、ELB は通信を分散する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html"
+    },
+    {
+      "name": "AWS Artifact",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "AWS のコンプライアンスレポートを入手する場所",
+      "description": "AWS が第三者の監査機関から受けた監査レポート（SOC、PCI、ISO など）を、必要なときにダウンロードできるセルフサービスのポータルです。AWS との契約（BAA などの契約書）の確認・受諾もここで行います。",
+      "features": [
+        "AWS のセキュリティ・コンプライアンス関連レポートをオンデマンドでダウンロード",
+        "AWS との契約（Artifact Agreements）の確認・受諾・管理",
+        "AWS Marketplace の一部ベンダーのコンプライアンスレポートも入手できる"
+      ],
+      "useCases": [
+        "監査人に AWS 側が SOC や PCI DSS に準拠している証拠を提出する",
+        "医療情報を扱うために AWS と BAA を結ぶ"
+      ],
+      "keywords": [
+        "コンプライアンスレポート",
+        "監査レポート",
+        "SOC レポート",
+        "PCI DSS",
+        "契約（BAA）"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Config",
+          "diff": "Config は自分のリソース設定がルールに準拠しているかを評価し、Artifact は AWS 自身の準拠状況を示すレポートを配布する。"
+        },
+        {
+          "name": "AWS Audit Manager",
+          "diff": "Audit Manager は自分の AWS 利用状況から監査用の証拠を自動収集し、Artifact は AWS が受けた監査のレポートを入手する。"
+        }
+      ],
+      "note": "「AWS のコンプライアンス文書・監査レポートをどこで入手するか」と問われたら Artifact。",
+      "url": "https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html"
+    },
+    {
+      "name": "AWS Certificate Manager (ACM)",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "SSL/TLS 証明書の発行・管理・自動更新",
+      "description": "通信を HTTPS で暗号化するための SSL/TLS 証明書を発行・管理するサービスです。ACM と連携するサービス（ELB、CloudFront、API Gateway など）で使う公開証明書は無料で発行でき、更新も自動で行われます。",
+      "features": [
+        "公開 SSL/TLS 証明書の発行と自動更新",
+        "ELB・CloudFront・API Gateway などへの証明書の展開",
+        "外部で取得した証明書のインポート",
+        "プライベート CA（AWS Private CA）によるプライベート証明書の管理"
+      ],
+      "useCases": [
+        "ALB や CloudFront で配信する Web サイトを HTTPS にする",
+        "証明書の期限切れによる障害を自動更新で防ぐ"
+      ],
+      "keywords": [
+        "SSL/TLS 証明書",
+        "HTTPS",
+        "転送中の暗号化",
+        "証明書の自動更新"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Key Management Service (KMS)",
+          "diff": "KMS はデータを暗号化する鍵を管理し、ACM は通信を暗号化するための証明書を管理する。"
+        },
+        {
+          "name": "AWS Secrets Manager",
+          "diff": "Secrets Manager はパスワードや API キーを保管・ローテーションし、ACM は SSL/TLS 証明書を扱う。"
+        }
+      ],
+      "note": "「転送中のデータの暗号化」「HTTPS 化」と出たら ACM、「保管中のデータの暗号化の鍵」なら KMS。",
+      "url": "https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html"
+    },
+    {
+      "name": "AWS CloudHSM",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "専用のハードウェアで暗号鍵を自分で管理",
+      "description": "AWS クラウド上で、自分専用のハードウェアセキュリティモジュール（HSM）を使えるサービスです。鍵はお客様だけが管理し、AWS は鍵にアクセスできません。規制などで専用ハードウェアや鍵の完全な自己管理が求められる場合に使います。",
+      "features": [
+        "シングルテナント（自分専用）の HSM",
+        "暗号鍵の生成・保管・管理をお客様自身が行う",
+        "業界標準の API（PKCS#11、JCE など）で利用できる"
+      ],
+      "useCases": [
+        "規制で専用 HSM での鍵管理が義務づけられているシステム",
+        "AWS にも鍵を触らせたくない暗号処理"
+      ],
+      "keywords": [
+        "HSM",
+        "専用ハードウェア",
+        "シングルテナント",
+        "鍵を自分で管理",
+        "規制要件"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Key Management Service (KMS)",
+          "diff": "KMS は AWS が管理するマネージドな鍵管理サービスで、CloudHSM は自分専用の HSM を使い鍵を完全に自分で管理する。"
+        }
+      ],
+      "note": "「専用」「シングルテナント」「ハードウェア」の言葉があれば CloudHSM、ふつうの暗号鍵管理なら KMS。",
+      "url": "https://docs.aws.amazon.com/cloudhsm/latest/userguide/introduction.html"
+    },
+    {
+      "name": "Amazon Cognito",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "Web・モバイルアプリの利用者の認証",
+      "description": "自分で作った Web アプリやモバイルアプリに、サインアップ・サインイン機能を追加するサービスです。Google や Facebook などのソーシャルログインにも対応し、アプリの利用者に一時的な AWS の権限を渡すこともできます。",
+      "features": [
+        "ユーザープール: アプリ利用者のサインアップ・サインインとユーザー管理",
+        "ID プール: アプリ利用者に一時的な AWS 認証情報を発行",
+        "ソーシャル ID プロバイダーや SAML による外部 ID 連携",
+        "数百万ユーザー規模までスケール"
+      ],
+      "useCases": [
+        "モバイルアプリにログイン画面と会員管理を付ける",
+        "Google アカウントでログインできるようにする"
+      ],
+      "keywords": [
+        "アプリのユーザー認証",
+        "サインアップ・サインイン",
+        "ソーシャルログイン",
+        "モバイルアプリ",
+        "ユーザープール"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Identity and Access Management (IAM)",
+          "diff": "IAM は AWS を操作する社内の人やサービスの権限を管理し、Cognito は自社アプリを使うエンドユーザーを認証する。"
+        },
+        {
+          "name": "AWS IAM Identity Center",
+          "diff": "IAM Identity Center は従業員が複数の AWS アカウントや業務アプリにシングルサインオンする仕組みで、Cognito は顧客向けアプリの利用者を扱う。"
+        }
+      ],
+      "note": "「アプリの利用者（顧客）」の認証なら Cognito、「従業員・管理者」が AWS を使う権限なら IAM / IAM Identity Center。",
+      "url": "https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html"
+    },
+    {
+      "name": "Amazon Detective",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "セキュリティ問題の根本原因を調査",
+      "description": "CloudTrail のログや VPC フローログ、GuardDuty の検出結果などを自動で集めてつなぎ合わせ、セキュリティ上の問題の原因を調べやすくするサービスです。脅威を見つけるのではなく、見つかった問題を「何が・いつ・どこで起きたか」まで掘り下げるのが役割です。",
+      "features": [
+        "ログを自動で収集し、リソースや IP アドレスの関係をグラフで可視化",
+        "機械学習や統計で不審な動きのつながりを分析",
+        "GuardDuty などの検出結果から調査を始められる"
+      ],
+      "useCases": [
+        "GuardDuty が出したアラートの原因や影響範囲を調べる",
+        "不審な IP アドレスがどのリソースにアクセスしたかをたどる"
+      ],
+      "keywords": [
+        "根本原因の調査",
+        "調査・分析",
+        "可視化",
+        "セキュリティ調査"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon GuardDuty",
+          "diff": "GuardDuty は脅威を検出し、Detective は検出された問題の根本原因を調査する。"
+        },
+        {
+          "name": "AWS Security Hub",
+          "diff": "Security Hub は複数サービスの検出結果を集約して一覧にし、Detective は個々の問題を深く調査する。"
+        }
+      ],
+      "note": "「検出」なら GuardDuty、「調査・根本原因」なら Detective と分けて覚える。",
+      "url": "https://docs.aws.amazon.com/detective/latest/userguide/what-is-detective.html"
+    },
+    {
+      "name": "AWS Directory Service",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "AWS 上で Microsoft Active Directory を使う",
+      "description": "AWS 上で Microsoft Active Directory（AD）を使えるようにするサービスです。AWS が管理する AD を新しく立てる方法と、オンプレミスの既存 AD に接続する方法があります。",
+      "features": [
+        "AWS Managed Microsoft AD: AWS が管理する本物の Microsoft AD",
+        "AD Connector: オンプレミスの AD への認証を中継",
+        "Simple AD: 小規模向けの AD 互換ディレクトリ"
+      ],
+      "useCases": [
+        "AD 認証が必要な Windows のアプリを AWS に移す",
+        "オンプレミスの AD のユーザーで AWS のサービスにサインインする"
+      ],
+      "keywords": [
+        "Active Directory",
+        "Microsoft AD",
+        "AD Connector",
+        "オンプレミスの AD と連携"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS IAM Identity Center",
+          "diff": "IAM Identity Center は複数アカウントへのシングルサインオンの仕組みで、Directory Service は AD そのものを提供・接続する（Identity Center の ID ソースに AD を使うこともできる）。"
+        },
+        {
+          "name": "Amazon Cognito",
+          "diff": "Cognito はアプリのエンドユーザー認証、Directory Service は社内の Microsoft AD を AWS で使うためのもの。"
+        }
+      ],
+      "note": "「Active Directory」「AD」の言葉が出たら Directory Service を思い出す。",
+      "url": "https://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html"
+    },
+    {
+      "name": "AWS Firewall Manager",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "複数アカウントのファイアウォールを一元管理",
+      "description": "AWS Organizations の複数アカウントにまたがって、AWS WAF のルールやセキュリティグループ、Shield Advanced の保護などを一元的に設定・管理するサービスです。新しいアカウントやリソースが増えても、決めたルールが自動で適用されます。",
+      "features": [
+        "WAF ルール、Shield Advanced、セキュリティグループ、Network Firewall などのポリシーを一括適用",
+        "新しく作られたアカウントやリソースにも自動でルールを適用",
+        "ルールに準拠していないリソースを検出"
+      ],
+      "useCases": [
+        "全アカウントの ALB や CloudFront に同じ WAF ルールを強制する",
+        "組織全体のセキュリティグループのルールをそろえる"
+      ],
+      "keywords": [
+        "一元管理",
+        "複数アカウント",
+        "Organizations",
+        "WAF ルールの一括適用"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS WAF",
+          "diff": "WAF は個々の Web アプリをルールで守る仕組みで、Firewall Manager はそのルールを複数アカウントにまとめて配る管理役。"
+        },
+        {
+          "name": "AWS Security Hub",
+          "diff": "Security Hub は検出結果を集約・可視化し、Firewall Manager はファイアウォールの設定そのものを一元管理する。"
+        }
+      ],
+      "note": "利用には AWS Organizations が前提。「組織全体」「複数アカウントで WAF を一元管理」と出たら Firewall Manager。",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html"
+    },
+    {
+      "name": "Amazon GuardDuty",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "ログを分析して脅威を自動で検出",
+      "description": "CloudTrail のログ、VPC フローログ、DNS ログなどを機械学習や脅威インテリジェンスで継続的に分析し、不正アクセスや不審な通信などの脅威を検出するサービスです。エージェントを入れずに有効化するだけで使い始められます。",
+      "features": [
+        "AWS アカウントとワークロードの脅威を継続的に監視・検出",
+        "機械学習・異常検知・脅威インテリジェンスによる分析",
+        "有効化するだけで開始でき、ログの収集設定は不要",
+        "S3、EKS、RDS などを対象にした保護プランを追加できる"
+      ],
+      "useCases": [
+        "不正に使われている認証情報や、暗号資産マイニングなどの不審な通信を見つける",
+        "悪意のある IP アドレスとの通信を検出する"
+      ],
+      "keywords": [
+        "脅威検出",
+        "異常な動き",
+        "機械学習",
+        "不正アクセス",
+        "継続的な監視"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Inspector",
+          "diff": "Inspector は EC2 などのソフトウェアの脆弱性を診断し、GuardDuty はログから攻撃や不審な動きを検出する。"
+        },
+        {
+          "name": "Amazon Detective",
+          "diff": "GuardDuty は脅威を見つけ、Detective は見つかった問題の根本原因を調査する。"
+        },
+        {
+          "name": "Amazon Macie",
+          "diff": "Macie は S3 の機密データ（個人情報など）を見つけ、GuardDuty は脅威や不審な活動を見つける。"
+        }
+      ],
+      "note": "「脅威」「悪意のある活動」「異常な API 呼び出し」の検出は GuardDuty。",
+      "url": "https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html"
+    },
+    {
+      "name": "AWS Identity and Access Management (IAM)",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "誰が何をできるかを管理する権限の仕組み",
+      "description": "AWS のリソースに「誰が」「何を」できるかを管理するサービスで、追加料金なしで使えます。ユーザー・グループ・ロールにポリシー（権限を書いた JSON 文書）を付けてアクセスを制御します。アカウント作成時のルートユーザーはすべての権限を持つため、日常の作業には使いません。",
+      "features": [
+        "ユーザー: 人やアプリごとの ID。長期の認証情報（パスワード、アクセスキー）を持つ",
+        "グループ: ユーザーをまとめ、グループに付けたポリシーを全員に適用する",
+        "ロール: 一時的な認証情報で権限を引き受ける仕組み。EC2 などのサービスや別アカウントに権限を渡す",
+        "ポリシー: 許可・拒否を JSON で書いた文書。最小権限の原則で付ける"
+      ],
+      "useCases": [
+        "開発者グループに必要な権限だけを付ける",
+        "EC2 上のアプリに、アクセスキーを置かずにロールで S3 の権限を渡す"
+      ],
+      "keywords": [
+        "最小権限の原則",
+        "ルートユーザー",
+        "MFA",
+        "ロール",
+        "ポリシー"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS IAM Identity Center",
+          "diff": "IAM は 1 つのアカウント内の権限を管理し、IAM Identity Center は複数アカウントや業務アプリへのシングルサインオンをまとめて管理する。"
+        },
+        {
+          "name": "Amazon Cognito",
+          "diff": "IAM は AWS を操作する人やサービスの権限、Cognito は自社アプリのエンドユーザーの認証。"
+        },
+        {
+          "name": "AWS Organizations（SCP）",
+          "diff": "IAM ポリシーはユーザーやロールに権限を与え、SCP はアカウント全体で使える権限の上限を決める（SCP だけでは権限は与えられない）。"
+        }
+      ],
+      "note": "ルートユーザーは MFA を設定し、アクセスキーは作らず、日常作業に使わない。ルートユーザーでしかできない作業（アカウントの解約、サポートプランの変更など）があることも出題される。",
+      "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html"
+    },
+    {
+      "name": "AWS IAM Identity Center",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "複数アカウントへのシングルサインオン",
+      "description": "従業員が 1 回のサインインで、複数の AWS アカウントや業務アプリケーションにアクセスできるようにするサービスです（旧称 AWS Single Sign-On）。ユーザーは Identity Center 内で作るか、Active Directory や外部の ID プロバイダーと連携します。",
+      "features": [
+        "複数の AWS アカウントと業務アプリへのシングルサインオン（SSO）",
+        "AWS Organizations と連携し、アカウントごとの権限をまとめて割り当て",
+        "Active Directory や外部 ID プロバイダー（Okta、Microsoft Entra ID など）と連携",
+        "ユーザーポータルからアクセス先を選べる"
+      ],
+      "useCases": [
+        "社員が複数の AWS アカウントを 1 つの ID で切り替えて使う",
+        "既存の社内 ID 基盤のアカウントで AWS にサインインさせる"
+      ],
+      "keywords": [
+        "シングルサインオン（SSO）",
+        "複数アカウント",
+        "従業員のアクセス",
+        "外部 ID プロバイダー",
+        "一元管理"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Identity and Access Management (IAM)",
+          "diff": "IAM はアカウントごとにユーザーと権限を作り、IAM Identity Center は複数アカウントへのサインインと権限を一か所で管理する。"
+        },
+        {
+          "name": "Amazon Cognito",
+          "diff": "Identity Center は従業員向け、Cognito は顧客（アプリ利用者）向けの認証。"
+        }
+      ],
+      "note": "旧称は AWS Single Sign-On（AWS SSO）。問題文に古い名前で出ることもある。",
+      "url": "https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html"
+    },
+    {
+      "name": "Amazon Inspector",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "EC2 やコンテナの脆弱性を自動でスキャン",
+      "description": "EC2 インスタンス、ECR のコンテナイメージ、Lambda 関数を自動で継続的にスキャンし、ソフトウェアの既知の脆弱性（CVE）や意図しないネットワークの公開を見つけるサービスです。見つかった問題は深刻度を付けて報告されます。",
+      "features": [
+        "ソフトウェアの既知の脆弱性（CVE）のスキャン",
+        "EC2 のネットワーク到達性（意図しない公開）のチェック",
+        "対象リソースを自動で見つけ、継続的に再スキャン",
+        "リスクに応じたスコア付け"
+      ],
+      "useCases": [
+        "EC2 に入っている OS やライブラリの脆弱性を見つける",
+        "コンテナイメージを本番に出す前に脆弱性を確認する"
+      ],
+      "keywords": [
+        "脆弱性",
+        "CVE",
+        "スキャン",
+        "パッチ未適用",
+        "EC2・コンテナ・Lambda"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon GuardDuty",
+          "diff": "Inspector は守る対象の弱点（脆弱性）を探し、GuardDuty は実際に起きている攻撃や不審な動きを検出する。"
+        },
+        {
+          "name": "AWS Trusted Advisor",
+          "diff": "Trusted Advisor はアカウントの設定をベストプラクティスと照合し、Inspector はソフトウェアの脆弱性を診断する。"
+        }
+      ],
+      "note": "「脆弱性」「CVE」と出たら Inspector。",
+      "url": "https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html"
+    },
+    {
+      "name": "AWS Key Management Service (KMS)",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "データ暗号化の鍵を作成・管理",
+      "description": "データを暗号化するための鍵を作成・管理するマネージドサービスです。S3、EBS、RDS など多くの AWS サービスと連携し、保管中のデータの暗号化に使われます。鍵の使用は CloudTrail に記録され、誰が使ったかを確認できます。",
+      "features": [
+        "暗号鍵の作成・ローテーション・無効化・削除",
+        "S3・EBS・RDS など多くのサービスとの連携",
+        "キーポリシーと IAM で鍵の利用者を制御",
+        "鍵の使用を CloudTrail で監査"
+      ],
+      "useCases": [
+        "S3 や EBS に保存するデータを暗号化する",
+        "鍵へのアクセス権を分けて、データを読める人を限定する"
+      ],
+      "keywords": [
+        "暗号化キー",
+        "保管中のデータの暗号化",
+        "マネージド",
+        "キーのローテーション"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS CloudHSM",
+          "diff": "KMS は AWS が管理する鍵管理サービス、CloudHSM は自分専用のハードウェアで鍵を完全に自分で管理する。"
+        },
+        {
+          "name": "AWS Secrets Manager",
+          "diff": "KMS は暗号化の鍵を管理し、Secrets Manager は DB のパスワードなどの秘密情報そのものを保管する（その暗号化に KMS を使う）。"
+        },
+        {
+          "name": "AWS Certificate Manager (ACM)",
+          "diff": "KMS は保管中のデータ暗号化の鍵、ACM は通信を暗号化する SSL/TLS 証明書。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/kms/latest/developerguide/overview.html"
+    },
+    {
+      "name": "Amazon Macie",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "S3 の個人情報などの機密データを発見",
+      "description": "機械学習とパターンマッチングで S3 バケット内のデータを調べ、個人情報（PII）などの機密データを自動で見つけるサービスです。バケットが公開されていないか、暗号化されているかといったセキュリティの状態も評価します。",
+      "features": [
+        "S3 内の個人情報・クレジットカード番号などの機密データを検出",
+        "S3 バケットの公開状態や暗号化の状態を評価",
+        "独自の検出ルール（カスタムデータ識別子）を追加できる"
+      ],
+      "useCases": [
+        "S3 に個人情報が置かれていないかを定期的に調べる",
+        "データ保護の規制に対応するため、機密データの所在を把握する"
+      ],
+      "keywords": [
+        "機密データ",
+        "個人情報（PII）",
+        "S3",
+        "機械学習",
+        "データ保護"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon GuardDuty",
+          "diff": "Macie は S3 のデータの中身から機密情報を見つけ、GuardDuty はログから脅威や不審な活動を見つける。"
+        },
+        {
+          "name": "Amazon Inspector",
+          "diff": "Macie は S3 の機密データ、Inspector は EC2 などのソフトウェアの脆弱性が対象。"
+        }
+      ],
+      "note": "「S3」「個人情報（PII）」「機密データの発見」の組み合わせは Macie。",
+      "url": "https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html"
+    },
+    {
+      "name": "AWS Resource Access Manager (RAM)",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "リソースを他のアカウントと共有",
+      "description": "自分のアカウントの一部の AWS リソースを、他の AWS アカウントや AWS Organizations の組織・OU と安全に共有するサービスです。アカウントごとに同じリソースを作らずに済むため、運用の手間とコストを減らせます。",
+      "features": [
+        "VPC のサブネット、Transit Gateway などのリソースを他アカウントと共有",
+        "Organizations の組織や OU 単位で共有できる",
+        "共有したリソースへのアクセスを権限で制御"
+      ],
+      "useCases": [
+        "ネットワーク担当のアカウントで作ったサブネットを各部門のアカウントで使う",
+        "Transit Gateway を組織内の複数アカウントで共有する"
+      ],
+      "keywords": [
+        "リソースの共有",
+        "アカウント間",
+        "Organizations",
+        "サブネットの共有"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Organizations",
+          "diff": "Organizations は複数アカウントをまとめて管理し、RAM はアカウント間で個別のリソースを共有する。"
+        },
+        {
+          "name": "AWS Identity and Access Management (IAM)",
+          "diff": "IAM は誰が何をできるかの権限を管理し、RAM はリソースそのものを別アカウントから使えるように共有する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/ram/latest/userguide/what-is.html"
+    },
+    {
+      "name": "AWS Secrets Manager",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "DB のパスワードなどの秘密情報を保管・自動更新",
+      "description": "データベースの認証情報や API キーなどの秘密情報を安全に保管し、アプリケーションから取り出せるようにするサービスです。パスワードを定期的に自動で変更（ローテーション）できるのが大きな特徴です。",
+      "features": [
+        "秘密情報を KMS で暗号化して保管",
+        "シークレットの自動ローテーション（RDS などと連携）",
+        "IAM でシークレットへのアクセスを制御",
+        "アプリのコードにパスワードを書かずに済む"
+      ],
+      "useCases": [
+        "アプリのソースコードから DB のパスワードを取り除く",
+        "DB のパスワードを定期的に自動で変更する"
+      ],
+      "keywords": [
+        "認証情報",
+        "パスワード",
+        "自動ローテーション",
+        "API キー",
+        "ハードコードしない"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Systems Manager Parameter Store",
+          "diff": "Parameter Store も設定値や秘密情報を保管できるが、自動ローテーションが組み込まれているのは Secrets Manager。"
+        },
+        {
+          "name": "AWS Key Management Service (KMS)",
+          "diff": "KMS は暗号化の鍵を管理し、Secrets Manager は秘密情報そのものを保管する。"
+        }
+      ],
+      "note": "「自動ローテーション」が要件にあれば Secrets Manager を選ぶ。",
+      "url": "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html"
+    },
+    {
+      "name": "AWS Security Hub",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "セキュリティの検出結果を一か所に集約",
+      "description": "GuardDuty、Inspector、Macie などのセキュリティサービスの検出結果を一か所に集めて、まとめて確認できるサービスです。AWS のベストプラクティスや業界標準（CIS など）に照らして、アカウントの設定を自動でチェックすることもできます。",
+      "features": [
+        "複数のセキュリティサービスやパートナー製品の検出結果を集約",
+        "セキュリティ標準（AWS 基礎セキュリティのベストプラクティス、CIS など）への準拠チェック",
+        "複数アカウント・リージョンの状況をまとめて確認",
+        "自動対応のための連携（EventBridge など）"
+      ],
+      "useCases": [
+        "組織全体のセキュリティの状態を 1 つの画面で把握する",
+        "セキュリティのベストプラクティスに沿っていない設定を見つける"
+      ],
+      "keywords": [
+        "一元的なビュー",
+        "検出結果の集約",
+        "セキュリティ標準",
+        "ベストプラクティスのチェック",
+        "セキュリティ体制"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon GuardDuty",
+          "diff": "GuardDuty は自分で脅威を検出し、Security Hub は GuardDuty などの検出結果を集めて一覧にする。"
+        },
+        {
+          "name": "AWS Trusted Advisor",
+          "diff": "Trusted Advisor はコスト・パフォーマンスなどを含む幅広い推奨を出し、Security Hub はセキュリティに絞って検出結果を集約・評価する。"
+        },
+        {
+          "name": "Amazon Detective",
+          "diff": "Security Hub は全体を見渡す集約役、Detective は個々の問題の原因を深く調べる。"
+        }
+      ],
+      "note": "2025 年に新しい Security Hub が発表され、従来の準拠チェックの機能は「AWS Security Hub CSPM」という名前になった。CLF では「セキュリティの検出結果の集約とベストプラクティスのチェック」と覚えればよい。",
+      "url": "https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html"
+    },
+    {
+      "name": "AWS Shield",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "DDoS 攻撃からの保護（Standard は無料）",
+      "description": "DDoS 攻撃からアプリケーションを守るサービスで、Standard と Advanced の 2 種類があります。Shield Standard はすべての AWS のお客様に追加料金なしで自動的に適用され、よくあるネットワーク層・トランスポート層の攻撃を防ぎます。Shield Advanced は有料で、より高度な保護と専門チームの支援を受けられます。",
+      "features": [
+        "Shield Standard: 無料・自動。ネットワーク層とトランスポート層（L3/L4）の一般的な DDoS 攻撃を防御",
+        "Shield Advanced: 有料。EC2、ELB、CloudFront、Global Accelerator、Route 53 を対象に高度な保護と攻撃の可視化",
+        "Shield Advanced: Shield Response Team（SRT）への 24 時間の相談",
+        "Shield Advanced: DDoS 攻撃によって増えた利用料金への補償（コスト保護）"
+      ],
+      "useCases": [
+        "何もしなくても Standard で基本的な DDoS 対策を受ける",
+        "攻撃を受けやすい大規模サイトで Advanced を契約し、専門チームの支援と料金の補償を受ける"
+      ],
+      "keywords": [
+        "DDoS",
+        "Shield Standard（無料・自動）",
+        "Shield Advanced",
+        "SRT（DDoS 対応チーム）",
+        "コスト保護"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS WAF",
+          "diff": "WAF は SQL インジェクションなどアプリケーション層（L7）の攻撃をルールで防ぎ、Shield は DDoS 攻撃を防ぐ（Advanced は WAF と組み合わせて L7 の DDoS にも対応）。"
+        },
+        {
+          "name": "AWS Firewall Manager",
+          "diff": "Shield は DDoS を防ぐ本体、Firewall Manager は Shield Advanced の保護などを複数アカウントにまとめて適用する管理役。"
+        }
+      ],
+      "note": "「追加料金なしで全員に自動適用」は Standard、「24 時間の DDoS 対応チーム（SRT）」「DDoS による料金の補償」は Advanced。SRT の支援を受けるには、公式ドキュメント上は Business Support または Enterprise Support のプランが必要と書かれている（旧プラン名での記載）。",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html"
+    },
+    {
+      "name": "AWS WAF",
+      "category": "セキュリティ・ID・コンプライアンス",
+      "summary": "Web アプリへの攻撃をルールで防ぐファイアウォール",
+      "description": "Web アプリケーションへの HTTP(S) リクエストを、決めたルールで許可・ブロックする Web アプリケーションファイアウォールです。SQL インジェクションやクロスサイトスクリプティングなど、アプリケーション層（L7）の攻撃を防ぎます。CloudFront、ALB、API Gateway などと組み合わせて使います。",
+      "features": [
+        "Web ACL のルールでリクエストを許可・ブロック・カウント",
+        "SQL インジェクション、XSS などの一般的な攻撃からの保護",
+        "IP アドレスや国による制限、レートベースのルール（大量アクセスの制限）",
+        "AWS や AWS Marketplace のマネージドルール"
+      ],
+      "useCases": [
+        "Web サイトへの SQL インジェクションやボットのアクセスを防ぐ",
+        "特定の国や IP アドレスからのアクセスを遮断する"
+      ],
+      "keywords": [
+        "SQL インジェクション",
+        "クロスサイトスクリプティング",
+        "Web ACL",
+        "レイヤー 7",
+        "IP アドレスのブロック"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Shield",
+          "diff": "Shield は DDoS 攻撃の防御、WAF はルールに基づくアプリケーション層の攻撃の防御。"
+        },
+        {
+          "name": "セキュリティグループ / ネットワーク ACL",
+          "diff": "セキュリティグループやネットワーク ACL は IP・ポートで通信を制御し、WAF は HTTP リクエストの中身を見て判断する。"
+        },
+        {
+          "name": "AWS Firewall Manager",
+          "diff": "WAF はルールを適用する本体、Firewall Manager は WAF のルールを複数アカウントにまとめて配る。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html"
+    },
+    {
+      "name": "AWS Auto Scaling",
+      "category": "管理とガバナンス",
+      "summary": "需要に合わせてリソースの数を自動で増減",
+      "description": "アプリケーションの負荷に合わせて、EC2 インスタンスなどのリソースの数を自動で増やしたり減らしたりする仕組みです。必要なときだけリソースを増やすので、性能を保ちながらコストを抑えられます。EC2 だけでなく、ECS のタスクや DynamoDB のキャパシティなどもまとめて扱えます。",
+      "features": [
+        "負荷に応じたスケールアウト（台数を増やす）・スケールイン（減らす）",
+        "CPU 使用率などの目標値を保つように自動調整（ターゲット追跡）",
+        "EC2 Auto Scaling で異常なインスタンスを自動で置き換え",
+        "EC2、ECS、DynamoDB、Aurora のレプリカなど複数のリソースに対応"
+      ],
+      "useCases": [
+        "アクセスが増える時間帯だけ EC2 の台数を増やす",
+        "故障したインスタンスを自動で入れ替えて、決めた台数を保つ"
+      ],
+      "keywords": [
+        "伸縮性（弾力性）",
+        "スケールアウト・スケールイン",
+        "需要の変動",
+        "コスト最適化",
+        "高可用性"
+      ],
+      "confusedWith": [
+        {
+          "name": "Elastic Load Balancing (ELB)",
+          "diff": "ELB はアクセスを複数のインスタンスに振り分け、Auto Scaling はインスタンスの数そのものを増減する（組み合わせて使うことが多い）。"
+        },
+        {
+          "name": "AWS Compute Optimizer",
+          "diff": "Auto Scaling は台数を自動で変え、Compute Optimizer はインスタンスのサイズや種類が適切かを推奨する。"
+        }
+      ],
+      "note": "「伸縮性」「需要に応じて自動で」と出たら Auto Scaling。台数を変えるのは水平スケーリング（スケールアウト）で、インスタンスを大きくするスケールアップとは区別する。",
+      "url": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
+    },
+    {
+      "name": "AWS CloudFormation",
+      "category": "管理とガバナンス",
+      "summary": "テンプレートでインフラをコードとして構築",
+      "description": "AWS のリソースの構成を JSON または YAML のテンプレートに書き、そのテンプレートから環境を自動で作成・更新・削除するサービスです（Infrastructure as Code）。同じ環境を何度でも同じように作れるため、手作業のミスを減らせます。",
+      "features": [
+        "テンプレート（JSON/YAML）でリソースを定義",
+        "スタック単位でリソースをまとめて作成・更新・削除",
+        "変更セットで、更新前に変更内容を確認できる",
+        "StackSets で複数のアカウント・リージョンに展開"
+      ],
+      "useCases": [
+        "開発・検証・本番で同じ構成の環境を繰り返し作る",
+        "別のリージョンに同じ環境を素早く作る"
+      ],
+      "keywords": [
+        "Infrastructure as Code（IaC）",
+        "テンプレート",
+        "スタック",
+        "自動プロビジョニング",
+        "繰り返し同じ環境"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Elastic Beanstalk",
+          "diff": "Elastic Beanstalk はアプリのコードを渡すと実行環境を自動で用意する PaaS で、CloudFormation はインフラ全体をテンプレートで細かく定義する。"
+        },
+        {
+          "name": "AWS Service Catalog",
+          "diff": "Service Catalog は承認済みの構成（中身は CloudFormation テンプレートなど）を利用者に配布する仕組みで、CloudFormation は構成を定義して構築する本体。"
+        },
+        {
+          "name": "AWS CDK",
+          "diff": "CDK は TypeScript や Python などのプログラミング言語でインフラを書き、最終的に CloudFormation で展開する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html"
+    },
+    {
+      "name": "AWS CloudTrail",
+      "category": "管理とガバナンス",
+      "summary": "誰がいつ何をしたかの操作（API）履歴",
+      "description": "AWS アカウントで行われた操作（API の呼び出し）を記録するサービスです。マネジメントコンソール、CLI、SDK のどこからの操作でも、誰が・いつ・どこから・何をしたかを残せます。監査やセキュリティ調査の証跡として使います。",
+      "features": [
+        "API の呼び出しを記録（ユーザー、日時、送信元 IP など）",
+        "イベント履歴で過去 90 日分の管理イベントを無料で確認できる",
+        "証跡（トレイル）を作ると S3 にログを長期保存できる",
+        "Organizations の全アカウントのログをまとめて記録"
+      ],
+      "useCases": [
+        "誰が EC2 インスタンスを削除したかを調べる",
+        "監査のために操作ログを長期間保管する"
+      ],
+      "keywords": [
+        "API の呼び出し履歴",
+        "操作ログ",
+        "監査証跡",
+        "誰が・いつ・何を",
+        "ガバナンス"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon CloudWatch",
+          "diff": "CloudWatch はリソースの性能（メトリクス）やアプリのログを監視し、CloudTrail はアカウントで誰が何の操作をしたかを記録する。"
+        },
+        {
+          "name": "AWS Config",
+          "diff": "CloudTrail は操作（誰が何をしたか）を記録し、Config はリソースの設定がどう変わったか・ルールに準拠しているかを記録・評価する。"
+        }
+      ],
+      "note": "「誰が」「API」「監査」と出たら CloudTrail、「性能・メトリクス・アラーム」は CloudWatch、「設定の変更履歴・準拠」は Config。",
+      "url": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html"
+    },
+    {
+      "name": "Amazon CloudWatch",
+      "category": "管理とガバナンス",
+      "summary": "リソースとアプリの性能監視・ログ・アラーム",
+      "description": "AWS のリソースやアプリケーションの状態を監視するサービスです。CPU 使用率などのメトリクスを集めてグラフにし、しきい値を超えたらアラームで通知したり、Auto Scaling などの処理を動かしたりできます。アプリケーションのログを集めて検索する CloudWatch Logs もあります。",
+      "features": [
+        "メトリクス: CPU 使用率などの数値を収集・グラフ化",
+        "アラーム: しきい値を超えたら通知（SNS）や自動処理を実行",
+        "CloudWatch Logs: アプリや OS のログを集めて保存・検索",
+        "ダッシュボード: 複数のメトリクスを 1 画面で確認"
+      ],
+      "useCases": [
+        "EC2 の CPU 使用率が高くなったらメールで通知する",
+        "アプリのエラーログを集めて調べる"
+      ],
+      "keywords": [
+        "メトリクス",
+        "アラーム",
+        "ログ",
+        "監視",
+        "ダッシュボード"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS CloudTrail",
+          "diff": "CloudWatch は性能やログの監視、CloudTrail は誰が何の API 操作をしたかの記録。"
+        },
+        {
+          "name": "AWS Health Dashboard",
+          "diff": "CloudWatch は自分のリソースの状態を監視し、Health Dashboard は AWS 側のサービス障害や予定されたメンテナンスを知らせる。"
+        },
+        {
+          "name": "AWS Config",
+          "diff": "CloudWatch は性能の数値を監視し、Config はリソースの設定の変化と準拠状況を記録する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html"
+    },
+    {
+      "name": "AWS Compute Optimizer",
+      "category": "管理とガバナンス",
+      "summary": "インスタンスなどの最適なサイズを推奨",
+      "description": "過去の使用状況のメトリクスを機械学習で分析し、EC2 インスタンス、Auto Scaling グループ、EBS ボリューム、Lambda 関数などが適切なサイズかを判定して推奨を出すサービスです。大きすぎて無駄なリソースや、小さすぎて性能が足りないリソースを見つけられます。",
+      "features": [
+        "使用状況にもとづく適正サイズ（ライトサイジング）の推奨",
+        "過剰（オーバープロビジョニング）・不足（アンダープロビジョニング）の判定",
+        "EC2、Auto Scaling グループ、EBS、Lambda などが対象",
+        "推奨を採用したときのコスト削減や性能の見込みを表示"
+      ],
+      "useCases": [
+        "使用率の低い EC2 インスタンスを小さいタイプに変えてコストを下げる",
+        "Lambda 関数のメモリ設定を見直す"
+      ],
+      "keywords": [
+        "ライトサイジング",
+        "適正なサイズ",
+        "推奨事項",
+        "機械学習",
+        "コスト削減"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Trusted Advisor",
+          "diff": "Trusted Advisor はコスト・セキュリティなど幅広い分野のベストプラクティスを確認し、Compute Optimizer はコンピューティングリソースのサイズに絞って詳しく推奨する。"
+        },
+        {
+          "name": "AWS Cost Explorer",
+          "diff": "Cost Explorer はコストと使用量を可視化・分析し、Compute Optimizer はリソースのサイズ変更を推奨する。"
+        },
+        {
+          "name": "AWS Auto Scaling",
+          "diff": "Auto Scaling は台数を自動で増減し、Compute Optimizer はサイズや種類の見直しを提案する（自動では変更しない）。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html"
+    },
+    {
+      "name": "AWS Config",
+      "category": "管理とガバナンス",
+      "summary": "リソース設定の変更履歴とルール準拠の評価",
+      "description": "AWS リソースの設定を継続的に記録し、いつ・どのように設定が変わったかをさかのぼって確認できるサービスです。Config ルールを使って、設定が社内の決まりやベストプラクティスに沿っているかを自動で評価します。",
+      "features": [
+        "リソースの設定と設定の変更履歴を記録",
+        "Config ルールで設定の準拠・非準拠を自動評価",
+        "非準拠のリソースを自動で修正（修復アクション）",
+        "コンフォーマンスパックでルールをまとめて適用"
+      ],
+      "useCases": [
+        "S3 バケットが公開設定になっていないかを常にチェックする",
+        "障害の前後でセキュリティグループの設定がどう変わったかを調べる"
+      ],
+      "keywords": [
+        "設定の変更履歴",
+        "コンプライアンス（準拠）",
+        "Config ルール",
+        "構成管理",
+        "監査"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS CloudTrail",
+          "diff": "CloudTrail は誰が何の操作をしたか、Config はその結果リソースの設定がどう変わったか・ルールに合っているかを扱う。"
+        },
+        {
+          "name": "AWS Artifact",
+          "diff": "Config は自分のリソースの準拠状況を評価し、Artifact は AWS 自身の監査レポートを配布する。"
+        },
+        {
+          "name": "AWS Trusted Advisor",
+          "diff": "Trusted Advisor は AWS が用意したチェックでベストプラクティスを提案し、Config は自分で決めたルールで設定を継続的に評価・記録する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html"
+    },
+    {
+      "name": "AWS Control Tower",
+      "category": "管理とガバナンス",
+      "summary": "マルチアカウント環境をベストプラクティスで自動構築",
+      "description": "ベストプラクティスに沿ったマルチアカウント環境（ランディングゾーン）を、自動でセットアップして管理するサービスです。AWS Organizations などのサービスを組み合わせ、コントロール（ガードレール）で組織全体のルールを適用・監視します。",
+      "features": [
+        "ランディングゾーン（安全なマルチアカウント環境）の自動セットアップ",
+        "コントロール（旧称ガードレール）で予防的・検出的なルールを適用",
+        "Account Factory で決まった設定の新規アカウントを作成",
+        "ダッシュボードで組織全体の準拠状況を確認"
+      ],
+      "useCases": [
+        "これから複数アカウントで AWS を使う会社が、安全な初期環境をすばやく作る",
+        "新しい部門用のアカウントを標準の設定で払い出す"
+      ],
+      "keywords": [
+        "ランディングゾーン",
+        "ガードレール（コントロール）",
+        "マルチアカウント",
+        "Account Factory",
+        "ベストプラクティス"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Organizations",
+          "diff": "Organizations はアカウントをまとめる土台の機能（一括請求・SCP）で、Control Tower はその上にベストプラクティスの環境を自動で組み上げる。"
+        },
+        {
+          "name": "AWS Service Catalog",
+          "diff": "Service Catalog は承認済みの製品（構成）を配布し、Control Tower はアカウント環境全体を作って統制する。"
+        }
+      ],
+      "note": "「マルチアカウント環境を簡単にセットアップ」「ランディングゾーン」と出たら Control Tower。",
+      "url": "https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html"
+    },
+    {
+      "name": "AWS Health Dashboard",
+      "category": "管理とガバナンス",
+      "summary": "AWS 側の障害やメンテナンスの情報",
+      "description": "AWS のサービスの障害や、予定されたメンテナンスなどの情報を確認できる画面です。全体のサービスの状態を示す「サービスの状態」と、自分のアカウントのリソースに影響するイベントを示す「アカウントの状態」があります。",
+      "features": [
+        "サービスの状態: すべての AWS サービスの稼働状況（公開情報）",
+        "アカウントの状態: 自分のリソースに影響するイベントと対応のガイダンス",
+        "予定されたメンテナンスや、必要な対応の通知",
+        "EventBridge と連携して通知を自動化"
+      ],
+      "useCases": [
+        "自分の EC2 が載っているハードウェアのメンテナンス予定を確認する",
+        "障害が AWS 側で起きているかを確かめる"
+      ],
+      "keywords": [
+        "サービスの障害",
+        "予定されたメンテナンス",
+        "自分のアカウントへの影響",
+        "AWS Health"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon CloudWatch",
+          "diff": "CloudWatch は自分のリソースの性能を監視し、Health Dashboard は AWS 側で起きている障害やメンテナンスを知らせる。"
+        },
+        {
+          "name": "AWS Trusted Advisor",
+          "diff": "Trusted Advisor は自分の設定の改善点を提案し、Health Dashboard は AWS のイベント情報を伝える。"
+        }
+      ],
+      "note": "以前の Service Health Dashboard と Personal Health Dashboard が統合され、今は AWS Health Dashboard という 1 つの名前になっている。",
+      "url": "https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html"
+    },
+    {
+      "name": "AWS License Manager",
+      "category": "管理とガバナンス",
+      "summary": "ソフトウェアライセンスの使用状況を管理",
+      "description": "Microsoft や Oracle などのソフトウェアライセンスの使用状況を、AWS とオンプレミスの両方でまとめて管理するサービスです。ライセンスのルールを登録しておくと、上限を超える使い方を防いだり知らせたりできます。",
+      "features": [
+        "ライセンスのルール（コア数・ソケット数など）を登録して使用状況を追跡",
+        "ライセンスの上限を超える起動を防止・通知",
+        "AWS とオンプレミスのライセンスをまとめて管理",
+        "持ち込みライセンス（BYOL）の管理"
+      ],
+      "useCases": [
+        "手持ちの Windows Server や SQL Server のライセンスを AWS で使う（BYOL）",
+        "ライセンス違反による監査のリスクを減らす"
+      ],
+      "keywords": [
+        "ソフトウェアライセンス",
+        "BYOL（ライセンス持ち込み）",
+        "ライセンスの使用状況",
+        "コンプライアンス"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Artifact",
+          "diff": "Artifact は AWS のコンプライアンス文書や契約を扱い、License Manager は自社が持つソフトウェアライセンスを管理する。"
+        },
+        {
+          "name": "Service Quotas",
+          "diff": "Service Quotas は AWS のサービスの上限を管理し、License Manager はソフトウェアのライセンス数を管理する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html"
+    },
+    {
+      "name": "AWS Management Console",
+      "category": "管理とガバナンス",
+      "summary": "ブラウザで AWS を操作する画面",
+      "description": "Web ブラウザから AWS のサービスを操作・管理するための画面（GUI）です。コマンドを覚えなくても、画面を見ながらリソースを作ったり設定したりできます。スマートフォン用の AWS Console Mobile Application もあります。",
+      "features": [
+        "ブラウザから各 AWS サービスを操作",
+        "請求情報やアカウント設定の確認",
+        "CloudShell でブラウザからコマンドも実行できる",
+        "スマートフォン向けの Console Mobile Application"
+      ],
+      "useCases": [
+        "初めての人が画面を見ながら EC2 インスタンスを起動する",
+        "外出先でスマートフォンからリソースの状態や請求を確認する"
+      ],
+      "keywords": [
+        "Web ブラウザ",
+        "GUI",
+        "グラフィカルなインターフェース",
+        "マネジメントコンソール"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS CLI",
+          "diff": "コンソールはブラウザの画面で操作し、CLI はコマンドで操作するので繰り返しの作業やスクリプト化に向く。"
+        },
+        {
+          "name": "AWS SDK",
+          "diff": "SDK はプログラムの中から AWS を操作するためのもの。"
+        }
+      ],
+      "note": "AWS にアクセスする方法は「コンソール（画面）・CLI（コマンド）・SDK（プログラム）」の 3 つで区別する。",
+      "url": "https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html"
+    },
+    {
+      "name": "AWS Organizations",
+      "category": "管理とガバナンス",
+      "summary": "複数アカウントの一括請求と権限の上限設定",
+      "description": "複数の AWS アカウントを 1 つの組織としてまとめて管理するサービスです。全アカウントの請求を 1 つにまとめる一括請求（コンソリデーティッドビリング）と、サービスコントロールポリシー（SCP）でアカウントが使える権限の上限を決める機能が中心です。",
+      "features": [
+        "一括請求: 請求を管理アカウントにまとめ、使用量を合算してボリュームディスカウントを受けやすくする",
+        "SCP: 組織・OU・アカウントごとに使える権限の上限を設定する（権限を与えるものではない）",
+        "組織単位（OU）でアカウントを階層的に整理",
+        "API でアカウントを自動作成"
+      ],
+      "useCases": [
+        "部門ごとのアカウントの請求を 1 枚にまとめる",
+        "開発用アカウントで特定のリージョンやサービスを使えないようにする"
+      ],
+      "keywords": [
+        "一括請求（コンソリデーティッドビリング）",
+        "サービスコントロールポリシー（SCP）",
+        "組織単位（OU）",
+        "管理アカウント",
+        "マルチアカウント"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Control Tower",
+          "diff": "Organizations は複数アカウント管理の土台、Control Tower はその上にベストプラクティスのマルチアカウント環境を自動で作る。"
+        },
+        {
+          "name": "AWS Identity and Access Management (IAM)",
+          "diff": "IAM ポリシーはユーザーやロールに権限を与え、SCP はアカウントで使える権限の上限を決める。"
+        },
+        {
+          "name": "AWS Resource Access Manager (RAM)",
+          "diff": "Organizations はアカウントをまとめて管理し、RAM はアカウント間でリソースを共有する。"
+        }
+      ],
+      "note": "SCP は管理アカウントには効かない。一括請求ではリザーブドインスタンスや Savings Plans の割引も組織内で共有できる。",
+      "url": "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html"
+    },
+    {
+      "name": "AWS Service Catalog",
+      "category": "管理とガバナンス",
+      "summary": "承認済みの構成を社内に配る IT カタログ",
+      "description": "組織で使ってよいと承認した IT サービス（EC2 の構成、データベース、ソフトウェアなど）をカタログにして、利用者がそこからセルフサービスで作れるようにするサービスです。管理者が決めた構成だけを使わせるので、統制を保ちながら利用者の手間を減らせます。",
+      "features": [
+        "製品（CloudFormation テンプレートなどで定義）をポートフォリオにまとめて公開",
+        "利用者ごとに使える製品を制御",
+        "利用者は IAM の広い権限がなくても承認済みの構成を作れる",
+        "バージョン管理で構成の更新を配布"
+      ],
+      "useCases": [
+        "社内標準の構成だけを開発者に使わせる",
+        "利用者がセルフサービスで決まった環境を立ち上げる"
+      ],
+      "keywords": [
+        "承認済みの IT サービス",
+        "カタログ",
+        "セルフサービス",
+        "ポートフォリオ",
+        "ガバナンス"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Marketplace",
+          "diff": "Marketplace はサードパーティのソフトウェアを購入するストア、Service Catalog は自社で承認した構成を社内に配る仕組み。"
+        },
+        {
+          "name": "AWS CloudFormation",
+          "diff": "CloudFormation は構成を定義して構築し、Service Catalog はそのテンプレートを承認済みの製品として利用者に配布する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html"
+    },
+    {
+      "name": "Service Quotas",
+      "category": "管理とガバナンス",
+      "summary": "AWS のサービスの上限を確認・引き上げ申請",
+      "description": "AWS アカウントの各サービスに設定されている上限（クォータ、以前はサービス制限と呼ばれた）を一か所で確認し、引き上げを申請できるサービスです。上限に近づいたときに CloudWatch のアラームで知らせることもできます。",
+      "features": [
+        "サービスごとのクォータ（上限）の確認",
+        "クォータの引き上げをリクエスト",
+        "使用量が上限に近づいたら CloudWatch アラームで通知",
+        "Organizations で新規アカウントの引き上げをまとめて申請"
+      ],
+      "useCases": [
+        "リージョンで起動できる EC2 の上限に近づいたので引き上げを申請する",
+        "大規模なイベントの前に上限を確認しておく"
+      ],
+      "keywords": [
+        "クォータ",
+        "サービスの上限（制限）",
+        "引き上げのリクエスト"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Trusted Advisor",
+          "diff": "Trusted Advisor のサービスクォータのチェックは上限に近いものを知らせ、Service Quotas は上限の確認と引き上げ申請そのものを行う。"
+        },
+        {
+          "name": "AWS Budgets",
+          "diff": "Budgets は費用の上限（予算）を見張り、Service Quotas はリソース数などのサービスの上限を管理する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html"
+    },
+    {
+      "name": "AWS Systems Manager",
+      "category": "管理とガバナンス",
+      "summary": "EC2 やサーバーの運用をまとめて管理",
+      "description": "AWS とオンプレミスのサーバーの運用作業（パッチ適用、コマンド実行、設定値の管理、ログインなど）を一か所でまとめて行うためのサービスです。対象のサーバーに SSM Agent を入れて使います。CLF では Parameter Store と Session Manager がよく出ます。",
+      "features": [
+        "Parameter Store: 設定値や秘密情報を階層的に保管（SecureString で KMS により暗号化）",
+        "Session Manager: SSH のポートを開けず、踏み台サーバーなしで安全にサーバーへ接続（操作ログも残せる）",
+        "Patch Manager: OS のパッチ適用を自動化",
+        "Run Command: 多数のサーバーに一括でコマンドを実行"
+      ],
+      "useCases": [
+        "インバウンドのポートを開けずに EC2 にログインする（Session Manager）",
+        "アプリの設定値や接続先を一か所で管理する（Parameter Store）"
+      ],
+      "keywords": [
+        "Parameter Store",
+        "Session Manager",
+        "パッチ管理",
+        "運用の自動化",
+        "ハイブリッド環境"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Secrets Manager",
+          "diff": "Parameter Store も秘密情報を保管できるが、自動ローテーションが組み込まれているのは Secrets Manager。"
+        },
+        {
+          "name": "AWS Config",
+          "diff": "Systems Manager はサーバーに対して操作を行い、Config はリソースの設定を記録・評価する。"
+        },
+        {
+          "name": "AWS OpsWorks",
+          "diff": "OpsWorks は Chef や Puppet による構成管理のサービス（提供終了済み）で、Systems Manager は AWS 独自の運用管理サービス。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html"
+    },
+    {
+      "name": "AWS Trusted Advisor",
+      "category": "管理とガバナンス",
+      "summary": "ベストプラクティスに照らした改善のアドバイス",
+      "description": "AWS アカウントを調べて、ベストプラクティスに沿っていない点を見つけ、改善の推奨を出すサービスです。チェックはコスト最適化、パフォーマンス、セキュリティ、耐障害性、サービスクォータ、オペレーショナルエクセレンスの分類に分かれています。使えるチェックの範囲はサポートプランによって違います。",
+      "features": [
+        "チェックの分類: コスト最適化、パフォーマンス、セキュリティ、耐障害性、サービスクォータ、オペレーショナルエクセレンス",
+        "Basic と Developer サポート: セキュリティの基本チェックとサービスクォータのチェックのみ",
+        "Business 以上のサポート: すべてのチェックと、API などからの利用",
+        "推奨事項ごとに状態（要対応・調査を推奨・問題なし）を表示"
+      ],
+      "useCases": [
+        "使っていない EBS ボリュームやアイドル状態のリソースを見つけてコストを下げる",
+        "ルートユーザーの MFA 未設定や、公開されている S3 バケットを見つける"
+      ],
+      "keywords": [
+        "ベストプラクティス",
+        "推奨事項",
+        "コスト最適化",
+        "サポートプランでチェック範囲が違う",
+        "サービスクォータ"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Compute Optimizer",
+          "diff": "Trusted Advisor は幅広い分野を浅く広くチェックし、Compute Optimizer はコンピューティングのサイズに絞って機械学習で詳しく推奨する。"
+        },
+        {
+          "name": "AWS Well-Architected Tool",
+          "diff": "Trusted Advisor はアカウントの設定を自動でチェックし、Well-Architected Tool は質問に答えてワークロードの設計を自己レビューする。"
+        },
+        {
+          "name": "AWS Security Hub",
+          "diff": "Security Hub はセキュリティに絞って検出結果を集約し、Trusted Advisor はコストや耐障害性などを含めて改善を提案する。"
+        }
+      ],
+      "note": "「全チェックを使いたい」なら Business 以上のサポートプランが必要、という問われ方が多い。サポートプランの名前や構成は改定されることがあるので、試験は CLF-C02 の試験ガイド時点の名前で覚える。",
+      "url": "https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor.html"
+    },
+    {
+      "name": "AWS Well-Architected Tool",
+      "category": "管理とガバナンス",
+      "summary": "6 つの柱で自分の設計をレビューする",
+      "description": "AWS Well-Architected フレームワークにもとづく質問に答えて、自分のワークロードの設計をレビューするツールです。リスクのある項目と改善のための計画が示されます。マネジメントコンソールから無料で使えます。",
+      "features": [
+        "6 つの柱（運用上の優秀性、セキュリティ、信頼性、パフォーマンス効率、コスト最適化、持続可能性）での評価",
+        "高リスク・中リスクの項目と改善計画を表示",
+        "業界や用途別のレンズ（サーバーレスなど）を追加できる",
+        "マイルストーンで改善の進み具合を記録"
+      ],
+      "useCases": [
+        "本番リリース前に設計がベストプラクティスに沿っているかを確認する",
+        "定期的に設計を見直して改善の進み具合を記録する"
+      ],
+      "keywords": [
+        "Well-Architected フレームワーク",
+        "6 つの柱",
+        "ワークロードのレビュー",
+        "ベストプラクティス",
+        "リスクの特定"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Trusted Advisor",
+          "diff": "Trusted Advisor はアカウントのリソースを自動でチェックし、Well-Architected Tool は質問に答えて設計全体をレビューする。"
+        },
+        {
+          "name": "AWS Config",
+          "diff": "Config は個々のリソースの設定がルールに合うかを継続的に評価し、Well-Architected Tool はワークロードの設計を柱ごとに見直す。"
+        }
+      ],
+      "note": "6 つの柱の名前（特に 2021 年に加わった「持続可能性」）もあわせて問われる。",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html"
+    },
+    {
+      "name": "AWS Application Discovery Service",
+      "category": "移行と転送",
+      "summary": "移行前にオンプレのサーバー情報を集めて調べる",
+      "description": "オンプレミスのサーバーの構成、使用状況、サーバー同士の依存関係などのデータを集め、移行計画に使えるようにするサービスです。移行の流れでは最初の「調べる」段階を担当します。",
+      "features": [
+        "エージェントを入れる方式と、入れない方式（VMware vCenter 経由）でデータを収集",
+        "サーバーの構成・CPU やメモリの使用状況・プロセスやネットワーク接続を記録",
+        "集めたデータを移行計画やグループ分けに活用できる"
+      ],
+      "useCases": [
+        "大量のオンプレサーバーを AWS へ移す前に、何がどう動いているかを洗い出す"
+      ],
+      "keywords": [
+        "オンプレミスのサーバー情報を収集",
+        "依存関係の把握",
+        "移行計画",
+        "検出（Discovery）"
+      ],
+      "confusedWith": [
+        {
+          "name": "Migration Evaluator",
+          "diff": "Application Discovery Service はサーバーの情報を集める道具で、Migration Evaluator は集めた情報から AWS に移した場合のコストを見積もり、ビジネスケースを作る道具です。"
+        },
+        {
+          "name": "AWS Migration Hub",
+          "diff": "Application Discovery Service は「調べる」担当で、Migration Hub は移行全体の進み具合を1か所で「管理する」担当です。"
+        }
+      ],
+      "note": "新規のお客様の受け付けを終了しており、後継として AWS Transform が案内されています。ただし CLF-C02 の試験ガイドには載っているので、「オンプレのサーバー情報を集める」問題の答えとしては有効です。",
+      "url": "https://aws.amazon.com/application-discovery/"
+    },
+    {
+      "name": "AWS Application Migration Service",
+      "category": "移行と転送",
+      "summary": "サーバーをそのまま AWS へ移す（リホスト）",
+      "description": "オンプレミスや他のクラウドのサーバーを、作りを変えずにそのまま AWS 上へ移す（リフト＆シフト、リホスト）ためのサービスです。略称は MGN で、移行の流れでは「移す」段階を担当します。",
+      "features": [
+        "移行元サーバーのディスクを AWS へ継続的にレプリケーション（複製）",
+        "本番切り替えの前に AWS 上でテスト起動できる",
+        "切り替え時の停止時間を短くできる"
+      ],
+      "useCases": [
+        "データセンターの物理サーバーや仮想マシンを、アプリを書き換えずに EC2 へ移す"
+      ],
+      "keywords": [
+        "リフト＆シフト",
+        "リホスト",
+        "サーバーの移行",
+        "最小限のダウンタイム",
+        "MGN"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Database Migration Service (DMS)",
+          "diff": "Application Migration Service はサーバー丸ごとを移し、DMS はデータベースの中のデータを移します。"
+        },
+        {
+          "name": "AWS DataSync",
+          "diff": "Application Migration Service はサーバーを移し、DataSync はファイルやオブジェクトのデータを転送します。"
+        }
+      ],
+      "note": "以前の CloudEndure Migration や AWS Server Migration Service（SMS）の後継にあたります。問題文に「サーバーをそのまま」「リホスト」とあればこのサービスです。",
+      "url": "https://aws.amazon.com/application-migration-service/"
+    },
+    {
+      "name": "AWS Database Migration Service (DMS)",
+      "category": "移行と転送",
+      "summary": "データベースのデータを止めずに AWS へ移す",
+      "description": "データベースのデータを AWS へ移すサービスです。移行中も移行元のデータベースを動かし続けられるため、停止時間を最小限にできます。同じエンジン同士の移行も、違うエンジンへの移行（SCT などと組み合わせる）もできます。",
+      "features": [
+        "移行中も移行元データベースを使い続けられる",
+        "同種（Oracle → Oracle など）と異種（Oracle → Aurora など）の移行に対応",
+        "変更を継続して反映するレプリケーションも可能"
+      ],
+      "useCases": [
+        "オンプレの Oracle や MySQL を Amazon RDS / Aurora へ移す",
+        "移行後もしばらく両方のデータベースを同期させておく"
+      ],
+      "keywords": [
+        "データベースの移行",
+        "最小限のダウンタイム",
+        "異種データベース",
+        "継続的なレプリケーション"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Schema Conversion Tool (SCT)",
+          "diff": "DMS はデータを移し、SCT は異なるエンジンへ移すときにテーブル定義（スキーマ）やコードを変換します。"
+        },
+        {
+          "name": "AWS Application Migration Service",
+          "diff": "DMS はデータベースのデータを移し、Application Migration Service はサーバー丸ごとを移します。"
+        }
+      ],
+      "note": "異種データベース移行では「SCT（または DMS Schema Conversion）でスキーマを変換 → DMS でデータを移す」の順番で使う、という組み合わせがよく問われます。",
+      "url": "https://aws.amazon.com/dms/"
+    },
+    {
+      "name": "Migration Evaluator",
+      "category": "移行と転送",
+      "summary": "AWS に移した場合のコストを見積もる",
+      "description": "オンプレミスの現状のデータをもとに、AWS へ移した場合のコストを見積もり、移行のビジネスケース（費用対効果の説明資料）を作るサービスです。移行の流れでは「見積もる」段階を担当します。",
+      "features": [
+        "オンプレのサーバー使用状況から、AWS で必要な規模とコストを算出",
+        "移行の判断材料となるビジネスケースを作成",
+        "既存ライセンスの持ち込みなども考慮した見積もり"
+      ],
+      "useCases": [
+        "経営層に AWS 移行の費用対効果を説明する資料を作る"
+      ],
+      "keywords": [
+        "ビジネスケース",
+        "移行コストの見積もり",
+        "総保有コスト（TCO）",
+        "移行の判断"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Pricing Calculator",
+          "diff": "Migration Evaluator はオンプレの実データから移行全体のビジネスケースを作り、Pricing Calculator は自分で構成を入力して AWS の料金を見積もります。"
+        },
+        {
+          "name": "AWS Application Discovery Service",
+          "diff": "Migration Evaluator は「見積もる」担当で、Application Discovery Service はサーバー情報を「調べる」担当です。"
+        }
+      ],
+      "note": "旧名は TSO Logic です。",
+      "url": "https://aws.amazon.com/migration-evaluator/"
+    },
+    {
+      "name": "AWS Migration Hub",
+      "category": "移行と転送",
+      "summary": "移行全体の進み具合を1か所で管理する",
+      "description": "複数の AWS の移行ツールやパートナーのツールを使った移行の進み具合を、1か所でまとめて追跡するサービスです。移行の流れでは「管理する」段階を担当します。",
+      "features": [
+        "複数の移行ツールの進捗を1つの画面で確認",
+        "Application Discovery Service で集めたデータを参照できる",
+        "アプリケーション単位で移行状況をまとめられる"
+      ],
+      "useCases": [
+        "何百台ものサーバーを複数のツールで移すとき、全体の進み具合を把握する"
+      ],
+      "keywords": [
+        "移行の進捗を追跡",
+        "一元管理",
+        "複数の移行ツール",
+        "中央の場所"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Application Migration Service",
+          "diff": "Migration Hub は移行の状況を見て管理するだけで、実際にサーバーを移すのは Application Migration Service です。"
+        },
+        {
+          "name": "AWS Application Discovery Service",
+          "diff": "Migration Hub は進捗を「管理する」担当で、Application Discovery Service はサーバー情報を「調べる」担当です。"
+        }
+      ],
+      "note": "2025-11-07 に新規のお客様の受け付けを終了し、後継として AWS Transform が案内されています。ただし CLF-C02 の試験ガイドには載っているので、「移行の進み具合を1か所で追跡する」問題の答えとしては有効です。",
+      "url": "https://aws.amazon.com/migration-hub/"
+    },
+    {
+      "name": "AWS Schema Conversion Tool (SCT)",
+      "category": "移行と転送",
+      "summary": "別のエンジンへ移すときにスキーマを変換",
+      "description": "あるデータベースエンジンから別のエンジンへ移すときに、テーブル定義（スキーマ）やストアドプロシージャなどのコードを、移行先のエンジンに合う形へ変換するツールです。データそのものは DMS で移します。",
+      "features": [
+        "スキーマやデータベース内のコードを移行先エンジン向けに自動変換",
+        "自動で変換できない部分をレポートで示す",
+        "PC にダウンロードして使うツール"
+      ],
+      "useCases": [
+        "Oracle や SQL Server から Amazon Aurora（PostgreSQL / MySQL 互換）へ移す"
+      ],
+      "keywords": [
+        "異種データベース移行",
+        "スキーマの変換",
+        "データベースエンジンの変更",
+        "ストアドプロシージャ"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Database Migration Service (DMS)",
+          "diff": "SCT はスキーマ（入れ物の形）を変換し、DMS はデータ（中身）を移します。"
+        }
+      ],
+      "note": "同じ機能を DMS のコンソール上で使える「DMS Schema Conversion」もあります。同じエンジン同士（MySQL → MySQL など）の移行では SCT は不要です。",
+      "url": "https://aws.amazon.com/dms/schema-conversion-tool/"
+    },
+    {
+      "name": "Amazon Athena",
+      "category": "分析",
+      "summary": "S3 のデータに直接 SQL を投げるサーバーレス分析",
+      "description": "Amazon S3 に置いたままのデータ（CSV・JSON・Parquet など）に、標準 SQL でその場で問い合わせできるサービスです。サーバーの用意やデータの読み込みは不要で、スキャンしたデータ量に応じて料金がかかります。",
+      "features": [
+        "サーバーレスでインフラ管理が不要",
+        "S3 のデータを移動せずに SQL で分析",
+        "AWS Glue Data Catalog のテーブル定義を利用できる",
+        "スキャンしたデータ量に応じた従量課金"
+      ],
+      "useCases": [
+        "S3 に溜まったログ（CloudTrail・ALB など）をアドホックに調べる",
+        "データレイクに対する単発の集計"
+      ],
+      "keywords": [
+        "S3 のデータを SQL でクエリ",
+        "サーバーレス",
+        "アドホック分析",
+        "インフラ管理不要"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Redshift",
+          "diff": "Redshift はデータを取り込んで繰り返し高速に分析するデータウェアハウス、Athena は S3 に置いたまま単発で SQL を投げるサービス。"
+        },
+        {
+          "name": "Amazon EMR",
+          "diff": "EMR は Spark や Hadoop のクラスターで大規模処理を組むサービスで、Athena のように SQL だけで手軽に済ませるものではない。"
+        },
+        {
+          "name": "AWS Glue",
+          "diff": "Glue はデータを変換・整形する ETL とカタログ作り、Athena はそのデータに問い合わせる側。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html"
+    },
+    {
+      "name": "Amazon EMR",
+      "category": "分析",
+      "summary": "Spark や Hadoop で大量データを処理するクラスター",
+      "description": "Apache Spark・Apache Hadoop・Hive などのビッグデータ処理フレームワークを、管理されたクラスターで動かすサービスです。大量のデータの加工・分析・機械学習の前処理などを、台数を増減させながら並列で処理できます。",
+      "features": [
+        "Spark・Hadoop・Hive・Presto などのオープンソースを利用できる",
+        "処理量に合わせてクラスターの台数を増減できる",
+        "EC2・EKS・サーバーレスで実行できる",
+        "スポットインスタンスでコストを下げられる"
+      ],
+      "useCases": [
+        "ペタバイト級のログやデータの一括加工",
+        "既存の Hadoop／Spark の処理を AWS に移す"
+      ],
+      "keywords": [
+        "Hadoop",
+        "Apache Spark",
+        "ビッグデータ処理",
+        "クラスター",
+        "大規模データの分散処理"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Glue",
+          "diff": "Glue はサーバーレスの ETL サービスでクラスター管理が不要、EMR はクラスターを自分で構成して Spark や Hadoop を柔軟に動かす。"
+        },
+        {
+          "name": "Amazon Athena",
+          "diff": "Athena は S3 のデータに SQL を投げるだけのサーバーレス、EMR はフレームワークを選んで大規模な処理を組む。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-what-is-emr.html"
+    },
+    {
+      "name": "AWS Glue",
+      "category": "分析",
+      "summary": "サーバーレスの ETL とデータカタログ",
+      "description": "データを集めて変換し、分析しやすい形に整えて別の場所へ移す ETL（抽出・変換・読み込み）を、サーバーレスで行うサービスです。クローラーがデータの構造を調べ、Glue Data Catalog にテーブル定義（メタデータ）として登録します。",
+      "features": [
+        "サーバーレスの ETL ジョブ",
+        "クローラーでデータの構造（スキーマ）を自動で検出",
+        "Glue Data Catalog でメタデータを一元管理",
+        "画面操作で ETL を組める Glue Studio"
+      ],
+      "useCases": [
+        "複数のデータソースを整形してデータレイクやデータウェアハウスに入れる",
+        "Athena や Redshift から使うテーブル定義を作る"
+      ],
+      "keywords": [
+        "ETL",
+        "データカタログ",
+        "クローラー",
+        "サーバーレス",
+        "データの準備・変換"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EMR",
+          "diff": "EMR はクラスターを構成して Spark などを動かす、Glue はクラスター管理なしで ETL を実行する。"
+        },
+        {
+          "name": "Amazon Athena",
+          "diff": "Athena は SQL で問い合わせる側、Glue はデータを変換しカタログに登録する準備の側。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html"
+    },
+    {
+      "name": "Amazon Kinesis",
+      "category": "分析",
+      "summary": "リアルタイムのストリーミングデータを集めて処理",
+      "description": "クリックストリーム・IoT センサー・アプリのログなど、絶え間なく発生するデータをリアルタイムに取り込み、処理するサービス群です。Kinesis Data Streams（ストリームの取り込み）や Amazon Data Firehose（S3 などへの配信）などがあります。",
+      "features": [
+        "大量のデータを秒単位でリアルタイムに取り込む",
+        "複数のアプリが同じストリームを読める（Data Streams）",
+        "S3・Redshift・OpenSearch などへ自動で配信（Data Firehose）",
+        "動画のストリーミング（Kinesis Video Streams）"
+      ],
+      "useCases": [
+        "Web サイトのクリックや IoT センサーのデータをリアルタイムに分析する",
+        "ログを継続的に S3 へ送る"
+      ],
+      "keywords": [
+        "リアルタイム",
+        "ストリーミングデータ",
+        "クリックストリーム",
+        "データの取り込み",
+        "Data Firehose"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon SQS",
+          "diff": "SQS はアプリ間でメッセージを受け渡すキューで、取り出したメッセージは消える。Kinesis は大量のデータを流れとして取り込み、複数の処理で読める。"
+        },
+        {
+          "name": "AWS IoT Core",
+          "diff": "IoT Core はデバイスをクラウドにつなぐ入口、Kinesis はつながった後の大量データを流して処理する仕組み。"
+        }
+      ],
+      "note": "旧 Kinesis Data Firehose は Amazon Data Firehose に、旧 Kinesis Data Analytics は Amazon Managed Service for Apache Flink に名前が変わっている。",
+      "url": "https://docs.aws.amazon.com/streams/latest/dev/introduction.html"
+    },
+    {
+      "name": "Amazon OpenSearch Service",
+      "category": "分析",
+      "summary": "全文検索とログ分析のマネージド検索エンジン",
+      "description": "オープンソースの検索・分析エンジン OpenSearch（Elasticsearch の流れをくむ）を、管理された環境で動かすサービスです。大量のテキストやログを素早く検索・集計し、OpenSearch Dashboards で可視化できます。",
+      "features": [
+        "全文検索（キーワード検索）",
+        "ログやメトリクスのほぼリアルタイムな分析",
+        "OpenSearch Dashboards による可視化",
+        "サーバーレス版（OpenSearch Serverless）もある"
+      ],
+      "useCases": [
+        "Web サイトやアプリの検索機能",
+        "アプリのログを集めて検索・監視する"
+      ],
+      "keywords": [
+        "全文検索",
+        "ログ分析",
+        "Elasticsearch",
+        "OpenSearch Dashboards",
+        "検索エンジン"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Athena",
+          "diff": "Athena は S3 のデータに SQL で問い合わせる、OpenSearch はデータを索引に入れてキーワード検索やログ分析を速く行う。"
+        },
+        {
+          "name": "Amazon CloudWatch",
+          "diff": "CloudWatch は AWS リソースの監視とログの保管、OpenSearch は大量ログの全文検索・高度な分析に向く。"
+        }
+      ],
+      "note": "旧名は Amazon Elasticsearch Service。",
+      "url": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html"
+    },
+    {
+      "name": "Amazon Quick Sight",
+      "category": "分析",
+      "summary": "グラフやダッシュボードを作る BI ツール",
+      "description": "データをグラフやダッシュボードにして共有する、サーバーレスのビジネスインテリジェンス（BI）サービスです。Redshift・Athena・S3 などのデータにつなぎ、自然言語で質問して答えを得る機能もあります。",
+      "features": [
+        "対話型のダッシュボードとグラフ",
+        "サーバーレスで利用者数に合わせて拡張",
+        "自然言語で質問できる生成 AI の機能",
+        "Redshift・Athena・S3・RDS などにつなげる"
+      ],
+      "useCases": [
+        "経営層や現場向けに売上などのダッシュボードを共有する",
+        "分析結果をグラフで見える化する"
+      ],
+      "keywords": [
+        "BI",
+        "ダッシュボード",
+        "可視化",
+        "グラフ",
+        "ビジネスインテリジェンス"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Athena",
+          "diff": "Athena はデータに SQL を投げて結果を得る、Quick Sight はその結果をグラフやダッシュボードにして見せる。"
+        },
+        {
+          "name": "Amazon CloudWatch",
+          "diff": "CloudWatch のダッシュボードは AWS リソースの監視用、Quick Sight は業務データの分析・可視化用。"
+        }
+      ],
+      "note": "旧名は Amazon QuickSight。現在は Amazon Quick（Amazon Quick Suite）の機能の1つとして提供され、公式ドキュメントも Amazon Quick の名前になっている。試験ガイドでは Amazon Quick Sight と表記。",
+      "url": "https://docs.aws.amazon.com/quicksight/latest/user/welcome.html"
+    },
+    {
+      "name": "Amazon Redshift",
+      "category": "分析",
+      "summary": "大量データを SQL で高速分析するデータウェアハウス",
+      "description": "ペタバイト級のデータを取り込み、SQL で高速に集計・分析するためのフルマネージドのデータウェアハウスです。列指向で保存するため、大量の行をまとめて集計する分析に向いています。",
+      "features": [
+        "列指向ストレージと並列処理で集計が速い",
+        "標準 SQL と既存の BI ツールが使える",
+        "サーバーレス版（Redshift Serverless）もある",
+        "Redshift Spectrum で S3 のデータにも問い合わせられる"
+      ],
+      "useCases": [
+        "社内の売上や顧客データを集めて定期的に分析する",
+        "BI ツールの裏側のデータ基盤"
+      ],
+      "keywords": [
+        "データウェアハウス",
+        "OLAP",
+        "列指向",
+        "ペタバイト規模",
+        "BI"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon RDS",
+          "diff": "RDS は日々の取引を記録するリレーショナルデータベース（OLTP）、Redshift は大量データを集計する分析用（OLAP）。"
+        },
+        {
+          "name": "Amazon Athena",
+          "diff": "Athena は S3 のデータに単発で SQL を投げるサーバーレス、Redshift はデータを取り込んで繰り返し高速に分析する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html"
+    },
+    {
+      "name": "Amazon Comprehend",
+      "category": "機械学習・AI",
+      "summary": "文章→感情・キーワード・言語を取り出す",
+      "description": "テキストを入力すると、機械学習でその内容を読み取り、感情（肯定・否定）、キーフレーズ、人名や地名などのエンティティ、言語の種類などを返す自然言語処理（NLP）サービスです。機械学習の知識がなくても API で使えます。",
+      "features": [
+        "感情分析（ポジティブ・ネガティブなど）",
+        "キーフレーズ・エンティティ（人名・地名・組織など）の抽出",
+        "言語の判定",
+        "個人を特定できる情報（PII）の検出"
+      ],
+      "useCases": [
+        "顧客レビューや問い合わせ文から満足度を分析する",
+        "SNS の投稿からよく出る話題を抜き出す"
+      ],
+      "keywords": [
+        "自然言語処理（NLP）",
+        "感情分析",
+        "テキストからの洞察",
+        "エンティティ抽出",
+        "キーフレーズ"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Textract",
+          "diff": "Textract は画像・PDF の文書→文字や表を取り出す、Comprehend はすでにある文字→意味や感情を読み取る。"
+        },
+        {
+          "name": "Amazon Translate",
+          "diff": "Translate は文字→別の言語の文字に訳す、Comprehend は文字→感情や要素を分析する。"
+        },
+        {
+          "name": "Amazon Transcribe",
+          "diff": "Transcribe は音声→文字、Comprehend は文字→意味の分析。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html"
+    },
+    {
+      "name": "Amazon Lex",
+      "category": "機械学習・AI",
+      "summary": "音声や文字で会話するチャットボットを作る",
+      "description": "利用者の音声やテキストの発言を理解して応答する、会話型インターフェイス（チャットボット・音声ボット）を作るサービスです。Alexa と同じ深層学習の技術を使っており、音声認識と自然言語理解を組み合わせます。",
+      "features": [
+        "音声・テキストの両方で会話できるボット",
+        "発言から意図（インテント）を判断する自然言語理解",
+        "Amazon Connect と組み合わせてコールセンターの自動応答",
+        "Lambda と連携して予約などの処理を実行"
+      ],
+      "useCases": [
+        "Web サイトのチャットボット",
+        "コールセンターの音声自動応答"
+      ],
+      "keywords": [
+        "チャットボット",
+        "会話型インターフェイス",
+        "Alexa と同じ技術",
+        "音声ボット",
+        "インテント"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Polly",
+          "diff": "Polly は文字→音声に読み上げるだけ、Lex は相手の発言を理解して会話するボットを作る。"
+        },
+        {
+          "name": "Amazon Connect",
+          "diff": "Connect はコールセンターそのもの、Lex はそこに組み込む会話の自動応答。"
+        },
+        {
+          "name": "Amazon Q",
+          "diff": "Amazon Q は社内データや AWS について答える生成 AI アシスタント、Lex は自分で会話の流れを設計するボット作成サービス。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/lexv2/latest/dg/what-is.html"
+    },
+    {
+      "name": "Amazon Polly",
+      "category": "機械学習・AI",
+      "summary": "文字→自然な音声に読み上げる",
+      "description": "テキストを入力すると、人の声のような自然な音声に変換して返すテキスト読み上げ（Text-to-Speech）サービスです。多くの言語と声の種類から選べ、音声ファイルとして保存することもできます。",
+      "features": [
+        "テキストを自然な音声に変換",
+        "多くの言語と男女さまざまな声",
+        "SSML で読み方・間・強弱を調整",
+        "ニューラル音声でより自然な発話"
+      ],
+      "useCases": [
+        "ニュース記事や教材の読み上げ",
+        "音声案内やアクセシビリティ対応"
+      ],
+      "keywords": [
+        "テキスト読み上げ",
+        "Text-to-Speech（TTS）",
+        "文字を音声に",
+        "自然な音声",
+        "SSML"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Transcribe",
+          "diff": "向きが逆。Transcribe は音声→文字、Polly は文字→音声。"
+        },
+        {
+          "name": "Amazon Lex",
+          "diff": "Lex は会話を理解して応答するボット、Polly は渡された文字を読み上げるだけ。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/polly/latest/dg/what-is.html"
+    },
+    {
+      "name": "Amazon Q",
+      "category": "機械学習・AI",
+      "summary": "質問に答え作業を手伝う生成 AI アシスタント",
+      "description": "自然言語で質問すると、生成 AI が答えたり作業を手伝ったりするアシスタントです。開発者や AWS の運用を助ける Amazon Q Developer と、社内の文書やデータをもとに従業員の質問に答える Amazon Q Business があります。",
+      "features": [
+        "Q Developer: コードの生成・説明、AWS の使い方や構成についての質問への回答",
+        "Q Business: 社内のデータソースにつないで質問に答える・要約する",
+        "既存の権限に沿って見せる情報を制御"
+      ],
+      "useCases": [
+        "開発者がコードを書く・AWS の問題を調べる",
+        "従業員が社内規程や資料について質問する"
+      ],
+      "keywords": [
+        "生成 AI アシスタント",
+        "Amazon Q Developer",
+        "Amazon Q Business",
+        "自然言語で質問",
+        "コード生成"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Bedrock",
+          "diff": "Bedrock は基盤モデルを API で使って自分で生成 AI アプリを作る、Amazon Q はすぐ使える完成品のアシスタント。"
+        },
+        {
+          "name": "Amazon Lex",
+          "diff": "Lex は会話ボットを自分で設計して作る、Amazon Q は生成 AI がそのまま答えるアシスタント。"
+        }
+      ],
+      "note": "Q Developer（開発・AWS 運用向け）と Q Business（社内業務向け）の区別が問われやすい。",
+      "url": "https://aws.amazon.com/q/"
+    },
+    {
+      "name": "Amazon Rekognition",
+      "category": "機械学習・AI",
+      "summary": "画像・動画→何が写っているかを見分ける",
+      "description": "画像や動画を入力すると、写っている物体・人・文字・シーンを認識したり、顔を検出・比較したりする画像認識サービスです。不適切なコンテンツの検出にも使えます。機械学習の知識がなくても API で使えます。",
+      "features": [
+        "物体・シーン・ラベルの検出",
+        "顔の検出・分析・比較（顔認証）",
+        "不適切なコンテンツの検出（モデレーション）",
+        "動画の解析"
+      ],
+      "useCases": [
+        "本人確認のための顔の照合",
+        "投稿画像の不適切な内容をチェックする"
+      ],
+      "keywords": [
+        "画像認識",
+        "動画分析",
+        "顔認識",
+        "物体検出",
+        "コンテンツモデレーション"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Textract",
+          "diff": "Textract は文書の画像→文字・表・フォームの値を取り出す、Rekognition は画像→何が写っているか（物体・顔など）を見分ける。"
+        },
+        {
+          "name": "Amazon SageMaker AI",
+          "diff": "SageMaker AI は自分でモデルを作る、Rekognition は作り済みの画像認識をそのまま使う。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html"
+    },
+    {
+      "name": "Amazon SageMaker AI",
+      "category": "機械学習・AI",
+      "summary": "自分で ML モデルを作り・学習・デプロイする",
+      "description": "機械学習モデルの構築・学習・デプロイ（本番で使える状態にすること）までをまとめて行うフルマネージドのサービスです。データサイエンティストや開発者が、自分のデータで独自のモデルを作るときに使います。",
+      "features": [
+        "ノートブックなどの開発環境",
+        "モデルの学習とチューニング",
+        "学習したモデルのデプロイと推論",
+        "作り済みのモデルを使える SageMaker JumpStart"
+      ],
+      "useCases": [
+        "自社データで需要予測や不正検知のモデルを作る",
+        "独自モデルを学習させて API として公開する"
+      ],
+      "keywords": [
+        "機械学習モデルの構築・学習・デプロイ",
+        "データサイエンティスト",
+        "カスタムモデル",
+        "フルマネージド ML"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Bedrock",
+          "diff": "Bedrock は基盤モデル（生成 AI）を API で使う、SageMaker AI は自分でモデルを作り学習させる。"
+        },
+        {
+          "name": "Amazon Rekognition",
+          "diff": "Rekognition などの AI サービスは学習済みでそのまま使う、SageMaker AI は自分で学習させる。"
+        }
+      ],
+      "note": "2024年12月に Amazon SageMaker から Amazon SageMaker AI に名前が変わった。「Amazon SageMaker」の名前は、データ・分析・AI をまとめた次世代の統合プラットフォーム（SageMaker Unified Studio など）を指すようになった。",
+      "url": "https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html"
+    },
+    {
+      "name": "Amazon Textract",
+      "category": "機械学習・AI",
+      "summary": "文書の画像・PDF→文字・表・フォームを抽出",
+      "description": "スキャンした文書や PDF・画像を入力すると、印刷や手書きの文字だけでなく、表やフォームの項目と値の組み合わせも取り出すサービスです。単純な文字認識（OCR）より、文書の構造を理解できる点が特徴です。",
+      "features": [
+        "印刷文字・手書き文字の抽出（OCR）",
+        "表の構造を保ったまま抽出",
+        "フォームの項目名と値の組み合わせを抽出",
+        "請求書・身分証などの分析"
+      ],
+      "useCases": [
+        "紙の申込書や請求書の内容をデータ化する",
+        "スキャンした書類の手入力をなくす"
+      ],
+      "keywords": [
+        "OCR",
+        "文書から文字を抽出",
+        "スキャン文書",
+        "フォーム",
+        "表の抽出"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Rekognition",
+          "diff": "Rekognition は画像→何が写っているか（物体・顔）、Textract は文書の画像→文字や表のデータ。"
+        },
+        {
+          "name": "Amazon Comprehend",
+          "diff": "Textract は文書から文字を取り出す、Comprehend は取り出した文字の意味や感情を分析する。"
+        },
+        {
+          "name": "Amazon Transcribe",
+          "diff": "Transcribe は音声→文字、Textract は文書の画像→文字。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/textract/latest/dg/what-is.html"
+    },
+    {
+      "name": "Amazon Transcribe",
+      "category": "機械学習・AI",
+      "summary": "音声→文字に書き起こす",
+      "description": "音声ファイルやリアルタイムの音声を入力すると、自動で文字に書き起こす音声認識（Speech-to-Text）サービスです。話者の区別やタイムスタンプも付けられます。",
+      "features": [
+        "音声の自動書き起こし（録音・リアルタイムの両方）",
+        "話者の識別",
+        "カスタム語彙で専門用語の認識を改善",
+        "通話分析向けの Transcribe Call Analytics"
+      ],
+      "useCases": [
+        "会議やコールセンターの通話を文字にする",
+        "動画に字幕を付ける"
+      ],
+      "keywords": [
+        "音声認識",
+        "Speech-to-Text",
+        "書き起こし",
+        "字幕",
+        "音声を文字に"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Polly",
+          "diff": "向きが逆。Polly は文字→音声、Transcribe は音声→文字。"
+        },
+        {
+          "name": "Amazon Translate",
+          "diff": "Translate は文字→別の言語の文字、Transcribe は音声→同じ言語の文字。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html"
+    },
+    {
+      "name": "Amazon Translate",
+      "category": "機械学習・AI",
+      "summary": "文字→別の言語の文字に翻訳する",
+      "description": "テキストを入力すると、ニューラル機械翻訳で別の言語に訳して返すサービスです。リアルタイムの翻訳と、大量の文書をまとめて訳す一括翻訳ができます。",
+      "features": [
+        "ニューラル機械翻訳",
+        "多くの言語に対応",
+        "カスタム用語で固有名詞などの訳を指定",
+        "大量文書の一括翻訳"
+      ],
+      "useCases": [
+        "Web サイトやアプリを多言語に対応させる",
+        "海外の顧客からの問い合わせを訳す"
+      ],
+      "keywords": [
+        "機械翻訳",
+        "多言語対応",
+        "ローカライズ",
+        "テキストの翻訳"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Transcribe",
+          "diff": "Transcribe は音声→文字（言語は同じ）、Translate は文字→別の言語の文字。"
+        },
+        {
+          "name": "Amazon Comprehend",
+          "diff": "Comprehend は文字の意味や感情を分析する、Translate は文字を別の言語に訳す。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/translate/latest/dg/what-is.html"
+    },
+    {
+      "name": "Amazon EventBridge",
+      "category": "アプリケーション統合",
+      "summary": "イベントをルールで振り分けるイベントバス",
+      "description": "AWS のサービス・自社アプリ・SaaS で起きた「出来事（イベント）」を受け取り、ルールに合うものを Lambda などの宛先へ届けるサーバーレスのイベントバスです。決まった時刻に処理を動かすスケジュール実行もできます。",
+      "features": [
+        "イベントの中身でルールを作り、宛先へ振り分ける",
+        "AWS サービス・SaaS・自社アプリのイベントを受け取れる",
+        "スケジュール実行（EventBridge Scheduler）",
+        "イベント駆動で疎結合なアーキテクチャを作れる"
+      ],
+      "useCases": [
+        "EC2 の状態が変わったら Lambda で通知や対処を行う",
+        "毎日決まった時刻にバッチ処理を起動する"
+      ],
+      "keywords": [
+        "イベントバス",
+        "イベント駆動",
+        "ルール",
+        "スケジュール実行",
+        "SaaS 連携"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon SNS",
+          "diff": "SNS は1つのメッセージを登録者全員に配る通知、EventBridge はイベントの中身を見てルールで宛先を選び分ける。"
+        },
+        {
+          "name": "Amazon SQS",
+          "diff": "SQS はメッセージを溜めて受け手が取りに来るキュー、EventBridge は起きたイベントを条件に応じて宛先へ押し出す。"
+        },
+        {
+          "name": "AWS Step Functions",
+          "diff": "Step Functions は複数の処理の順番や分岐を管理するワークフロー、EventBridge はイベントを宛先へ届ける入口。"
+        }
+      ],
+      "note": "旧名は Amazon CloudWatch Events。",
+      "url": "https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html"
+    },
+    {
+      "name": "Amazon SNS",
+      "category": "アプリケーション統合",
+      "summary": "1つの通知を多数の宛先へ一斉配信（Pub/Sub）",
+      "description": "発行者がトピックにメッセージを送ると、そのトピックを購読している宛先すべてに一斉に届けるプッシュ型の通知サービス（Pub/Sub）です。宛先は Lambda・SQS などのアプリのほか、メール・SMS・モバイルプッシュも選べます。",
+      "features": [
+        "トピックと購読による Pub/Sub",
+        "1対多の一斉配信（ファンアウト）",
+        "メール・SMS・モバイルプッシュで人に通知",
+        "SQS や Lambda へのアプリ間配信"
+      ],
+      "useCases": [
+        "CloudWatch アラームが鳴ったら担当者へメールで通知する",
+        "1つの注文イベントを複数の SQS キューに同時に配る"
+      ],
+      "keywords": [
+        "Pub/Sub",
+        "トピック",
+        "プッシュ通知",
+        "ファンアウト",
+        "メール・SMS 通知"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon SQS",
+          "diff": "SQS は受け手が取りに来るまでメッセージを溜めるキュー（プル型）、SNS は購読者全員にすぐ押し出す通知（プッシュ型）。"
+        },
+        {
+          "name": "Amazon EventBridge",
+          "diff": "EventBridge はイベントの中身でルールを作り宛先を選び分ける、SNS はトピックの購読者全員に同じものを配る。"
+        },
+        {
+          "name": "Amazon SES",
+          "diff": "SES はメール送信に特化（大量のメールマガジンなど）、SNS は通知の一斉配信でメールはその宛先の1つ。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/sns/latest/dg/welcome.html"
+    },
+    {
+      "name": "Amazon SQS",
+      "category": "アプリケーション統合",
+      "summary": "メッセージを溜めて受け渡すキュー",
+      "description": "送り手のメッセージをキューに溜めておき、受け手が自分のペースで取り出して処理するメッセージキューサービスです。送り手と受け手を切り離す（疎結合にする）ことで、片方が遅くても止まってもメッセージを失わずに済みます。",
+      "features": [
+        "メッセージをキューに一時保存（プル型）",
+        "システムの疎結合化と負荷の平準化",
+        "標準キューと、順番を守る FIFO キュー",
+        "処理に失敗したメッセージを分けるデッドレターキュー"
+      ],
+      "useCases": [
+        "注文の受付と処理を切り離し、アクセス集中時もメッセージを失わない",
+        "重い処理をキューに入れて後で順に処理する"
+      ],
+      "keywords": [
+        "メッセージキュー",
+        "疎結合",
+        "デカップリング",
+        "バッファ",
+        "FIFO"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon SNS",
+          "diff": "SNS は購読者全員にすぐ押し出す（プッシュ型・1対多）、SQS は溜めて受け手が取りに来る（プル型）。"
+        },
+        {
+          "name": "Amazon Kinesis",
+          "diff": "Kinesis は大量のストリーミングデータを複数の処理で読む、SQS はアプリ間でメッセージを1件ずつ受け渡し処理後に消す。"
+        },
+        {
+          "name": "Amazon MQ",
+          "diff": "Amazon MQ は既存の ActiveMQ や RabbitMQ などをそのまま移すためのブローカー、SQS は AWS 独自のフルマネージドなキュー。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
+    },
+    {
+      "name": "AWS Step Functions",
+      "category": "アプリケーション統合",
+      "summary": "複数の処理の順番・分岐をつなぐワークフロー",
+      "description": "Lambda などの複数の処理を、順番・分岐・並列・再試行を含むワークフロー（ステートマシン）として組み立て、実行を管理するサーバーレスのサービスです。流れを図で見られるので、どこで失敗したかも分かりやすくなります。",
+      "features": [
+        "処理の順番・条件分岐・並列実行を定義",
+        "失敗時の再試行とエラー処理",
+        "ワークフローを図で表示・作成",
+        "多くの AWS サービスと直接連携"
+      ],
+      "useCases": [
+        "注文処理（在庫確認→決済→発送）を順番に実行する",
+        "人の承認を挟む業務フローの自動化"
+      ],
+      "keywords": [
+        "ワークフロー",
+        "オーケストレーション",
+        "ステートマシン",
+        "サーバーレス",
+        "複数の Lambda をつなぐ"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon EventBridge",
+          "diff": "EventBridge はイベントを宛先へ届けるだけ、Step Functions は複数の処理の順番と状態を管理する。"
+        },
+        {
+          "name": "Amazon SQS",
+          "diff": "SQS はメッセージを溜めて受け渡すだけ、Step Functions は処理全体の流れを制御する。"
+        },
+        {
+          "name": "AWS CodePipeline",
+          "diff": "CodePipeline はソフトウェアのリリースの流れ（CI/CD）を自動化する、Step Functions はアプリの業務処理の流れを組む。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html"
+    },
+    {
+      "name": "Amazon Connect",
+      "category": "ビジネスアプリケーション",
+      "summary": "クラウドのコールセンター（コンタクトセンター）",
+      "description": "電話やチャットで顧客に対応するコンタクトセンターを、クラウド上で短期間に立ち上げられるサービスです。設備の用意は不要で、使った分だけ料金がかかります。Lex による自動応答や通話の分析とも組み合わせられます。",
+      "features": [
+        "電話・チャットなどの問い合わせ窓口",
+        "画面操作で通話の流れ（コンタクトフロー）を設計",
+        "Amazon Lex と連携した自動応答",
+        "通話の録音・分析"
+      ],
+      "useCases": [
+        "顧客サポートのコールセンターをクラウドで構築する",
+        "問い合わせの多い時期だけ窓口を増やす"
+      ],
+      "keywords": [
+        "コンタクトセンター",
+        "コールセンター",
+        "オムニチャネル",
+        "顧客サービス"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Lex",
+          "diff": "Lex は会話ボットを作る部品、Connect はオペレーターも含めたコールセンター全体。"
+        },
+        {
+          "name": "Amazon SNS",
+          "diff": "SNS はシステムからの通知の一斉配信、Connect は顧客との双方向のやり取り。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html"
+    },
+    {
+      "name": "Amazon SES",
+      "category": "ビジネスアプリケーション",
+      "summary": "アプリからメールを大量に送るサービス",
+      "description": "アプリやシステムからメールを送受信するためのサービスです。注文確認などの取引メールや、ニュースレターなどのマーケティングメールを大量に送れます。",
+      "features": [
+        "大量のメール送信",
+        "取引メール・マーケティングメールの両方",
+        "メールの受信と処理",
+        "送信の到達率や配信状況の監視"
+      ],
+      "useCases": [
+        "会員登録や注文確認のメールをアプリから送る",
+        "ニュースレターを顧客に一斉送信する"
+      ],
+      "keywords": [
+        "メール送信",
+        "マーケティングメール",
+        "取引メール",
+        "大量メール",
+        "ニュースレター"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon SNS",
+          "diff": "SNS は通知を多数の宛先（アプリ・SMS・メール）へ配る、SES はメールの送受信に特化し件名や本文を作り込んだメールを大量に送る。"
+        },
+        {
+          "name": "Amazon WorkMail",
+          "diff": "WorkMail は社員が使う業務用メールボックス、SES はアプリからメールを送る仕組み。"
+        }
+      ],
+      "note": "正式名は Amazon Simple Email Service。",
+      "url": "https://docs.aws.amazon.com/ses/latest/dg/Welcome.html"
+    },
+    {
+      "name": "AWS CLI",
+      "category": "開発者ツール",
+      "summary": "コマンドで AWS を操作するツール",
+      "description": "ターミナルにコマンドを打って AWS のサービスを操作するためのツールです。同じ操作をスクリプトにまとめて自動化できます。AWS の操作方法には、ほかにブラウザの画面で操作する AWS マネジメントコンソールと、プログラムの中から呼ぶ AWS SDK があります。",
+      "features": [
+        "コマンドで AWS のほぼすべてのサービスを操作",
+        "シェルスクリプトで繰り返しの作業を自動化",
+        "Windows・macOS・Linux で使える",
+        "AWS CloudShell ならブラウザからすぐ使える"
+      ],
+      "useCases": [
+        "S3 へのファイルのアップロードなどをスクリプトで自動化する",
+        "画面を使わずにリソースの状態を一括で確認する"
+      ],
+      "keywords": [
+        "コマンドライン",
+        "ターミナル",
+        "スクリプトで自動化",
+        "プログラムによるアクセス"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS SDK",
+          "diff": "SDK は Python・Java などのプログラムの中から AWS を呼ぶためのライブラリ、CLI はターミナルでコマンドを打って操作する。"
+        },
+        {
+          "name": "AWS Management Console",
+          "diff": "マネジメントコンソールはブラウザの画面でクリックして操作する、CLI はコマンドで操作するので自動化に向く。"
+        },
+        {
+          "name": "AWS CloudFormation",
+          "diff": "CloudFormation はテンプレートでインフラ全体をコードとして作る、CLI は個々の操作をコマンドで実行する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html"
+    },
+    {
+      "name": "AWS CodeBuild",
+      "category": "開発者ツール",
+      "summary": "ソースをビルド・テストするサーバーレスサービス",
+      "description": "ソースコードをコンパイルし、テストを実行し、デプロイできる成果物を作るフルマネージドのビルドサービスです。ビルド用のサーバーを用意・管理する必要がなく、使った時間だけ料金がかかります。",
+      "features": [
+        "コンパイル・テスト・成果物の作成",
+        "ビルド用サーバーの管理が不要",
+        "同時に複数のビルドを実行できる",
+        "CodePipeline の中のビルド段階として使える"
+      ],
+      "useCases": [
+        "コードが変更されるたびに自動でビルドとテストを行う",
+        "CI/CD パイプラインのビルド段階"
+      ],
+      "keywords": [
+        "ビルド",
+        "テスト",
+        "コンパイル",
+        "継続的インテグレーション（CI）"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS CodePipeline",
+          "diff": "CodePipeline はソース→ビルド→デプロイの流れ全体をつなぐ、CodeBuild はその中のビルドとテストを実行する。"
+        },
+        {
+          "name": "AWS CodeDeploy",
+          "diff": "CodeDeploy はできた成果物をサーバーなどに配布（デプロイ）する、CodeBuild は成果物を作る。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html"
+    },
+    {
+      "name": "AWS CodePipeline",
+      "category": "開発者ツール",
+      "summary": "ソース→ビルド→デプロイを自動でつなぐ CI/CD",
+      "description": "コードの変更をきっかけに、ソースの取得・ビルド・テスト・デプロイといったリリースの各段階を自動で順に実行する、継続的デリバリー（CI/CD）のサービスです。各段階には CodeBuild や CodeDeploy などを組み込みます。",
+      "features": [
+        "リリースの流れ（パイプライン）を段階ごとに定義",
+        "コードの変更をきっかけに自動で実行",
+        "CodeBuild・CodeDeploy・GitHub などと連携",
+        "手動の承認を挟める"
+      ],
+      "useCases": [
+        "main ブランチへの変更を自動で本番まで届ける",
+        "テスト環境→承認→本番の流れを自動化する"
+      ],
+      "keywords": [
+        "CI/CD",
+        "継続的デリバリー",
+        "リリースの自動化",
+        "パイプライン"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS CodeBuild",
+          "diff": "CodeBuild はビルドとテストを実行する部品、CodePipeline は各段階をつないで流れ全体を動かす。"
+        },
+        {
+          "name": "AWS Step Functions",
+          "diff": "Step Functions はアプリの業務処理のワークフロー、CodePipeline はソフトウェアのリリースの流れ。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html"
+    },
+    {
+      "name": "AWS X-Ray",
+      "category": "開発者ツール",
+      "summary": "リクエストを追跡しボトルネックを見つける",
+      "description": "アプリに来たリクエストが、どのサービスをどの順に通り、それぞれ何秒かかったかを追跡（トレース）して見える化するサービスです。マイクロサービスやサーバーレスのアプリで、遅い箇所やエラーの原因を探すのに使います。",
+      "features": [
+        "リクエストの経路を追跡（分散トレーシング）",
+        "サービス同士のつながりを図（サービスマップ）で表示",
+        "遅い箇所（ボトルネック）やエラーを特定",
+        "Lambda・ECS・EC2 などのアプリに対応"
+      ],
+      "useCases": [
+        "マイクロサービスのどこで遅くなっているかを調べる",
+        "エラーが起きたリクエストの経路をたどる"
+      ],
+      "keywords": [
+        "トレース",
+        "分散トレーシング",
+        "ボトルネック",
+        "サービスマップ",
+        "マイクロサービスのデバッグ"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon CloudWatch",
+          "diff": "CloudWatch はメトリクスやログでリソースの状態を監視する、X-Ray は1つのリクエストがどこを通ったかを追跡する。"
+        },
+        {
+          "name": "AWS CloudTrail",
+          "diff": "CloudTrail は誰がどの AWS の API を呼んだかの操作履歴、X-Ray はアプリのリクエストの処理経路と時間。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html"
+    },
+    {
+      "name": "Amazon AppStream 2.0",
+      "category": "エンドユーザーコンピューティング",
+      "summary": "デスクトップアプリだけをブラウザに配信",
+      "description": "Windows などのデスクトップアプリを AWS 上で動かし、その画面を利用者のブラウザへストリーミング配信するサービスです。デスクトップ全体ではなく、特定のアプリだけを届けます。データは利用者の端末に残りません。",
+      "features": [
+        "アプリ単位で画面をストリーミング配信",
+        "HTML5 対応のブラウザから使える",
+        "アプリを1か所で管理し、常に最新版を届けられる",
+        "データが端末に残らない"
+      ],
+      "useCases": [
+        "設計ソフトなど重いアプリを、性能の低い端末から使わせる",
+        "研修や授業で決まったアプリだけを配る"
+      ],
+      "keywords": [
+        "アプリケーションストリーミング",
+        "デスクトップアプリをブラウザで",
+        "アプリ単位で配信"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon WorkSpaces",
+          "diff": "WorkSpaces は1人ずつの仮想デスクトップ（パソコン丸ごと）、AppStream 2.0 は特定のアプリだけを配信する。"
+        },
+        {
+          "name": "Amazon WorkSpaces Secure Browser",
+          "diff": "Secure Browser は社内の Web サイトや SaaS をブラウザで安全に見せる、AppStream 2.0 はデスクトップアプリを配信する。"
+        }
+      ],
+      "note": "現在の AWS 公式ドキュメントでは Amazon WorkSpaces Applications という名前になっている。試験ガイドでは Amazon AppStream 2.0 と表記。",
+      "url": "https://docs.aws.amazon.com/appstream2/latest/developerguide/what-is-appstream.html"
+    },
+    {
+      "name": "Amazon WorkSpaces",
+      "category": "エンドユーザーコンピューティング",
+      "summary": "クラウド上の仮想デスクトップ（DaaS）",
+      "description": "Windows や Linux のデスクトップ環境（パソコン丸ごと）を、利用者1人ずつにクラウド上で用意するサービスです。社員は自宅や外出先からさまざまな端末で自分のデスクトップに接続できます。",
+      "features": [
+        "利用者ごとの仮想デスクトップ",
+        "Windows・Linux を選べる",
+        "月額または時間単位の料金",
+        "データはクラウド側に保存され端末に残らない"
+      ],
+      "useCases": [
+        "テレワークの社員に安全な業務用デスクトップを配る",
+        "短期の契約社員にすぐ PC 環境を用意する"
+      ],
+      "keywords": [
+        "仮想デスクトップ",
+        "VDI",
+        "DaaS（Desktop as a Service）",
+        "テレワーク"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon AppStream 2.0",
+          "diff": "AppStream 2.0 は特定のアプリだけを配信する、WorkSpaces はデスクトップ全体を1人ずつ用意する。"
+        },
+        {
+          "name": "Amazon EC2",
+          "diff": "EC2 は自分で OS を管理する仮想サーバー、WorkSpaces は利用者が使うデスクトップをマネージドで提供する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html"
+    },
+    {
+      "name": "Amazon WorkSpaces Secure Browser",
+      "category": "エンドユーザーコンピューティング",
+      "summary": "社内 Web サイトや SaaS をブラウザで安全に使う",
+      "description": "社内の Web サイトや SaaS を、利用者のふだんのブラウザから安全に使わせるサービスです。ページは AWS 上の隔離されたブラウザで動き、画面だけが届くため、データが端末に残りません。VPN や専用ソフトを入れる必要もありません。",
+      "features": [
+        "Web サイト・SaaS へのアクセスに特化",
+        "画面だけを届け、データを端末に残さない",
+        "VPN やクライアントソフトが不要",
+        "コピー＆ペーストやダウンロードの制限"
+      ],
+      "useCases": [
+        "委託先や個人端末から社内の Web アプリだけを使わせる",
+        "SaaS を安全に使わせる"
+      ],
+      "keywords": [
+        "安全なブラウザ",
+        "Web アプリへのアクセス",
+        "SaaS",
+        "データを端末に残さない"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon WorkSpaces",
+          "diff": "WorkSpaces はデスクトップ全体を用意する、Secure Browser は Web サイトや SaaS の閲覧だけを安全に提供する。"
+        },
+        {
+          "name": "Amazon AppStream 2.0",
+          "diff": "AppStream 2.0 はデスクトップアプリを配信する、Secure Browser は Web のサイトやアプリを対象にする。"
+        }
+      ],
+      "note": "旧名は Amazon WorkSpaces Web。AWS の発表によると、2026年10月29日から新規の顧客は利用できなくなる（メンテナンス扱い。既存の顧客は使い続けられる）。",
+      "url": "https://docs.aws.amazon.com/workspaces-web/latest/adminguide/what-is-workspaces-web.html"
+    },
+    {
+      "name": "AWS Amplify",
+      "category": "フロントエンド・IoT",
+      "summary": "Web・モバイルアプリを素早く作って公開",
+      "description": "Web アプリやモバイルアプリのフロントエンド開発者が、認証・API・ストレージなどのバックエンドを簡単に用意し、アプリをホスティング（公開）できるようにするツールとサービスの集まりです。Git に変更を入れると自動でビルドと公開ができます。",
+      "features": [
+        "Web アプリのホスティング（Git と連携した自動デプロイ）",
+        "認証・データ・ストレージなどのバックエンドを簡単に追加",
+        "React・Next.js などのフレームワークに対応",
+        "モバイルアプリ（iOS・Android）にも対応"
+      ],
+      "useCases": [
+        "React の Web アプリを素早く公開する",
+        "ログイン機能付きのモバイルアプリを少人数で作る"
+      ],
+      "keywords": [
+        "フルスタック",
+        "フロントエンド開発者",
+        "Web・モバイルアプリ",
+        "ホスティング"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Elastic Beanstalk",
+          "diff": "Elastic Beanstalk はサーバー側のアプリをコードを上げるだけで動かす PaaS、Amplify はフロントエンド中心の Web・モバイルアプリを作って公開する。"
+        },
+        {
+          "name": "Amazon S3",
+          "diff": "S3 も静的サイトを置けるが、Amplify は Git 連携の自動デプロイやバックエンド機能までまとめて提供する。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html"
+    },
+    {
+      "name": "AWS IoT Core",
+      "category": "フロントエンド・IoT",
+      "summary": "IoT デバイスをクラウドに安全につなぐ",
+      "description": "センサーや家電などの IoT デバイスを、インターネット経由で AWS に安全に接続し、デバイスとクラウドの間でメッセージをやり取りできるようにするサービスです。受け取ったデータはルールで他の AWS サービスへ送れます。",
+      "features": [
+        "数十億台規模のデバイスの接続",
+        "MQTT などの軽量な通信方式",
+        "デバイスの認証と通信の暗号化",
+        "ルールで Lambda・S3・Kinesis などへデータを送る"
+      ],
+      "useCases": [
+        "工場のセンサーのデータをクラウドに集める",
+        "スマート家電を遠隔から操作する"
+      ],
+      "keywords": [
+        "IoT",
+        "デバイスの接続",
+        "MQTT",
+        "センサー",
+        "デバイスとクラウドの通信"
+      ],
+      "confusedWith": [
+        {
+          "name": "Amazon Kinesis",
+          "diff": "Kinesis は大量のストリーミングデータを取り込んで処理する、IoT Core はデバイスを認証してクラウドにつなぐ入口。"
+        },
+        {
+          "name": "AWS IoT Greengrass",
+          "diff": "Greengrass はデバイス側（エッジ）で処理を動かす、IoT Core はクラウド側でデバイスとの接続を受け持つ。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html"
+    },
+    {
+      "name": "オンデマンドインスタンス",
+      "category": "料金モデル",
+      "summary": "約束なし、使った分だけ払う",
+      "description": "長期の契約や前払いなしで、使った時間（秒または時間）の分だけ料金を払う EC2 の基本の買い方です。いつでも始めて、いつでも止められます。",
+      "features": [
+        "長期契約や前払いが不要",
+        "いつでも起動・停止できる",
+        "中断されない"
+      ],
+      "useCases": [
+        "短期間の開発・テスト",
+        "使用量が予測できず、中断もできないワークロード"
+      ],
+      "keywords": [
+        "長期契約なし",
+        "前払いなし",
+        "短期",
+        "予測できない",
+        "中断できない"
+      ],
+      "confusedWith": [
+        {
+          "name": "スポットインスタンス",
+          "diff": "オンデマンドは中断されないが割引なし、スポットは大きく割引されるが中断されることがあります。"
+        },
+        {
+          "name": "オンデマンドキャパシティ予約",
+          "diff": "オンデマンドインスタンスは料金の払い方で、オンデマンドキャパシティ予約は起動できる枠（容量）を確保する仕組みです。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/ec2/pricing/on-demand/"
+    },
+    {
+      "name": "リザーブドインスタンス",
+      "category": "料金モデル",
+      "summary": "特定の構成を1年か3年使う約束で割引",
+      "description": "インスタンスタイプやリージョンなどを決めて、1年または3年使い続けることを約束する代わりに、オンデマンドより安くなる買い方です。略称は RI で、EC2 のほか RDS などにもあります。",
+      "features": [
+        "期間は1年または3年",
+        "支払い方法は全額前払い・一部前払い・前払いなし",
+        "スタンダード RI と、条件を変更できるコンバーティブル RI がある",
+        "アベイラビリティーゾーンを指定した RI は容量の確保もできる"
+      ],
+      "useCases": [
+        "24時間365日動かし続ける本番のデータベースやサーバー"
+      ],
+      "keywords": [
+        "1年または3年",
+        "長期の約束",
+        "安定した使用量",
+        "前払い",
+        "インスタンスタイプを指定"
+      ],
+      "confusedWith": [
+        {
+          "name": "Savings Plans",
+          "diff": "RI はインスタンスタイプなどの「構成」を約束し、Savings Plans は1時間あたりの「利用金額」を約束するので、Savings Plans のほうが柔軟です。"
+        },
+        {
+          "name": "スポットインスタンス",
+          "diff": "RI は長期の約束で割引され中断されず、スポットは約束なしで大きく割引されるが中断されることがあります。"
+        }
+      ],
+      "note": "EC2 では、より柔軟な Savings Plans が勧められることが多くなっています。",
+      "url": "https://aws.amazon.com/ec2/pricing/reserved-instances/"
+    },
+    {
+      "name": "Savings Plans",
+      "category": "料金モデル",
+      "summary": "1時間あたりの利用金額を約束して割引",
+      "description": "1年または3年の間、1時間あたり一定の金額分を使うことを約束する代わりに割引される料金モデルです。インスタンスタイプなどを固定しないため、RI より柔軟です。",
+      "features": [
+        "期間は1年または3年",
+        "Compute Savings Plans は EC2・AWS Fargate・AWS Lambda に、インスタンスファミリーやリージョンを問わず適用",
+        "EC2 Instance Savings Plans はリージョンとインスタンスファミリーを決める代わりに割引が大きい"
+      ],
+      "useCases": [
+        "インスタンスタイプやリージョンを今後変えるかもしれないが、使う金額は安定しているとき",
+        "EC2 から Fargate や Lambda へ移す予定があるとき"
+      ],
+      "keywords": [
+        "1時間あたりの利用金額を約束",
+        "柔軟",
+        "1年または3年",
+        "Fargate・Lambda にも適用"
+      ],
+      "confusedWith": [
+        {
+          "name": "リザーブドインスタンス",
+          "diff": "Savings Plans は利用金額を約束し、RI はインスタンスタイプなどの構成を約束します。"
+        },
+        {
+          "name": "スポットインスタンス",
+          "diff": "Savings Plans は長期の約束で割引され中断されず、スポットは約束なしで大きく割引されるが中断されることがあります。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/savingsplans/"
+    },
+    {
+      "name": "スポットインスタンス",
+      "category": "料金モデル",
+      "summary": "余った容量を格安で。ただし中断あり",
+      "description": "AWS の使われていない EC2 の容量を、オンデマンドより大幅に安く使える買い方です。AWS が容量を必要とすると、事前の通知のあとで中断されることがあります。",
+      "features": [
+        "オンデマンドより大幅に安い",
+        "長期契約は不要",
+        "AWS の都合で中断されることがある（中断前に通知が届く）"
+      ],
+      "useCases": [
+        "中断されてもやり直せるバッチ処理やデータ分析",
+        "開始・終了時刻に融通がきく処理"
+      ],
+      "keywords": [
+        "中断しても問題ない",
+        "最も安い",
+        "柔軟な開始・終了時刻",
+        "バッチ処理",
+        "使われていない容量"
+      ],
+      "confusedWith": [
+        {
+          "name": "オンデマンドインスタンス",
+          "diff": "スポットは安いが中断されることがあり、オンデマンドは割引なしだが中断されません。"
+        },
+        {
+          "name": "リザーブドインスタンス",
+          "diff": "スポットは約束なしで安いが中断あり、RI は1年か3年の約束で割引され中断なしです。"
+        }
+      ],
+      "note": "問題文に「中断しても構わない」「処理を再開できる」とあればスポット、「中断できない」とあればスポットは誤りです。",
+      "url": "https://aws.amazon.com/ec2/spot/"
+    },
+    {
+      "name": "Dedicated Hosts",
+      "category": "料金モデル",
+      "summary": "物理サーバーを丸ごと専有。ライセンス持ち込み向き",
+      "description": "自分専用の物理サーバーを丸ごと使える EC2 の買い方です。物理的なソケット数やコア数が見えるため、それを基準にしたソフトウェアライセンスを持ち込めます。",
+      "features": [
+        "物理サーバー1台を自分専用で使う",
+        "ソケットやコアなど物理サーバーの情報が見え、どのホストに置くかを制御できる",
+        "ソケット単位・コア単位のライセンス（BYOL）を使える",
+        "コンプライアンス要件を満たしやすい"
+      ],
+      "useCases": [
+        "Windows Server や SQL Server など、既存のライセンスを AWS へ持ち込む",
+        "規制で専用の物理サーバーが求められる"
+      ],
+      "keywords": [
+        "物理サーバーを専有",
+        "ライセンスの持ち込み（BYOL）",
+        "ソケット単位・コア単位",
+        "コンプライアンス"
+      ],
+      "confusedWith": [
+        {
+          "name": "Dedicated Instances",
+          "diff": "Dedicated Hosts は物理サーバー丸ごとを借りてソケットやコアまで見えるので BYOL に使え、Dedicated Instances は専用のハードウェアで動くだけでサーバーの中身は見えません。"
+        }
+      ],
+      "note": "試験では「既存のソケット単位・コア単位のライセンスを使いたい」とあれば Dedicated Hosts が答えです。",
+      "url": "https://aws.amazon.com/ec2/dedicated-hosts/"
+    },
+    {
+      "name": "Dedicated Instances",
+      "category": "料金モデル",
+      "summary": "他社と共有しないハードウェアで動かす",
+      "description": "自分のアカウント専用のハードウェア上で動く EC2 インスタンスです。他のお客様とハードウェアを共有しませんが、物理サーバーの情報は見えず、置き場所も制御できません。",
+      "features": [
+        "ハードウェアレベルで他のお客様から分離",
+        "物理サーバーのソケットやコアは見えない",
+        "どの物理サーバーに置くかは AWS 任せ"
+      ],
+      "useCases": [
+        "他社とハードウェアを共有しないことが求められるが、ライセンスの持ち込みは不要なとき"
+      ],
+      "keywords": [
+        "専用のハードウェア",
+        "他のお客様と分離",
+        "単一テナント",
+        "インスタンス単位"
+      ],
+      "confusedWith": [
+        {
+          "name": "Dedicated Hosts",
+          "diff": "Dedicated Instances はサーバーの中身が見えず BYOL には向かず、Dedicated Hosts は物理サーバーを丸ごと借りてソケットやコアまで見えます。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/ec2/pricing/dedicated-instances/"
+    },
+    {
+      "name": "オンデマンドキャパシティ予約",
+      "category": "料金モデル",
+      "summary": "長期契約なしで起動できる枠を確保する",
+      "description": "特定のアベイラビリティーゾーンで、EC2 インスタンスを起動できる容量（枠）を、期間の約束なしで確保しておく仕組みです。割引のためではなく、必要なときに確実に起動するために使います。",
+      "features": [
+        "アベイラビリティーゾーンとインスタンスタイプを指定して容量を確保",
+        "1年や3年の約束は不要で、いつでも作成・取り消しできる",
+        "確保した枠は使っていなくてもオンデマンド料金がかかる",
+        "Savings Plans などと組み合わせると割引も受けられる"
+      ],
+      "useCases": [
+        "大きなイベントや災害対策のため、必要なときに確実に起動できるようにしておく"
+      ],
+      "keywords": [
+        "容量の確保",
+        "キャパシティ予約",
+        "長期契約なし",
+        "特定のアベイラビリティーゾーン",
+        "確実に起動"
+      ],
+      "confusedWith": [
+        {
+          "name": "リザーブドインスタンス",
+          "diff": "オンデマンドキャパシティ予約は期間の約束なしで容量を確保するだけで割引はなく、RI は1年か3年の約束で割引を受ける仕組みです。"
+        },
+        {
+          "name": "オンデマンドインスタンス",
+          "diff": "オンデマンドインスタンスは料金の払い方で、容量の確保はしません。"
+        }
+      ],
+      "note": "",
+      "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html"
+    },
+    {
+      "name": "AWS Budgets",
+      "category": "コスト管理と請求",
+      "summary": "予算を決め、超えそうなときに通知する",
+      "description": "コストや使用量の予算を自分で決め、実際の金額や予測が予算を超えたとき（超えそうなとき）にアラートで知らせるサービスです。「これから」使いすぎないように見張る道具です。",
+      "features": [
+        "コスト・使用量・RI や Savings Plans の利用率などに予算を設定",
+        "実績や予測が閾値を超えるとメールや Amazon SNS で通知",
+        "予算を超えたときにアクション（IAM ポリシーの適用やインスタンス停止など）を自動実行できる"
+      ],
+      "useCases": [
+        "月の請求額が予算の 80% を超えたらメールで知らせる",
+        "開発用アカウントの使いすぎを早めに検知する"
+      ],
+      "keywords": [
+        "予算",
+        "しきい値",
+        "アラート・通知",
+        "超過しそうなとき",
+        "予算アクション"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Cost Explorer",
+          "diff": "Budgets は予算を決めて超えたら知らせ、Cost Explorer は過去のコストをグラフで分析します。"
+        },
+        {
+          "name": "AWS Pricing Calculator",
+          "diff": "Budgets は使い始めた後のコストを見張り、Pricing Calculator は使う前に料金を見積もります。"
+        },
+        {
+          "name": "Amazon CloudWatch の請求アラーム",
+          "diff": "どちらも通知できますが、予算の管理・予測にもとづく通知・利用率の追跡まで扱えるのは Budgets です。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/aws-cost-management/aws-budgets/"
+    },
+    {
+      "name": "AWS Cost and Usage Reports",
+      "category": "コスト管理と請求",
+      "summary": "最も細かいコストと使用量の明細を S3 に出力",
+      "description": "AWS のコストと使用量について、最も詳しい明細データを Amazon S3 に定期的に出力する仕組みです。略称は CUR で、Amazon Athena などで集計・分析するための元データとして使います。",
+      "features": [
+        "時間単位・リソース単位など、最も細かい粒度の明細",
+        "S3 バケットへ定期的に出力",
+        "Athena や Amazon QuickSight などで分析できる",
+        "コスト配分タグごとの集計にも使える"
+      ],
+      "useCases": [
+        "請求データを自社の分析基盤に取り込み、部署ごとに詳しく集計する"
+      ],
+      "keywords": [
+        "最も詳細な",
+        "コストと使用量のデータ",
+        "S3 に配信",
+        "Athena で分析",
+        "CUR"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Cost Explorer",
+          "diff": "CUR は明細の生データを S3 に出力し、Cost Explorer は画面のグラフで手軽に分析します。"
+        },
+        {
+          "name": "AWS Budgets",
+          "diff": "CUR は明細を出力するだけで、予算超過の通知はしません。通知するのは Budgets です。"
+        }
+      ],
+      "note": "現在は AWS Data Exports（CUR 2.0）を使うことが勧められています。試験で「最も詳細なコストと使用量のデータ」と問われたら CUR が答えです。",
+      "url": "https://aws.amazon.com/aws-cost-management/aws-cost-and-usage-reporting/"
+    },
+    {
+      "name": "AWS Cost Explorer",
+      "category": "コスト管理と請求",
+      "summary": "過去のコストをグラフで見て分析する",
+      "description": "これまでのコストと使用量をグラフで見て、サービス別・アカウント別・タグ別などに分析するサービスです。今後のコストの予測や、RI・Savings Plans の購入の推奨も表示できます。",
+      "features": [
+        "過去のコストと使用量をグラフで表示",
+        "サービス・アカウント・リージョン・タグなどで絞り込み",
+        "今後のコストの予測",
+        "RI や Savings Plans の購入推奨"
+      ],
+      "useCases": [
+        "先月どのサービスにいくらかかったかを調べる",
+        "コストが急に増えた原因を探す"
+      ],
+      "keywords": [
+        "可視化",
+        "グラフ",
+        "過去のコストを分析",
+        "傾向",
+        "予測"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Budgets",
+          "diff": "Cost Explorer は過去のコストを分析し、Budgets は予算を決めて超えたら通知します。"
+        },
+        {
+          "name": "AWS Cost and Usage Reports",
+          "diff": "Cost Explorer は画面で手軽に分析し、CUR は最も細かい明細を S3 に出力します。"
+        },
+        {
+          "name": "AWS Pricing Calculator",
+          "diff": "Cost Explorer は使った後の実績を見て、Pricing Calculator は使う前に見積もります。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/aws-cost-management/aws-cost-explorer/"
+    },
+    {
+      "name": "AWS Pricing Calculator",
+      "category": "コスト管理と請求",
+      "summary": "使う前に AWS の料金を見積もる",
+      "description": "AWS を使い始める前に、使う予定のサービスと構成を入力して月々の料金を見積もる無料のウェブツールです。AWS アカウントがなくても使えます。",
+      "features": [
+        "サービスごとに構成を入力して料金を試算",
+        "複数のサービスをまとめた見積もりを作成",
+        "見積もりを共有したり書き出したりできる"
+      ],
+      "useCases": [
+        "新しいシステムを AWS で作る前に、月々の費用を見積もる"
+      ],
+      "keywords": [
+        "見積もり",
+        "使う前に",
+        "料金を試算",
+        "新しいワークロード",
+        "コストの見積もり"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Cost Explorer",
+          "diff": "Pricing Calculator は使う前の見積もりで、Cost Explorer は使った後の実績を分析します。"
+        },
+        {
+          "name": "Migration Evaluator",
+          "diff": "Pricing Calculator は自分で構成を入力して見積もり、Migration Evaluator はオンプレの実データから移行のビジネスケースを作ります。"
+        }
+      ],
+      "note": "",
+      "url": "https://calculator.aws/"
+    },
+    {
+      "name": "AWS Marketplace",
+      "category": "コスト管理と請求",
+      "summary": "他社のソフトを探して買って使えるカタログ",
+      "description": "AWS 上で動くサードパーティ（他社）のソフトウェア、データ、サービスを探して購入し、すぐに使い始められるデジタルカタログです。購入した費用は AWS の請求書にまとめて載ります。",
+      "features": [
+        "セキュリティ製品やデータベースなど多くの他社製品を掲載",
+        "従量課金や年間契約、ライセンス持ち込み（BYOL）など多様な料金形態",
+        "費用を AWS の請求にまとめられる"
+      ],
+      "useCases": [
+        "他社のファイアウォール製品を AMI の形ですぐに導入する"
+      ],
+      "keywords": [
+        "サードパーティのソフトウェア",
+        "購入・デプロイ",
+        "デジタルカタログ",
+        "ISV",
+        "AWS の請求に統合"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Partner Network (APN)",
+          "diff": "Marketplace はソフトウェアを買う場所で、APN は AWS と協力するパートナー企業の制度です。"
+        },
+        {
+          "name": "AWS Professional Services",
+          "diff": "Marketplace は他社の製品を買う場所で、Professional Services は AWS 自身の専門家による支援です。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/marketplace/"
+    },
+    {
+      "name": "一括請求（AWS Organizations）",
+      "category": "コスト管理と請求",
+      "summary": "複数アカウントの請求を1つにまとめる",
+      "description": "AWS Organizations の機能で、組織内の複数の AWS アカウントの請求を管理アカウントにまとめて、1つの請求書で支払えるようにします。追加料金はかかりません。",
+      "features": [
+        "複数アカウントの支払いを1つにまとめる",
+        "全アカウントの使用量を合算するので、ボリュームディスカウントを受けやすい",
+        "RI や Savings Plans の割引をアカウント間で共有できる",
+        "アカウントごとのコストも確認できる"
+      ],
+      "useCases": [
+        "部署ごとに分けた AWS アカウントの支払いを本社で1つにまとめる"
+      ],
+      "keywords": [
+        "一括請求",
+        "1つの請求書",
+        "ボリュームディスカウント",
+        "管理アカウント",
+        "複数アカウント"
+      ],
+      "confusedWith": [
+        {
+          "name": "コスト配分タグ",
+          "diff": "一括請求はアカウント単位で支払いをまとめ、コスト配分タグはタグ（プロジェクトなど）単位でコストを分けて見ます。"
+        },
+        {
+          "name": "AWS Cost Explorer",
+          "diff": "一括請求は支払いをまとめる仕組みで、Cost Explorer はコストを分析する道具です。"
+        }
+      ],
+      "note": "試験では「複数アカウントの使用量を合算して割引を受ける」「請求書を1つにする」と出たら一括請求です。",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html"
+    },
+    {
+      "name": "コスト配分タグ",
+      "category": "コスト管理と請求",
+      "summary": "タグでコストを部署・案件ごとに分ける",
+      "description": "リソースに付けたタグ（キーと値のラベル）を請求コンソールで有効にすると、そのタグごとにコストを集計できるようになる仕組みです。部署やプロジェクトごとのコストを把握するのに使います。",
+      "features": [
+        "ユーザーが付けるタグと、AWS が自動で付けるタグの2種類がある",
+        "請求コンソールで有効化したタグだけがコスト集計に使われる",
+        "Cost Explorer や Cost and Usage Reports でタグ別に集計できる"
+      ],
+      "useCases": [
+        "プロジェクトごと・部署ごとに AWS の費用を振り分ける"
+      ],
+      "keywords": [
+        "タグ",
+        "部署ごとのコスト",
+        "プロジェクトごとのコスト",
+        "コストの配分",
+        "有効化"
+      ],
+      "confusedWith": [
+        {
+          "name": "一括請求（AWS Organizations）",
+          "diff": "コスト配分タグはタグ単位でコストを分け、一括請求はアカウント単位で支払いをまとめます。"
+        },
+        {
+          "name": "AWS Cost Explorer",
+          "diff": "コスト配分タグはコストを分けるための「目印」で、Cost Explorer はその目印を使って分析する「道具」です。"
+        }
+      ],
+      "note": "タグを付けただけでは集計されず、請求コンソールでコスト配分タグとして有効にする必要があります。",
+      "url": "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html"
+    },
+    {
+      "name": "AWS Support",
+      "category": "サポート",
+      "summary": "AWS の技術・請求の相談窓口。4つのプランから選ぶ",
+      "description": "AWS を使うお客様向けの相談窓口とサポートの仕組みです。Basic / Business Support+ / Enterprise Support / Unified Operations の4つのプランがあり、上のプランほど担当者の割り当てや予防的な支援が手厚くなります。",
+      "features": [
+        "Basic は全員が無料で使え、請求とアカウントの相談などができる",
+        "Business Support+ 以上で技術的な問い合わせ（ケース）を出せる",
+        "Enterprise Support 以上で専任のテクニカルアカウントマネージャー（TAM）が付く",
+        "プランによって AWS Trusted Advisor で使えるチェックの範囲が変わる"
+      ],
+      "useCases": [
+        "本番環境のトラブルについて AWS のエンジニアに相談する",
+        "求める支援の手厚さに合わせてプランを選ぶ"
+      ],
+      "keywords": [
+        "サポートプラン",
+        "サポートケース",
+        "技術サポート",
+        "請求とアカウントのサポート",
+        "TAM"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS re:Post",
+          "diff": "AWS Support は AWS と契約して受ける公式の窓口で、re:Post はだれでも使える Q&A コミュニティです。"
+        },
+        {
+          "name": "AWS Professional Services",
+          "diff": "AWS Support は運用中の問い合わせに答える窓口で、Professional Services は移行などのプロジェクトを有償で支援する AWS の専門家チームです。"
+        }
+      ],
+      "note": "2025-12 の再編で、Developer・旧 Business・Enterprise On-Ramp は試験ガイドには載っていない旧プランになりました（いずれも 2027-01-01 に終了予定と案内されています）。CLF の問題は新しい4プランで考えます。",
+      "url": "https://aws.amazon.com/premiumsupport/"
+    },
+    {
+      "name": "Basic（サポートプラン）",
+      "category": "サポート",
+      "summary": "全員に無料で付く。請求とアカウントの相談だけ",
+      "description": "すべての AWS のお客様に無料で付いているサポートプランです。請求とアカウントの問い合わせ、ドキュメントや re:Post の利用などはできますが、技術的な問い合わせ（ケース）は出せません。",
+      "features": [
+        "追加料金なしで全員に付く",
+        "請求とアカウントに関する問い合わせ、サービスクォータの引き上げ申請",
+        "ドキュメント・ホワイトペーパー・AWS re:Post を利用できる",
+        "AWS Trusted Advisor のコアチェックと AWS Health を利用できる"
+      ],
+      "useCases": [
+        "個人の学習や検証で、請求の相談ができれば十分なとき"
+      ],
+      "keywords": [
+        "無料",
+        "すべてのお客様",
+        "請求とアカウント",
+        "Trusted Advisor のコアチェック"
+      ],
+      "confusedWith": [
+        {
+          "name": "Business Support+（サポートプラン）",
+          "diff": "Basic は技術的な問い合わせができず、Business Support+ から技術的な問い合わせができ、Trusted Advisor の全チェックが使えます。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/premiumsupport/plans/"
+    },
+    {
+      "name": "Business Support+（サポートプラン）",
+      "category": "サポート",
+      "summary": "本番環境向けの最小プラン。AI 支援と24時間の技術サポート",
+      "description": "本番のワークロードを動かすお客様に AWS が勧める最小のサポートプランです。生成 AI による状況に合わせた回答と、24時間365日のクラウドサポートエンジニアへの問い合わせ（電話・ウェブ・チャット）が使えます。",
+      "features": [
+        "生成 AI による、利用状況に合わせた回答やトラブル調査",
+        "24時間365日、電話・ウェブ・チャットでエンジニアに問い合わせ",
+        "AWS Trusted Advisor の全チェックを利用",
+        "AWS Support API や、他社ソフトウェアに関する支援"
+      ],
+      "useCases": [
+        "本番システムを AWS で動かしていて、いつでも技術的な相談をしたい"
+      ],
+      "keywords": [
+        "本番のワークロード",
+        "24時間365日",
+        "技術サポート",
+        "Trusted Advisor の全チェック",
+        "AI による支援"
+      ],
+      "confusedWith": [
+        {
+          "name": "Enterprise Support（サポートプラン）",
+          "diff": "Business Support+ には専任の TAM が付かず、Enterprise Support から専任の TAM が付きます。"
+        },
+        {
+          "name": "Basic（サポートプラン）",
+          "diff": "Business Support+ は技術的な問い合わせができ、Basic は請求とアカウントの相談だけです。"
+        }
+      ],
+      "note": "旧 Business プランと Developer プランの後継にあたります（旧プランは試験ガイドに載っていません）。",
+      "url": "https://aws.amazon.com/premiumsupport/plans/business-plus/"
+    },
+    {
+      "name": "Enterprise Support（サポートプラン）",
+      "category": "サポート",
+      "summary": "ビジネスに重要なシステム向け。専任 TAM が付く",
+      "description": "ビジネスにとって重要なワークロードを持つ組織向けのサポートプランです。Business Support+ の内容に加え、専任のテクニカルアカウントマネージャー（TAM）が付き、予防的な支援を受けられます。",
+      "features": [
+        "専任のテクニカルアカウントマネージャー（TAM）",
+        "AWS Security Incident Response を利用できる",
+        "AWS の専門家との戦略的なビジネスレビュー",
+        "重要なイベントに向けた支援（AWS Countdown）や Well-Architected のレビューなどの予防的な支援"
+      ],
+      "useCases": [
+        "業務の中心となるシステムを運用していて、専任の担当者に継続して相談したい"
+      ],
+      "keywords": [
+        "専任の TAM",
+        "ビジネスに重要なワークロード",
+        "予防的なガイダンス",
+        "セキュリティインシデント対応"
+      ],
+      "confusedWith": [
+        {
+          "name": "Unified Operations（サポートプラン）",
+          "diff": "Enterprise Support は TAM を中心とした支援で、Unified Operations はさらに 24時間のワークロード監視やインシデント管理のエンジニアまで付く、ミッションクリティカル向けの最上位プランです。"
+        },
+        {
+          "name": "Business Support+（サポートプラン）",
+          "diff": "Enterprise Support には専任の TAM が付き、Business Support+ には付きません。"
+        }
+      ],
+      "note": "旧 Enterprise On-Ramp の利用者は Enterprise Support へ移されると案内されています（Enterprise On-Ramp は試験ガイドに載っていない旧プランです）。",
+      "url": "https://aws.amazon.com/premiumsupport/plans/enterprise/"
+    },
+    {
+      "name": "Unified Operations（サポートプラン）",
+      "category": "サポート",
+      "summary": "止められないシステム向けの最上位プラン",
+      "description": "ミッションクリティカル（止まると重大な影響が出る）なワークロード向けの、最も手厚いサポートプランです。専任の TAM とドメインスペシャリストエンジニアが付き、アプリケーションに合わせた支援や 24時間のワークロード監視を受けられます。",
+      "features": [
+        "専任の TAM とドメインスペシャリストエンジニア（DSE）",
+        "インシデント管理エンジニアによる対応と 24時間のワークロード監視",
+        "アプリケーションの構成に合わせた設計の助言",
+        "重要なワークロードのレビューと、専用の運用手順書（ランブック）の作成"
+      ],
+      "useCases": [
+        "金融や基幹システムなど、止まると重大な影響が出るシステムを運用する"
+      ],
+      "keywords": [
+        "ミッションクリティカル",
+        "最上位のプラン",
+        "24時間のワークロード監視",
+        "インシデント管理",
+        "アプリケーションに特化した支援"
+      ],
+      "confusedWith": [
+        {
+          "name": "Enterprise Support（サポートプラン）",
+          "diff": "Unified Operations は Enterprise Support より上の最上位プランで、ワークロードの監視やインシデント管理まで AWS が深く関わります。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/premiumsupport/plans/unified-operations/"
+    },
+    {
+      "name": "テクニカルアカウントマネージャー（TAM）",
+      "category": "サポート",
+      "summary": "上位サポートプランで付く専任の技術窓口",
+      "description": "Enterprise Support と Unified Operations で付く、お客様専任の技術担当者です。お客様の環境を理解したうえで、設計・運用・コスト最適化などについて予防的に助言します。",
+      "features": [
+        "お客様ごとに割り当てられる専任の担当者",
+        "問題が起きる前の予防的なガイダンス",
+        "設計や運用のベストプラクティスの助言",
+        "重要なイベントの前の準備支援"
+      ],
+      "useCases": [
+        "自社の AWS 環境をよく知る担当者に、継続して相談したい"
+      ],
+      "keywords": [
+        "専任",
+        "技術的な窓口",
+        "予防的なガイダンス",
+        "Enterprise Support"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Professional Services",
+          "diff": "TAM はサポートプランに含まれる専任の相談役で、Professional Services は移行などのプロジェクトを別途契約して支援する専門家チームです。"
+        },
+        {
+          "name": "AWS Partner Network (APN)",
+          "diff": "TAM は AWS の社員で、APN のパートナーは AWS と協力する外部の企業です。"
+        }
+      ],
+      "note": "試験で「専任の TAM が必要」とあれば、Enterprise Support 以上のプランが答えです。Business Support+ と Basic には付きません。",
+      "url": "https://aws.amazon.com/premiumsupport/plans/enterprise/"
+    },
+    {
+      "name": "AWS re:Post",
+      "category": "サポート",
+      "summary": "AWS の質問を投稿できる無料 Q&A コミュニティ",
+      "description": "AWS に関する技術的な質問を投稿し、コミュニティのメンバーや AWS の専門家から回答をもらえる無料の Q&A サービスです。以前の AWS フォーラムの後継です。",
+      "features": [
+        "AWS アカウントがあればだれでも質問・回答できる",
+        "コミュニティや AWS の専門家が回答",
+        "AWS Knowledge Center の記事も re:Post 上で公開されている"
+      ],
+      "useCases": [
+        "サポートプランを契約せずに、技術的な疑問をコミュニティに聞く"
+      ],
+      "keywords": [
+        "コミュニティ",
+        "Q&A",
+        "無料",
+        "フォーラム",
+        "質問を投稿"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Knowledge Center",
+          "diff": "re:Post はだれでも質問・回答できるコミュニティで、Knowledge Center は AWS がよくある質問への答えをまとめた記事集です。"
+        },
+        {
+          "name": "AWS Support",
+          "diff": "re:Post は無料のコミュニティで、AWS Support はプランに応じて AWS のエンジニアが対応する公式の窓口です。"
+        }
+      ],
+      "note": "",
+      "url": "https://repost.aws/"
+    },
+    {
+      "name": "AWS Knowledge Center",
+      "category": "サポート",
+      "summary": "よくある質問への AWS 公式の答えをまとめた記事集",
+      "description": "AWS のサポートに多く寄せられる質問とその答えを、AWS が記事や動画にまとめたものです。現在は AWS re:Post の中で公開されています。",
+      "features": [
+        "よくある質問への答えを AWS が作成",
+        "手順を追った解説記事や動画",
+        "だれでも無料で読める"
+      ],
+      "useCases": [
+        "よくあるエラーや設定方法を、問い合わせる前に自分で調べる"
+      ],
+      "keywords": [
+        "よくある質問",
+        "記事",
+        "AWS が作成",
+        "セルフサービス"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS re:Post",
+          "diff": "Knowledge Center は AWS が書いた記事集で、re:Post はだれでも質問・回答できるコミュニティです。"
+        },
+        {
+          "name": "AWS ドキュメント",
+          "diff": "ドキュメントはサービスの仕様や使い方の解説で、Knowledge Center は実際によくある質問への答えに絞った記事です。"
+        }
+      ],
+      "note": "",
+      "url": "https://repost.aws/knowledge-center"
+    },
+    {
+      "name": "AWS Partner Network (APN)",
+      "category": "サポート",
+      "summary": "AWS と協力するパートナー企業の制度",
+      "description": "AWS を使ったサービスやソフトウェアを提供する企業が参加するパートナー制度です。お客様は、導入や移行を手伝う企業や、AWS 向けの製品を持つ企業を、APN のパートナーから探せます。",
+      "features": [
+        "コンサルティングや導入支援を行う企業と、ソフトウェアを提供する企業が参加",
+        "特定分野の実績を AWS が認定する仕組み（コンピテンシーなど）がある",
+        "パートナー向けにトレーニングや技術支援が用意されている"
+      ],
+      "useCases": [
+        "社内に AWS の経験者がいないので、移行を手伝ってくれる外部の企業を探す"
+      ],
+      "keywords": [
+        "パートナー",
+        "サードパーティ",
+        "コンサルティング",
+        "外部の専門家",
+        "認定パートナー"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Professional Services",
+          "diff": "APN は外部のパートナー企業の制度で、Professional Services は AWS 自身の専門家チームです。"
+        },
+        {
+          "name": "AWS Marketplace",
+          "diff": "APN はパートナー企業の制度で、Marketplace はパートナーなどの製品を買う場所です。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/partners/"
+    },
+    {
+      "name": "AWS Professional Services",
+      "category": "サポート",
+      "summary": "AWS 自身の専門家チームによるプロジェクト支援",
+      "description": "AWS の社員である専門家チームが、移行や新しいシステムの構築などのプロジェクトを支援するサービスです。AWS のパートナーと組んで支援することもあります。",
+      "features": [
+        "AWS の専門家がプロジェクトに参加して支援",
+        "移行・設計・セキュリティなど幅広い分野に対応",
+        "パートナー企業と協力して進めることもある"
+      ],
+      "useCases": [
+        "大規模なデータセンター移行を AWS の専門家と一緒に進める"
+      ],
+      "keywords": [
+        "AWS の専門家",
+        "プロジェクトの支援",
+        "移行の支援",
+        "コンサルティング"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Partner Network (APN)",
+          "diff": "Professional Services は AWS 自身のチームで、APN は外部のパートナー企業です。"
+        },
+        {
+          "name": "テクニカルアカウントマネージャー（TAM）",
+          "diff": "Professional Services はプロジェクトに入って作業を支援し、TAM はサポートプランに含まれる専任の相談役です。"
+        }
+      ],
+      "note": "",
+      "url": "https://aws.amazon.com/professional-services/"
+    },
+    {
+      "name": "AWS Trust & Safety",
+      "category": "サポート",
+      "summary": "AWS リソースの悪用の報告を受け付けるチーム",
+      "description": "AWS のリソースが悪用されている疑い（スパム、攻撃、マルウェアの配布、フィッシングなど）の報告を受け付けて対応するチームです。AWS の IP アドレスから攻撃を受けたときなどに報告します。",
+      "features": [
+        "AWS リソースの悪用（不正利用）の報告を受け付ける",
+        "スパム・DoS 攻撃・マルウェア・フィッシングなどが対象",
+        "報告はフォーム（Report Abuse）などから行う"
+      ],
+      "useCases": [
+        "AWS の IP アドレスからスパムや攻撃が来ていると気づき、AWS に報告する"
+      ],
+      "keywords": [
+        "悪用の報告",
+        "不正利用",
+        "Report Abuse",
+        "スパム",
+        "AWS リソースからの攻撃"
+      ],
+      "confusedWith": [
+        {
+          "name": "AWS Support",
+          "diff": "Trust & Safety は AWS リソースの悪用の報告を受ける窓口で、AWS Support は自分のアカウントの技術や請求の問い合わせ窓口です。"
+        },
+        {
+          "name": "AWS Shield",
+          "diff": "Trust & Safety は悪用を報告する窓口で、Shield は自分のアプリケーションを DDoS 攻撃から守るサービスです。"
+        }
+      ],
+      "note": "試験では「AWS のリソースが悪用されていることを報告したい」とあれば Trust & Safety が答えです。",
+      "url": "https://aws.amazon.com/forms/report-abuse"
+    }
+  ]
+}
