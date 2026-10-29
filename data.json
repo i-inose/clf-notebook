@@ -285,6 +285,24 @@
           4
         ]
       }
+    },
+    {
+      "order": 18,
+      "date": "2026-10-29",
+      "label": "グループ復習：Well-Architected の柱",
+      "focus": 0,
+      "total": 10,
+      "correct": 3,
+      "byDomain": {
+        "1": [
+          3,
+          7
+        ],
+        "3": [
+          0,
+          3
+        ]
+      }
     }
   ],
   "notes": [
@@ -347,8 +365,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-20",
-      "lastReviewed": "2026-10-18"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "no": 3,
@@ -566,10 +584,10 @@
         }
       ],
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-29",
-      "lastReviewed": "2026-10-27"
+      "nextReview": "2026-11-05",
+      "lastReviewed": "2026-10-29"
     },
     {
       "no": 10,
@@ -779,7 +797,7 @@
       "myAnswer": "B",
       "correct": "A",
       "result": "wrong",
-      "confidence": "low",
+      "confidence": "high",
       "why": "「運用上のイベントから学ぶ」「小さく元に戻せる変更」は、運用チームの仕事の進め方についての原則だから。",
       "contrast": "運用上の優秀性 = 人と組織の仕事の進め方（安全に自動化・小さく頻繁に変更・失敗を予測・運用のイベントから学ぶ）\n信頼性 = システムが壊れても動き続けるか（障害から自動復旧・復旧手順をテスト・水平スケール・キャパシティを推測しない）\n主語が「チーム・運用」なら運用上の優秀性、「システム・障害」なら信頼性\n※ No.2 と定義が入れ替わっていた",
       "example": "デプロイを小さく分けて毎日リリースし、問題が出たらすぐロールバックする。障害のあとは振り返りをして手順を直す。",
@@ -795,10 +813,10 @@
         }
       ],
       "status": "active",
-      "streak": 1,
+      "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-26",
-      "lastReviewed": "2026-10-19"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "no": 17,
@@ -1032,10 +1050,10 @@
       "result": "guess",
       "confidence": "low",
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-21",
-      "lastReviewed": "2026-10-19"
+      "nextReview": "2026-11-05",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "移行戦略：リテインとリロケート",
@@ -1220,7 +1238,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-18",
-      "nextReview": "2026-10-20"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "コスト構造の変化：先行投資・変動費・減価償却",
@@ -1405,7 +1424,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-18",
-      "nextReview": "2026-10-20"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "CAF：ガバナンスとビジネスの観点",
@@ -1499,7 +1519,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-18",
-      "nextReview": "2026-10-20"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "CAF の成果（収益の増加・規制の自動化は誤り）",
@@ -3124,6 +3145,100 @@
       "domain": 3,
       "result": "wrong",
       "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "EFS（共有）と EBS / インスタンスストア / S3 Glacier",
+      "question": "複数の Linux の EC2 インスタンスから同時にマウントして、同じファイルを共有したいです。容量は使った分だけ自動で増えてほしいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon EBS",
+        "B. EC2 インスタンスストア",
+        "C. Amazon EFS",
+        "D. Amazon S3 Glacier"
+      ],
+      "myAnswer": "-",
+      "correct": "C",
+      "why": "EFS は、複数の EC2 から同時にマウントして共有できるファイルシステムで、容量はファイルを置いた分だけ自動で増減するから。",
+      "contrast": "EFS = 複数の EC2 で共有するファイルシステム（Linux の NFS）。容量は自動\nEBS = 1台の EC2 に付けるディスク（ブロックストレージ）。容量は自分で決める\nインスタンスストア = 一時的なディスク。停止するとデータが消える\nS3 Glacier = アーカイブ向け（マウントして使わない）\nWindows のファイル共有なら FSx for Windows File Server（No.71）",
+      "example": "複数の Web サーバーが同じアップロード画像を読むので、EFS を全台にマウントする。",
+      "explanation": "出題時は「知らない」と回答。",
+      "sources": [
+        {
+          "title": "What is Amazon Elastic File System?",
+          "url": "https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html"
+        }
+      ],
+      "no": 89,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "AI サービス：Rekognition / Textract / Comprehend / Polly",
+      "question": "大量の商品画像から、写っている物体や不適切な内容を自動で検出したいです。機械学習の専門知識なしで使えるサービスはどれですか？",
+      "choices": [
+        "A. Amazon Rekognition",
+        "B. Amazon Textract",
+        "C. Amazon Comprehend",
+        "D. Amazon Polly"
+      ],
+      "myAnswer": "D",
+      "correct": "A",
+      "why": "Rekognition は、画像や動画から物体・顔・不適切な内容などを検出する AI サービスだから（recognition = 認識）。",
+      "contrast": "Rekognition = 画像・動画 → 何が写っているか\nTextract = 書類（スキャン画像・PDF）→ 文字や表を抜き出す\nComprehend = 文章 → 感情やキーワードを分析\nPolly = 文章 → 音声（読み上げ）\nTranscribe = 音声 → 文章（文字起こし）\nTranslate = 文章 → 別の言語",
+      "example": "EC サイトに投稿された商品画像を Rekognition で調べ、不適切な画像を自動で弾く。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is Amazon Rekognition?",
+          "url": "https://docs.aws.amazon.com/rekognition/latest/dg/what-is.html"
+        }
+      ],
+      "no": 90,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "Redshift（データウェアハウス）と Athena / RDS / DynamoDB",
+      "question": "社内の売上データを何年分もまとめて保存し、BI ツールから複雑な集計クエリを高速に実行したいです。使うデータウェアハウスのサービスはどれですか？",
+      "choices": [
+        "A. Amazon Athena",
+        "B. Amazon DynamoDB",
+        "C. Amazon RDS",
+        "D. Amazon Redshift"
+      ],
+      "myAnswer": "A",
+      "correct": "D",
+      "why": "Redshift はデータウェアハウスのサービスで、何年分もの大量のデータを蓄えて、BI ツールから複雑な集計を高速に実行するために使うから。",
+      "contrast": "Redshift = データを取り込んで蓄える分析用のデータベース（データウェアハウス）\nAthena = データは S3 に置いたまま、その場で SQL を投げる（取り込み不要）\nRDS = 業務アプリ用の普段使いのリレーショナル DB\nDynamoDB = キーで速く読み書きする NoSQL\n「データウェアハウス・BI・何年分も蓄えて分析」なら Redshift、「S3 のファイルにそのまま SQL」なら Athena",
+      "example": "全店舗の5年分の売上を Redshift に集め、経営ダッシュボードから集計する。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is Amazon Redshift?",
+          "url": "https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html"
+        },
+        {
+          "title": "What is Amazon Athena?",
+          "url": "https://docs.aws.amazon.com/athena/latest/ug/what-is.html"
+        }
+      ],
+      "no": 91,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "high",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-29",
