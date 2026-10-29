@@ -303,6 +303,24 @@
           3
         ]
       }
+    },
+    {
+      "order": 19,
+      "date": "2026-10-29",
+      "label": "グループ復習：CAF",
+      "focus": 0,
+      "total": 10,
+      "correct": 5,
+      "byDomain": {
+        "1": [
+          4,
+          5
+        ],
+        "3": [
+          1,
+          5
+        ]
+      }
     }
   ],
   "notes": [
@@ -916,8 +934,8 @@
       "status": "active",
       "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-26",
-      "lastReviewed": "2026-10-19"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "no": 20,
@@ -1012,13 +1030,13 @@
       ],
       "no": 22,
       "domain": 1,
-      "result": "wrong",
-      "confidence": "high",
+      "result": "guess",
+      "confidence": "low",
       "status": "active",
       "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-25",
-      "lastReviewed": "2026-10-18"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "Well-Architected：セキュリティと信頼性の設計原則",
@@ -1173,11 +1191,10 @@
       "domain": 1,
       "result": "guess",
       "confidence": "low",
-      "status": "active",
-      "streak": 1,
+      "status": "graduated",
+      "streak": 2,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-26",
-      "lastReviewed": "2026-10-19"
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "移行戦略：リファクタリングとリプラットフォーム",
@@ -1451,11 +1468,12 @@
       "no": 36,
       "domain": 1,
       "result": "wrong",
-      "confidence": "high",
+      "confidence": "low",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-18",
-      "nextReview": "2026-10-20"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "Migration Hub と移行サービスの4段階",
@@ -1552,9 +1570,10 @@
       "result": "wrong",
       "confidence": "high",
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-18",
-      "nextReview": "2026-10-20"
+      "nextReview": "2026-11-05",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "GuardDuty と Inspector / Macie / Config",
@@ -3236,6 +3255,126 @@
         }
       ],
       "no": 91,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "OpenSearch Service（全文検索）と Athena / Redshift",
+      "question": "アプリのログや大量のドキュメントを全文検索し、その結果をダッシュボードで可視化したいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon Athena",
+        "B. Amazon Redshift",
+        "C. Amazon OpenSearch Service",
+        "D. Amazon DynamoDB"
+      ],
+      "myAnswer": "A",
+      "correct": "C",
+      "why": "OpenSearch Service は、ログやドキュメントを取り込んで全文検索と分析を行い、OpenSearch Dashboards で可視化できるマネージドサービスだから。",
+      "contrast": "OpenSearch Service = キーワードで探す（全文検索）と可視化\nAthena = S3 のデータに SQL で集計する（サーバーレス）\nRedshift = データを取り込んで蓄えるデータウェアハウス\nDynamoDB = キーで読み書きする NoSQL\n「全文検索・ログを検索」なら OpenSearch、「S3 に SQL」なら Athena",
+      "example": "アプリのログから「error」を含む行をすぐ探し、時間ごとの件数をダッシュボードでグラフにする。",
+      "explanation": "OpenSearch はオープンソースの検索エンジン（Elasticsearch から派生）で、AWS が運用を引き受ける。",
+      "sources": [
+        {
+          "title": "What is Amazon OpenSearch Service?",
+          "url": "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/what-is.html"
+        }
+      ],
+      "no": 92,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "Connect（コンタクトセンター）と SNS / SES / Lex",
+      "question": "電話やチャットでお客さまの問い合わせを受ける、クラウド型のコンタクトセンターを、機器を用意せずにすぐ立ち上げたいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon Connect",
+        "B. Amazon SES",
+        "C. Amazon SNS",
+        "D. Amazon Lex"
+      ],
+      "myAnswer": "C",
+      "correct": "A",
+      "why": "Amazon Connect は、電話やチャットの問い合わせを受けるコンタクトセンターを、電話機器なしでクラウドに作れるサービスだから。",
+      "contrast": "Connect = お客さまとの電話・チャットの窓口（コンタクトセンター）\nSNS = システムからの通知を一斉に送る（Pub/Sub）\nSES = メールを大量に送る\nLex = 音声や文字のチャットボット（Connect の自動応答に組み込まれる）\n「コンタクトセンター・コールセンター」なら Connect",
+      "example": "問い合わせ窓口を Connect で作り、オペレーターは自宅の PC から電話に対応する。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is Amazon Connect?",
+          "url": "https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html"
+        }
+      ],
+      "no": 93,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "Amplify（フロントエンド開発と公開）と CloudFront / Elastic Beanstalk",
+      "question": "Web とモバイルのフロントエンドのアプリを、認証やデータなどのバックエンドと、公開用のホスティングまで含めて、素早く作って公開したいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon Lightsail",
+        "B. AWS Elastic Beanstalk",
+        "C. Amazon CloudFront",
+        "D. AWS Amplify"
+      ],
+      "myAnswer": "C",
+      "correct": "D",
+      "why": "Amplify は、フロントエンド開発者向けに、Web アプリのホスティングと、認証・API・データなどのバックエンドづくりをまとめて楽にするサービスだから。",
+      "contrast": "Amplify = フロントエンドのアプリを作って公開するための道具一式（裏で CloudFront や Cognito も使う）\nCloudFront = コンテンツを速く配信する CDN の部分だけ\nElastic Beanstalk = サーバー側のアプリのコードから EC2 などの実行環境を自動で用意する\nLightsail = 小さなサーバーを月額セットで使う\n「フロントエンド・モバイルアプリ・バックエンドとホスティングまで」なら Amplify",
+      "example": "React の Web アプリを GitHub に push するだけで Amplify が自動でビルドして公開し、ログイン機能も付ける。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is AWS Amplify Hosting?",
+          "url": "https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html"
+        }
+      ],
+      "no": 94,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "IoT Core（機器の接続）と SQS / Kinesis / API Gateway",
+      "question": "工場にある数千台のセンサー機器を、安全にクラウドへ接続し、機器から送られてくるメッセージを受け取って、ほかの AWS サービスに振り分けたいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon Kinesis",
+        "B. AWS IoT Core",
+        "C. Amazon SQS",
+        "D. Amazon API Gateway"
+      ],
+      "myAnswer": "C",
+      "correct": "B",
+      "why": "IoT Core は、IoT 機器を証明書で認証して安全にクラウドへつなぎ、受け取ったメッセージをルールで Lambda・S3・Kinesis などへ振り分けられるサービスだから。",
+      "contrast": "IoT Core = 機器（デバイス）をクラウドにつなぐ入口（MQTT・証明書・ルール）\nSQS = アプリ同士の間でメッセージを貯めるキュー（疎結合）\nKinesis = 大量のデータをリアルタイムに流して処理する\nAPI Gateway = アプリ向けの API の入口\n「センサー・機器・デバイス」ならまず IoT Core",
+      "example": "工場の温度センサーのデータを IoT Core で集め、しきい値を超えたら Lambda で担当者に通知する。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is AWS IoT?",
+          "url": "https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html"
+        }
+      ],
+      "no": 95,
       "domain": 3,
       "result": "wrong",
       "confidence": "high",
