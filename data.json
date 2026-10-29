@@ -267,6 +267,24 @@
           6
         ]
       }
+    },
+    {
+      "order": 17,
+      "date": "2026-10-29",
+      "label": "グループ復習：7R",
+      "focus": 0,
+      "total": 10,
+      "correct": 2,
+      "byDomain": {
+        "1": [
+          2,
+          6
+        ],
+        "3": [
+          0,
+          4
+        ]
+      }
     }
   ],
   "notes": [
@@ -346,7 +364,7 @@
       "myAnswer": "B",
       "correct": "A",
       "result": "wrong",
-      "confidence": null,
+      "confidence": "high",
       "why": "何も変えずにサーバーごと持っていくのがリホスト（リフト&シフト）だから。",
       "contrast": "リホスト = 何も変えない\nリプラットフォーム = 少し変える（自前の DB → RDS など）\nリファクタリング = 作り直す（サーバーレス化など）",
       "example": "データセンターの契約切れに合わせて、VM をそのまま EC2 に移す。",
@@ -358,10 +376,10 @@
         }
       ],
       "status": "active",
-      "streak": 1,
+      "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-25",
-      "lastReviewed": "2026-10-18"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "no": 4,
@@ -610,10 +628,10 @@
         }
       ],
       "status": "active",
-      "streak": 1,
+      "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-11-03",
-      "lastReviewed": "2026-10-27"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "no": 12,
@@ -796,7 +814,7 @@
       "myAnswer": "B",
       "correct": "A",
       "result": "wrong",
-      "confidence": "high",
+      "confidence": "low",
       "why": "自社のシステムをやめて別の製品を「買う（purchase）」移行だから。",
       "contrast": "リタイア（retire = 引退）= 使っていないので廃止\nリテイン（retain = 保持）= 今は移さず残す\nリホスト（host = 置き場所）= そのまま EC2 へ\nリロケート（locate = 配置）= VMware をハイパーバイザーごと移す\nリプラットフォーム（platform = 土台）= 一部をマネージドに置き換える\nリパーチェス（purchase = 購入）= SaaS などの製品に買い替える\nリファクタリング（refactor = 作り直す）= クラウドネイティブに作り直す",
       "example": "自社運用の CRM をやめて、Salesforce などの SaaS に乗り換える。",
@@ -810,8 +828,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-21",
-      "lastReviewed": "2026-10-19"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "no": 18,
@@ -1042,13 +1060,13 @@
       ],
       "no": 24,
       "domain": 1,
-      "result": "wrong",
+      "result": "guess",
       "confidence": "low",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-20",
-      "lastReviewed": "2026-10-18"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "6つの利点：DC の運用保守と速度・俊敏性",
@@ -1169,10 +1187,10 @@
       "result": "wrong",
       "confidence": "low",
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-20",
-      "lastReviewed": "2026-10-18"
+      "nextReview": "2026-11-05",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "Well-Architected：信頼性の水平スケールと運用上の優秀性",
@@ -1322,11 +1340,12 @@
       "no": 33,
       "domain": 1,
       "result": "wrong",
-      "confidence": "low",
+      "confidence": "high",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-18",
-      "nextReview": "2026-10-20"
+      "nextReview": "2026-10-31",
+      "lastReviewed": "2026-10-29"
     },
     {
       "topic": "Application Migration Service と移行サービスの順番",
@@ -2989,6 +3008,126 @@
       "streak": 0,
       "addedAt": "2026-10-27",
       "nextReview": "2026-10-29"
+    },
+    {
+      "topic": "ECR（倉庫）と ECS / EKS / Fargate",
+      "question": "自社で作ったコンテナイメージを、AWS 上で安全に保存・管理し、ECS や EKS から取り出して使いたいです。使うサービスはどれですか？",
+      "choices": [
+        "A. Amazon ECS",
+        "B. Amazon ECR",
+        "C. Amazon EKS",
+        "D. AWS Fargate"
+      ],
+      "myAnswer": "D",
+      "correct": "B",
+      "why": "ECR（Elastic Container Registry）は、コンテナイメージを保存・管理するレジストリ（倉庫）で、ECS や EKS はここからイメージを取り出して動かすから。",
+      "contrast": "ECR = コンテナイメージの倉庫（R = Registry）\nECS = AWS 独自の、コンテナを動かす司令塔（S = Service）\nEKS = Kubernetes で、コンテナを動かす司令塔（K = Kubernetes）\nFargate = コンテナを動かすサーバーを管理しなくてよい実行場所",
+      "example": "CI でビルドしたコンテナイメージを ECR に push し、ECS のタスクがそこから取り出して起動する。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is Amazon Elastic Container Registry?",
+          "url": "https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html"
+        }
+      ],
+      "no": 85,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "AWS Batch と Step Functions / Lambda",
+      "question": "数千件の計算ジョブを、必要な量のコンピューティングリソースを自動で用意しながら、順番に実行したいです。ジョブのキューや実行環境の管理は AWS に任せたいです。使うサービスはどれですか？",
+      "choices": [
+        "A. AWS Batch",
+        "B. AWS Lambda",
+        "C. Amazon Lightsail",
+        "D. AWS Step Functions"
+      ],
+      "myAnswer": "D",
+      "correct": "A",
+      "why": "大量のバッチジョブをキューに並べ、必要な台数のコンピューティングを自動で用意しながら実行するのが AWS Batch だから。",
+      "contrast": "Batch = 大量の計算ジョブをキューで順番に実行する（実行環境の用意も自動）\nStep Functions = 複数の処理を手順（ワークフロー）としてつなぐ\nLambda = 短い処理をイベントが来たときに動かす（1回最長15分）\nLightsail = 小さなサーバーを月額セットで手軽に使う\n「ジョブ・キュー・大量の計算」なら Batch、「手順・ワークフロー」なら Step Functions",
+      "example": "毎晩、数千件のシミュレーション計算を AWS Batch に投入し、スポットインスタンスで安く処理する。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is AWS Batch?",
+          "url": "https://docs.aws.amazon.com/batch/latest/userguide/what-is-batch.html"
+        }
+      ],
+      "no": 86,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "API Gateway と Route 53 / ELB / CloudFront",
+      "question": "AWS Lambda で作った処理を、外部のアプリから HTTPS の REST API として呼び出せるように公開したいです。認証やリクエスト数の制限もかけます。使うサービスはどれですか？",
+      "choices": [
+        "A. Elastic Load Balancing",
+        "B. Amazon CloudFront",
+        "C. Amazon Route 53",
+        "D. Amazon API Gateway"
+      ],
+      "myAnswer": "C",
+      "correct": "D",
+      "why": "API Gateway は、Lambda などの処理を REST API や WebSocket API として公開する入口で、認証やリクエスト数の制限（スロットリング）もできるから。",
+      "contrast": "API Gateway = API の入口（認証・回数制限つき）\nRoute 53 = ドメイン名を IP アドレスに変える DNS\nElastic Load Balancing = リクエストを複数のサーバーに振り分ける\nCloudFront = コンテンツを世界中のエッジから配信する\n「API・Lambda を公開・スロットリング」なら API Gateway",
+      "example": "スマホアプリから呼ぶ注文 API を、API Gateway ＋ Lambda で作る。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What is Amazon API Gateway?",
+          "url": "https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html"
+        }
+      ],
+      "no": 87,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "S3 のアーカイブ向けストレージクラス（Glacier）と One Zone-IA",
+      "question": "（2つ選択）Amazon S3 のストレージクラスのうち、めったに取り出さないデータを長期間、安く保管する「アーカイブ」向けのものはどれですか？",
+      "choices": [
+        "A. S3 Glacier Flexible Retrieval",
+        "B. S3 Standard",
+        "C. S3 Glacier Deep Archive",
+        "D. S3 One Zone-IA"
+      ],
+      "myAnswer": "AD",
+      "correct": "AC",
+      "why": "「Glacier」と名前の付くストレージクラスがアーカイブ向けで、保管料金はとても安い代わりに、取り出しに時間と料金がかかるから。",
+      "contrast": "Glacier Flexible Retrieval / Glacier Deep Archive = アーカイブ向け（Deep Archive が最安・取り出しも最も遅い）\nOne Zone-IA = たまにアクセスするデータ向け。すぐ取り出せる。1つの AZ だけに保存するので安い\nStandard = よくアクセスするデータ向け\nIA = Infrequent Access（たまに使う）。「アーカイブ」なら Glacier",
+      "example": "法律で10年保管が必要な監査ログを、S3 Glacier Deep Archive に入れておく。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "Understanding and managing Amazon S3 storage classes",
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html"
+        }
+      ],
+      "no": 88,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-29",
+      "nextReview": "2026-10-31"
     }
   ]
 }
