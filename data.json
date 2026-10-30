@@ -13,7 +13,8 @@
       "習得前でも、分野の出題範囲を一通り出し終えたら次の分野へ進み、前の分野はノートの出し直しで続ける（2026-10-18 に分野1で適用）",
       "ノートの問題は、不正解か勘で正解なら2日後、自信ありで正解なら7日後に出し直す。自信ありで2回続けて正解したら卒業",
       "4分野をすべて終えたら、全分野ランダムの総合演習に切り替える",
-      "2026-10-29: 復習日を過ぎたノートが20問を超えている間は、似たもの同士のグループごとにまとめて出し直す（1回最大8問）。新しい問題の中心は分野3"
+      "2026-10-29: 復習日を過ぎたノートが20問を超えている間は、似たもの同士のグループごとにまとめて出し直す（1回最大8問）。新しい問題の中心は分野3",
+      "2026-10-30: 解説では、正解・不正解にかかわらず4つの選択肢すべてを説明する"
     ]
   },
   "sessions": [
@@ -321,6 +322,24 @@
           5
         ]
       }
+    },
+    {
+      "order": 20,
+      "date": "2026-10-30",
+      "label": "グループ復習：6つの利点とクラウドの経済性",
+      "focus": 0,
+      "total": 10,
+      "correct": 5,
+      "byDomain": {
+        "1": [
+          4,
+          8
+        ],
+        "3": [
+          1,
+          2
+        ]
+      }
     }
   ],
   "notes": [
@@ -352,8 +371,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-20",
-      "lastReviewed": "2026-10-18"
+      "nextReview": "2026-11-01",
+      "lastReviewed": "2026-10-30"
     },
     {
       "no": 2,
@@ -717,7 +736,7 @@
       ],
       "myAnswer": "D",
       "correct": "A",
-      "result": "guess",
+      "result": "wrong",
       "confidence": "low",
       "why": "使用状況に合わせて、1台の「サイズ」を適切に（right）見直してコストを下げるのがライトサイジングだから。",
       "contrast": "ライトサイジング = 1台の大きさを使用状況に合わせて見直す（コスト目的）\n水平スケーリング = 台数を増やす・減らす（スケールアウト / イン）\n垂直スケーリング = 1台を大きく・小さくする（スケールアップ / ダウン）",
@@ -732,8 +751,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-20",
-      "lastReviewed": "2026-10-18"
+      "nextReview": "2026-11-01",
+      "lastReviewed": "2026-10-30"
     },
     {
       "no": 14,
@@ -748,8 +767,8 @@
       ],
       "myAnswer": "A",
       "correct": "A",
-      "result": "wrong",
-      "confidence": "high",
+      "result": "guess",
+      "confidence": "low",
       "why": "Bring Your Own License の略で、手持ちのライセンスを持ち込む方式だから。",
       "contrast": "BYOL = 自分のライセンスを持ち込む（物理コア単位のソフトは Dedicated Hosts が必要なことがある）\nライセンス込み = 利用料金にライセンス料が含まれる\nSavings Plans / リザーブド = ライセンスではなく、利用を約束して割引を受ける購入方法",
       "example": "ソフトウェアアシュアランス付きの SQL Server ライセンスを、EC2 で再利用する。",
@@ -763,8 +782,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-29",
-      "lastReviewed": "2026-10-27"
+      "nextReview": "2026-11-01",
+      "lastReviewed": "2026-10-30"
     },
     {
       "no": 15,
@@ -896,11 +915,10 @@
           "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
         }
       ],
-      "status": "active",
-      "streak": 1,
+      "status": "graduated",
+      "streak": 2,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-25",
-      "lastReviewed": "2026-10-18"
+      "lastReviewed": "2026-10-30"
     },
     {
       "no": 19,
@@ -969,8 +987,8 @@
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-21",
-      "lastReviewed": "2026-10-19"
+      "nextReview": "2026-11-01",
+      "lastReviewed": "2026-10-30"
     },
     {
       "no": 21,
@@ -1128,12 +1146,12 @@
       "no": 25,
       "domain": 1,
       "result": "wrong",
-      "confidence": "high",
+      "confidence": "low",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-17",
-      "nextReview": "2026-10-20",
-      "lastReviewed": "2026-10-18"
+      "nextReview": "2026-11-01",
+      "lastReviewed": "2026-10-30"
     },
     {
       "topic": "Migration Evaluator と Application Migration Service",
@@ -1284,9 +1302,10 @@
       "result": "wrong",
       "confidence": "high",
       "status": "active",
-      "streak": 0,
+      "streak": 1,
       "addedAt": "2026-10-18",
-      "nextReview": "2026-10-20"
+      "nextReview": "2026-11-06",
+      "lastReviewed": "2026-10-30"
     },
     {
       "topic": "SCT と DMS（異なるエンジンへの DB 移行）",
@@ -1345,12 +1364,13 @@
       ],
       "no": 32,
       "domain": 1,
-      "result": "guess",
-      "confidence": "low",
+      "result": "wrong",
+      "confidence": "high",
       "status": "active",
       "streak": 0,
       "addedAt": "2026-10-18",
-      "nextReview": "2026-10-20"
+      "nextReview": "2026-11-01",
+      "lastReviewed": "2026-10-30"
     },
     {
       "topic": "移行戦略：リロケートとリプラットフォーム",
@@ -3382,6 +3402,66 @@
       "streak": 0,
       "addedAt": "2026-10-29",
       "nextReview": "2026-10-31"
+    },
+    {
+      "topic": "Neptune（グラフ）と DocumentDB / DynamoDB / Redshift",
+      "question": "SNS の「友達の友達」や、不正な送金のつながりのように、データ同士の関係を何段もたどる検索を速く行いたいです。適したマネージドのデータベースはどれですか？",
+      "choices": [
+        "A. Amazon DocumentDB",
+        "B. Amazon DynamoDB",
+        "C. Amazon Redshift",
+        "D. Amazon Neptune"
+      ],
+      "myAnswer": "D",
+      "correct": "D",
+      "why": "Neptune はグラフデータベースで、点（人・口座）と線（友達・送金）のつながりを何段もたどる検索が得意だから。",
+      "contrast": "Neptune = つながり（グラフ）。SNS の関係、不正検知、レコメンド\nDocumentDB = JSON の文書をそのまま保存（MongoDB 互換）\nDynamoDB = キーで引くキーバリュー。大量アクセスでも一桁ミリ秒\nRedshift = 集計・分析用のデータウェアハウス",
+      "example": "送金の流れをたどり、不正口座から3段以内でつながる口座を見つける。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "What Is Amazon Neptune?",
+          "url": "https://docs.aws.amazon.com/neptune/latest/userguide/intro.html"
+        }
+      ],
+      "no": 96,
+      "domain": 3,
+      "result": "guess",
+      "confidence": "low",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-30",
+      "nextReview": "2026-11-01"
+    },
+    {
+      "topic": "マルチリージョンとマルチ AZ（使う理由）",
+      "question": "（2つ選択）東京リージョンの複数の AZ で動かしているアプリを、別のリージョンにも配置することにしました。マルチリージョンにする理由として適切なものはどれですか？",
+      "choices": [
+        "A. 海外の利用者への応答を速くする",
+        "B. 1つの AZ で起きた障害に備える",
+        "C. 地域全体に及ぶ大規模な災害に備える",
+        "D. EC2 の利用料金を常に下げる"
+      ],
+      "myAnswer": "BC",
+      "correct": "AC",
+      "why": "1つの AZ の障害にはマルチ AZ で備えられる。リージョンを分けて初めて得られるのは、遠くの利用者へのレイテンシの改善と、リージョン全体が止まる災害への備え（ほかにデータの所在地の規制）だから。",
+      "contrast": "マルチ AZ = 1つのデータセンター群の障害に備える（高可用性、同じリージョン内）\nマルチリージョン = 地域全体の災害（DR）、遠くの利用者（レイテンシ）、データの置き場所の規制\nリージョンを増やすとコストは増える（常に下がることはない）\n「AZ の障害」ならマルチ AZ、「地域」「国」「規制」ならマルチリージョン",
+      "example": "東京と大阪にシステムを置き、東京リージョン全体が止まっても大阪で続ける。",
+      "explanation": "",
+      "sources": [
+        {
+          "title": "Regions and Availability Zones",
+          "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html"
+        }
+      ],
+      "no": 97,
+      "domain": 3,
+      "result": "wrong",
+      "confidence": "high",
+      "status": "active",
+      "streak": 0,
+      "addedAt": "2026-10-30",
+      "nextReview": "2026-11-01"
     }
   ]
 }
